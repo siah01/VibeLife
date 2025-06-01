@@ -3,22 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VibeLife</title>
+    <title>Vibelife</title>
     <link id='style' rel="stylesheet" href="style.css">
     <link rel="icon" href="logo/VibeLife.png" type="image/png" sizes="16x16">
 </head>
 <body>
-<div id="startMenu">
-  <h1>Welcome to VibeLife</h1>
-  <button id="startNew">Start New Life</button>
-</div>
+    <center><div class="start-screen" id="startScreen">
+        <div class="title-container">
+            <h1 class="game-title">Vibelife</h1>
+            <p class="game-subtitle">A Life Simulation Game</p>
+            <div class="start-buttons">
+                <button id="newGameBtn" class="start-button">Start New Life</button>
+                <button id="aboutBtn" class="start-button secondary">About</button>
+            </div>
+        </div>
+        <div class="about-section" id="aboutSection" style="display: none;">
+            <h2>About Vibelife</h2>
+            <p>Live a complete virtual life from birth to death. Make choices, build relationships, pursue careers, and see how your story unfolds!</p>
+            <ul>
+                <li>Build relationships with family and friends</li>
+                <li>Choose from various careers and activities</li>
+                <li>Make important life decisions</li>
+                <li>Experience random life events</li>
+                <li>See how your choices shape your legacy</li>
+                <li>Made by vibe coding</li>
+            </ul>
+            <button id="backBtn" class="start-button">Back</button>
+        </div>
+    </div>
 
-<!-- Wrap your entire existing game content in this container -->
-<div id="gameContainer" style="display: none;">
-
-    <center><div class="game" id="game">
+    <div class="game" id="game" style="display: none;">
         <div class="top" id="top">
-            <p>Name: <span class='name'>Bob Harven</span></p>
+            <p>Name: <span class='name'>Jim Smith</span></p>
             <p>Money: <span class='money'>$0</span></p>
         </div>
         <br>
@@ -58,9 +74,6 @@
             <button id="ageUp" class="button ageButton">Age</button>
             <button id='relationshipsButton' class='button option'>Relationships</button>
             <button id='careerButton' class='button option'>Career</button>
-        </div>
-        <div id="buttons2">
-
         </div>
         <div id="playAgain">
             <button id='replay' onclick='location.reload();' class='button option'>Play Again</button>
@@ -104,9 +117,7 @@
             </div>
         </div>
     </div></center>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="script.js"></script>
-</body>
-
 </body>
 </html>
