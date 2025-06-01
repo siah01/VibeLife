@@ -6,8 +6,38 @@
     <title>VibeLife</title>
     <link id='style' rel="stylesheet" href="style.css">
     <link rel="icon" href="logo/VibeLife.png" type="image/png" sizes="16x16">
+    <style>
+        .screen {
+            display: none;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        #start-screen button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+
+  <!-- 🎮 Start Screen -->
+    <div id="start-screen" class="screen active">
+        <center>
+            <h1>🎮 Welcome to VibeLife 🎮</h1>
+            <p>Live your best life. Make choices. Face the consequences.</p>
+            <button id="start-button" class="button">Start New Game</button>
+            <button id="load-button" class="button">Load Game</button>
+            <button id="quit-button" class="button">Quit</button>
+        </center>
+    </div>
+    
     <center><div class="game" id="game">
         <div class="top" id="top">
             <p>Name: <span class='name'>Bob Harven</span></p>
@@ -97,6 +127,28 @@
         </div>
     </div></center>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const startScreen = document.getElementById('start-screen');
+            const gameScreen = document.getElementById('game-screen');
+            const startButton = document.getElementById('start-button');
+            const loadButton = document.getElementById('load-button');
+            const quitButton = document.getElementById('quit-button');
+
+            startButton.addEventListener('click', () => {
+                startScreen.classList.remove('active');
+                gameScreen.classList.add('active');
+            });
+
+            loadButton.addEventListener('click', () => {
+                alert('Load Game is not implemented yet!');
+            });
+
+            quitButton.addEventListener('click', () => {
+                alert('Thanks for playing VibeLife!');
+            });
+        });
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
