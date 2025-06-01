@@ -1,20 +1,27 @@
-// Hide game and show start screen initially
-$("#mainGame, #hud, #events, #buttons, #prisonButtons").hide();
-$("#startMenu").show();
-
-// Start game on button click
-$("#startNew").click(function(){
-    $("#startMenu").hide();
-    $("#mainGame, #hud, #events, #buttons").show();
-    if (typeof start === "function") {
-        start(); // Ensure start() exists
-    } else {
-        console.error("start() function is missing!");
-    }
+$(function(){
+    // Show start screen first, hide game
+    $("#startScreen").show();
+    $("#game").hide();
+    
+    // Start screen event handlers
+    $("#newGameBtn").on('click', function(){
+        $("#startScreen").hide();
+        $("#game").show();
+        initializeGame();
+    });
+    
+    $("#aboutBtn").on('click', function(){
+        $(".title-container").hide();
+        $("#aboutSection").show();
+    });
+    
+    $("#backBtn").on('click', function(){
+        $("#aboutSection").hide();
+        $(".title-container").show();
+    });
 });
 
-
-$(function(){
+function initializeGame(){
     if (localStorage.getItem('pastLives')==null){
         pastLives = {lives:[]};
         console.log("wasnt defined")
@@ -39,7 +46,7 @@ $(function(){
   let genders = ['Male','Female'];
   let pastPeople = [];
   
-  choice = max => { max[Math.floor(Math.random()*max.name)]}
+  choice = max => max[Math.floor(Math.random()*max.length)];
 
   function prisShuf(){
     prisonInmates = [];
@@ -2405,6 +2412,7 @@ $(function(){
           `) 
       }
   }
+}
   
   $(".name").on('click',function(){
       if (you['dead']==false && you['inPrison'] == false){
@@ -5477,7 +5485,7 @@ $(function(){
           update();
           var objDiv = document.getElementById("events");
           objDiv.scrollTop = objDiv.scrollHeight;
-      })
+      });
 
       $(".activity").on('click',function(){
           let activity = activities[Number($(this).attr('id'))];
@@ -7421,4 +7429,3 @@ $(function(){
   
   setInterval(()=>{console.clear();},1e1)
   
-  })
