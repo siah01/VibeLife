@@ -1,4 +1,4 @@
-// Hide main game elements and show start menu
+// Hide game and show start screen initially
 $("#mainGame, #hud, #events, #buttons, #prisonButtons").hide();
 $("#startMenu").show();
 
@@ -6,8 +6,13 @@ $("#startMenu").show();
 $("#startNew").click(function(){
     $("#startMenu").hide();
     $("#mainGame, #hud, #events, #buttons").show();
-    start(); // make sure your game has a start() function
+    if (typeof start === "function") {
+        start(); // Ensure start() exists
+    } else {
+        console.error("start() function is missing!");
+    }
 });
+
 
 $(function(){
     if (localStorage.getItem('pastLives')==null){
