@@ -7427,6 +7427,5 @@ function initializeGame(){
       var objDiv = document.getElementById("events");
       objDiv.scrollTop = objDiv.scrollHeight;
   })
-  
-  setInterval(()=>{console.clear();},1e1)
+
   
