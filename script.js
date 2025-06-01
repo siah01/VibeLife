@@ -1,3 +1,5 @@
+let you = {};
+
 $(function(){
     // Show start screen first, hide game
     $("#startScreen").show();
@@ -30,17 +32,19 @@ function initializeGame(){
         pastLives = JSON.parse(localStorage.getItem('pastLives'));
         console.log('was defined')
     }
+    
     function save(obj){
         pastLives.lives.push(obj)
         localStorage.setItem('pastLives',JSON.stringify(pastLives));
         console.log('live was saved')
     }
+    
     let lovers = 0;
     let murders = 0;
     let totalStoned = 0;
     buildings = ['hotel','condo','hospital','apartment','grocery store']
   
-    let mNames = ['Randy ','Tom ','Hank ','Bill ','George ','Leo ','Fred ','Jeff ','Steve ','Riley ','Carl ','Braden ','Clark ','Liam ','Colten ','Peter ','Ned ','Ethan ','William ','Mason ','Gavin ','Will ','Arnold ','Adam ','Dave ','Tony ','Larry ','David ','Connor ','Simon ','Darell ','Oscar ','Evan ','Michael ','Oliver ','Pete ','Lucas ','Steve ','Bob ',"Ben ","Roy ","Don ","Antonio ","Sheldon ","David "];
+  let mNames = ['Randy ','Tom ','Hank ','Bill ','George ','Leo ','Fred ','Jeff ','Steve ','Riley ','Carl ','Braden ','Clark ','Liam ','Colten ','Peter ','Ned ','Ethan ','William ','Mason ','Gavin ','Will ','Arnold ','Adam ','Dave ','Tony ','Larry ','David ','Connor ','Simon ','Darell ','Oscar ','Evan ','Michael ','Oliver ','Pete ','Lucas ','Steve ','Bob ',"Ben ","Roy ","Don ","Antonio ","Sheldon ","David "];
   let fNames = ['Tina ','Stacy ','Linda ','Zelly ','Lia ','Cindy ','Terisha ','Jane ','Sarah ','Julia ','Clay ','Sally ','Lillie ','Ana ','Maya ','Scarlett ','Christine ','Emily ','Eva ','Ava ','Mariah ','Taylor ','Sabrina ','Penelopee ','Harriet ','May ','Adrian ','Lavelle ','Chantel ','Janette ','Stephanie ','Nancy ','Susan ','Laura ','Ruby ','Amanda ','Mildred ','Lisa ','Heather ','Missy ','Lana ','Cierra '];
   let lNames = ['Harrison','Lanson','Davidson','Williams','Johnson','Smith','Wilson','Brown','Davis','Miller','Mohammed','Rodriguez','Sampson','Newman','Derren','Rowan','Garfield','Parker','Gavia','Swift','Costanza','Jenkins','Armstrong','Cook','White','Rivera','Clarke','Hoffman','McGrath','Frazier','Tubman','Mayweather','Sandler','Stark','Fisher','Jones','Washington','Bell','Roberts','Arnold','Crawford','Hanks','Vance',"Fabian","Quarteroy","Corleone","Cooper","Switzerland","Backwards","Price","Harvey "];
   let genders = ['Male','Female'];
