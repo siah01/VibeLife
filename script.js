@@ -6782,84 +6782,84 @@ function initializeGame(){
       prisonLeave();
   })
   
-      //Aging up
-        $(".ageButton").on('click',function(){
-          prisCry = false;
-          prisWork = false
-          prisEsc = false;
-            for(x in you['relationships']){
-                let person = you['relationships'][x];
-                if (person['career']==undefined){
-                    if (person['age'] >= 18){
-                        if (randrange(2)==1){
-                            person['career']='none'
-                        }
-                        else{
-                            person['career']=choice(careers);
-                        }
-                    }
-                    else{
-                        person['career']='none'
-                    }
-                }
-            }
-            listOfEvents = [];
-            ++you['age'];
-            for(x in you['relationships']){
-                if (you['relationships'][x]['status']=='friend'){
-                    if (you['relationships'][x]['relation']<20){
-                        you['relationships'][x]['status']='acquaintance';
-                        $("#events").append(`<br><sh class='event'>${you['relationships'][x]['full_name']} is no longer my friend!</sh>`)
-                    }
-                }
-                if (you['relationships'][x]['status']=='acquaintance'){
-                    if (you['relationships'][x]['relation']>20){
-                        you['relationships'][x]['status']='friend';
-                        $("#events").append(`<br><sh class='event'>${you['relationships'][x]['full_name']} is now my friend!</sh>`)
-                    }
-                }
-                if (you['inPrison']){
-                    you['relationships'][x]['relation']-=randrange(4);
-                }
-                if (randrange(3)==1){you['relationships'][x]['relation']--};
-                if (you['relationships'][x]['status']=='girlfriend'||you['relationships'][x]['status']=='boyfriend'){
-                    if(you['relationships'][x]['relation'] < randrange(50)){
-                        if (randrange(5)==1){
-                            person = you['relationships'][x];
-                            $("#events").append(`<br><sh class='event'>My ${you['relationships'][x]['status']}, ${you['relationships'][x]['full_name']}, broke up with me</sh>`)
-                            listOfEvents.push(['Heartbreak',`My ${person['status']}, ${person['full_name']} broke up with me!`,'linear-gradient(blue, darkblue)'])
-                            you['relationships'][x]['status']='ex';
-                            you['relationships'][x]['relation']-=20;
-                            you['happy']-=10;
-                        }
-                    }
-                }
-                you['relationships'][x]['age']++;
-                if (you['relationships'][x]['age'] > randrange(40) + 80){
-                    $("#events").append(`<br><sh class='event'>My ${you['relationships'][x]['status']} died of old age</sh>`)
-                    person = you['relationships'][x];
-                    if (person['status'] == 'mother' || person['status']=='father'|| person['status']=='wife'|| person['status']=='husband'){
-                        if (person['relation'] > randrange(80)){
-                            if (person['money'] > 0){
-                                inherit = randrange(person['money'])
-                                $("#events").append(`<br><sh class='event'>I inherited <span style='color:green'>$${comify(inherit)}</span></sh>`);
-                                you['money']+=inherit;
-                            }
-                        }
-                        else{
-                            $("#events").append(`<br><sh class='event'>I did not inherit any of the money</sh>`);
-                        }
-                    }
-                    listOfEvents.push(['Death',`My ${person['status']}, ${person['full_name']} died!`,'linear-gradient(black, gray)'])
-                    you['relationships'].splice(x, 1);
-                    you['happy']-=randrange(10);
-                }
-            }
-            if(you['age']<5){eventList = events['baby'];eventList2 = choiceEvents['baby']}
-            if(you['age']>=5 && you['age'] < 13){eventList = events['child'];eventList2 = choiceEvents['child']}
-            if(you['age']>=13 && you['age']<18){eventList=events['teen'];eventList2 = choiceEvents['teen']}
-            if(you['age']>=18){eventList=events['adult'];eventList2 = choiceEvents['adult']}
-            if (you['inPrison']){eventList=events['prison'];eventList2 = choiceEvents['prison']}
+  //Aging up
+  $(".ageButton").on('click',function(){
+    prisCry = false;
+    prisWork = false
+    prisEsc = false;
+      for(x in you['relationships']){
+          let person = you['relationships'][x];
+          if (person['career']==undefined){
+              if (person['age'] >= 18){
+                  if (randrange(2)==1){
+                      person['career']='none'
+                  }
+                  else{
+                      person['career']=choice(careers);
+                  }
+              }
+              else{
+                  person['career']='none'
+              }
+          }
+      }
+      listOfEvents = [];
+      ++you['age'];
+      for(x in you['relationships']){
+          if (you['relationships'][x]['status']=='friend'){
+              if (you['relationships'][x]['relation']<20){
+                  you['relationships'][x]['status']='acquaintance';
+                  $("#events").append(`<br><sh class='event'>${you['relationships'][x]['full_name']} is no longer my friend!</sh>`)
+              }
+          }
+          if (you['relationships'][x]['status']=='acquaintance'){
+              if (you['relationships'][x]['relation']>20){
+                  you['relationships'][x]['status']='friend';
+                  $("#events").append(`<br><sh class='event'>${you['relationships'][x]['full_name']} is now my friend!</sh>`)
+              }
+          }
+          if (you['inPrison']){
+              you['relationships'][x]['relation']-=randrange(4);
+          }
+          if (randrange(3)==1){you['relationships'][x]['relation']--};
+          if (you['relationships'][x]['status']=='girlfriend'||you['relationships'][x]['status']=='boyfriend'){
+              if(you['relationships'][x]['relation'] < randrange(50)){
+                  if (randrange(5)==1){
+                      person = you['relationships'][x];
+                      $("#events").append(`<br><sh class='event'>My ${you['relationships'][x]['status']}, ${you['relationships'][x]['full_name']}, broke up with me</sh>`)
+                      listOfEvents.push(['Heartbreak',`My ${person['status']}, ${person['full_name']} broke up with me!`,'linear-gradient(blue, darkblue)'])
+                      you['relationships'][x]['status']='ex';
+                      you['relationships'][x]['relation']-=20;
+                      you['happy']-=10;
+                  }
+              }
+          }
+          you['relationships'][x]['age']++;
+          if (you['relationships'][x]['age'] > randrange(40) + 80){
+              $("#events").append(`<br><sh class='event'>My ${you['relationships'][x]['status']} died of old age</sh>`)
+              person = you['relationships'][x];
+              if (person['status'] == 'mother' || person['status']=='father'|| person['status']=='wife'|| person['status']=='husband'){
+                  if (person['relation'] > randrange(80)){
+                      if (person['money'] > 0){
+                          inherit = randrange(person['money'])
+                          $("#events").append(`<br><sh class='event'>I inherited <span style='color:green'>$${comify(inherit)}</span></sh>`);
+                          you['money']+=inherit;
+                      }
+                  }
+                  else{
+                      $("#events").append(`<br><sh class='event'>I did not inherit any of the money</sh>`);
+                  }
+              }
+              listOfEvents.push(['Death',`My ${person['status']}, ${person['full_name']} died!`,'linear-gradient(black, gray)'])
+              you['relationships'].splice(x, 1);
+              you['happy']-=randrange(10);
+          }
+      }
+      if(you['age']<5){eventList = events['baby'];eventList2 = choiceEvents['baby']}
+      if(you['age']>=5 && you['age'] < 13){eventList = events['child'];eventList2 = choiceEvents['child']}
+      if(you['age']>=13 && you['age']<18){eventList=events['teen'];eventList2 = choiceEvents['teen']}
+      if(you['age']>=18){eventList=events['adult'];eventList2 = choiceEvents['adult']}
+      if (you['inPrison']){eventList=events['prison'];eventList2 = choiceEvents['prison']}
       console.log(eventList2);
       $("#events").append(`
           <br><br>
