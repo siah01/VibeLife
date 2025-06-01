@@ -1,3 +1,34 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const startMenu = document.getElementById("startMenu");
+  const gameContainer = document.getElementById("gameContainer");
+  const startButton = document.getElementById("startButton");
+  const aboutButton = document.getElementById("aboutButton");
+  const aboutModal = document.getElementById("aboutModal");
+  const closeAbout = document.getElementById("closeAbout");
+
+  function startGame() {
+    startMenu.style.display = "none";
+    gameContainer.style.display = "";
+    GameApp();
+  }
+
+  function showAbout() {
+    aboutModal.style.display = "flex";
+  }
+
+  function hideAbout() {
+    aboutModal.style.display = "none";
+  }
+
+  startButton.addEventListener("click", startGame);
+  aboutButton.addEventListener("click", showAbout);
+  closeAbout.addEventListener("click", hideAbout);
+
+  // Optional: Close modal when clicking outside content
+  aboutModal.addEventListener("click", function (e) {
+    if (e.target === aboutModal) hideAbout();
+  });
+
 $(function(){
     if (localStorage.getItem('pastLives')==null){
         pastLives = {lives:[]};
