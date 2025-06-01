@@ -605,6 +605,28 @@ body{
   height: auto !important;
 }
 
+#startMenu {
+  text-align: center;
+  margin-top: 100px;
+}
+
+#startMenu button {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3b82f6;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#startMenu button:hover {
+  background-color: #2563eb;
+}
+
 .miniEvents{
     background: white;
     color: black;
