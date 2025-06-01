@@ -1442,7 +1442,35 @@ $(function(){
       driversLicense: false,
       gems: []
   }
-  
+
+/* */
+document.addEventListener('DOMContentLoaded', () => {
+  const startScreen = document.getElementById('start-screen');
+  const gameScreen = document.getElementById('game-screen');
+  const startButton = document.getElementById('start-button');
+  const loadButton = document.getElementById('load-button');
+  const quitButton = document.getElementById('quit-button');
+
+  // Start screen visible at first
+  startScreen.classList.add('active');
+  gameScreen.classList.remove('active');
+
+  startButton.addEventListener('click', () => {
+    startScreen.classList.remove('active');
+    gameScreen.classList.add('active');
+    console.log('New game started');
+    // Add game initialization logic here if needed
+  });
+
+  loadButton.addEventListener('click', () => {
+    alert('Load game feature is under development.');
+  });
+
+  quitButton.addEventListener('click', () => {
+    alert('Thanks for playing VibeLife!');
+  });
+});
+    /* */
   you['gender']=choice(genders);
   if(you['gender']=='Male'){you['first_name']=choice(mNames);}
   else(you['first_name']=choice(fNames));
