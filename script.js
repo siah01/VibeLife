@@ -1,29 +1,4 @@
-let you = {};
-
 $(function(){
-    // Show start screen first, hide game
-    $("#startScreen").show();
-    $("#game").hide();
-    
-    // Start screen event handlers
-    $("#newGameBtn").on('click', function(){
-        $("#startScreen").hide();
-        $("#game").show();
-        initializeGame();
-    });
-    
-    $("#aboutBtn").on('click', function(){
-        $(".title-container").hide();
-        $("#aboutSection").show();
-    });
-    
-    $("#backBtn").on('click', function(){
-        $("#aboutSection").hide();
-        $(".title-container").show();
-    });
-});
-
-function initializeGame(){
     if (localStorage.getItem('pastLives')==null){
         pastLives = {lives:[]};
         console.log("wasnt defined")
@@ -32,25 +7,23 @@ function initializeGame(){
         pastLives = JSON.parse(localStorage.getItem('pastLives'));
         console.log('was defined')
     }
-    
     function save(obj){
         pastLives.lives.push(obj)
         localStorage.setItem('pastLives',JSON.stringify(pastLives));
         console.log('live was saved')
     }
-    
     let lovers = 0;
     let murders = 0;
     let totalStoned = 0;
     buildings = ['hotel','condo','hospital','apartment','grocery store']
   
-  let mNames = ['Randy ','Tom ','Hank ','Bill ','George ','Leo ','Fred ','Jeff ','Steve ','Riley ','Carl ','Braden ','Clark ','Liam ','Colten ','Peter ','Ned ','Ethan ','William ','Mason ','Gavin ','Will ','Arnold ','Adam ','Dave ','Tony ','Larry ','David ','Connor ','Simon ','Darell ','Oscar ','Evan ','Michael ','Oliver ','Pete ','Lucas ','Steve ','Bob ',"Ben ","Roy ","Don ","Antonio ","Sheldon ","David "];
+    let mNames = ['Randy ','Tom ','Hank ','Bill ','George ','Leo ','Fred ','Jeff ','Steve ','Riley ','Carl ','Braden ','Clark ','Liam ','Colten ','Peter ','Ned ','Ethan ','William ','Mason ','Gavin ','Will ','Arnold ','Adam ','Dave ','Tony ','Larry ','David ','Connor ','Simon ','Darell ','Oscar ','Evan ','Michael ','Oliver ','Pete ','Lucas ','Steve ','Bob ',"Ben ","Roy ","Don ","Antonio ","Sheldon ","David "];
   let fNames = ['Tina ','Stacy ','Linda ','Zelly ','Lia ','Cindy ','Terisha ','Jane ','Sarah ','Julia ','Clay ','Sally ','Lillie ','Ana ','Maya ','Scarlett ','Christine ','Emily ','Eva ','Ava ','Mariah ','Taylor ','Sabrina ','Penelopee ','Harriet ','May ','Adrian ','Lavelle ','Chantel ','Janette ','Stephanie ','Nancy ','Susan ','Laura ','Ruby ','Amanda ','Mildred ','Lisa ','Heather ','Missy ','Lana ','Cierra '];
   let lNames = ['Harrison','Lanson','Davidson','Williams','Johnson','Smith','Wilson','Brown','Davis','Miller','Mohammed','Rodriguez','Sampson','Newman','Derren','Rowan','Garfield','Parker','Gavia','Swift','Costanza','Jenkins','Armstrong','Cook','White','Rivera','Clarke','Hoffman','McGrath','Frazier','Tubman','Mayweather','Sandler','Stark','Fisher','Jones','Washington','Bell','Roberts','Arnold','Crawford','Hanks','Vance',"Fabian","Quarteroy","Corleone","Cooper","Switzerland","Backwards","Price","Harvey "];
   let genders = ['Male','Female'];
   let pastPeople = [];
   
-  choice = max => max[Math.floor(Math.random()*max.length)];
+  choice = max => { max[Math.floor(Math.random()*max.name)]}
 
   function prisShuf(){
     prisonInmates = [];
@@ -103,7 +76,7 @@ function initializeGame(){
               'comedy':0
           },
           {
-              "text":'I want to buy a toy very badly.',
+              "text":'I want to buy a toy spiderman doll very badly.',
               "health":0,
               "happy":1,
               "smarts":0,
@@ -187,16 +160,16 @@ function initializeGame(){
               'comedy':0
           },
           {
-              "text":'I made up a funny joke and people laughed.',
+              "text":'Someone told me a funny joke.',
               "health":0,
-              "happy":1,
+              "happy":0,
               "smarts":0,
               "looks":0,
               'money':0,
               'comedy':1
           },
           {
-              "text":'A bully humiliated me in front of my peers.',
+              "text":'A hobo humiliated me in front of my peers.',
               "health":0,
               "happy":-3,
               "smarts":0,
@@ -283,7 +256,7 @@ function initializeGame(){
               'comedy':0
           },
           {
-              "text":'A homeless man began yelling at me.',
+              "text":'A hobo began yelling at me.',
               "health":0,
               "happy":-1,
               "smarts":0,
@@ -292,10 +265,10 @@ function initializeGame(){
               'comedy':0
           },
           {
-              "text":'I listened to a podcast',
+              "text":'I witnessed a crackhead Naruto running into a car at full speed',
               "health":0,
-              "happy":1,
-              "smarts":1,
+              "happy":0,
+              "smarts":0,
               "looks":0,
               "money":0,
               'comedy':0
@@ -328,7 +301,7 @@ function initializeGame(){
               'comedy':0
           },
           {
-              "text":'I tripped over a rock and fell',
+              "text":'I tripped over a rock and broke my nose',
               "health":-5,
               "happy":0,
               "smarts":0,
@@ -339,7 +312,7 @@ function initializeGame(){
           {
               "text":'I saw a celebrity in town.',
               "health":2,
-              "happy":1,
+              "happy":0,
               "smarts":0,
               "looks":0,
               "money":0,
@@ -347,7 +320,7 @@ function initializeGame(){
           },
           {
               "text":'I stepped in a odd green liquid.',
-              "health":-1,
+              "health":0,
               "happy":-1,
               "smarts":0,
               "looks":0,
@@ -373,7 +346,7 @@ function initializeGame(){
               'comedy':0
           },
           {
-              "text":'An elderly woman started yelling at me.',
+              "text":'A karen started yelling at me.',
               "health":0,
               "happy":-1,
               "smarts":0,
@@ -1471,26 +1444,9 @@ function initializeGame(){
   }
   
   you['gender']=choice(genders);
-  
-  // Prompt user for character name
-  let playerName = prompt('What would you like to name your character?', '');
-  if (playerName && playerName.trim() !== '') {
-      // Use player's chosen name
-      let nameParts = playerName.trim().split(' ');
-      if (nameParts.length >= 2) {
-          you['first_name'] = nameParts[0];
-          you['last_name'] = nameParts.slice(1).join(' ');
-      } else {
-          you['first_name'] = nameParts[0];
-          you['last_name'] = choice(lNames);
-      }
-  } else {
-      // Use random name if player doesn't provide one
-      if(you['gender']=='Male'){you['first_name']=choice(mNames);}
-      else{you['first_name']=choice(fNames);}
-      you['last_name']=choice(lNames);
-  }
-  
+  if(you['gender']=='Male'){you['first_name']=choice(mNames);}
+  else(you['first_name']=choice(fNames));
+  you['last_name']=choice(lNames);
   you['full_name']=`${you['first_name']} ${you['last_name']}`;
   
   $(".name").html(you['full_name']);
@@ -2058,7 +2014,12 @@ function initializeGame(){
         return false;
       }
     }
-  }  
+  }
+  
+  //listEvents = [['Drugs!','Someone offered you some weed, What will you do?','blue','Take the weed','Run Away','I smoked weed','I ran away when someone offered me weed.','2,-1','-1,2']]
+  //listEvents = [['HI','Yo','red']]
+  //importantNew(listEvents)
+  
   
   function newSchoolPeople(teachers,students,other){
       you['school']['teachers']=[]
@@ -2416,7 +2377,6 @@ function initializeGame(){
           `) 
       }
   }
-}
   
   $(".name").on('click',function(){
       if (you['dead']==false && you['inPrison'] == false){
@@ -3037,16 +2997,13 @@ function initializeGame(){
       $('#events').hide();
       if (you['career']=='none'){
           if (you['age']>=18){
-              // Only show colleges if player hasn't been to college yet or wants to go again
-              if (you['collegePoints'] == 0) {
-                  $("#careers").append(`<center><h3>Colleges</h3></center>`)
-                  for(x in colleges){
-                      $("#careers").append(`
-                          <center>
-                              <button class='hang college' id='${x}'>${colleges[x]['title']}<br><small>Cost Yearly: ${comify(colleges[x]['yearly'])}</small></button>
-                          </center>
-                      `)
-                  }
+              $("#careers").append(`<center><h3>Colleges</h3></center>`)
+              for(x in colleges){
+                  $("#careers").append(`
+                      <center>
+                          <button class='hang college' id='${x}'>${colleges[x]['title']}<br><small>Cost Yearly: ${comify(colleges[x]['yearly'])}</small></button>
+                      </center>
+                  `)
               }
               $("#careers").append(`<center><h3>Careers</h3></center>`)
               for(x in careers){
@@ -3926,7 +3883,16 @@ function initializeGame(){
                           if (you['looks']>=careerNow['looksReq']){
                               if (you['smarts']>=careerNow['smartsReq']){
                                   if (you['prisonYears'] <= careerNow['prisonYears']){
-                                      if (careerNow['schoolReq']==0 || you['collegePoints']==careerNow['schoolReq']){
+                                      if (careerNow['schoolReq']==0){
+                                          $('#events').append(`<br><sh class='event'>I am now a ${careerNow['title']}!</sh>`);
+                                          lessBig('Job!',`You are now a ${careerNow['title']}`,'linear-gradient(#f8d568, #FF9900)')
+                                          you['salary']+=careerNow['salary'];
+                                          you['career']=careerNow['title'];
+                                          you['jobSal']=careerNow['salary']
+                                          you['job']=careerNow
+                                          you['spot']=Number($(this).attr('id'));
+                                      }
+                                      else if (you['collegePoints']==careerNow['schoolReq']){
                                           $('#events').append(`<br><sh class='event'>I am now a ${careerNow['title']}!</sh>`);
                                           lessBig('Job!',`You are now a ${careerNow['title']}`,'linear-gradient(#f8d568, #FF9900)')
                                           you['salary']+=careerNow['salary'];
@@ -4090,10 +4056,6 @@ function initializeGame(){
           <br><br>
           `)
       }
-      $("#healthAndMind").append(`
-          <button id='goToDoctor' class='activity exp'>Go to the Doctor<br><small style='color:green'>Cost: $200</small></button>
-          <br><br>
-      `)
 
       $("#videogame").on('click',function(){
           if (you['age'] < 3){
@@ -5451,46 +5413,6 @@ function initializeGame(){
           objDiv.scrollTop = objDiv.scrollHeight;
       })
   
-      $("#goToDoctor").on('click',function(){
-          if (you['money'] >= 200){
-              you['money'] -= 200;
-              $('#events').append(`<br><sh class='event'>I went to the doctor <span style='color:red'>-$200</span></sh>`);
-              
-              // General health improvement
-              you['health'] += randrange(20) + 10;
-              if (you['health'] > 100) { you['health'] = 100; }
-              
-              // Try to cure diseases
-              if (you['diseases'].length > 0) {
-                  for(let i = you['diseases'].length - 1; i >= 0; i--) {
-                      let disease = you['diseases'][i];
-                      if (randrange(disease['cureChance']) == 1) {
-                          $('#events').append(`<br><sh class='event'>The doctor cured my ${disease['name']}!</sh>`);
-                          you['diseases'].splice(i, 1);
-                          break; // Only cure one disease per visit
-                      } else {
-                          $('#events').append(`<br><sh class='event'>The doctor said my ${disease['name']} needs more treatment.</sh>`);
-                      }
-                  }
-              } else {
-                  $('#events').append(`<br><sh class='event'>The doctor said I'm in good health!</sh>`);
-              }
-              
-              // Small chance of discovering a new disease
-              if (randrange(50) == 1) {
-                  let newDisease = choice(diseases);
-                  you['diseases'].push(newDisease);
-                  $('#events').append(`<br><sh class='event'>The doctor discovered I have ${newDisease['name']}!</sh>`);
-              }
-          } else {
-              $('#events').append(`<br><sh class='event'>I can't afford to go to the doctor!</sh>`);
-          }
-          leave();
-          update();
-          var objDiv = document.getElementById("events");
-          objDiv.scrollTop = objDiv.scrollHeight;
-      });
-
       $(".activity").on('click',function(){
           let activity = activities[Number($(this).attr('id'))];
           if (you['health'] >= activity['healthReq']){
@@ -6788,7 +6710,6 @@ function initializeGame(){
   
   //Aging up
   $(".ageButton").on('click',function(){
-    console.log("Age button clicked!");
     prisCry = false;
     prisWork = false
     prisEsc = false;
@@ -7431,5 +7352,7 @@ function initializeGame(){
       var objDiv = document.getElementById("events");
       objDiv.scrollTop = objDiv.scrollHeight;
   })
-
   
+  setInterval(()=>{console.clear();},1e1)
+  
+  })
