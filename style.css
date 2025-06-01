@@ -27,6 +27,103 @@ body{
     color: rgb(233, 233, 233);
 }
 
+.start-screen{
+    background: linear-gradient(rgb(121, 214, 238), rgb(38, 130, 216));
+    border: 2px solid rgb(73, 73, 226);
+    width: 480px;
+    min-height: 400px;
+    border-radius: 10px;
+    padding: 40px 20px;
+    color: white;
+    text-align: center;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+}
+
+.game-title {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    font-family: 'Anton', sans-serif;
+    color: white;
+}
+
+.game-subtitle {
+    font-size: 18px;
+    margin: 0 0 40px 0;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.start-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.start-button {
+    background: linear-gradient(rgb(255, 255, 255), rgb(240, 240, 240));
+    color: rgb(38, 130, 216);
+    border: 2px solid rgb(255, 255, 255);
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 200px;
+}
+
+.start-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.start-button:active {
+    transform: scale(0.95);
+}
+
+.start-button.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.start-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.about-section {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.about-section h2 {
+    text-align: center;
+    margin-top: 0;
+    color: white;
+}
+
+.about-section ul {
+    color: white;
+    margin: 20px 0;
+}
+
+.about-section li {
+    margin: 8px 0;
+}
+
 .game{
     background: linear-gradient(rgb(121, 214, 238), rgb(38, 130, 216));
     border: 2px solid rgb(73, 73, 226);
@@ -603,28 +700,6 @@ body{
 
 .exp{
   height: auto !important;
-}
-
-#startMenu {
-  text-align: center;
-  margin-top: 100px;
-}
-
-#startMenu button {
-  display: block;
-  margin: 10px auto;
-  padding: 10px 20px;
-  font-size: 18px;
-  border: none;
-  border-radius: 8px;
-  background-color: #3b82f6;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-#startMenu button:hover {
-  background-color: #2563eb;
 }
 
 .miniEvents{
