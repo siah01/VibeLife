@@ -3,105 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VibeLife</title>
-    <link id="style" rel="stylesheet" href="style.css">
+    <title>Pitlife 5</title>
+    <link id='style' rel="stylesheet" href="style.css">
     <link rel="icon" href="logo/logo5.png" type="image/png" sizes="16x16">
 </head>
 <body>
-    <!-- Start Menu Container -->
-    <div id="startMenu" class="start-menu">
-      <h1>Welcome to VibeLife!</h1>
-      <input id="nameInput" placeholder="Enter your name" />
-      <div class="menu-buttons">
-        <button id="startButton">Start Game</button>
-        <button id="aboutButton">About</button>
-      </div>
-    </div>
-    <!-- About Modal -->
-    <div id="aboutModal" class="modal" style="display:none;">
-      <div class="modal-content">
-        <span id="closeAbout" class="close">&times;</span>
-        <h2>About VibeLife</h2>
-        <p>
-          VibeLife is a simple life simulation game.<br>
-          Make choices, age up, and see how your stats change!<br>
-          <br>
-          Created by siah01.
-        </p>
-      </div>
-    </div>
-
-    <!-- Main Game UI (hidden by default) -->
-    <div class="game" id="game" style="display:none;">
+    <center><div class="game" id="game">
         <div class="top" id="top">
-            <p>Name: <span class="name">Bob Harven</span></p>
-            <p>Money: <span class="money">$0</span></p>
+            <p>Name: <span class='name'>Bob Harven</span></p>
+            <p>Money: <span class='money'>$0</span></p>
         </div>
         <br>
         <div class="events" id="events">
-            <sh class="ageSpot">Age: <span class="age">0</span></sh>
+            <sh class='ageSpot'>Age: <span class='age'>0</span></sh>
             <br>
-            <sh class="event">I have been born</sh>
+            <sh class='event'>I have been born</sh>
         </div>
-        <div class="events" id="careers"></div>
-        <div class="events" id="youInfo"></div>
-        <div id="popup" class="events"></div>
-        <div class="events" id="popup2"></div>
-        <div class="events" id="finance"></div>
-        <div class="events" id="activities"></div>
-        <div class="events" id="summary"></div>
-        <div class="events" id="relationships"></div>
+        <div class="events" id="careers">
+            
+        </div>
+        <div class="events" id="youInfo">
+
+        </div>
+        <div id="popup" class='events'>
+
+        </div>
+        <div class="events" id='popup2'>
+            
+        </div>
+        <div class="events" id="finance">
+
+        </div>
+        <div class="events" id="activities">
+
+        </div>
+        <div class="events" id="summary">
+            
+        </div>
+        <div class="events" id="relationships">
+
+        </div>
         <br>
         <div class="buttons" id="buttons">
-            <button id="activitiesButton" class="button option">Activities</button>
-            <button id="financeButton" class="button option">Finance</button>
+            <button id='activitiesButton' class='button option'>Activities</button>
+            <button id='financeButton' class='button option'>Finance</button>
             <button id="ageUp" class="button ageButton">Age</button>
-            <button id="relationshipsButton" class="button option">Relationships</button>
-            <button id="careerButton" class="button option">Career</button>
+            <button id='relationshipsButton' class='button option'>Relationships</button>
+            <button id='careerButton' class='button option'>Career</button>
         </div>
-        <div id="buttons2"></div>
+        <div id="buttons2">
+
+        </div>
         <div id="playAgain">
-            <button id="replay" onclick="location.reload();" class="button option">Play Again</button>
+            <button id='replay' onclick='location.reload();' class='button option'>Play Again</button>
         </div>
         <div class="prison" id="prisonButtons">
             <button id="prisonAct" class="button option">Activities</button>
-            <button id="prisonAgeUp" class="button ageButton">Age</button>
+            <button id="ageUp" class="button ageButton">Age</button>
             <button id="prisonYard" class="button option">Prison Yard</button>
         </div>
         <div id="leave">
-            <button class="button leaveButton" id="leaveButton">Leave</button>
+            <button class="button leaveButton" id='leaveButton'>Leave</button>
         </div>
         <div id="prisonLeave">
-            <button class="button leaveButton" id="prisonLeaveButton">Leave</button>
+            <button class="button leaveButton" id='leaveButton'>Leave</button>
         </div>
         <br>
         <div class="stats" id="stats">
-            <p class="inf">Health: </p>
+            <p class='inf'>Health: </p>
             <div class="healthBar">
-                <div class="healthMiddle" id="health"></div>
+                <div class="healthMiddle" id='health'></div>
             </div>
-            <p class="inf">Happiness: </p>
+            <p class='inf'>Happiness: </p>
             <div class="healthBar">
-                <div class="healthMiddle" id="happy"></div>
+                <div class="healthMiddle" id='happy'></div>
             </div>
-            <p class="inf">Smarts: </p>
+            <p class='inf'>Smarts: </p>
             <div class="healthBar">
-                <div class="healthMiddle" id="smarts"></div>
+                <div class="healthMiddle" id='smarts'></div>
             </div>
-            <p class="inf">Looks: </p>
+            <p class='inf'>Looks: </p>
             <div class="healthBar">
-                <div class="healthMiddle" id="looks"></div>
+                <div class="healthMiddle" id='looks'></div>
             </div>
-            <p class="inf">Comedy: </p>
+            <p class='inf'>Comedy: </p>
             <div class="healthBar">
-                <div class="healthMiddle Comedy" id="comedy"></div>
+                <div class="healthMiddle Comedy" id='comedy'></div>
             </div>
-            <p class="inf" id="fameThing">Fame: </p>
-            <div class="healthBar" id="fameThing2">
-                <div class="healthMiddle fameBar" id="fameBar"></div>
+            <p class='inf' id='fameThing'>Fame: </p>
+            <div class="healthBar" id='fameThing2'>
+                <div class="healthMiddle fameBar" id='fameBar'></div>
             </div>
         </div>
-    </div>
+    </div></center>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="script.js"></script>
 </body>
