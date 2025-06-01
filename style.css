@@ -657,6 +657,7 @@ body {
 
 #start-screen button {
   background: white;
+  color: #00008B; 
   border: 2px solid #555;
   border-radius: 30px;
   font-size: 1rem;
@@ -664,7 +665,9 @@ body {
   margin: 10px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  font-weight: bold;
 }
+
 
 #start-screen button:hover {
   background: #f0f0f0;
