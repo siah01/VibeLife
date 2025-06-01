@@ -1,3 +1,14 @@
+// Hide main game elements and show start menu
+$("#mainGame, #hud, #events, #buttons, #prisonButtons").hide();
+$("#startMenu").show();
+
+// Start game on button click
+$("#startNew").click(function(){
+    $("#startMenu").hide();
+    $("#mainGame, #hud, #events, #buttons").show();
+    start(); // make sure your game has a start() function
+});
+
 $(function(){
     if (localStorage.getItem('pastLives')==null){
         pastLives = {lives:[]};
