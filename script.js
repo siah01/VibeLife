@@ -6784,6 +6784,7 @@ function initializeGame(){
   
   //Aging up
   $(".ageButton").on('click',function(){
+    console.log("Age button clicked!");
     prisCry = false;
     prisWork = false
     prisEsc = false;
