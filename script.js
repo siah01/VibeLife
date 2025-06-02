@@ -1,32 +1,28 @@
 console.log("Script.js is loaded and running");
 
-try {
-    pastLives = JSON.parse(localStorage.getItem('pastLives')) || { lives: [] };
-} catch (e) {
-    console.error("Invalid JSON in localStorage. Resetting.", e);
-    pastLives = { lives: [] };
-}
-
-$(function(){
+$(function () {
     let pastLives;
-    
-   if (localStorage.getItem('pastLives') == null) {
+
+    try {
+        const stored = localStorage.getItem('pastLives');
+        pastLives = stored ? JSON.parse(stored) : { lives: [] };
+        console.log(stored ? 'was defined' : 'wasnt defined');
+    } catch (e) {
+        console.error("Error reading from localStorage. Resetting pastLives.", e);
         pastLives = { lives: [] };
-        console.log("wasnt defined");
-    } else {
-        pastLives = JSON.parse(localStorage.getItem('pastLives'));
-        console.log("was defined");
     }
+
+    function save(obj) {
+        pastLives.lives.push(obj);
+        localStorage.setItem('pastLives', JSON.stringify(pastLives));
+        console.log('live was saved');
     }
-    function save(obj){
-        pastLives.lives.push(obj)
-        localStorage.setItem('pastLives',JSON.stringify(pastLives));
-        console.log('live was saved')
-    }
+
+    // ✅ Keep game-state counters here too
     let lovers = 0;
     let murders = 0;
     let totalStoned = 0;
-    buildings = ['hotel','condo','hospital','apartment','grocery store']
+    let buildings = ['hotel','condo','hospital','apartment','grocery store']
   
   let mNames = ['Randy ','Tom ','Hank ','Bill ','George ','Leo ','Fred ','Jeff ','Steve ','Josiah ','Riley ','Carl ','Braden ','Clark ','Liam ','Colten ','Peter ','Ned ','Ethan ','William ','Mason ','Gavin ','Will ','Arnold ','Adam ','Dave ','Tony ','Larry ','David ','Connor ','Simon ','Darell ','Oscar ','Evan ','Michael ','Oliver ','Pete ','Lucas ','Steve ','Bob ',"Ben ","Roy ","Don ","Antonio ","Sheldon ","David "];
   let fNames = ['Tina ','Stacy ','Linda ','Zelly ','Lia ','Cindy ','Terisha ','Jane ','Sarah ','Julia ','Clay ','Sally ','Lillie ','Ana ','Maya ','Scarlett ','Christine ','Emily ','Eva ','Ava ','Mariah ','Taylor ','Sabrina ','Penelopee ','Harriet ','May ','Adrian ','Lavelle ','Chantel ','Janette ','Stephanie ','Nancy ','Susan ','Laura ','Ruby ','Amanda ','Mildred ','Lisa ','Heather ','Missy ','Lana ','Cierra '];
