@@ -162,7 +162,7 @@ body {
 @media (min-width: 768px) {
   .buttons {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr); /* instead of 5 */
     gap: 0.5rem;
   }
 }
