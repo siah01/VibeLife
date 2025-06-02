@@ -190,7 +190,11 @@ body {
 }
 
 .stats {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* ✅ Center all content horizontally */
+    width: 100%;
 }
 
 .events, .stats {
