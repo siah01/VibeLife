@@ -205,24 +205,30 @@ body {
 }
 
 .stats {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     display: flex;
     flex-direction: column;
-    align-items: center; /* ✅ Center all content horizontally */
+    align-items: center;
     width: 100%;
+        
 }
 
+.inf {
+    font-size: 0.9rem;
+    margin: 0.3rem 0 0.2rem;
+    text-align: center;
+}
 .events, .stats {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
 .healthBar {
     width: 100%;
-    max-width: 300px;
-    height: 20px;
+    max-width: 250px;
+    height: 14px;
     background-color: #ccc; /* light background for the empty part of the bar */
     border-radius: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     overflow: hidden;
 }
 
@@ -231,7 +237,7 @@ body {
     width: 0%; /* This will be updated via JS */
     background-color: green; /* Default color, will be overridden by ID */
     border-radius: 10px;
-    transition: width 0.3s ease;
+    transition: width 0.25s ease;
 }
 
 #happy {
