@@ -185,11 +185,11 @@ body {
   font-weight: bold;
 }
 
-  .healthBar {
-    max-width: 200px;
-    height: 12px;
-    margin-bottom: 4px;
-  }
+.button.big:hover {
+  background-color: #f9f9f9;
+  transform: scale(1.04);
+  transition: all 0.2s ease-in-out;
+}
 
   #events {
     height: 30vh;
