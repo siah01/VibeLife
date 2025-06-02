@@ -111,18 +111,20 @@ body {
 
 .top {
     height: 40px;
-    position: sticky;
     background: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     font-weight: bold;
-    border-radius: 10px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-radius: 10px; /* Applies all corners evenly */
+    margin-bottom: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.top p {
+    margin: 0;
+    font-size: 1rem;
 }
 
 /* Container for the row of buttons */
