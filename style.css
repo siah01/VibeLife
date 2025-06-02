@@ -657,16 +657,17 @@ body {
 
 #start-screen button {
   background: white;
-  color: #00008B; 
+  color: #333 !important; /* 🔧 Force visible text */
   border: 2px solid #555;
   border-radius: 30px;
   font-size: 1rem;
+  font-weight: bold;
   padding: 10px 25px;
   margin: 10px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-  font-weight: bold;
 }
+
 
 
 #start-screen button:hover {
