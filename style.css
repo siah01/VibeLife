@@ -115,6 +115,7 @@ body {
     background: white;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 20px;
     font-weight: bold;
     border-radius: 10px;
