@@ -159,18 +159,30 @@ body {
     transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .buttons {
     display: grid;
-    flex-wrap: wrap;
-    justify-content: center;
-    grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
+    grid-template-columns: repeat(5, 1fr);
     gap: 0.5rem;
   }
+}
 
-  .ageButton {
-    grid-column: 3; /* This centers it in the middle column */
-  }
+.age-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.button.big {
+  width: 80%;
+  max-width: 300px;
+  font-size: 1.1rem;
+  padding: 12px 20px;
+  background-color: #fff;
+  border: 3px solid #555;
+  border-radius: 30px;
+  font-weight: bold;
 }
 
   .healthBar {
