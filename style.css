@@ -160,11 +160,17 @@ body {
 }
 
 
-@media (min-width: 768px) {
-    .buttons {
-        display: grid;
-        grid-template-columns: repeat(5, auto);
-    }
+@media (max-width: 768px) {
+  .buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  #events {
+    height: 30vh;
+    font-size: 0.9rem;
+  }
 }
 
 /* Add back a styled scrollbar if desired */
@@ -190,8 +196,6 @@ body {
     overflow-y: auto;
     background-color: rgba(255, 255, 255, 0.1); /* optional */
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* optional */
-}
-
 }
 
 .event, .ageSpot, .inf {
