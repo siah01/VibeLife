@@ -7372,6 +7372,4 @@ document.addEventListener('DOMContentLoaded', () => {
       objDiv.scrollTop = objDiv.scrollHeight;
   })
   
- 
-  
   })
