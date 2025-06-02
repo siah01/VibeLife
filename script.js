@@ -1,3 +1,5 @@
+console.log("Script.js is loaded and running");
+
 $(function(){
     if (localStorage.getItem('pastLives')==null){
         pastLives = {lives:[]};
