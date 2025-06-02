@@ -1,5 +1,12 @@
 console.log("Script.js is loaded and running");
 
+try {
+    pastLives = JSON.parse(localStorage.getItem('pastLives')) || { lives: [] };
+} catch (e) {
+    console.error("Invalid JSON in localStorage. Resetting.", e);
+    pastLives = { lives: [] };
+}
+
 $(function(){
     let pastLives;
     
