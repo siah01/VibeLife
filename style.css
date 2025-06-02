@@ -27,7 +27,7 @@ img, canvas, video {
 
 body {
     padding-top: 30px;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 /* Responsive Screen */
@@ -117,8 +117,13 @@ body {
     padding: 10px 20px;
     font-weight: bold;
     border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
+/* Container for the row of buttons */
 .buttons {
     display: flex;
     flex-wrap: wrap;
@@ -129,6 +134,27 @@ body {
     border-radius: 10px;
     padding: 10px;
 }
+
+/* Style for each individual button */
+.button {
+    background: white;
+    border: 2px solid #555;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    padding: 8px 16px;
+    margin: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    min-width: 60px;
+    min-height: 44px;
+}
+
+.button:hover {
+    background: #f0f0f0;
+    transform: scale(1.05);
+}
+
 
 @media (min-width: 768px) {
     .buttons {
@@ -149,10 +175,25 @@ body {
 
 .events {
     margin-bottom: 1rem;
+    margin-top: 1rem;
+    padding: 10px;
 }
 
 .event, .ageSpot, .inf {
     font-size: 1rem;
     line-height: 1.4;
     text-align: center;
+}
+
+.stats {
+  margin-bottom: 1rem;
+}
+
+.events, .stats {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.healthBar {
+    width: 100%;
+    max-width: 300px;
 }
