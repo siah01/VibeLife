@@ -289,3 +289,9 @@ body {
     background-color: deeppink;
 }
 
+.popup {
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 0 10px #00000088;
+}
+
