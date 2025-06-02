@@ -29,6 +29,30 @@ $(function () {
   let lNames = ['Harrison','Lanson','Davidson','Williams','Johnson','Smith','Wilson','Brown','Davis','Miller','Mohammed','Rodriguez','Sampson','Newman','Derren','Rowan','Garfield','Parker','Gavia','Swift','Costanza','Jenkins','Armstrong','Cook','White','Rivera','Clarke','Hoffman','McGrath','Frazier','Tubman','Mayweather','Sandler','Stark','Fisher','Jones','Washington','Bell','Roberts','Arnold','Crawford','Hanks','Vance',"Fabian","Quarteroy","Corleone","Cooper","Switzerland","Backwards","Price","Harvey "];
   let genders = ['Male','Female'];
   let pastPeople = [];
+
+// --- Button functionality ---
+    const startScreen = document.getElementById('start-screen');
+    const gameScreen = document.getElementById('game-screen');
+    const startButton = document.getElementById('start-button');
+    const loadButton = document.getElementById('load-button');
+    const aboutButton = document.getElementById('about-button');
+
+    startScreen.classList.add('active');
+    gameScreen.classList.remove('active');
+
+    startButton.addEventListener('click', () => {
+        startScreen.classList.remove('active');
+        gameScreen.classList.add('active');
+        console.log('New game started');
+    });
+
+    loadButton.addEventListener('click', () => {
+        alert('Load game feature is under development.');
+    });
+
+    aboutButton.addEventListener('click', () => {
+        alert('VibeLife is a life simulation game created by Vibe Coding.\nMake choices, live with the consequences, and shape your destiny!');
+    });
   
   choice = max => { max[Math.floor(Math.random()*max.name)]}
 
@@ -1441,7 +1465,7 @@ $(function () {
       gems: []
   }
 
-/* */
+/* 
 document.addEventListener('DOMContentLoaded', () => {
   const startScreen = document.getElementById('start-screen');
   const gameScreen = document.getElementById('game-screen');
@@ -1469,7 +1493,7 @@ document.addEventListener('DOMContentLoaded', () => {
     alert('VibeLife is a life simulation game created by Vibe Coding.\nMake choices, live with the consequences, and shape your destiny!');
   });
 });
-    /* */
+     */
   you['gender']=choice(genders);
   if(you['gender']=='Male'){you['first_name']=choice(mNames);}
   else(you['first_name']=choice(fNames));
