@@ -161,10 +161,17 @@ body {
 
 @media (max-width: 768px) {
   .buttons {
+    display: grid;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 0.4rem;
+    grid-template-columns: repeat(5, 1fr); /* 5 equal-width columns */
+    gap: 0.5rem;
   }
+
+  .ageButton {
+    grid-column: 3; /* This centers it in the middle column */
+  }
+}
 
   .healthBar {
     max-width: 200px;
