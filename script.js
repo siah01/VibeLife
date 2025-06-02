@@ -17,7 +17,7 @@ $(function(){
     let totalStoned = 0;
     buildings = ['hotel','condo','hospital','apartment','grocery store']
   
-    let mNames = ['Randy ','Tom ','Hank ','Bill ','George ','Leo ','Fred ','Jeff ','Steve ','Riley ','Carl ','Braden ','Clark ','Liam ','Colten ','Peter ','Ned ','Ethan ','William ','Mason ','Gavin ','Will ','Arnold ','Adam ','Dave ','Tony ','Larry ','David ','Connor ','Simon ','Darell ','Oscar ','Evan ','Michael ','Oliver ','Pete ','Lucas ','Steve ','Bob ',"Ben ","Roy ","Don ","Antonio ","Sheldon ","David "];
+  let mNames = ['Randy ','Tom ','Hank ','Bill ','George ','Leo ','Fred ','Jeff ','Steve ','Josiah ','Riley ','Carl ','Braden ','Clark ','Liam ','Colten ','Peter ','Ned ','Ethan ','William ','Mason ','Gavin ','Will ','Arnold ','Adam ','Dave ','Tony ','Larry ','David ','Connor ','Simon ','Darell ','Oscar ','Evan ','Michael ','Oliver ','Pete ','Lucas ','Steve ','Bob ',"Ben ","Roy ","Don ","Antonio ","Sheldon ","David "];
   let fNames = ['Tina ','Stacy ','Linda ','Zelly ','Lia ','Cindy ','Terisha ','Jane ','Sarah ','Julia ','Clay ','Sally ','Lillie ','Ana ','Maya ','Scarlett ','Christine ','Emily ','Eva ','Ava ','Mariah ','Taylor ','Sabrina ','Penelopee ','Harriet ','May ','Adrian ','Lavelle ','Chantel ','Janette ','Stephanie ','Nancy ','Susan ','Laura ','Ruby ','Amanda ','Mildred ','Lisa ','Heather ','Missy ','Lana ','Cierra '];
   let lNames = ['Harrison','Lanson','Davidson','Williams','Johnson','Smith','Wilson','Brown','Davis','Miller','Mohammed','Rodriguez','Sampson','Newman','Derren','Rowan','Garfield','Parker','Gavia','Swift','Costanza','Jenkins','Armstrong','Cook','White','Rivera','Clarke','Hoffman','McGrath','Frazier','Tubman','Mayweather','Sandler','Stark','Fisher','Jones','Washington','Bell','Roberts','Arnold','Crawford','Hanks','Vance',"Fabian","Quarteroy","Corleone","Cooper","Switzerland","Backwards","Price","Harvey "];
   let genders = ['Male','Female'];
@@ -76,7 +76,7 @@ $(function(){
               'comedy':0
           },
           {
-              "text":'I want to buy a toy spiderman doll very badly.',
+              "text":'I want to buy a toy very badly.',
               "health":0,
               "happy":1,
               "smarts":0,
@@ -256,18 +256,9 @@ $(function(){
               'comedy':0
           },
           {
-              "text":'A hobo began yelling at me.',
+              "text":'A homeless man began yelling at me.',
               "health":0,
               "happy":-1,
-              "smarts":0,
-              "looks":0,
-              "money":0,
-              'comedy':0
-          },
-          {
-              "text":'I witnessed a crackhead Naruto running into a car at full speed',
-              "health":0,
-              "happy":0,
               "smarts":0,
               "looks":0,
               "money":0,
@@ -301,7 +292,7 @@ $(function(){
               'comedy':0
           },
           {
-              "text":'I tripped over a rock and broke my nose',
+              "text":'I tripped over a rock and fell',
               "health":-5,
               "happy":0,
               "smarts":0,
@@ -312,7 +303,7 @@ $(function(){
           {
               "text":'I saw a celebrity in town.',
               "health":2,
-              "happy":0,
+              "happy":2,
               "smarts":0,
               "looks":0,
               "money":0,
