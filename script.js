@@ -7372,6 +7372,6 @@ document.addEventListener('DOMContentLoaded', () => {
       objDiv.scrollTop = objDiv.scrollHeight;
   })
   
-  setInterval(()=>{console.clear();},1e1)
+ 
   
   })
