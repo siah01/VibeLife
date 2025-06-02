@@ -6730,7 +6730,7 @@ $(function () {
       prisonLeave();
   })
   
-  //Aging up
+  //Aging up Age
   $(".ageButton").on('click',function(){
     prisCry = false;
     prisWork = false
