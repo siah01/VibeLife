@@ -197,4 +197,38 @@ body {
 .healthBar {
     width: 100%;
     max-width: 300px;
+    height: 20px;
+    background-color: #ccc; /* light background for the empty part of the bar */
+    border-radius: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
 }
+
+.healthMiddle {
+    height: 100%;
+    width: 0%; /* This will be updated via JS */
+    background-color: green; /* Default color, will be overridden by ID */
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+#happy {
+    background-color: gold;
+}
+
+#smarts {
+    background-color: blueviolet;
+}
+
+#looks {
+    background-color: hotpink;
+}
+
+#comedy {
+    background-color: orange;
+}
+
+#fameBar {
+    background-color: deeppink;
+}
+
