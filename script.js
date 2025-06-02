@@ -1,13 +1,15 @@
 console.log("Script.js is loaded and running");
 
 $(function(){
-    if (localStorage.getItem('pastLives')==null){
-        pastLives = {lives:[]};
-        console.log("wasnt defined")
-    }
-    else{
+    let pastLives;
+    
+   if (localStorage.getItem('pastLives') == null) {
+        pastLives = { lives: [] };
+        console.log("wasnt defined");
+    } else {
         pastLives = JSON.parse(localStorage.getItem('pastLives'));
-        console.log('was defined')
+        console.log("was defined");
+    }
     }
     function save(obj){
         pastLives.lives.push(obj)
