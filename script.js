@@ -1458,6 +1458,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   aboutButton.addEventListener('click', () => {
+    console.log('About button is working!');
     alert('VibeLife is a life simulation game created by Vibe Coding.\nMake choices, live with the consequences, and shape your destiny!');
   });
 });
