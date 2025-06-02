@@ -159,7 +159,6 @@ body {
     transform: scale(1.05);
 }
 
-
 @media (max-width: 768px) {
   .buttons {
     flex-wrap: wrap;
@@ -167,9 +166,19 @@ body {
     gap: 0.4rem;
   }
 
+  .healthBar {
+    max-width: 200px;
+    height: 12px;
+    margin-bottom: 4px;
+  }
+
   #events {
     height: 30vh;
     font-size: 0.9rem;
+  }
+
+    .inf {
+    font-size: 0.8rem;
   }
 }
 
