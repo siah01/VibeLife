@@ -111,10 +111,12 @@ body {
     height: 40px;
     position: sticky;
     background: white;
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(2, auto);
-    padding: 10px;
     border-radius: 10px;
+    justify-content: space-between;
+    padding: 10px 20px;
+    font-weight: bold;
 }
 
 .buttons {
