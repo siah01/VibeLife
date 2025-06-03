@@ -1,4 +1,4 @@
-2console.log("Script.js is loaded and running");
+console.log("Script.js is loaded and running");
 
 $(function () {
     let pastLives;
