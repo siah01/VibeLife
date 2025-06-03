@@ -1909,6 +1909,8 @@ $(function () {
               dieLeave();
               $("#summary").show();
               $("#playAgain").show();
+               
+              $(".ageButton").hide(); // Hide all Age buttons
           }
       })
   }
