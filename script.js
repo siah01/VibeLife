@@ -4022,65 +4022,65 @@ $(function () {
           </center>
       `)
       $("#riskMoney").append(`
-          <button class='gamble exp' id='lottery'>Play the lottery<br>Cost: $5</button>
+          <button class='button gamble exp' id='lottery'>Play the lottery<br>Cost: $5</button>
           <br><br>
-          <button class='gamble exp' id='lottery10'>Buy 10 lottery tickets<br>Cost: $50</button>
+          <button class='button gamble exp' id='lottery10'>Buy 10 lottery tickets<br>Cost: $50</button>
           <br>
       `)
       $("#assets").append(`
-          <button class='friend' id='driverLicense'>Get a Drivers License</button>
+          <button class='button friend' id='driverLicense'>Get a Drivers License</button>
           <br>
       `)
       $("#social").append(`
-          <button class='friend' id='friend'>Make a friend</button>
+          <button class='button friend' id='friend'>Make a friend</button>
           <br>
       `)
       $("#forFun").append(`
-          <button class='hang schoolbox' id='videogame'>Play A Video Game</button>
+          <button class='button hang schoolbox' id='videogame'>Play A Video Game</button>
           <br>
       `)
       $("#love").append(`
-          <button class='date' id='date'>Meet someone to Date</button>
+          <button class='button date' id='date'>Meet someone to Date</button>
           <br><br>
-          <button class='date' id='hookup'>Random Hookup</button>
+          <button class='button date' id='hookup'>Random Hookup</button>
       `)
       $("#fame").append(`
-          <button class='fame' id='book'>Write A Book<br><small>Cost: <span style='color:green;'>2,000$</span></small></button><br><br>
-          <button class='fame' id='actingGig'>Find an Acting Gig<br><br></button><br><br>
-          <button class='fame' id='song'>Record A Song<br><small>Studio Session: <span style='color:green;'>500$</span></small></button>
+          <button class='button fame' id='book'>Write A Book<br><small>Cost: <span style='color:green;'>2,000$</span></small></button><br><br>
+          <button class='button fame' id='actingGig'>Find an Acting Gig<br><br></button><br><br>
+          <button class='button fame' id='song'>Record A Song<br><small>Studio Session: <span style='color:green;'>500$</span></small></button>
       `)
       $("#crime").append(`
-          <button class='crime' id='jayWalk'>Jay Walk</button>
+          <button class='button crime' id='jayWalk'>Jay Walk</button>
           <br><br>
-          <button class='crime' id='robber'>Rob Someone</button>
+          <button class='button crime' id='robber'>Rob Someone</button>
           <br><br>
-          <button class='crime' id='assault'>Assault Someone</button>
+          <button class='button crime' id='assault'>Assault Someone</button>
           <br><br>
-          <button class='crime' id='murder'>Murder Someone</button>
+          <button class='button crime' id='murder'>Murder Someone</button>
           <br><br>
-          <button class='crime' id='arson'>Commit Arson</button>
+          <button class='button crime' id='arson'>Commit Arson</button>
           <br><br>
-          <button class='crime' id='mailBall'>Play Mailbox Baseball</button>
+          <button class='button crime' id='mailBall'>Play Mailbox Baseball</button>
           <br><br>
-          <button class='crime' id='porchPirate'>Commit Porch Pirate</button>
+          <button class='button crime' id='porchPirate'>Commit Porch Pirate</button>
           <br><br>
           <div class='drugs'>
           <h2>Drugs</h2>
-          <button class='drug exp' id='cigar'>Smoke a Pack of Cigarrettes<br>Cost: $7</button>
+          <button class='button drug exp' id='cigar'>Smoke a Pack of Cigarrettes<br>Cost: $7</button>
           <br><br>
-          <button class='drug exp' id='vape'>Vape<br>Cost: $10</button>
+          <button class='button drug exp' id='vape'>Vape<br>Cost: $10</button>
           <br><br>
-          <button class='drug exp' id='smokePot'>Smoke Pot<br>Cost: $20</button>
+          <button class='button drug exp' id='smokePot'>Smoke Pot<br>Cost: $20</button>
           <br><br>
-          <button class='drug exp' id='smokeMeth'>Smoke Meth<br>Cost: $50</button>
+          <button class='button drug exp' id='smokeMeth'>Smoke Meth<br>Cost: $50</button>
           <br><br>
-          <button class='drug exp' id='snortCoke'>Snort Cocaine<br>Cost: $100</button>
+          <button class='button drug exp' id='snortCoke'>Snort Cocaine<br>Cost: $100</button>
           <br><br>
-          <button class='drug exp' id='shootHeroin'>Shoot Heroin<br>Cost: $100</button>
+          <button class='button drug exp' id='shootHeroin'>Shoot Heroin<br>Cost: $100</button>
           <br><br>
-          <button class='drug exp' id='lsd'>Take LSD<br>Cost: $200</button>
+          <button class='button drug exp' id='lsd'>Take LSD<br>Cost: $200</button>
           <br><br>
-          <button class='drug exp' id='pcp'>Take PCP<br>Cost: $200</button>
+          <button class='button drug exp' id='pcp'>Take PCP<br>Cost: $200</button>
           </div>
       `)
       for(x in activities){
