@@ -1,5 +1,6 @@
-console.log("Script.js is loaded and running");
+2console.log("Script.js is loaded and running");
 
+/*
 $(function () {
     let pastLives;
 
@@ -17,7 +18,7 @@ $(function () {
         localStorage.setItem('pastLives', JSON.stringify(pastLives));
         console.log('live was saved');
     }
-    })
+    }) */
     // ✅ Keep game-state counters here too
     let lovers = 0;
     let murders = 0;
