@@ -3261,19 +3261,19 @@ $(function () {
                               </div>
                               <br>
                               <div id='buttonsForFriend'>
-                              <button class='hang schoolbox' id='hangOutWithThem'>Hang Out With Them</button>
+                              <button class='button hang schoolbox' id='hangOutWithThem'>Hang Out With Them</button>
                               <br>
-                              <button class='hang schoolbox' id='complimentThem'>Compliment Them</button>
+                              <button class='button hang schoolbox' id='complimentThem'>Compliment Them</button>
                               <br>
-                              <button class='hang schoolbox' id='helpSchool'>Help them with school</button>
+                              <button class='button hang schoolbox' id='helpSchool'>Help them with school</button>
                               <br>
-                              <button class='hang schoolbox' id='copyTheirWork'>Copy off of Them</button>
+                              <button class='button hang schoolbox' id='copyTheirWork'>Copy off of Them</button>
                               <br>
-                              <button class='hang schoolbox' id='fightClassmate'>Fight Them</button>
+                              <button class='button hang schoolbox' id='fightClassmate'>Fight Them</button>
                               <br>
-                              <button class='hang schoolbox' id='spreadRumor'>Spread a rumor about them</button>
+                              <button class='button hang schoolbox' id='spreadRumor'>Spread a rumor about them</button>
                               <br>
-                              <button class='hang schoolbox' id='bullyClassmate'>Bully Them</button>
+                              <button class='button hang schoolbox' id='bullyClassmate'>Bully Them</button>
                               </div>
                           </center>
                       `)
@@ -3281,14 +3281,14 @@ $(function () {
                       if (kidRn['status']!='friend'){
                           $('#buttonsForFriend').append(`
                               <br>
-                              <button class='hang schoolbox' id='friendThem'>Befriend Them</button>
+                              <button class='button hang schoolbox' id='friendThem'>Befriend Them</button>
                           `)
                       }
   
                       if (kidRn['gender']!=you['gender']){
                           $('#buttonsForFriend').append(`
                               <br>
-                              <button class='hang schoolbox' id='kissThem'>Kiss them</button>
+                              <button class='button hang schoolbox' id='kissThem'>Kiss them</button>
                           `)
                       }
 
