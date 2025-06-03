@@ -1922,20 +1922,28 @@ $(function () {
                   $("#popup").show();
                   $("#buttons").hide();
                   $("#buttons2").show();
-                  head = listName[x][0]
-                  text = listName[x][1]
-                  color = listName[x][2]
-                  $("#popup").css('background',listName[0][2])
-                  $("#popup").append(`
-                      <center>
-                      <div id='${x}popup' class='poper'>
-                      <h1 id='head' class='event-on-dark'>${head}</h1>
-                      <p id='text' class='event-on-dark'>${text}</p>
-                      <br><br>
-                      <button class='button option big leaveOk'>Ok</button>
-                      <br><br><br><br><br><br><br><br><br><br><br>
-                      </center>
-                      </div>
+                  let head = listName[x][0]
+                  let text = listName[x][1]
+                  let color = listName[x][2]
+
+                // Determine if the background is dark
+                let isDark = color.includes('black') || color.includes('#000') || color.includes('gray');
+
+                // Choose class names based on background
+                let textClass = isDark ? 'event-on-dark' : '';
+                let headClass = isDark ? 'event-on-dark' : '';
+
+                $("#popup").css('background', color);
+                $("#popup").append(`
+                    <center>
+                    <div id='${x}popup' class='poper'>
+                        <h1 id='head' class='${headClass}'>${head}</h1>
+                        <p id='text' class='${textClass}'>${text}</p>
+                        <br><br>
+                        <button class='button option big leaveOk'>Ok</button>
+                        <br><br><br><br><br><br><br><br><br><br><br>
+                    </center>
+                    </div>
                   `);
               }
               else{
