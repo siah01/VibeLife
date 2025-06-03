@@ -3034,14 +3034,14 @@ $(function () {
               for(x in colleges){
                   $("#careers").append(`
                       <center>
-                          <button class='hang college' id='${x}'>${colleges[x]['title']}<br><small>Cost Yearly: ${comify(colleges[x]['yearly'])}</small></button>
+                          <button class='button hang college' id='${x}'>${colleges[x]['title']}<br><small>Cost Yearly: ${comify(colleges[x]['yearly'])}</small></button>
                       </center>
                   `)
               }
               $("#careers").append(`<center><h3>Careers</h3></center>`)
               for(x in careers){
                   $("#careers").append(`
-                      <center><button class='hang career' id='${x}'>${careers[x]['title']}<br><small>Pay: ${comify(careers[x]['salary'])}</small></button></center>
+                      <center><button class='button hang career' id='${x}'>${careers[x]['title']}<br><small>Pay: ${comify(careers[x]['salary'])}</small></button></center>
                   `)
               }
           }
