@@ -149,16 +149,17 @@ body {
     border-radius: 30px;
     font-size: 0.9rem;
     font-weight: bold;
-    padding: 8px 16px;
-    margin: 4px;
+    padding: 10px 20px;
+    margin: 8px;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
-    min-width: 60px;
+    min-width: 100px;
     min-height: 44px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .button:hover {
-    background: #f0f0f0;
+    background: #e6f0ff;
     transform: scale(1.05);
 }
 
