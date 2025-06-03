@@ -207,7 +207,7 @@ body {
 
 @media (max-width: 768px) {
   #events {
-    height: 30vh; /* Overrides for small screens */
+    height: 50vh; /* Overrides for small screens */
   }
 }
 
