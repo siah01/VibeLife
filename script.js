@@ -6784,7 +6784,7 @@ $(function () {
           }
           you['relationships'][x]['age']++;
           if (you['relationships'][x]['age'] > randrange(40) + 80){
-              $("#events").append(`<br><sh class='event event-on-dark'>My ${you['relationships'][x]['status']} died of old age</sh>`)
+              $("#events").append(`<br><sh class='event'>My ${you['relationships'][x]['status']} died of old age</sh>`)
               person = you['relationships'][x];
               if (person['status'] == 'mother' || person['status']=='father'|| person['status']=='wife'|| person['status']=='husband'){
                   if (person['relation'] > randrange(80)){
