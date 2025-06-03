@@ -2686,12 +2686,12 @@ $(function () {
       $("#finance").html('');
       $("#events").hide();
       $("#finance").append(`<center><small class='italic'>Click on a finance card to view/buy assets</small></center>`)
-      $("#finance").append(`<br><<button class='button sectionHighlight gray' id='youHouse'><h1>Your Houses</h1></<button>`)
-      $("#finance").append(`<br><<button class='button sectionHighlight gray' id='youCar'><h1>Your Cars</h1></<button>`)
-      $("#finance").append(`<br><<button class='button sectionHighlight gray' id='youGem'><h1>Your Gems</h1></<button>`)
-      $("#finance").append(`<br><<button class='button sectionHighlight gray blueCard' id='housesShow'><h1>Houses</h1></<button>`)
-      $("#finance").append(`<br><<button class='button sectionHighlight gray blueCard' id='carShow'><h1>Cars</h1></<button>`)
-      $("#finance").append(`<br><<button class='button sectionHighlight gray blueCard' id='gemShow'><h1>Gems</h1></<button>`)
+      $("#finance").append(`<br><button class='button sectionHighlight gray' id='youHouse'><h1>Your Houses</h1></button>`)
+      $("#finance").append(`<br><button class='button sectionHighlight gray' id='youCar'><h1>Your Cars</h1></button>`)
+      $("#finance").append(`<br><button class='button sectionHighlight gray' id='youGem'><h1>Your Gems</h1></button>`)
+      $("#finance").append(`<br><button class='button sectionHighlight gray blueCard' id='housesShow'><h1>Houses</h1></button>`)
+      $("#finance").append(`<br><button class='button sectionHighlight gray blueCard' id='carShow'><h1>Cars</h1></button>`)
+      $("#finance").append(`<br><button class='button sectionHighlight gray blueCard' id='gemShow'><h1>Gems</h1></button>`)
   
       $("#gemShow").on('click',function(){
           $("#finance").html('')
