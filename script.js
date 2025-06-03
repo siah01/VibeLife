@@ -5534,11 +5534,10 @@ $(function () {
           if (person['happy'] < 0){person['happy']=0};
           if (person['smarts'] < 0){person['smarts']=0};
           $("#relationships").append(`
-              <div id='${x}' class='human'>
+              <div id='${x}' class='human relationship-card'>
                   <h3 class='inf'>${person['full_name']}</h3>
                   <small class='inf'>${person['status']}</small>
-                  <div>
-                      Relation
+                  <p class='inf'>Relation</p>
                       <div class='healthBar'>
                           <div class='healthMiddle' style='width:${person['relation']}px'>
                           </div>
