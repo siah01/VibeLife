@@ -2715,7 +2715,7 @@ $(function () {
                           </div>
                       </div>
                       <br>
-                      <button class='hang schoolbox buyGem' id='${x}'>Buy Gem</button>
+                      <button class='button hang schoolbox buyGem' id='${x}'>Buy Gem</button>
                   </div></center>
                   <br>
               `)
@@ -2810,9 +2810,9 @@ $(function () {
                       <h3>House: <span style='color:green;font-weight:bolder;'>${houses[x]['name']}</span></h3>
                       <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['cost'])}</span></p>
                       <p>Yearly: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['yearly'])}</span></p>
-                      <button class='hang schoolbox buy' id='${x}'>Buy House</button>
+                      <button class='button hang schoolbox buy' id='${x}'>Buy House</button>
                       <br>
-                      <button class='hang schoolbox payOverTime' id='${x}'>Pay over time</button>
+                      <button class='button hang schoolbox payOverTime' id='${x}'>Pay over time</button>
                   </div></center>
                   <br>
               `)
@@ -2871,7 +2871,7 @@ $(function () {
                       <h3>Car: <span style='color:green;font-weight:bolder;'>${cars[x]['name']}</span></h3>
                       <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(cars[x]['cost'])}</span></p>
                       <p>Gas Cost Yearly: <span style='color:green;font-weight:bolder;'>$${comify(3000)}</span></p>
-                      <button class='hang schoolbox buyCar' id='${x}'>Buy Car</button>
+                      <button class='button hang schoolbox buyCar' id='${x}'>Buy Car</button>
                   </div></center>
                   <br>
               `)
