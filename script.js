@@ -6784,7 +6784,7 @@ $(function () {
           }
           you['relationships'][x]['age']++;
           if (you['relationships'][x]['age'] > randrange(40) + 80){
-              $("#events").append(`<br><sh class='event'>My ${you['relationships'][x]['status']} died of old age</sh>`)
+              $("#events").append(`<br><sh class='event event-on-dark'>My ${you['relationships'][x]['status']} died of old age</sh>`)
               person = you['relationships'][x];
               if (person['status'] == 'mother' || person['status']=='father'|| person['status']=='wife'|| person['status']=='husband'){
                   if (person['relation'] > randrange(80)){
@@ -6936,7 +6936,7 @@ $(function () {
               }
           }
           if (randrange(150)==1){
-              $("#events").append(`<br><sh class='event'>My ${person['status']}, ${person['full_name']}, died of ${choice(deaths)}.</sh>`);
+              $("#events").append(`<br><sh class='event event-on-dark'>My ${person['status']}, ${person['full_name']}, died of ${choice(deaths)}.</sh>`);
               listOfEvents.push(['Death',`My ${person['status']}, ${person['full_name']} died!`,'linear-gradient(black, gray)'])
               you['happy']-=randrange(20);
               if (person['status'] == 'mother' || person['status']=='father'|| person['status']=='wife'|| person['status']=='husband'){
@@ -6961,7 +6961,7 @@ $(function () {
           }else{
               if (person['happy']<=0 || person['health']<=0){
                   if (randrange(3)==1){
-                      $("#events").append(`<br><sh class='event'>My ${person['status']}, ${person['full_name']}, died of health related causes</sh>`);
+                      $("#events").append(`<br><sh class='event event-on-dark'>My ${person['status']}, ${person['full_name']}, died of health related causes</sh>`);
                       listOfEvents.push(['Death',`My ${person['status']}, ${person['full_name']} died!`,'linear-gradient(black, gray)'])
                       person = you['relationships'][x];
                       if (person['status'] == 'mother' || person['status']=='father'|| person['status']=='wife'|| person['status']=='husband'){
@@ -7066,7 +7066,7 @@ $(function () {
                   }
               }
               if (randrange(200)==1){
-                  $("#events").append(`<br><sh class='event'>My ${currentClassmate['status']}, ${currentClassmate['full_name']} died of ${choice(deaths)}!</sh>`);
+                  $("#events").append(`<br><sh class='event event-on-dark'>My ${currentClassmate['status']}, ${currentClassmate['full_name']} died of ${choice(deaths)}!</sh>`);
                   for(i in you['relationships']){
                       currentRel = you['relationships'][i]
                           if (currentRel['full_name']==currentClassmate['full_name'] && currentRel['age'] == currentClassmate['age'] && currentRel['health'] == currentClassmate['health']){
