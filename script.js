@@ -5604,14 +5604,14 @@ $(function () {
                   </div>
                   <br>
                   <div id='${x}div2' class='buttonGrid'><button id='${x}' class='hang hangOut'>Hang Out With Them</button>
-                  <button id='${x}' class='hang argue'>Argue With Them</button>
-                  <button id='${x}' class='hang fight'>Fight them</button>
-                  <button id='${x}' class='hang compliment'>Compliment Them</button>
-                  <button id='${x}' class='hang payThem'>Give Them Money</button>
-                  <button id='${x}' class='hang doctorsThem'>Take them to the doctors</button>
-                  <button id='${x}' class='hang spreadRumor'>Spread a rumor about them</button>
-                  <button id='${x}' class='hang insult'>Insult Them</button>
-                  <button id='${x}' class='hang spendTime'>Spend Time With Them</button>
+                  <button id='${x}' class='button hang argue'>Argue With Them</button>
+                  <button id='${x}' class='button hang fight'>Fight them</button>
+                  <button id='${x}' class='button hang compliment'>Compliment Them</button>
+                  <button id='${x}' class='button hang payThem'>Give Them Money</button>
+                  <button id='${x}' class='button hang doctorsThem'>Take them to the doctors</button>
+                  <button id='${x}' class='button hang spreadRumor'>Spread a rumor about them</button>
+                  <button id='${x}' class='button hang insult'>Insult Them</button>
+                  <button id='${x}' class='button hang spendTime'>Spend Time With Them</button>
                   </div>
               `)
   
