@@ -207,7 +207,12 @@ body {
 
 @media (max-width: 768px) {
   #events {
-    height: 50vh; /* Overrides for small screens */
+    height: auto;
+    min-height: 150px;
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+}  
   }
 }
 
