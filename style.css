@@ -311,3 +311,10 @@ body {
     z-index: 10;
 }
 
+.event {
+    color: black; /* default for light backgrounds */
+}
+
+.event-on-dark {
+    color: white;
+}
