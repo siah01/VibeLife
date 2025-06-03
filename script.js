@@ -3094,9 +3094,9 @@ $(function () {
                       </div>
                   </div>
                   <br>
-                  <button class='hang schoolbox' id='tryHard'>Try Harder</button>
+                  <button class='button hang schoolbox' id='tryHard'>Try Harder</button>
                   <br>
-                  <button class='hang schoolbox' id='homework'>Do Homework</button>
+                  <button class='button hang schoolbox' id='homework'>Do Homework</button>
                   <br>
                   <h2>Your Teachers</h2>
                   <div id='yourTeachers'></div>
