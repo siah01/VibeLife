@@ -4085,7 +4085,7 @@ $(function () {
       `)
       for(x in activities){
           $("#healthAndMind").append(`
-          <button id='${x}' class='activity exp'>${activities[x]['title']}<br><small style='color:green'>Cost: $${comify(activities[x]['moneyReq'])}</small></button>
+          <button id='${x}' class='button activity exp'>${activities[x]['title']}<br><small style='color:green'>Cost: $${comify(activities[x]['moneyReq'])}</small></button>
           <br><br>
           `)
       }
