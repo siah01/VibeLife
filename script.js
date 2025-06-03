@@ -1909,7 +1909,6 @@ $(function () {
               dieLeave();
               $("#summary").show();
               $("#playAgain").show();
-               
               $(".ageButton").hide(); // Hide all Age buttons
           }
       })
@@ -1993,6 +1992,7 @@ $(function () {
                   dieLeave();
                   $("#summary").show();
                   $("#playAgain").show();
+                  $(".ageButton").hide();
               }
           }
           $(`#${on}popup`).remove();
@@ -2024,6 +2024,7 @@ $(function () {
                   dieLeave();
                   $("#summary").show();
                   $("#playAgain").show();
+                  $(".ageButton").hide();
               }
           }
           $(`#${on}popup`).remove();
