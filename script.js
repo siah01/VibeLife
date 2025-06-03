@@ -5603,7 +5603,8 @@ $(function () {
                       </div>
                   </div>
                   <br>
-                  <div id='${x}div2' class='buttonGrid'><button id='${x}' class='hang hangOut'>Hang Out With Them</button>
+                  <div id='${x}div2' class='buttonGrid'>
+                  <button id='${x}' class='button hang hangOut'>Hang Out With Them</button>
                   <button id='${x}' class='button hang argue'>Argue With Them</button>
                   <button id='${x}' class='button hang fight'>Fight them</button>
                   <button id='${x}' class='button hang compliment'>Compliment Them</button>
@@ -5623,59 +5624,59 @@ $(function () {
   
               if (rnHuman['status']=='son'||rnHuman['status']=='daughter'){
                   $(`#${x}div2`).append(`
-                      <button id='${x}' class='hang giveAd'>Give Advice</button>
+                      <button id='${x}' class='button hang giveAd'>Give Advice</button>
                   `)
               }
               if (rnHuman['status']!='son'&&rnHuman['status']!='daughter'){
                   $(`#${x}div2`).append(`
-                      <button id='${x}' class='hang moneyAsk'>Ask for Money</button>
+                      <button id='${x}' class='button hang moneyAsk'>Ask for Money</button>
                   `)
               }
               if (rnHuman['blood'] != true && rnHuman['status'] != 'girlfriend' && rnHuman['status'] != 'boyfriend' && you['gender'] != rnHuman['gender']&&rnHuman['status'] != 'wife' && rnHuman['status'] != 'husband' && rnHuman['status'] != 'fiance' && you['age']>=18){
                   $(`#${x}div2`).append(`
-                      <button id='${x}' class='hang hookWith'>Hook Up With Them</button>
+                      <button id='${x}' class='button hang hookWith'>Hook Up With Them</button>
                   `)
               }
               if (rnHuman['blood'] != true && rnHuman['status'] != 'girlfriend' && rnHuman['status'] != 'boyfriend' && you['gender'] != rnHuman['gender']&&rnHuman['status'] != 'wife'&&rnHuman['status'] != 'husband'&&rnHuman['status'] != 'fiance'){
                   $(`#${x}div2`).append(`
-                      <button id='${x}' class='hang askOut'>Ask them out</button>
+                      <button id='${x}' class='button hang askOut'>Ask them out</button>
                   `)
               }
               if(rnHuman['status'] == 'girlfriend'||rnHuman['status'] == 'boyfriend' || rnHuman['status']=='wife' || rnHuman['status']=='husband' || rnHuman['status'] == 'fiance'){
                   $(`#${x}div2`).append(`
-                      <button id='${x}' class='hang goOnDate'>Go on a date</button>
-                      <button id='${x}' class='hang haveChild'>Have a child</button>
-                      <button id='${x}' class='hang loveMake'>Make Love</button>
+                      <button id='${x}' class='button hang goOnDate'>Go on a date</button>
+                      <button id='${x}' class='button hang haveChild'>Have a child</button>
+                      <button id='${x}' class='button hang loveMake'>Make Love</button>
                   `)
               }
       
               if(rnHuman['status'] == 'girlfriend'||rnHuman['status'] == 'boyfriend'){
                   $(`#${x}div2`).append(`
-                      <button id='${x}' class='hang propose'>Propose To Them</button>
+                      <button id='${x}' class='button hang propose'>Propose To Them</button>
                   `)
               }
       
               if (rnHuman['status'] != 'father' && rnHuman['status'] != 'mother' && rnHuman['status'] != 'wife' && rnHuman['status']!='husband'){
                   $(`#${x}div2`).append(`
-                      <button id='${x}' class='hang disregard'>Disregard Them</button>
+                      <button id='${x}' class='button hang disregard'>Disregard Them</button>
                   `)
               }
               if(rnHuman['status'] == 'girlfriend'||rnHuman['status'] == 'boyfriend'){
                   $(`#${x}div2`).append(`
-                      <button id='${x}' class='hang breakUp'>Break Up</button>
+                      <button id='${x}' class='button hang breakUp'>Break Up</button>
                   `)
               }
       
               if (rnHuman['status'] == 'wife'||rnHuman['status']=='husband'){
                   $(`#${x}div2`).append(`
-                      <button id='${x}' class='hang divorce'>Divorce</button>
+                      <button id='${x}' class='button hang divorce'>Divorce</button>
                   `)
               }
       
               if(rnHuman['status'] == 'fiance'){
                   $(`#${x}div2`).append(`
-                      <button id='${x}' class='hang callOff'>Call Off Engagement</button>
-                      <button id='${x}' class='hang elope'>Elope Now</button>
+                      <button id='${x}' class='button hang callOff'>Call Off Engagement</button>
+                      <button id='${x}' class='button hang elope'>Elope Now</button>
                   `)
               }
 
@@ -5685,13 +5686,13 @@ $(function () {
                   <center>
                     <small class='italic'>What would you like to do with your ${who['status']}, ${who['full_name']}</small>
                     <br>
-                    <button class='hang schoolbox' id='pingPong'>Play Ping Pong</button>
+                    <button class='button hang schoolbox' id='pingPong'>Play Ping Pong</button>
                     <br>
-                    <button class='hang schoolbox' id='chess'>Play Chess</button>
+                    <button class='button hang schoolbox' id='chess'>Play Chess</button>
                     <br>
-                    <button class='hang schoolbox' id='robSomeone'>Rob Someone With them</button>
+                    <button class='button hang schoolbox' id='robSomeone'>Rob Someone With them</button>
                     <br>
-                    <button class='hang schoolbox' id='smokeWithThem'>Smoke pot with them</button>
+                    <button class='button hang schoolbox' id='smokeWithThem'>Smoke pot with them</button>
                   </center
                   `)
 
