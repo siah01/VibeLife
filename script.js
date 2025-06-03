@@ -2952,11 +2952,11 @@ $(function () {
                   <center><div class='item'>
                       <h3>${itemObj['name']}</h3>
                       <p>Value: <span style='color:green;font-weight:bolder;'>$${comify(itemObj['cost'])}</span></p>
-                      <button class='hang schoolbox sell' id='${x}'>Sell Item</button>
+                      <button class='button hang schoolbox sell' id='${x}'>Sell Item</button>
                       <br>
-                      <button class='hang schoolbox fixUp' id='${x}'>Fix Up Item</button>
+                      <button class='button hang schoolbox fixUp' id='${x}'>Fix Up Item</button>
                       <br>
-                      <button class='hang schoolbox partyHouse' id='${x}'>Throw a Party</button>
+                      <button class='button hang schoolbox partyHouse' id='${x}'>Throw a Party</button>
                   </div></center>
               `)
           }
