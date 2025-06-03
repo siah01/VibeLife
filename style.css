@@ -209,7 +209,7 @@ body {
   #events {
     height: auto;
     min-height: 150px;
-    max-height: 40vh;
+    max-height: 60vh;
     overflow-y: auto;
   }
 }  
