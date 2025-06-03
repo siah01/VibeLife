@@ -1038,9 +1038,9 @@ $(function () {
           {
               you['happy']+=2;
               if (randrange(3)==1){
-                  $("#events").append(`<br><sh class='event'>The kid who owned the toy screamed at me</sh>`);
+                  $("#events").append(`<br><p class='event'>The kid who owned the toy screamed at me</p>`);
               }else{
-                  $("#events").append(`<br><sh class='event'>I could see the owner of the toy crying</sh>`);
+                  $("#events").append(`<br><p class='event'>I could see the owner of the toy crying</p>`);
               }
           },
           function()
@@ -2002,7 +2002,7 @@ $(function () {
           }
       })
       $(".buttonClicked").on('click',function(){
-          $("#events").append(`<br><sh class='event'>${$(this).attr('data-response')}</sh>`);
+          $("#events").append(`<br><p class='event'>${$(this).attr('data-response')}</p>`);
           effects = $(this).attr('data-effects');
   
           eventCurrent = listName[Number($(this).attr('id'))]
@@ -2379,13 +2379,13 @@ $(function () {
       if (you['health']<=0){
           you['health']=0
           if (randrange(3)==1){
-              $("#events").append(`<br><sh class='event'>I died from health problems</sh>`);
+              $("#events").append(`<br><p class='event'>I died from health problems</p>`);
               die();
           }
       }
       else if (you['age']>=randrange(40)+80){
         if (randrange(3)==1){
-          $("#events").append(`<br><sh class='event'>I died from old age.</sh>`);
+          $("#events").append(`<br><p class='event'>I died from old age.</p>`);
             die();
         }
       }
@@ -2400,13 +2400,13 @@ $(function () {
       if (relationNowIs['career']=='none'){
           $("#events").append(`
           <br>
-          <sh class='event'>My ${you['relationships'][x]['status']} is ${you['relationships'][x]['full_name']} (age ${relationNowIs['age']})</sh>
+          <p class='event'>My ${you['relationships'][x]['status']} is ${you['relationships'][x]['full_name']} (age ${relationNowIs['age']})</p>
           `)
       }
       else{
           $("#events").append(`
           <br>
-          <sh class='event'>My ${you['relationships'][x]['status']} is ${you['relationships'][x]['full_name']}, a ${relationNowIs['career']['title']} (age ${relationNowIs['age']})</sh>
+          <p class='event'>My ${you['relationships'][x]['status']} is ${you['relationships'][x]['full_name']}, a ${relationNowIs['career']['title']} (age ${relationNowIs['age']})</p>
           `) 
       }
   }
@@ -2480,21 +2480,21 @@ $(function () {
               currentDrug = you['addictions'][Number($(this).attr('id'))];
               if (you['money'] >= 1000){
                   you['money']-=1000;
-                  $("#events").append(`<br><sh class='event'>I went to rehab.</sh>`);
+                  $("#events").append(`<br><p class='event'>I went to rehab.</p>`);
                   if (randrange(currentDrug['rehabChance']) == 1){
                       you['oldAddictions'].push(currentDrug);
                       you['addictions'].splice(Number(($(this).attr('id'))))
                       you['stoned']-=randrange(Math.floor(you['stoned']/3))
-                      $("#events").append(`<br><sh class='event'>I no longer am addicted to ${currentDrug['name']}.</sh>`);
+                      $("#events").append(`<br><p class='event'>I no longer am addicted to ${currentDrug['name']}.</p>`);
                       lessBig('Success!',`You are no longer addicted to ${currentDrug['name']}`,'linear-gradient(#42C0FB, #4AC948)')
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>Rehab was a failure.</sh>`);
+                      $("#events").append(`<br><p class='event'>Rehab was a failure.</p>`);
                       leave()
                   }
               }
               else{
-                  $("#events").append(`<br><sh class='event'>I can't afford to go to rehab.</sh>`);
+                  $("#events").append(`<br><p class='event'>I can't afford to go to rehab.</p>`);
                   leave();
               }
               update();
@@ -2504,19 +2504,19 @@ $(function () {
               let thisDisease = you['diseases'][Number($(this).attr('id'))];
               if (you['money'] >= thisDisease['cost']){
                   you['money']-=thisDisease['cost'];
-                  $("#events").append(`<br><sh class='event'>I got treatment for my ${thisDisease['name']} disease.</sh>`);
+                  $("#events").append(`<br><p class='event'>I got treatment for my ${thisDisease['name']} disease.</p>`);
                   if (randrange(thisDisease['cureChance'])==1){
-                      $("#events").append(`<br><sh class='event'>I was cured for ${thisDisease['name']}!</sh>`);
+                      $("#events").append(`<br><p class='event'>I was cured for ${thisDisease['name']}!</p>`);
                       lessBig('Cured!',`You were cured for ${thisDisease['name']}`,'linear-gradient(#42C0FB, #4AC948)')
                       you['diseases'].splice(Number($(this).attr('id')),1);
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>I continue to suffer from ${thisDisease['name']}!</sh>`);
+                      $("#events").append(`<br><p class='event'>I continue to suffer from ${thisDisease['name']}!</p>`);
                       leave()
                   }
               }
               else{
-                  $("#events").append(`<br><sh class='event'>I can't afford treatment for ${thisDisease['name']}!</sh>`);
+                  $("#events").append(`<br><p class='event'>I can't afford treatment for ${thisDisease['name']}!</p>`);
                   leave()
               }
               update();
@@ -2558,10 +2558,10 @@ $(function () {
                       }
                       you['money']-=100;
                       bookOn['totalSpent']+=100;
-                      $("#events").append(`<br><sh class='event'>I advertised my book, "${bookOn['title']}"</sh>`);
+                      $("#events").append(`<br><p class='event'>I advertised my book, "${bookOn['title']}"</p>`);
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>I did not have the money to advertise my book, "${bookOn['title']}"</sh>`);
+                      $("#events").append(`<br><p class='event'>I did not have the money to advertise my book, "${bookOn['title']}"</p>`);
                   }
                   leave();
                   update();
@@ -2606,10 +2606,10 @@ $(function () {
                       }
                       you['money']-=50;
                       songOn['totalSpent']+=50;
-                      $("#events").append(`<br><sh class='event'>I advertised my song, "${songOn['title']}"</sh>`);
+                      $("#events").append(`<br><p class='event'>I advertised my song, "${songOn['title']}"</p>`);
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>I did not have the money to advertise my song, "${songOn['title']}"</sh>`);
+                      $("#events").append(`<br><p class='event'>I did not have the money to advertise my song, "${songOn['title']}"</p>`);
                   }
                   leave();
                   update();
@@ -2730,10 +2730,10 @@ $(function () {
                   gemOn['shined']=false
                   you['happy'] += gemOn['hapEff']
                   you['gems'].push(gemOn);
-                  $('#events').append(`<br><sh class='event'>I bought a gem, ${gemOn['name']}!</sh>`);
+                  $('#events').append(`<br><p class='event'>I bought a gem, ${gemOn['name']}!</p>`);
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I could not afford a ${gemOn['name']}!</sh>`);
+                  $('#events').append(`<br><p class='event'>I could not afford a ${gemOn['name']}!</p>`);
               }
               leave();
               update();
@@ -2772,7 +2772,7 @@ $(function () {
           document.getElementById('finance').scrollTop = 0;
           $(".sellGem").on('click',function(){
               let carThis = you['gems'][Number($(this).attr('id'))];
-              $("#events").append(`<br><sh class='event'>I sold my gem, ${carThis['name']}</sh>`);
+              $("#events").append(`<br><p class='event'>I sold my gem, ${carThis['name']}</p>`);
               lessBig('Goodbye My Gem!',`You sold your ${carThis['name']}`,'linear-gradient(#659D32, #488214)')
               you['money']+=Math.floor(carThis['cost']*0.8);
               carThis['own']=false;
@@ -2783,7 +2783,7 @@ $(function () {
           })
           $(".shineGem").on('click',function(){
               let carThis = you['gems'][Number($(this).attr('id'))];
-              $("#events").append(`<br><sh class='event'>I shined my gem, ${carThis['name']}</sh>`);
+              $("#events").append(`<br><p class='event'>I shined my gem, ${carThis['name']}</p>`);
               if (carThis['shined'] == false){
                   carThis['cost']+=Math.floor(carThis['cost']*0.05);
                   carThis['shined']=true;
@@ -2828,10 +2828,10 @@ $(function () {
                   houseOn['fixedUp']=false;
                   you['items'].push(houseOn);
                   houses.splice(Number($(this).attr('id')), 1)
-                  $('#events').append(`<br><sh class='event'>I bought a house, ${houseOn['name']}!</sh>`);
+                  $('#events').append(`<br><p class='event'>I bought a house, ${houseOn['name']}!</p>`);
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I cannot afford that house!</sh>`);
+                  $('#events').append(`<br><p class='event'>I cannot afford that house!</p>`);
               }
               leave();
               update();
@@ -2841,7 +2841,7 @@ $(function () {
           $(".payOverTime").on('click',function(){
               let currentHouse = houses[Number($(this).attr('id'))];
               if (you['salary'] > (currentHouse['cost']/10) || you['money'] > (currentHouse['cost']/2)){
-                  $("#events").append(`<br><sh class='event'>I am now paying off a house throughout the course of ten years.</sh>`);
+                  $("#events").append(`<br><p class='event'>I am now paying off a house throughout the course of ten years.</p>`);
                   currentHouse['years']=10;
                   currentHouse['fixedUp']=false;
                   you['payingOff'].push(currentHouse);
@@ -2849,7 +2849,7 @@ $(function () {
                   leave();
               }
               else{
-                  $("#events").append(`<br><sh class='event'>I couldn't afford to buy a certain house in the course of 10 years with my current salary.</sh>`);
+                  $("#events").append(`<br><p class='event'>I couldn't afford to buy a certain house in the course of 10 years with my current salary.</p>`);
                   leave()
               }
               update();
@@ -2888,14 +2888,14 @@ $(function () {
                       you['cars'].push(carOn);
                       you['happy'] += carOn['hapEff'];
                       cars.splice(Number($(this).attr('id')), 1)
-                      $('#events').append(`<br><sh class='event'>I bought a car, ${carOn['name']}!</sh>`);
+                      $('#events').append(`<br><p class='event'>I bought a car, ${carOn['name']}!</p>`);
                   }
                   else{
-                      $('#events').append(`<br><sh class='event'>I cannot afford that car!</sh>`);
+                      $('#events').append(`<br><p class='event'>I cannot afford that car!</p>`);
                   }
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I was gonna buy a car but I need a drivers license!</sh>`);
+                  $('#events').append(`<br><p class='event'>I was gonna buy a car but I need a drivers license!</p>`);
               }
               leave();
               update();
@@ -2925,7 +2925,7 @@ $(function () {
           }
           $(".sellCar").on('click',function(){
               let carThis = you['cars'][Number($(this).attr('id'))];
-              $("#events").append(`<br><sh class='event'>I sold my car, ${carThis['name']}</sh>`);
+              $("#events").append(`<br><p class='event'>I sold my car, ${carThis['name']}</p>`);
               lessBig('Goodbye My Car!',`You sold your car`,'linear-gradient(#659D32, #488214)')
               you['money']+=Math.floor(carThis['cost']*0.8);
               carThis['own']=false;
@@ -2963,7 +2963,7 @@ $(function () {
           document.getElementById('finance').scrollTop = 0;
           $(".sell").on('click',function(){
               let houseThis = you['items'][Number($(this).attr('id'))];
-              $("#events").append(`<br><sh class='event'>I sold my house, ${houseThis['name']}</sh>`);
+              $("#events").append(`<br><p class='event'>I sold my house, ${houseThis['name']}</p>`);
               lessBig('Goodbye My House!',`You sold your house`,'linear-gradient(#659D32, #488214)')
               you['money']+=Math.floor(houseThis['cost']*0.8);
               houseThis['own']=false;
@@ -2976,7 +2976,7 @@ $(function () {
 
           $(".partyHouse").on('click',function(){
             let houseThis = you['items'][Number($(this).attr('id'))];
-            $("#events").append(`<br><sh class='event'>I arranged a party at my <span style='color: green'>$${comify(houseThis['cost'])}</span> dollar ${houseThis['name']}.</sh>`);
+            $("#events").append(`<br><p class='event'>I arranged a party at my <span style='color: green'>$${comify(houseThis['cost'])}</span> dollar ${houseThis['name']}.</p>`);
             if (you['relationships'].length > 0){
                 let ppl = [];
                 for(x in you['relationships']){
@@ -2989,7 +2989,7 @@ $(function () {
                 for(x in ppl){
                     sentRn += `My ${ppl[x]['status']}, ${ppl[x]['full_name']}, came to the party. `
                 }
-                $("#events").append(`<br><sh class='event'>${sentRn}</sh>`);
+                $("#events").append(`<br><p class='event'>${sentRn}</p>`);
                 you['stoned']+=randrange(3);
                 you['happy']+=randrange(3);
                 for(x in ppl){
@@ -2998,7 +2998,7 @@ $(function () {
                 }
             }
             else{
-                $("#events").append(`<br><sh class='event'>Sadly I had to cancel plans because I did not know anyone to invite.</sh>`);
+                $("#events").append(`<br><p class='event'>Sadly I had to cancel plans because I did not know anyone to invite.</p>`);
             }
             leave();
             update();
@@ -3008,7 +3008,7 @@ $(function () {
       
           $(".fixUp").on('click',function(){
               let houseThis = you['items'][Number($(this).attr('id'))];
-              $("#events").append(`<br><sh class='event'>I fixed up my house, ${houseThis['name']}</sh>`);
+              $("#events").append(`<br><p class='event'>I fixed up my house, ${houseThis['name']}</p>`);
               if (houseThis['fixedUp'] == false){
                   houseThis['cost']+=Math.floor(houseThis['cost']*0.1)
                   houseThis['fixedUp']=true
@@ -3169,7 +3169,7 @@ $(function () {
                       }
   
                       $("#leaveClique").on('click',function(){
-                          $("#events").append(`<br><sh class='event'>I left the ${you['school']['clique']} clique!</sh>`)
+                          $("#events").append(`<br><p class='event'>I left the ${you['school']['clique']} clique!</p>`)
                           you['school']['clique']='none';
                           whichClique['members'].splice(you['school']['position'], 1);
                           leave();
@@ -3179,18 +3179,18 @@ $(function () {
                       $("#joinClique").on('click',function(){
                           if (you['school']['clique']=='none'){
                               if (you['school']['popularity'] > randrange(10)+whichClique['popularityReq']){
-                                  $("#events").append(`<br><sh class='event'>I joined the ${whichClique['name']} clique!</sh>`)
+                                  $("#events").append(`<br><p class='event'>I joined the ${whichClique['name']} clique!</p>`)
                                   whichClique['members'].push(you);
                                   you['school']['clique']=whichClique['name'];
                                   you['school']['position']=whichClique.length;
                                   lessBig('Clique!',`I joined the ${whichClique['name']} clique at my school!`,'linear-gradient(#0097FF, #8C34F6)')
                               }else{
-                                  $("#events").append(`<br><sh class='event'>The ${whichClique['name']} members said I was too ${choice(meanWords)} to join their clique!</sh>`)
+                                  $("#events").append(`<br><p class='event'>The ${whichClique['name']} members said I was too ${choice(meanWords)} to join their clique!</p>`)
                                   leave();
                               }
                           }
                           else{
-                              $("#events").append(`<br><sh class='event'>I am already in a clique!</sh>`)
+                              $("#events").append(`<br><p class='event'>I am already in a clique!</p>`)
                               leave()
                           }
                           update();
@@ -3294,12 +3294,12 @@ $(function () {
 
                       $("#bullyClassmate").on('click',function(){
                         who = kidRn;
-                        $("#events").append(`<br><sh class='event'>I bullied my ${who['status']}, ${who['full_name']}.</sh>`)
+                        $("#events").append(`<br><p class='event'>I bullied my ${who['status']}, ${who['full_name']}.</p>`)
                         who['relation']-=randrange(20);
                         for(let x = 0; x<=randrange(3); x++){
-                            $("#events").append(`<br><sh class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</sh>`)
+                            $("#events").append(`<br><p class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</p>`)
                         }
-                        $("#events").append(`<br><sh class='event'>I then proceeded to call them ${choice(meanWords)}!</sh>`)
+                        $("#events").append(`<br><p class='event'>I then proceeded to call them ${choice(meanWords)}!</p>`)
                         if (who['popularity'] > you['school']['popularity']){
                             for(i in you['school']['classmates']){
                                 per = you['school']['classmates'][i]
@@ -3340,9 +3340,9 @@ $(function () {
                     })
   
                       $("#kissThem").on('click',function(){
-                          $('#events').append(`<br><sh class='event'>I attempted to kiss my ${kidRn['status']}, ${kidRn['full_name']}.</sh>`);
+                          $('#events').append(`<br><p class='event'>I attempted to kiss my ${kidRn['status']}, ${kidRn['full_name']}.</p>`);
                           if (Math.floor(randrange(10-(kidRn['relation']/10)))==1){
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} accepted the kiss!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} accepted the kiss!</p>`);
                               kidRn['relation']+=randrange(20);
                               single=true;
                               rell='none'
@@ -3354,7 +3354,7 @@ $(function () {
                                 }
                               }
                               if (single == false && randrange(3)==1){
-                                $('#events').append(`<br><sh class='event'>My ${rell['status']}, ${rell['full_name']} found out I kissed my ${kidRn['status']}, ${kidRn['full_name']}!</sh>`);
+                                $('#events').append(`<br><p class='event'>My ${rell['status']}, ${rell['full_name']} found out I kissed my ${kidRn['status']}, ${kidRn['full_name']}!</p>`);
                                 rell['relation']-=randrange(10);
                                 if (rell['relation'] < 0){
                                   rell['relation']=0;
@@ -3362,7 +3362,7 @@ $(function () {
                               }
                           }
                           else{
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} screamed when I tried to kiss them!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} screamed when I tried to kiss them!</p>`);
                               kidRn['relation']-=randrange(10);
                           }
                           if (kidRn['relation']>100){kidRn['relation']=100}
@@ -3373,14 +3373,14 @@ $(function () {
   
                       $("#spreadRumor").on('click',function(){
                           who = kidRn;
-                          $("#events").append(`<br><sh class='event'>I spread a rumor about my ${who['status']}, ${who['full_name']}. I told everyone that they ${choice(rumors)}</sh>`)
+                          $("#events").append(`<br><p class='event'>I spread a rumor about my ${who['status']}, ${who['full_name']}. I told everyone that they ${choice(rumors)}</p>`)
                           who['popularity']-=randrange(10);
                           if (who['popularity']<0){who['popularity']=0}
                           who['relation']-=randrange(20);
                           if (randrange(5)==1){
-                            $("#events").append(`<br><sh class='event'>They fought me!</sh>`)
+                            $("#events").append(`<br><p class='event'>They fought me!</p>`)
                             for(let x = 0; x<=randrange(3); x++){
-                              $("#events").append(`<br><sh class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</sh>`)
+                              $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
                               you['health']-=randrange(10)
                             }
                           }
@@ -3400,20 +3400,20 @@ $(function () {
   
                       $("#fightClassmate").on('click',function(){
                           who = kidRn;
-                          $("#events").append(`<br><sh class='event'>I fought my ${who['status']}, ${who['full_name']}.</sh>`)
+                          $("#events").append(`<br><p class='event'>I fought my ${who['status']}, ${who['full_name']}.</p>`)
                           who['relation']-=randrange(20);
                           for(let x = 0; x<=randrange(3); x++){
-                              $("#events").append(`<br><sh class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</sh>`)
+                              $("#events").append(`<br><p class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</p>`)
                           }
                           for(let x = 0; x<=randrange(3); x++){
-                              $("#events").append(`<br><sh class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</sh>`)
+                              $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
                           }
                           if (randrange(3)==1){
-                              $("#events").append(`<br><sh class='event'>I won the fight!</sh>`)
+                              $("#events").append(`<br><p class='event'>I won the fight!</p>`)
                               who['health']-=randrange(10);
                               if (who['health']<0){who['health']=0}; 
                           }else{
-                              $("#events").append(`<br><sh class='event'>They won the fight!</sh>`)
+                              $("#events").append(`<br><p class='event'>They won the fight!</p>`)
                               you['health']-=randrange(10);
                               if (you['health']<0){you['health']=0}; 
                           }
@@ -3438,13 +3438,13 @@ $(function () {
                       })
   
                       $("#complimentThem").on('click',function(){
-                          $('#events').append(`<br><sh class='event'>I told my ${kidRn['status']}, ${kidRn['full_name']}, that they are ${choice(compliments)}</sh>`);
+                          $('#events').append(`<br><p class='event'>I told my ${kidRn['status']}, ${kidRn['full_name']}, that they are ${choice(compliments)}</p>`);
                           if (kidRn['relation']>randrange(20)){
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} was flattered!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} was flattered!</p>`);
                               kidRn['relation']+=randrange(10);
                           }
                           else{
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} was deeply insulted!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} was deeply insulted!</p>`);
                               kidRn['relation']-=randrange(10);
                           }
                           if (kidRn['relation']>100){kidRn['relation']=100}
@@ -3454,13 +3454,13 @@ $(function () {
                       })
   
                       $("#helpSchool").on('click',function(){
-                          $('#events').append(`<br><sh class='event'>I helped my ${kidRn['status']}, ${kidRn['full_name']}, with some school work.</sh>`);
+                          $('#events').append(`<br><p class='event'>I helped my ${kidRn['status']}, ${kidRn['full_name']}, with some school work.</p>`);
                           if (kidRn['relation']>randrange(10)){
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} was very thankfull!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} was very thankfull!</p>`);
                               kidRn['relation']+=randrange(6);
                           }
                           else{
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} told me that my help was crap!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} told me that my help was crap!</p>`);
                               kidRn['relation']-=randrange(3);
                           }
                           if (kidRn['relation']>100){kidRn['relation']=100}
@@ -3471,17 +3471,17 @@ $(function () {
   
                       $("#copyTheirWork").on('click',function(){
                           if (kidRn['relation']>randrange(50)+30){
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} let me cheat off of them!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} let me cheat off of them!</p>`);
                               kidRn['relation']+=randrange(10);
                               if (kidRn['smarts'] < 70 && randrange(2)==1){
-                                  $('#events').append(`<br><sh class='event'>${kidRn['full_name']}'s answers were garbage!</sh>`);
+                                  $('#events').append(`<br><p class='event'>${kidRn['full_name']}'s answers were garbage!</p>`);
                                   you['school']['grade']-=randrange(10);
                               }else{
-                                  $('#events').append(`<br><sh class='event'>${kidRn['full_name']}'s answers were great!</sh>`);
+                                  $('#events').append(`<br><p class='event'>${kidRn['full_name']}'s answers were great!</p>`);
                                   you['school']['grade']+=randrange(20);
                               }
                           }else{
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} did not let me cheat off of them!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} did not let me cheat off of them!</p>`);
                               kidRn['relation']-=randrange(10);
                           }
                           if (kidRn['relation']<0){kidRn['relation']=0}
@@ -3492,14 +3492,14 @@ $(function () {
   
                       $("#friendThem").on('click',function(){
                           if (kidRn['relation']>randrange(50)+50){
-                              $('#events').append(`<br><sh class='event'>I am now friends with ${kidRn['full_name']}!</sh>`);
+                              $('#events').append(`<br><p class='event'>I am now friends with ${kidRn['full_name']}!</p>`);
                               kidRn['status']='friend';
                               you['relationships'].push(kidRn);
                               kidRn['relation']+=randrange(10);
                               you['happy']+=randrange(10);
                           }
                           else{
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} did not want to be friends with me!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} did not want to be friends with me!</p>`);
                               kidRn['relation']-=randrange(10);
                               you['happy']-=randrange(10);
                           }
@@ -3510,14 +3510,14 @@ $(function () {
                       })
   
                       $("#hangOutWithThem").on('click',function(){
-                          $('#events').append(`<br><sh class='event'>I asked ${kidRn['full_name']}, from school, if they wanted to hang out!</sh>`);
+                          $('#events').append(`<br><p class='event'>I asked ${kidRn['full_name']}, from school, if they wanted to hang out!</p>`);
                           if (kidRn['relation']>randrange(50)+30){
-                              $('#events').append(`<br><sh class='event'>They said yes, we hung out! We ${choice(hungOutDo)}</sh>`);
+                              $('#events').append(`<br><p class='event'>They said yes, we hung out! We ${choice(hungOutDo)}</p>`);
                               kidRn['relation']+=randrange(10);
                               you['happy']+=randrange(10);
                               if (kidRn['relation']>100){kidRn['relation']=100}
                           }else{
-                              $('#events').append(`<br><sh class='event'>They said I was too ${choice(meanWords)} to hang out with.</sh>`);
+                              $('#events').append(`<br><p class='event'>They said I was too ${choice(meanWords)} to hang out with.</p>`);
                               kidRn['relation']-=randrange(20)
                               you['happy']-=randrange(4);
                               if (kidRn['relation']<0){kidRn['relation']=0}
@@ -3565,14 +3565,14 @@ $(function () {
                       `)
   
                       $("#begThem").on('click',function(){
-                          $('#events').append(`<br><sh class='event'>I begged my teacher, ${teacherRn['full_name']}, for a better grade!</sh>`);
+                          $('#events').append(`<br><p class='event'>I begged my teacher, ${teacherRn['full_name']}, for a better grade!</p>`);
                           if (teacherRn['relation']>randrange(10)+90){
                               upgradedAmount = randrange(20);
                               teacherRn['relation']+=randrange(5)
-                              $('#events').append(`<br><sh class='event'>They said yes! They moved my grade up ${upgradedAmount} points!</sh>`);
+                              $('#events').append(`<br><p class='event'>They said yes! They moved my grade up ${upgradedAmount} points!</p>`);
                           }
                           else{
-                              $('#events').append(`<br><sh class='event'>They laughed at me for asking!</sh>`);
+                              $('#events').append(`<br><p class='event'>They laughed at me for asking!</p>`);
                               you['school']['grade']--;
                               you['happy']-=randrange(4);
                               teacherRn['relation']-=randrange(5)
@@ -3585,7 +3585,7 @@ $(function () {
                   })
   
                   $("#tryHard").on('click',function(){
-                      $('#events').append(`<br><sh class='event'>I studied harder at ${you['school']['name']}!</sh>`);
+                      $('#events').append(`<br><p class='event'>I studied harder at ${you['school']['name']}!</p>`);
                       you['smarts']+=randrange(4)
                       you['school']['grade']+=randrange(5);
                       leave();
@@ -3593,7 +3593,7 @@ $(function () {
                   })
   
                   $("#homework").on('click',function(){
-                      $('#events').append(`<br><sh class='event'>I did some homework!</sh>`);
+                      $('#events').append(`<br><p class='event'>I did some homework!</p>`);
                       you['smarts']+=randrange(3)
                       you['school']['grade']+=randrange(7);
                       leave();
@@ -3664,14 +3664,14 @@ $(function () {
                       `)
   
                       $("#begThem").on('click',function(){
-                          $('#events').append(`<br><sh class='event'>I begged my teacher, ${teacherRn['full_name']}, for a better grade!</sh>`);
+                          $('#events').append(`<br><p class='event'>I begged my teacher, ${teacherRn['full_name']}, for a better grade!</p>`);
                           if (teacherRn['relation']>randrange(10)+90){
                               upgradedAmount = randrange(20);
                               teacherRn['relation']+=randrange(5)
-                              $('#events').append(`<br><sh class='event'>They said yes! They moved my grade up ${upgradedAmount} points!</sh>`);
+                              $('#events').append(`<br><p class='event'>They said yes! They moved my grade up ${upgradedAmount} points!</p>`);
                           }
                           else{
-                              $('#events').append(`<br><sh class='event'>They laughed at me for asking!</sh>`);
+                              $('#events').append(`<br><p class='event'>They laughed at me for asking!</p>`);
                               you['school']['grade']--;
                               you['happy']-=randrange(4);
                               teacherRn['relation']-=randrange(5)
@@ -3755,20 +3755,20 @@ $(function () {
   
                       $("#fightClassmate").on('click',function(){
                           who = kidRn;
-                          $("#events").append(`<br><sh class='event'>I fought my ${who['status']}, ${who['full_name']}.</sh>`)
+                          $("#events").append(`<br><p class='event'>I fought my ${who['status']}, ${who['full_name']}.</p>`)
                           who['relation']-=randrange(20);
                           for(let x = 0; x<=randrange(3); x++){
-                              $("#events").append(`<br><sh class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</sh>`)
+                              $("#events").append(`<br><p class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</p>`)
                           }
                           for(let x = 0; x<=randrange(3); x++){
-                              $("#events").append(`<br><sh class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</sh>`)
+                              $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
                           }
                           if (randrange(3)==1){
-                              $("#events").append(`<br><sh class='event'>I won the fight!</sh>`)
+                              $("#events").append(`<br><p class='event'>I won the fight!</p>`)
                               who['health']-=randrange(10);
                               if (who['health']<0){who['health']=0}; 
                           }else{
-                              $("#events").append(`<br><sh class='event'>They won the fight!</sh>`)
+                              $("#events").append(`<br><p class='event'>They won the fight!</p>`)
                               you['health']-=randrange(10);
                               if (you['health']<0){you['health']=0}; 
                           }
@@ -3793,13 +3793,13 @@ $(function () {
                       })
   
                       $("#complimentThem").on('click',function(){
-                          $('#events').append(`<br><sh class='event'>I told my ${kidRn['status']}, ${kidRn['full_name']}, that they are ${choice(compliments)}</sh>`);
+                          $('#events').append(`<br><p class='event'>I told my ${kidRn['status']}, ${kidRn['full_name']}, that they are ${choice(compliments)}</p>`);
                           if (kidRn['relation']>randrange(20)){
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} was flattered!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} was flattered!</p>`);
                               kidRn['relation']+=randrange(10);
                           }
                           else{
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} was deeply insulted!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} was deeply insulted!</p>`);
                               kidRn['relation']-=randrange(10);
                           }
                           if (kidRn['relation']>100){kidRn['relation']=100}
@@ -3810,17 +3810,17 @@ $(function () {
   
                       $("#copyTheirWork").on('click',function(){
                           if (kidRn['relation']>randrange(50)+30){
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} let me cheat off of them!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} let me cheat off of them!</p>`);
                               kidRn['relation']+=randrange(10);
                               if (kidRn['smarts'] < 70 && randrange(2)==1){
-                                  $('#events').append(`<br><sh class='event'>${kidRn['full_name']}'s answers were garbage!</sh>`);
+                                  $('#events').append(`<br><p class='event'>${kidRn['full_name']}'s answers were garbage!</p>`);
                                   you['school']['grade']-=randrange(10);
                               }else{
-                                  $('#events').append(`<br><sh class='event'>${kidRn['full_name']}'s answers were great!</sh>`);
+                                  $('#events').append(`<br><p class='event'>${kidRn['full_name']}'s answers were great!</p>`);
                                   you['school']['grade']+=randrange(20);
                               }
                           }else{
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} did not let me cheat off of them!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} did not let me cheat off of them!</p>`);
                               kidRn['relation']-=randrange(10);
                           }
                           if (kidRn['relation']<0){kidRn['relation']=0}
@@ -3831,14 +3831,14 @@ $(function () {
   
                       $("#friendThem").on('click',function(){
                           if (kidRn['relation']>randrange(50)+50){
-                              $('#events').append(`<br><sh class='event'>I am now friends with ${kidRn['full_name']}!</sh>`);
+                              $('#events').append(`<br><p class='event'>I am now friends with ${kidRn['full_name']}!</p>`);
                               kidRn['status']='friend';
                               you['relationships'].push(kidRn);
                               kidRn['relation']+=randrange(10);
                               you['happy']+=randrange(10);
                           }
                           else{
-                              $('#events').append(`<br><sh class='event'>${kidRn['full_name']} did not want to be friends with me!</sh>`);
+                              $('#events').append(`<br><p class='event'>${kidRn['full_name']} did not want to be friends with me!</p>`);
                               kidRn['relation']-=randrange(10);
                               you['happy']-=randrange(10);
                           }
@@ -3849,14 +3849,14 @@ $(function () {
                       })
   
                       $("#hangOutWithThem").on('click',function(){
-                          $('#events').append(`<br><sh class='event'>I asked ${kidRn['full_name']}, from school, if they wanted to hang out!</sh>`);
+                          $('#events').append(`<br><p class='event'>I asked ${kidRn['full_name']}, from school, if they wanted to hang out!</p>`);
                           if (kidRn['relation']>randrange(50)+30){
-                              $('#events').append(`<br><sh class='event'>They said yes, we hung out! We ${choice(hungOutDo)}</sh>`);
+                              $('#events').append(`<br><p class='event'>They said yes, we hung out! We ${choice(hungOutDo)}</p>`);
                               kidRn['relation']+=randrange(10);
                               you['happy']+=randrange(10);
                               if (kidRn['relation']>100){kidRn['relation']=100}
                           }else{
-                              $('#events').append(`<br><sh class='event'>They said I was too ${choice(meanWords)} to hang out with.</sh>`);
+                              $('#events').append(`<br><p class='event'>They said I was too ${choice(meanWords)} to hang out with.</p>`);
                               kidRn['relation']-=randrange(20)
                               you['happy']-=randrange(4);
                               if (kidRn['relation']<0){kidRn['relation']=0}
@@ -3871,10 +3871,10 @@ $(function () {
                   jobQuitting=careers[you['spot']]
                   jobQuitting=careers[you['spot']]
                   you['salary']-=jobQuitting['salary'];
-                  $('#events').append(`<br><sh class='event'>I am no longer a ${jobQuitting['title']}!</sh>`);
+                  $('#events').append(`<br><p class='event'>I am no longer a ${jobQuitting['title']}!</p>`);
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I am no longer in college!</sh>`);
+                  $('#events').append(`<br><p class='event'>I am no longer in college!</p>`);
               }
               you['career']='none';
               leave();
@@ -3892,14 +3892,14 @@ $(function () {
                   you['payYear']=collegeNow['yearly'];
                   you['pointsCollege']=collegeNow['points'];
                   lessBig('College!',`You were accepted to college`,'linear-gradient(#f8d568, #FF9900)')
-                  $('#events').append(`<br><sh class='event'>I am now going to college.</sh>`);
+                  $('#events').append(`<br><p class='event'>I am now going to college.</p>`);
                   newSchoolPeople(6, 30, 'College');
               }else{
-                  $('#events').append(`<br><sh class='event'>I am not smart enough to go to this college.</sh>`);
+                  $('#events').append(`<br><p class='event'>I am not smart enough to go to this college.</p>`);
                   leave();
               }
           }else{
-              $('#events').append(`<br><sh class='event'>I have already been to college</sh>`);
+              $('#events').append(`<br><p class='event'>I have already been to college</p>`);
               leave();
           }
           update();
@@ -3917,7 +3917,7 @@ $(function () {
                               if (you['smarts']>=careerNow['smartsReq']){
                                   if (you['prisonYears'] <= careerNow['prisonYears']){
                                       if (careerNow['schoolReq']==0){
-                                          $('#events').append(`<br><sh class='event'>I am now a ${careerNow['title']}!</sh>`);
+                                          $('#events').append(`<br><p class='event'>I am now a ${careerNow['title']}!</p>`);
                                           lessBig('Job!',`You are now a ${careerNow['title']}`,'linear-gradient(#f8d568, #FF9900)')
                                           you['salary']+=careerNow['salary'];
                                           you['career']=careerNow['title'];
@@ -3926,7 +3926,7 @@ $(function () {
                                           you['spot']=Number($(this).attr('id'));
                                       }
                                       else if (you['collegePoints']==careerNow['schoolReq']){
-                                          $('#events').append(`<br><sh class='event'>I am now a ${careerNow['title']}!</sh>`);
+                                          $('#events').append(`<br><p class='event'>I am now a ${careerNow['title']}!</p>`);
                                           lessBig('Job!',`You are now a ${careerNow['title']}`,'linear-gradient(#f8d568, #FF9900)')
                                           you['salary']+=careerNow['salary'];
                                           you['career']=careerNow['title'];
@@ -3935,42 +3935,42 @@ $(function () {
                                           you['spot']=Number($(this).attr('id'));
                                       }
                                       else{
-                                          $('#events').append(`<br><sh class='event'>I need to go to college to be a ${careerNow['title']}!</sh>`);
+                                          $('#events').append(`<br><p class='event'>I need to go to college to be a ${careerNow['title']}!</p>`);
                                           leave();
                                       }
                                   }
                                   else{
-                                      $('#events').append(`<br><sh class='event'>I have been to prison to much to be a ${careerNow['title']}!</sh>`);
+                                      $('#events').append(`<br><p class='event'>I have been to prison to much to be a ${careerNow['title']}!</p>`);
                                       leave();
                                   }
                               }
                               else{
-                                  $('#events').append(`<br><sh class='event'>I am not smart enough to be a ${careerNow['title']}!</sh>`);
+                                  $('#events').append(`<br><p class='event'>I am not smart enough to be a ${careerNow['title']}!</p>`);
                                   leave();
                               }
                           }
                           else{
-                              $('#events').append(`<br><sh class='event'>I am too ugly to be a ${careerNow['title']}!</sh>`);
+                              $('#events').append(`<br><p class='event'>I am too ugly to be a ${careerNow['title']}!</p>`);
                               leave();
                           }
                       }
                       else{
-                          $('#events').append(`<br><sh class='event'>I am not happy enough to be a ${careerNow['title']}!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am not happy enough to be a ${careerNow['title']}!</p>`);
                           leave();
                       }
                   }
                   else{
-                      $('#events').append(`<br><sh class='event'>I am not healthy enough to be a ${careerNow['title']}!</sh>`);
+                      $('#events').append(`<br><p class='event'>I am not healthy enough to be a ${careerNow['title']}!</p>`);
                       leave();
                   }
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I already have a job.</sh>`);
+                  $('#events').append(`<br><p class='event'>I already have a job.</p>`);
                   leave();
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am not old enough to be a ${careerNow['title']}!</sh>`);
+              $('#events').append(`<br><p class='event'>I am not old enough to be a ${careerNow['title']}!</p>`);
               leave();
           }
           update();
@@ -4105,14 +4105,14 @@ $(function () {
           }
 
           $("#fortnite").on('click',function(){
-                $('#events').append(`<br><sh class='event'>I played Fortnite</sh>`);
+                $('#events').append(`<br><p class='event'>I played Fortnite</p>`);
                 you['happy']+=randrange(5);
                 you['smarts']-=randrange(3);
                 leave()
                 update();
           })
           $("#gta5").on('click',function(){
-            $('#events').append(`<br><sh class='event'>I played GTA5</sh>`);
+            $('#events').append(`<br><p class='event'>I played GTA5</p>`);
             you['happy']+=randrange(5);
             you['smarts']-=randrange(5);
             leave()
@@ -4128,22 +4128,22 @@ $(function () {
                       gav=1
                   }
                   if (gav == 1){
-                      $('#events').append(`<br><sh class='event'>I got my drivers license!!</sh>`);
+                      $('#events').append(`<br><p class='event'>I got my drivers license!!</p>`);
                       you['driversLicense']=true;
                       lessBig('License!!',`You have a drivers license!`,'linear-gradient(orange, pink)')
                   }
                   else{
-                      $('#events').append(`<br><sh class='event'>I failed my drivers test</sh>`);
+                      $('#events').append(`<br><p class='event'>I failed my drivers test</p>`);
                       leave()
                   }
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I already have a drivers license!!</sh>`);
+                  $('#events').append(`<br><p class='event'>I already have a drivers license!!</p>`);
                   leave()
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to get a drivers license</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to get a drivers license</p>`);
               leave()
           }
           update()
@@ -4153,21 +4153,21 @@ $(function () {
       $("#lottery10").on('click',function(){
           if (you['money'] >= 50){
               you['money']-=50;
-              $('#events').append(`<br><sh class='event'>I bought ten lottery tickets <span style='color:red;'>-$50</span>!</sh>`);
+              $('#events').append(`<br><p class='event'>I bought ten lottery tickets <span style='color:red;'>-$50</span>!</p>`);
               if (randrange(105)==1){
-                  $('#events').append(`<br><sh class='event'>I won the lottery!!</sh>`);
+                  $('#events').append(`<br><p class='event'>I won the lottery!!</p>`);
                   wonAmount = randrange(11000000);
-                  $('#events').append(`<br><sh class='event'>I won <span style='color:green;'>$${comify(wonAmount)}</span> dollars!</sh>`);
+                  $('#events').append(`<br><p class='event'>I won <span style='color:green;'>$${comify(wonAmount)}</span> dollars!</p>`);
                   you['money']+=wonAmount;
                   lessBig('Money!!',`You won the lottery!`,'linear-gradient(orange, pink)')
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I did not win the lottery</sh>`);
+                  $('#events').append(`<br><p class='event'>I did not win the lottery</p>`);
                   leave();
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I can't afford ten lottery tickets</sh>`);
+              $('#events').append(`<br><p class='event'>I can't afford ten lottery tickets</p>`);
               leave();
           }
           update();
@@ -4224,15 +4224,15 @@ $(function () {
                       moneyMade: money
                    }
                    you['movies'].push(movieObj)
-                  $('#events').append(`<br><sh class='event'>I was a ${position} playing ${charName} in a movie called "${movName}"!</sh>`);
-                  $('#events').append(`<br><sh class='event'>I made <span style='color:green'>$${comify(money)}</span>!</sh>`);
+                  $('#events').append(`<br><p class='event'>I was a ${position} playing ${charName} in a movie called "${movName}"!</p>`);
+                  $('#events').append(`<br><p class='event'>I made <span style='color:green'>$${comify(money)}</span>!</p>`);
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I could not get an acting gig!</sh>`);
+                  $('#events').append(`<br><p class='event'>I could not get an acting gig!</p>`);
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to get an acting gig!</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to get an acting gig!</p>`);
           }
           leave();
           update();
@@ -4241,21 +4241,21 @@ $(function () {
       $("#lottery").on('click',function(){
           if (you['money'] >= 5){
               you['money']-=5;
-              $('#events').append(`<br><sh class='event'>I bought a lottery ticket <span style='color:red;'>-$5</span>!</sh>`);
+              $('#events').append(`<br><p class='event'>I bought a lottery ticket <span style='color:red;'>-$5</span>!</p>`);
               if (randrange(450)==1){
-                  $('#events').append(`<br><sh class='event'>I won the lottery!!</sh>`);
+                  $('#events').append(`<br><p class='event'>I won the lottery!!</p>`);
                   wonAmount = randrange(11000000);
-                  $('#events').append(`<br><sh class='event'>I won <span style='color:green;'>$${comify(wonAmount)}</span> dollars!</sh>`);
+                  $('#events').append(`<br><p class='event'>I won <span style='color:green;'>$${comify(wonAmount)}</span> dollars!</p>`);
                   you['money']+=wonAmount;
                   lessBig('Money!!',`You won the lottery!`,'linear-gradient(orange, pink)')
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I did not win the lottery</sh>`);
+                  $('#events').append(`<br><p class='event'>I did not win the lottery</p>`);
                   leave();
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I can't afford a lottery ticket</sh>`);
+              $('#events').append(`<br><p class='event'>I can't afford a lottery ticket</p>`);
               leave();
           }
           update();
@@ -4293,14 +4293,14 @@ $(function () {
               }
               you['relationships'].push(flingObj);
               lovers++;
-              $('#events').append(`<br><sh class='event'>I hooked up with a ${flingObj['age']} year old named ${flingObj['full_name']}</sh>`);
+              $('#events').append(`<br><p class='event'>I hooked up with a ${flingObj['age']} year old named ${flingObj['full_name']}</p>`);
               you['happy']+=randrange(10);
               if (randrange(3)==1){
                   for(x in you['relationships']){
                       let curr = you['relationships'][x];
                       if (curr['status']=='boyfriend'||curr['status']=='girlfriend'||curr['status']=='fiance'||curr['status']=='wife'||curr['status']=='husband'){
                           curr['relation']-=randrange(50);
-                          $('#events').append(`<br><sh class='event'>My ${curr['status']}, ${curr['full_name']}, found out I cheated on them!</sh>`);
+                          $('#events').append(`<br><p class='event'>My ${curr['status']}, ${curr['full_name']}, found out I cheated on them!</p>`);
                           you['happy']-=randrange(10);
                       }
                   }
@@ -4308,12 +4308,12 @@ $(function () {
               if (randrange(5)==1){
                   std = choice(stds)
                   you['diseases'].push(std);
-                  $('#events').append(`<br><sh class='event'>I contracted ${std['name']}</sh>`);
+                  $('#events').append(`<br><p class='event'>I contracted ${std['name']}</p>`);
                   you['happy']-=randrange(10);
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to hookup with someone</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to hookup with someone</p>`);
           }
           if (you['happy']>100){you['happy']=100};
           leave();
@@ -4325,11 +4325,11 @@ $(function () {
               if (you['money']>500){
                   you['money']-=500;
                   let song = prompt('Song Title','Epic Song')
-                  $('#events').append(`<br><sh class='event'>I recorded a song titled "${song}"</sh>`);
+                  $('#events').append(`<br><p class='event'>I recorded a song titled "${song}"</p>`);
                   you['fame']+=randrange(3);
                   let succession = randrange(you['fame']+you['smarts']+you['comedy']);
                   if (randrange(150)==1){
-                      $('#events').append(`<br><sh class='event'>My song "${song}" was a hit!</sh>`);
+                      $('#events').append(`<br><p class='event'>My song "${song}" was a hit!</p>`);
                       you['fame']+=randrange(200 + you['comedy']);
                       succession = randrange(you['fame']+you['smarts']+you['comedy']);
                       succession*=randrange(30);
@@ -4346,11 +4346,11 @@ $(function () {
                   you['songs'].push(songObj);
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I need more money to fund my studio session song.</sh>`);
+                  $('#events').append(`<br><p class='event'>I need more money to fund my studio session song.</p>`);
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to record a song.</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to record a song.</p>`);
           }
           leave();
           update();
@@ -4364,11 +4364,11 @@ $(function () {
                   if (you['money']>2000){
                       you['money']-=2000;
                       let book = prompt('Book Title','My Life')
-                      $('#events').append(`<br><sh class='event'>I wrote a book titled "${book}"</sh>`);
+                      $('#events').append(`<br><p class='event'>I wrote a book titled "${book}"</p>`);
                       you['fame']+=randrange(5);
                       let succession = randrange(you['fame']+you['smarts']+you['comedy']);
                       if (randrange(100)==1){
-                          $('#events').append(`<br><sh class='event'>My book "${book}" was a hit!</sh>`);
+                          $('#events').append(`<br><p class='event'>My book "${book}" was a hit!</p>`);
                           you['fame']+=randrange(200 + you['comedy']);
                           succession = randrange(you['fame']+you['smarts']);
                           succession*=randrange(100);
@@ -4386,15 +4386,15 @@ $(function () {
                       bookYear=true;
                   }
                   else{
-                      $('#events').append(`<br><sh class='event'>I need more money to fund my book.</sh>`);
+                      $('#events').append(`<br><p class='event'>I need more money to fund my book.</p>`);
                   }
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I already wrote a book this year.</sh>`);
+                  $('#events').append(`<br><p class='event'>I already wrote a book this year.</p>`);
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to write a book.</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to write a book.</p>`);
           }
           leave();
           update();
@@ -4405,7 +4405,7 @@ $(function () {
       $("#smokePot").on('click',function(){
           if (you['age']>=18){
             if (you['money'] >= 20){
-              $('#events').append(`<br><sh class='event'>I smoked pot!</sh>`);
+              $('#events').append(`<br><p class='event'>I smoked pot!</p>`);
               you['happy']+=randrange(6)
               you['smarts']-=randrange(3)
               am = randrange(6)
@@ -4415,10 +4415,10 @@ $(function () {
               if (you['happy']>100){you['happy']=100}
               if (you['smarts']<0){you['smarts']=0}
               if (randrange(20)==1){
-                  $('#events').append(`<br><sh class='event'>I was caught!</sh>`);
+                  $('#events').append(`<br><p class='event'>I was caught!</p>`);
                   sentence = randrange(3);
                   prisShuf();
-                  $('#events').append(`<br><sh class='event'>I am going to prison for ${sentence} year/s!</sh>`);
+                  $('#events').append(`<br><p class='event'>I am going to prison for ${sentence} year/s!</p>`);
                   you['inPrison']=true;
                   if (you['career']!='none'){
                       you['salary']-=you['jobSal']
@@ -4435,12 +4435,12 @@ $(function () {
               }
             }
             else{
-              $('#events').append(`<br><sh class='event'>I don't have enough money to buy weed!</sh>`);
+              $('#events').append(`<br><p class='event'>I don't have enough money to buy weed!</p>`);
               leave();
             }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to do drugs!</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to do drugs!</p>`);
               leave();
           }
           update();
@@ -4451,7 +4451,7 @@ $(function () {
       $("#vape").on('click',function(){
           if (you['age']>=13){
             if (you['money'] >= 10){
-                $('#events').append(`<br><sh class='event'>I vaped, it costed $10!</sh>`);
+                $('#events').append(`<br><p class='event'>I vaped, it costed $10!</p>`);
                 alreadyOn=false;
                 wasOn = false;
                 you['money']-=10;
@@ -4478,7 +4478,7 @@ $(function () {
                     }
                     if (wasOn){
                         if (randrange(2)==1){
-                            $('#events').append(`<br><sh class='event'>I am addicted to Vaping again!</sh>`);
+                            $('#events').append(`<br><p class='event'>I am addicted to Vaping again!</p>`);
                             drugObj = 
                             {
                                 name: 'Vape',
@@ -4492,7 +4492,7 @@ $(function () {
                     }
                     if (alreadyOn == false){
                         if (randrange(10)==1){
-                            $('#events').append(`<br><sh class='event'>I am addicted to Vaping!</sh>`);
+                            $('#events').append(`<br><p class='event'>I am addicted to Vaping!</p>`);
                             drugObj = 
                             {
                                 name: 'Vape',
@@ -4504,9 +4504,9 @@ $(function () {
                         }
                     }
                 if (randrange(20)==1){
-                    $('#events').append(`<br><sh class='event'>I was caught!</sh>`);
+                    $('#events').append(`<br><p class='event'>I was caught!</p>`);
                     if (you['age']<21){
-                      $('#events').append(`<br><sh class='event'>My vape was taken away.</sh>`);
+                      $('#events').append(`<br><p class='event'>My vape was taken away.</p>`);
                       you['happy']-=5
                       leave();
                     }
@@ -4516,12 +4516,12 @@ $(function () {
                 }
             }
             else{
-              $('#events').append(`<br><sh class='event'>I did not have enough money to vape.</sh>`);
+              $('#events').append(`<br><p class='event'>I did not have enough money to vape.</p>`);
               leave();
             }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to vape!</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to vape!</p>`);
               leave();
           }
           update();
@@ -4532,7 +4532,7 @@ $(function () {
       $("#cigar").on('click',function(){
           if (you['age']>=13){
             if (you['money'] >= 7){
-                $('#events').append(`<br><sh class='event'>I smoked a pack of cigarrettes, it costed $7 dollars.</sh>`);
+                $('#events').append(`<br><p class='event'>I smoked a pack of cigarrettes, it costed $7 dollars.</p>`);
                 alreadyOn=false;
                 wasOn = false;
                 you['money']-=7;
@@ -4558,7 +4558,7 @@ $(function () {
                     }
                     if (wasOn){
                         if (randrange(2)==1){
-                            $('#events').append(`<br><sh class='event'>I am addicted to Cigarrettes again!</sh>`);
+                            $('#events').append(`<br><p class='event'>I am addicted to Cigarrettes again!</p>`);
                             drugObj = 
                             {
                                 name: 'Cigarrettes',
@@ -4572,7 +4572,7 @@ $(function () {
                     }
                     if (alreadyOn == false){
                         if (randrange(10)==1){
-                            $('#events').append(`<br><sh class='event'>I am addicted to Cigarrettes!</sh>`);
+                            $('#events').append(`<br><p class='event'>I am addicted to Cigarrettes!</p>`);
                             drugObj = 
                             {
                                 name: 'Cigarrettes',
@@ -4584,9 +4584,9 @@ $(function () {
                         }
                     }
                 if (randrange(20)==1 && you['age'] < 21){
-                    $('#events').append(`<br><sh class='event'>I was caught!</sh>`);
+                    $('#events').append(`<br><p class='event'>I was caught!</p>`);
                     if (you['age']<21){
-                      $('#events').append(`<br><sh class='event'>My Cigarrettes were taken away.</sh>`);
+                      $('#events').append(`<br><p class='event'>My Cigarrettes were taken away.</p>`);
                       you['happy']-=5
                     }
                 }
@@ -4596,12 +4596,12 @@ $(function () {
                 leave();
             }
             else{
-              $('#events').append(`<br><sh class='event'>I did not have enough money to buy Cigarrettes.</sh>`);
+              $('#events').append(`<br><p class='event'>I did not have enough money to buy Cigarrettes.</p>`);
               leave();
             }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to smoke cigarrettes!</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to smoke cigarrettes!</p>`);
               leave();
           }
           update();
@@ -4616,7 +4616,7 @@ $(function () {
               cocaineNumber = 0;
               if (you['money']>=100){
                   you['money']-=100;
-                  $('#events').append(`<br><sh class='event'>I snorted cocaine! <span style='color:red;'>-$100</span></sh>`);
+                  $('#events').append(`<br><p class='event'>I snorted cocaine! <span style='color:red;'>-$100</span></p>`);
                   you['happy']+=randrange(15)
                   you['smarts']-=randrange(15)
                   you['looks']-=randrange(7)
@@ -4641,7 +4641,7 @@ $(function () {
                   }
                   if (wasOn){
                       if (randrange(2)==1){
-                          $('#events').append(`<br><sh class='event'>I am addicted to cocaine again!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am addicted to cocaine again!</p>`);
                           drugObj = 
                           {
                               name: 'Cocaine',
@@ -4655,7 +4655,7 @@ $(function () {
                   }
                   if (alreadyOn == false){
                       if (randrange(10)==1){
-                          $('#events').append(`<br><sh class='event'>I am addicted to cocaine!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am addicted to cocaine!</p>`);
                           drugObj = 
                           {
                               name: 'Cocaine',
@@ -4667,9 +4667,9 @@ $(function () {
                       }
                   }
                   if (randrange(6)==1){
-                      $('#events').append(`<br><sh class='event'>I was caught!</sh>`);
+                      $('#events').append(`<br><p class='event'>I was caught!</p>`);
                       sentence = randrange(3);
-                      $('#events').append(`<br><sh class='event'>I am going to prison for ${sentence} year/s!</sh>`);
+                      $('#events').append(`<br><p class='event'>I am going to prison for ${sentence} year/s!</p>`);
                       you['inPrison']=true;
                       prisShuf();
                       if (you['career']!='none'){
@@ -4687,11 +4687,11 @@ $(function () {
                   }
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I don't have money to buy cocaine!</sh>`);
+                  $('#events').append(`<br><p class='event'>I don't have money to buy cocaine!</p>`);
                   leave()
               }
           }else{
-              $('#events').append(`<br><sh class='event'>I am too young to do drugs!</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to do drugs!</p>`);
               leave()
           }
           update();
@@ -4707,8 +4707,8 @@ $(function () {
               effects = ['in the middle of a desert','drinking soap','with a tattoo of a chicken on my '+choice(bodyParts),'licking the sidewalk','with a missing finger','in a swimming pool']
               if (you['money']>=200){
                   you['money']-=200;
-                  $('#events').append(`<br><sh class='event'>I took LSD! <span style='color:red;'>-$200</span></sh>`);
-                  $('#events').append(`<br><sh class='event'>I woke up ${choice(effects)}!</sh>`);
+                  $('#events').append(`<br><p class='event'>I took LSD! <span style='color:red;'>-$200</span></p>`);
+                  $('#events').append(`<br><p class='event'>I woke up ${choice(effects)}!</p>`);
                   you['happy']+=randrange(20)
                   you['smarts']-=randrange(20)
                   you['looks']-=randrange(5)
@@ -4733,7 +4733,7 @@ $(function () {
                   }
                   if (wasOn){
                       if (randrange(2)==1){
-                          $('#events').append(`<br><sh class='event'>I am addicted to LSD again!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am addicted to LSD again!</p>`);
                           drugObj = 
                           {
                               name: 'LSD',
@@ -4747,7 +4747,7 @@ $(function () {
                   }
                   if (alreadyOn == false){
                       if (randrange(10)==1){
-                          $('#events').append(`<br><sh class='event'>I am addicted to LSD!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am addicted to LSD!</p>`);
                           drugObj = 
                           {
                               name: 'LSD',
@@ -4759,9 +4759,9 @@ $(function () {
                       }
                   }
                   if (randrange(6)==1){
-                      $('#events').append(`<br><sh class='event'>I was caught!</sh>`);
+                      $('#events').append(`<br><p class='event'>I was caught!</p>`);
                       sentence = randrange(5);
-                      $('#events').append(`<br><sh class='event'>I am going to prison for ${sentence} year/s!</sh>`);
+                      $('#events').append(`<br><p class='event'>I am going to prison for ${sentence} year/s!</p>`);
                       you['inPrison']=true;
                       prisShuf();
                       if (you['career']!='none'){
@@ -4779,11 +4779,11 @@ $(function () {
                   }
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I don't have money to buy LSD!</sh>`);
+                  $('#events').append(`<br><p class='event'>I don't have money to buy LSD!</p>`);
                   leave()
               }
           }else{
-              $('#events').append(`<br><sh class='event'>I am too young to do drugs!</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to do drugs!</p>`);
               leave()
           }
           update();
@@ -4799,8 +4799,8 @@ $(function () {
               effects = ['in the middle of a desert','drinking soap','with a tattoo of a chicken on my '+choice(bodyParts),'licking the sidewalk','with a missing finger','in a swimming pool','with a cut up arm','with a missing eyeball','with a broken arm',`with a tattoo on my face`]
               if (you['money']>=200){
                   you['money']-=200;
-                  $('#events').append(`<br><sh class='event'>I took PCP! <span style='color:red;'>-$200</span></sh>`);
-                  $('#events').append(`<br><sh class='event'>I woke up ${choice(effects)}!</sh>`);
+                  $('#events').append(`<br><p class='event'>I took PCP! <span style='color:red;'>-$200</span></p>`);
+                  $('#events').append(`<br><p class='event'>I woke up ${choice(effects)}!</p>`);
                   you['health']-=randrange(10);
                   you['happy']+=randrange(25)
                   you['smarts']-=randrange(25)
@@ -4826,7 +4826,7 @@ $(function () {
                   }
                   if (wasOn){
                       if (randrange(2)==1){
-                          $('#events').append(`<br><sh class='event'>I am addicted to PCP again!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am addicted to PCP again!</p>`);
                           drugObj = 
                           {
                               name: 'PCP',
@@ -4840,7 +4840,7 @@ $(function () {
                   }
                   if (alreadyOn == false){
                       if (randrange(10)==1){
-                          $('#events').append(`<br><sh class='event'>I am addicted to PCP!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am addicted to PCP!</p>`);
                           drugObj = 
                           {
                               name: 'PCP',
@@ -4852,9 +4852,9 @@ $(function () {
                       }
                   }
                   if (randrange(6)==1){
-                      $('#events').append(`<br><sh class='event'>I was caught!</sh>`);
+                      $('#events').append(`<br><p class='event'>I was caught!</p>`);
                       sentence = randrange(5);
-                      $('#events').append(`<br><sh class='event'>I am going to prison for ${sentence} year/s!</sh>`);
+                      $('#events').append(`<br><p class='event'>I am going to prison for ${sentence} year/s!</p>`);
                       you['inPrison']=true;
                       prisShuf();
                       if (you['career']!='none'){
@@ -4872,11 +4872,11 @@ $(function () {
                   }
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I don't have money to buy PCP!</sh>`);
+                  $('#events').append(`<br><p class='event'>I don't have money to buy PCP!</p>`);
                   leave()
               }
           }else{
-              $('#events').append(`<br><sh class='event'>I am too young to do drugs!</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to do drugs!</p>`);
               leave()
           }
           update();
@@ -4891,7 +4891,7 @@ $(function () {
               alreadyOn = false;
               if (you['money']>=100){
                   you['money']-=100;
-                  $('#events').append(`<br><sh class='event'>I shot heroin! <span style='color:red;'>-$100</span></sh>`);
+                  $('#events').append(`<br><p class='event'>I shot heroin! <span style='color:red;'>-$100</span></p>`);
                   you['happy']+=randrange(10)
                   you['smarts']-=randrange(10)
                   you['looks']-=randrange(5)
@@ -4916,7 +4916,7 @@ $(function () {
                   }
                   if (wasOn){
                       if (randrange(2)==1){
-                          $('#events').append(`<br><sh class='event'>I am addicted to heroin again!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am addicted to heroin again!</p>`);
                           drugObj = 
                           {
                               name: 'Heroin',
@@ -4930,7 +4930,7 @@ $(function () {
                   }
                   if (alreadyOn == false){
                       if (randrange(3)==1){
-                          $('#events').append(`<br><sh class='event'>I am addicted to heroin!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am addicted to heroin!</p>`);
                           drugObj = 
                           {
                               name: 'Heroin',
@@ -4942,9 +4942,9 @@ $(function () {
                       }
                   }
                   if (randrange(10)==1){
-                      $('#events').append(`<br><sh class='event'>I was caught!</sh>`);
+                      $('#events').append(`<br><p class='event'>I was caught!</p>`);
                       sentence = randrange(3);
-                      $('#events').append(`<br><sh class='event'>I am going to prison for ${sentence} year/s!</sh>`);
+                      $('#events').append(`<br><p class='event'>I am going to prison for ${sentence} year/s!</p>`);
                       you['inPrison']=true;
                       if (you['career']!='none'){
                           you['salary']-=you['jobSal']
@@ -4962,11 +4962,11 @@ $(function () {
                   }
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I don't have money to buy heroin!</sh>`);
+                  $('#events').append(`<br><p class='event'>I don't have money to buy heroin!</p>`);
                   leave()
               }
           }else{
-              $('#events').append(`<br><sh class='event'>I am too young to do drugs!</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to do drugs!</p>`);
               leave()
           }
           update();
@@ -4981,7 +4981,7 @@ $(function () {
               alreadyOn = false;
               if (you['money']>=50){
                   you['money']-=50;
-                  $('#events').append(`<br><sh class='event'>I smoked meth! <span style='color:red;'>-$50</span></sh>`);
+                  $('#events').append(`<br><p class='event'>I smoked meth! <span style='color:red;'>-$50</span></p>`);
                   you['happy']+=randrange(10)
                   you['smarts']-=randrange(10)
                   you['looks']-=randrange(5)
@@ -5006,7 +5006,7 @@ $(function () {
                   }
                   if (wasOn){
                       if (randrange(2)==1){
-                          $('#events').append(`<br><sh class='event'>I am addicted to crystal meth again!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am addicted to crystal meth again!</p>`);
                           drugObj = 
                           {
                               name: 'Crystal Meth',
@@ -5020,7 +5020,7 @@ $(function () {
                   }
                   if (alreadyOn == false){
                       if (randrange(3)==1){
-                          $('#events').append(`<br><sh class='event'>I am addicted to crystal meth!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am addicted to crystal meth!</p>`);
                           drugObj = 
                           {
                               name: 'Crystal Meth',
@@ -5032,9 +5032,9 @@ $(function () {
                       }
                   }
                   if (randrange(6)==1){
-                      $('#events').append(`<br><sh class='event'>I was caught!</sh>`);
+                      $('#events').append(`<br><p class='event'>I was caught!</p>`);
                       sentence = randrange(10);
-                      $('#events').append(`<br><sh class='event'>I am going to prison for ${sentence} year/s!</sh>`);
+                      $('#events').append(`<br><p class='event'>I am going to prison for ${sentence} year/s!</p>`);
                       you['inPrison']=true;
                       prisShuf();
                       if (you['career']!='none'){
@@ -5052,11 +5052,11 @@ $(function () {
                   }
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I don't have money to buy meth!</sh>`);
+                  $('#events').append(`<br><p class='event'>I don't have money to buy meth!</p>`);
                   leave()
               }
           }else{
-              $('#events').append(`<br><sh class='event'>I am too young to do drugs!</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to do drugs!</p>`);
               leave()
           }
           update();
@@ -5067,18 +5067,18 @@ $(function () {
       $("#jayWalk").on('click',function(){
           if (you['age'] >= 5){
               caught = randrange(100);
-              $('#events').append(`<br><sh class='event'>I decided to jay walk!</sh>`);
+              $('#events').append(`<br><p class='event'>I decided to jay walk!</p>`);
               if (randrange(20)==1){
-                  $('#events').append(`<br><sh class='event'>I was hit by a truck!</sh>`);
+                  $('#events').append(`<br><p class='event'>I was hit by a truck!</p>`);
                   you['health']-=randrange(20);
               }
               if (caught != 1){
                   leave();
               }
               else{
-                  $('#events').append(`<br><sh class='event'>The cops actually cared!</sh>`);
+                  $('#events').append(`<br><p class='event'>The cops actually cared!</p>`);
                   let sentenceTime = randrange(2)
-                  $('#events').append(`<br><sh class='event'>I am going to prison for ${sentenceTime} year/s!</sh>`);
+                  $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s!</p>`);
                   sentence = sentenceTime;
                   prisShuf();
                   if (you['career']!='none'){
@@ -5094,7 +5094,7 @@ $(function () {
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to jay walk</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to jay walk</p>`);
               leave();
           }
           update();
@@ -5105,11 +5105,11 @@ $(function () {
       $("#arson").on('click',function(){
           if (you['age'] >= 10){
               caught = randrange(3);
-              $('#events').append(`<br><sh class='event'>I decided to burn down a ${choice(buildings)}!</sh>`);
+              $('#events').append(`<br><p class='event'>I decided to burn down a ${choice(buildings)}!</p>`);
               deaths = 0;
               if (randrange(4)==1){
                 deaths = randrange(16);
-                $('#events').append(`<br><sh class='event'>${deaths} people were killed!</sh>`);
+                $('#events').append(`<br><p class='event'>${deaths} people were killed!</p>`);
                 you['happy']-=randrange(10);
                 murders+=deaths;
               }
@@ -5117,9 +5117,9 @@ $(function () {
                   leave();
               }
               else{
-                  $('#events').append(`<br><sh class='event'>The cops came!</sh>`);
+                  $('#events').append(`<br><p class='event'>The cops came!</p>`);
                   let sentenceTime = randrange(20) + (10 * deaths);
-                  $('#events').append(`<br><sh class='event'>I am going to prison for ${sentenceTime} year/s!</sh>`);
+                  $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s!</p>`);
                   sentence = sentenceTime;
                   prisShuf();
                   if (you['career']!='none'){
@@ -5135,7 +5135,7 @@ $(function () {
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to commit arson</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to commit arson</p>`);
               leave();
           }
           update();
@@ -5145,15 +5145,15 @@ $(function () {
   
       $("#assault").on('click',function(){
           if (you['age'] >= 18){
-              $('#events').append(`<br><sh class='event'>I assaulted someone! I ${choice(attacks)} their ${choice(bodyParts)}</sh>`);
+              $('#events').append(`<br><p class='event'>I assaulted someone! I ${choice(attacks)} their ${choice(bodyParts)}</p>`);
               caught = randrange(6);
               if (caught != 1){
                   leave();
               }
               else{
-                  $('#events').append(`<br><sh class='event'>They called the cops!</sh>`);
+                  $('#events').append(`<br><p class='event'>They called the cops!</p>`);
                   let sentenceTime = randrange(6)
-                  $('#events').append(`<br><sh class='event'>I am going to prison for ${sentenceTime} year/s!</sh>`);
+                  $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s!</p>`);
                   sentence = sentenceTime;
                   prisShuf();
                   if (you['career']!='none'){
@@ -5169,7 +5169,7 @@ $(function () {
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to assault someone</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to assault someone</p>`);
               leave();
           }
           update();
@@ -5179,15 +5179,15 @@ $(function () {
   
       $("#mailBall").on('click',function(){
           if (you['age'] >= 7){
-              $('#events').append(`<br><sh class='event'>I went around smacking peoples mailboxes with a baseball bat.</sh>`);
+              $('#events').append(`<br><p class='event'>I went around smacking peoples mailboxes with a baseball bat.</p>`);
               caught = randrange(6);
               if (caught != 1){
                   leave();
               }
               else{
-                  $('#events').append(`<br><sh class='event'>The cops caught me!</sh>`);
+                  $('#events').append(`<br><p class='event'>The cops caught me!</p>`);
                   let sentenceTime = randrange(2)
-                  $('#events').append(`<br><sh class='event'>I am going to prison for ${sentenceTime} year/s!</sh>`);
+                  $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s!</p>`);
                   sentence = sentenceTime;
                   if (you['career']!='none'){
                       you['salary']-=you['jobSal']
@@ -5203,7 +5203,7 @@ $(function () {
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to play mailbox baseball someone</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to play mailbox baseball someone</p>`);
               leave();
           }
           update();
@@ -5235,7 +5235,7 @@ $(function () {
               friendObj['last_name']=choice(lNames);
               friendObj['full_name']=friendObj['first_name']+' '+friendObj['last_name'];
               you['relationships'].push(friendObj);
-              $('#events').append(`<br><sh class='event'>I made a new friend named ${friendObj['full_name']}!</sh>`);
+              $('#events').append(`<br><p class='event'>I made a new friend named ${friendObj['full_name']}!</p>`);
           }
           else{
               let acquaintance = 
@@ -5260,7 +5260,7 @@ $(function () {
               acquaintance['last_name']=choice(lNames);
               acquaintance['full_name']=acquaintance['first_name']+' '+acquaintance['last_name'];
               you['relationships'].push(acquaintance);
-              $('#events').append(`<br><sh class='event'>I talked with someone named ${acquaintance['full_name']}!</sh>`);
+              $('#events').append(`<br><p class='event'>I talked with someone named ${acquaintance['full_name']}!</p>`);
           }
           leave();
           update();
@@ -5277,15 +5277,15 @@ $(function () {
                   }else{
                       theirName = choice(fNames)+' '+choice(lNames);
                   }
-                  $('#events').append(`<br><sh class='event'>I murdered a person named ${theirName}</sh>`);
+                  $('#events').append(`<br><p class='event'>I murdered a person named ${theirName}</p>`);
                   murders++;
                   leave();
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I was caught murdering someone!</sh>`);
+                  $('#events').append(`<br><p class='event'>I was caught murdering someone!</p>`);
                   murders++;
                   let sentenceTime = randrange(20)+40
-                  $('#events').append(`<br><sh class='event'>I am going to prison for ${sentenceTime} year/s!</sh>`);
+                  $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s!</p>`);
                   sentence = sentenceTime;
                   you['inPrison']=true;
                   if (you['career']!='none'){
@@ -5301,7 +5301,7 @@ $(function () {
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to kill someone</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to kill someone</p>`);
               leave();
           }
           update();
@@ -5315,13 +5315,13 @@ $(function () {
               caught = randrange(4);
               if (caught != 1){
                   you['money']+=amount;
-                  $('#events').append(`<br><sh class='event'>I stole <span style='color:green;font-weight:bolder;'>$${amount}</span> from someone</sh>`);
+                  $('#events').append(`<br><p class='event'>I stole <span style='color:green;font-weight:bolder;'>$${amount}</span> from someone</p>`);
                   leave();
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I was caught robbing someone!</sh>`);
+                  $('#events').append(`<br><p class='event'>I was caught robbing someone!</p>`);
                   let sentenceTime = randrange(7)
-                  $('#events').append(`<br><sh class='event'>I am going to prison for ${sentenceTime} year/s!</sh>`);
+                  $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s!</p>`);
                   sentence = sentenceTime;
                   if (you['career']!='none'){
                       you['salary']-=you['jobSal']
@@ -5337,7 +5337,7 @@ $(function () {
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to rob someone</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to rob someone</p>`);
               leave();
           }
           update();
@@ -5352,13 +5352,13 @@ $(function () {
               items = ['doll house','baseball bat','sponge','diamond chain','toy car']
               if (caught != 1){
                   you['money']+=amount;
-                  $('#events').append(`<br><sh class='event'>I stole a <span style='color:green;font-weight:bolder;'>${choice(items)}</span> from someones mailbox, I collected <span style='color:green;font-weight:bolder;'>$${amount}</span> for the item</sh>`);
+                  $('#events').append(`<br><p class='event'>I stole a <span style='color:green;font-weight:bolder;'>${choice(items)}</span> from someones mailbox, I collected <span style='color:green;font-weight:bolder;'>$${amount}</span> for the item</p>`);
                   leave();
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I was caught commiting porch pirate someone!</sh>`);
+                  $('#events').append(`<br><p class='event'>I was caught commiting porch pirate someone!</p>`);
                   let sentenceTime = randrange(7)
-                  $('#events').append(`<br><sh class='event'>I am going to prison for ${sentenceTime} year/s!</sh>`);
+                  $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s!</p>`);
                   sentence = sentenceTime;
                   if (you['career']!='none'){
                       you['salary']-=you['jobSal']
@@ -5374,7 +5374,7 @@ $(function () {
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to commit porch pirate</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to commit porch pirate</p>`);
               leave();
           }
           update();
@@ -5420,12 +5420,12 @@ $(function () {
                           them['age']=you['age']+randrange(10);
                       }
                       them['full_name']=them['first_name']+' '+them['last_name'];
-                      $('#events').append(`<br><sh class='event'>My new ${them['status']} is named ${them['full_name']}</sh>`);
+                      $('#events').append(`<br><p class='event'>My new ${them['status']} is named ${them['full_name']}</p>`);
                       you['relationships'].push(them);
                       lovers++;
                   }
                   else{
-                      $('#events').append(`<br><sh class='event'>I was rejected by someone, they told me I was too ${choice(meanWords)} to date.</sh>`);
+                      $('#events').append(`<br><p class='event'>I was rejected by someone, they told me I was too ${choice(meanWords)} to date.</p>`);
                   }
               }
               else{
@@ -5434,11 +5434,11 @@ $(function () {
                           statNow = you['relationships'][x]['status']
                       }
                   }
-                  $('#events').append(`<br><sh class='event'>I thought about cheating on my ${statNow}</sh>`);
+                  $('#events').append(`<br><p class='event'>I thought about cheating on my ${statNow}</p>`);
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I am too young to date.</sh>`);
+              $('#events').append(`<br><p class='event'>I am too young to date.</p>`);
           }
           leave();
           update();
@@ -5454,7 +5454,7 @@ $(function () {
                       if (you['money'] >= activity['moneyReq']){
                           if (you['looks']>=activity['looksReq']){
                               if (you['smarts']>=activity['smartsReq']){
-                                  $('#events').append(`<br><sh class='event'>${activity['text']}</sh>`);
+                                  $('#events').append(`<br><p class='event'>${activity['text']}</p>`);
                                   if (activity['done'] == false){
                                       you['health']+=activity['health']
                                       you['happy']+=activity['happy']
@@ -5471,27 +5471,27 @@ $(function () {
                                   you['money']-=activity['moneyReq']
                                   activity['done']=true;
                               }else{
-                                  $('#events').append(`<br><sh class='event'>I was too dumb to do what I wanted</sh>`);
+                                  $('#events').append(`<br><p class='event'>I was too dumb to do what I wanted</p>`);
                               }
                           }
                           else{
-                              $('#events').append(`<br><sh class='event'>I was too ugly to do what I wanted</sh>`);
+                              $('#events').append(`<br><p class='event'>I was too ugly to do what I wanted</p>`);
                           }
                       }
                       else{
-                          $('#events').append(`<br><sh class='event'>I was too poor to do what I wanted</sh>`);
+                          $('#events').append(`<br><p class='event'>I was too poor to do what I wanted</p>`);
                       }
                   }
                   else{
-                      $('#events').append(`<br><sh class='event'>I was too depressed to do what I wanted</sh>`);
+                      $('#events').append(`<br><p class='event'>I was too depressed to do what I wanted</p>`);
                   }
               }
               else{
-                  $('#events').append(`<br><sh class='event'>I was too young to do what I wanted</sh>`);
+                  $('#events').append(`<br><p class='event'>I was too young to do what I wanted</p>`);
               }
           }
           else{
-              $('#events').append(`<br><sh class='event'>I was too unhealthy to do what I wanted</sh>`);
+              $('#events').append(`<br><p class='event'>I was too unhealthy to do what I wanted</p>`);
           }
           leave();
           update();
@@ -5699,11 +5699,11 @@ $(function () {
                   $("#smokeWithThem").on('click',function(){
                       if (you['age'] > 13){
                           if (who['age']>13){
-                            $("#events").append(`<br><sh class='event'>I asked my ${who['status']}, ${who['full_name']} if they would like to smoke pot with me.</sh>`)
+                            $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']} if they would like to smoke pot with me.</p>`)
                             if (who['relation']>40){
                                 if (who['drugs']==1){
                                     if (who['money'] >= 20){
-                                        $("#events").append(`<br><sh class='event'>They said yes. We smoked pot together.</sh>`)
+                                        $("#events").append(`<br><p class='event'>They said yes. We smoked pot together.</p>`)
                                         who['money']-=20
                                         who['relation'] += randrange(10);
                                         you['happy']+=randrange(5);
@@ -5717,7 +5717,7 @@ $(function () {
                                     }
                                     else{
                                         if (you['money']>=20){
-                                            $("#events").append(`<br><sh class='event'>They said yes. They told me they did not have enough money. So I pitched in <span style='color:green'>$20</span> to buy the weed.</sh>`)
+                                            $("#events").append(`<br><p class='event'>They said yes. They told me they did not have enough money. So I pitched in <span style='color:green'>$20</span> to buy the weed.</p>`)
                                             who['relation'] += randrange(10);
                                             you['money']-=20;
                                             you['happy']+=randrange(5);
@@ -5730,25 +5730,25 @@ $(function () {
                                             leave();
                                         }
                                         else{
-                                            $("#events").append(`<br><sh class='event'>They wanted to smoke weed with me, but neither of us had the money to do so.</sh>`)
+                                            $("#events").append(`<br><p class='event'>They wanted to smoke weed with me, but neither of us had the money to do so.</p>`)
                                         }
                                     }
                                 }
                                 else{
-                                    $("#events").append(`<br><sh class='event'>They said no. They told me that smoking pot was an unhealthy and bad habit.</sh>`)
+                                    $("#events").append(`<br><p class='event'>They said no. They told me that smoking pot was an unhealthy and bad habit.</p>`)
                                     who['relation']-=randrange(10)
                                 }
                             }
                             else{
-                                $("#events").append(`<br><sh class='event'>They said no. They told me they don't feel comfortable enough with me.</sh>`)
+                                $("#events").append(`<br><p class='event'>They said no. They told me they don't feel comfortable enough with me.</p>`)
                             }
                           }
                           else{
-                            $("#events").append(`<br><sh class='event'>${who['status']}, ${who['full_name']} is too young to smoke pot.</sh>`)
+                            $("#events").append(`<br><p class='event'>${who['status']}, ${who['full_name']} is too young to smoke pot.</p>`)
                           }
                       }
                       else{
-                        $("#events").append(`<br><sh class='event'>I am too young to smoke weed with my ${who['status']}, ${who['full_name']}.</sh>`)
+                        $("#events").append(`<br><p class='event'>I am too young to smoke weed with my ${who['status']}, ${who['full_name']}.</p>`)
                       }
                       if (who['relation']>100){who['relation']=100}
                       if (who['relation']<0){who['relation']=0}
@@ -5759,12 +5759,12 @@ $(function () {
                   $("#robSomeone").on('click',function(){
                       if (you['age'] > 6){
                           if (who['age']>6){
-                            $("#events").append(`<br><sh class='event'>I asked my ${who['status']}, ${who['full_name']} if they would help me rob someone.</sh>`)
+                            $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']} if they would help me rob someone.</p>`)
                         if (who['relation'] > randrange(50)){
                             if (who['bad']==1){
                                 amount = randrange(500);
                                 if (randrange(10)!=1){
-                                    $("#events").append(`<br><sh class='event'>They said yes. They watched to make sure nobody saw us and we robbed a person for <span style='color:green'>$${amount}</span>. We split the money 50/50</sh>`)
+                                    $("#events").append(`<br><p class='event'>They said yes. They watched to make sure nobody saw us and we robbed a person for <span style='color:green'>$${amount}</span>. We split the money 50/50</p>`)
                                     who['relation'] += randrange(15);
                                     you['money']+=Math.floor(amount/2)
                                     who['money']+=Math.floor(amount/2)
@@ -5773,9 +5773,9 @@ $(function () {
                                     leave();
                                 }
                                 else{
-                                    $("#events").append(`<br><sh class='event'>They said yes. But sadly we were caught by the police while in the act of robbing the person!</sh>`)
+                                    $("#events").append(`<br><p class='event'>They said yes. But sadly we were caught by the police while in the act of robbing the person!</p>`)
                                     sentence = randrange(10);
-                                    $('#events').append(`<br><sh class='event'>I am going to prison for ${sentence} year/s!</sh>`);
+                                    $('#events').append(`<br><p class='event'>I am going to prison for ${sentence} year/s!</p>`);
                                     you['inPrison']=true;
                                     prisShuf();
                                     prisonInmates.push(who);
@@ -5792,23 +5792,23 @@ $(function () {
                                 }   
                                 }
                                 else{
-                                    $("#events").append(`<br><sh class='event'>They said that robbery is against their morals.</sh>`)
+                                    $("#events").append(`<br><p class='event'>They said that robbery is against their morals.</p>`)
                                     who['relation']-=randrange(10)
                                     leave();
                                 }
                             }
                             else{
-                                $("#events").append(`<br><sh class='event'>My ${who['status']}, ${who['full_name']} did not want to rob someone with me.</sh>`)
+                                $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']} did not want to rob someone with me.</p>`)
                                 leave();
                             }
                           }
                           else{
-                            $("#events").append(`<br><sh class='event'>${who['status']}, ${who['full_name']} is too young to rob someone with me.</sh>`)
+                            $("#events").append(`<br><p class='event'>${who['status']}, ${who['full_name']} is too young to rob someone with me.</p>`)
                             leave();
                           }
                       }
                       else{
-                        $("#events").append(`<br><sh class='event'>I wanted to rob someone with my ${who['status']}, ${who['full_name']}, but I was too young.</sh>`)
+                        $("#events").append(`<br><p class='event'>I wanted to rob someone with my ${who['status']}, ${who['full_name']}, but I was too young.</p>`)
                         leave();
                       }
                       if (who['relation']>100){who['relation']=100}
@@ -5818,26 +5818,26 @@ $(function () {
 
                   $("#pingPong").on('click',function(){
                       if (who['relation'] > randrange(50)){
-                        $("#events").append(`<br><sh class='event'>I played ping pong with my ${who['status']}, ${who['full_name']}.</sh>`)
+                        $("#events").append(`<br><p class='event'>I played ping pong with my ${who['status']}, ${who['full_name']}.</p>`)
                         who['relation'] += randrange(5);
                         you['happy']+=randrange(5);
                         if (who['relation']>100){who['relation']=100}
                       }
                       else{
-                        $("#events").append(`<br><sh class='event'>My ${who['status']}, ${who['full_name']} said they would rather not play ping pong with me.</sh>`)
+                        $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']} said they would rather not play ping pong with me.</p>`)
                       }
                       leave();
                       update();
                   })
                   $("#chess").on('click',function(){
                     if (who['relation'] > randrange(50)){
-                      $("#events").append(`<br><sh class='event'>I played chess with my ${who['status']}, ${who['full_name']}.</sh>`)
+                      $("#events").append(`<br><p class='event'>I played chess with my ${who['status']}, ${who['full_name']}.</p>`)
                       who['relation'] += randrange(5);
                       you['smarts']+=randrange(5);
                       if (who['relation']>100){who['relation']=100}
                     }
                     else{
-                      $("#events").append(`<br><sh class='event'>My ${who['status']}, ${who['full_name']} said they would rather not play chess with me.</sh>`)
+                      $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']} said they would rather not play chess with me.</p>`)
                     }
                     leave();
                     update();
@@ -5847,12 +5847,12 @@ $(function () {
               $(".spreadRumor").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
                   if (confirm(`Are you sure you want to spread a rumor about your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><sh class='event'>I spread a rumor about my ${who['status']}, ${who['full_name']}. I told everyone that they ${choice(rumors)}</sh>`)
+                    $("#events").append(`<br><p class='event'>I spread a rumor about my ${who['status']}, ${who['full_name']}. I told everyone that they ${choice(rumors)}</p>`)
                     who['relation']-=randrange(20);
                     if (randrange(5)==1){
-                      $("#events").append(`<br><sh class='event'>They fought me!</sh>`)
+                      $("#events").append(`<br><p class='event'>They fought me!</p>`)
                       for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><sh class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</sh>`)
+                        $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
                         you['health']-=randrange(10)
                       }
                     }
@@ -5867,12 +5867,12 @@ $(function () {
               $(".insult").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];;
                   if (confirm(`Are you sure you want to insult your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><sh class='event'>I told my ${who['status']}, ${who['full_name']}, that they are ${choice(meanWords)}</sh>`)
+                    $("#events").append(`<br><p class='event'>I told my ${who['status']}, ${who['full_name']}, that they are ${choice(meanWords)}</p>`)
                     who['relation']-=randrange(10);
                     if (randrange(7)==1){
-                      $("#events").append(`<br><sh class='event'>They fought me!</sh>`)
+                      $("#events").append(`<br><p class='event'>They fought me!</p>`)
                       for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><sh class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</sh>`)
+                        $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
                         you['health']-=randrange(10)
                       }
                     }
@@ -5887,15 +5887,15 @@ $(function () {
               $('.murderThem').on('click',function(){
                 who = you['relationships'][Number($(this).attr('id'))];
                 if (confirm(`Are you sure you want to kill your, ${who['status']}, ${who['full_name']}?`)){
-                  $("#events").append(`<br><sh class='event'>I attempted to murder my ${who['age']} year old ${who['status']}, ${who['full_name']}!</sh>`)
+                  $("#events").append(`<br><p class='event'>I attempted to murder my ${who['age']} year old ${who['status']}, ${who['full_name']}!</p>`)
                   if (who['health']>randrange(60) && randrange(3)==1){
-                      $("#events").append(`<br><sh class='event'>They started to beat me up!</sh>`)
+                      $("#events").append(`<br><p class='event'>They started to beat me up!</p>`)
                       you['health']-=randrange(50);
                       if (you['health']<0){you['health']=0};
                       if (randrange(2)==1){
-                          $("#events").append(`<br><sh class='event'>They called the cops!</sh>`)
+                          $("#events").append(`<br><p class='event'>They called the cops!</p>`)
                           let sentenceTime = randrange(30)+5
-                          $('#events').append(`<br><sh class='event'>I am going to prison for ${sentenceTime} year/s for attempted murder!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s for attempted murder!</p>`);
                           sentence = sentenceTime;
                           if (you['career']!='none'){
                               you['salary']-=you['jobSal']
@@ -5914,7 +5914,7 @@ $(function () {
                       }
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>I killed my ${who['status']}, ${who['full_name']}!</sh>`)
+                      $("#events").append(`<br><p class='event'>I killed my ${who['status']}, ${who['full_name']}!</p>`)
                       murders++;
                       if (you['age'] < 18 && you['age'] >= 5){
                         for(z in you['school']['classmates']){
@@ -5928,9 +5928,9 @@ $(function () {
                       if (you['happy']<0){you['happy']=0}
                       you['relationships'].splice(Number($(this).attr('id')),1);
                       if (randrange(2)==1){
-                          $("#events").append(`<br><sh class='event'>The cops found out it was me!</sh>`)
+                          $("#events").append(`<br><p class='event'>The cops found out it was me!</p>`)
                           let sentenceTime = randrange(10)+40
-                          $('#events').append(`<br><sh class='event'>I am going to prison for ${sentenceTime} year/s for murder!</sh>`);
+                          $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s for murder!</p>`);
                           sentence = sentenceTime;
                           if (you['career']!='none'){
                               you['salary']-=you['jobSal']
@@ -5954,22 +5954,22 @@ $(function () {
               $('.doctorsThem').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
                   if (you['money']>=100){
-                      $("#events").append(`<br><sh class='event'>I asked my ${who['status']}, ${who['full_name']}, to come to the doctors with me.</sh>`)
+                      $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']}, to come to the doctors with me.</p>`)
                       you['money']-=100
                       if (who['relation']>randrange(60) || who['status']=='son' || who['status'] == 'daughter'){
-                          $("#events").append(`<br><sh class='event'>They let me take them to the doctors! <span style='color: red;'>-$100</span></sh>`)
+                          $("#events").append(`<br><p class='event'>They let me take them to the doctors! <span style='color: red;'>-$100</span></p>`)
                           who['health']+=randrange(10);
                           if (who['health']>100){who['health']=100};
                           who['relation']+=randrange(10);
                           if (who['relation']>100){who['relation']=100}
                       }
                       else{
-                          $("#events").append(`<br><sh class='event'>They were insulted!</sh>`)
+                          $("#events").append(`<br><p class='event'>They were insulted!</p>`)
                           who['relation']-=randrange(10);
                           if (who['relation']<0){who['relation']=0};
                       }
                   }else{
-                      $("#events").append(`<br><sh class='event'>I don't have the money to take ${who['full_name']} to the doctors.</sh>`)
+                      $("#events").append(`<br><p class='event'>I don't have the money to take ${who['full_name']} to the doctors.</p>`)
                   }
                   leave();
                   update();
@@ -5979,13 +5979,13 @@ $(function () {
                   who = you['relationships'][Number($(this).attr('id'))];
                   if (who['relation']>randrange(80)){
                       if (randrange(3)==1){
-                          $("#events").append(`<br><sh class='event'>I hooked up with my ${who['status']}, ${who['full_name']}.</sh>`)
+                          $("#events").append(`<br><p class='event'>I hooked up with my ${who['status']}, ${who['full_name']}.</p>`)
                           lovers++;
                           who['relation']+=randrange(5);
                           you['happy']+=randrange(5);
                           if (randrange(5)==1){
                               let stdGiven = choice(stds);
-                              $("#events").append(`<br><sh class='event'>I contracted ${stdGiven['name']}!</sh>`)
+                              $("#events").append(`<br><p class='event'>I contracted ${stdGiven['name']}!</p>`)
                               who['relation']-=randrange(20);
                               you['happy']-=randrange(10)
                               you['diseases'].push(stdGiven);
@@ -5994,7 +5994,7 @@ $(function () {
                               for(x in you['relationships']){
                                   whoNow = you['relationships'][x];
                                   if (whoNow['status']=='girlfriend'||whoNow['status']=='boyfriend'||whoNow['status']=='fiance'||whoNow['status']=='wife'||whoNow['status']=='husband'){
-                                      $("#events").append(`<br><sh class='event'>My ${whoNow['status']} found out!</sh>`)
+                                      $("#events").append(`<br><p class='event'>My ${whoNow['status']} found out!</p>`)
                                       whoNow['relation']-=randrange(30);
                                       you['happy']-=randrange(10);
                                   }
@@ -6002,12 +6002,12 @@ $(function () {
                           }
                       }
                       else{
-                          $("#events").append(`<br><sh class='event'>My ${who['status']}, ${who['full_name']}, did not want to hookup with me.</sh>`)
+                          $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']}, did not want to hookup with me.</p>`)
                           who['relation']-=randrange(10);
                       }
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>My ${who['status']}, ${who['full_name']}, did not want to hookup with me.</sh>`)
+                      $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']}, did not want to hookup with me.</p>`)
                       who['relation']-=randrange(10);
                   }
                   leave();
@@ -6039,7 +6039,7 @@ $(function () {
                   you['money']-=Number(amountGive);
                   who['relation']+=randrange(amountGive/randrange(50));
                   if (who['relation']>100){who['relation']=100}
-                  $("#events").append(`<br><sh class='event'>I gave my ${who['status']}, ${who['full_name']}, <span style='color:green;'>$${comify(amountGive)}</span> dollars.</sh>`)
+                  $("#events").append(`<br><p class='event'>I gave my ${who['status']}, ${who['full_name']}, <span style='color:green;'>$${comify(amountGive)}</span> dollars.</p>`)
                   leave();
                   update();
                   var objDiv = document.getElementById("events");
@@ -6048,14 +6048,14 @@ $(function () {
   
               $('.loveMake').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I made love to my ${who['status']}, ${who['full_name']}.</sh>`)
+                  $("#events").append(`<br><p class='event'>I made love to my ${who['status']}, ${who['full_name']}.</p>`)
                   if (randrange(2)==1){
-                      $("#events").append(`<br><sh class='event'>They did not enjoy it!</sh>`)
+                      $("#events").append(`<br><p class='event'>They did not enjoy it!</p>`)
                       who['relation']-=2;
                       if (who['relation']<0){who['relation']=0};
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>They enjoyed it!</sh>`)
+                      $("#events").append(`<br><p class='event'>They enjoyed it!</p>`)
                       who['relation']+=2;
                       if (who['relation']>100){who['relation']=100};
                       who['relation']+=randrange(10);
@@ -6068,15 +6068,15 @@ $(function () {
           
               $('.giveAd').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I gave advice to my ${who['status']}, ${who['full_name']}.</sh>`)
+                  $("#events").append(`<br><p class='event'>I gave advice to my ${who['status']}, ${who['full_name']}.</p>`)
                   if (randrange(3)==1){
-                      $("#events").append(`<br><sh class='event'>They did not like my advice!</sh>`)
+                      $("#events").append(`<br><p class='event'>They did not like my advice!</p>`)
                       who['smarts']-=2;
                       if (who['smarts']<0){who['smarts']=0};
                       who['relation']-=randrange(10);
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>They appreciated the advice!</sh>`)
+                      $("#events").append(`<br><p class='event'>They appreciated the advice!</p>`)
                       who['smarts']+=2;
                       if (who['smarts']>100){who['smarts']=100};
                       who['relation']+=randrange(10);
@@ -6089,20 +6089,20 @@ $(function () {
           
               $(".haveChild").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I asked my ${who['status']}, ${who['full_name']}, to have a child with me</sh>`)
+                  $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']}, to have a child with me</p>`)
                   if (who['relation'] > randrange(100)){
                       if (randrange(3)==1){
-                          $("#events").append(`<br><sh class='event'>They said yes!</sh>`)
+                          $("#events").append(`<br><p class='event'>They said yes!</p>`)
                           childGender = choice(genders);
                           if (childGender=='Male'){babyList = mNames;}
                           else{babyList=fNames};
                           childName = prompt(`Child Name, your child is a ${childGender}`,choice(babyList))
                           if (childName == ''){
                               childName=choice(babyList);
-                              $("#events").append(`<br><sh class='event'>Your ${who['status']} named the child ${childName}</sh>`)
+                              $("#events").append(`<br><p class='event'>Your ${who['status']} named the child ${childName}</p>`)
                           }
                           else{
-                              $("#events").append(`<br><sh class='event'>You named the child ${childName}</sh>`);
+                              $("#events").append(`<br><p class='event'>You named the child ${childName}</p>`);
                           }
                           childName.split(' ').join('');childName+=' ';
                           let childObj = {
@@ -6124,12 +6124,12 @@ $(function () {
                           you['relationships'].push(childObj);
           
                       }else{
-                          $("#events").append(`<br><sh class='event'>They said they aren't sure if its the right time</sh>`)
+                          $("#events").append(`<br><p class='event'>They said they aren't sure if its the right time</p>`)
                           who['relation']-=1;
                       }
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>They said you aren't close enough</sh>`)
+                      $("#events").append(`<br><p class='event'>They said you aren't close enough</p>`)
                       who['relation']-=5;
                   }
                   leave()
@@ -6141,18 +6141,18 @@ $(function () {
               $(".divorce").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
                   if (confirm(`Are you sure you want to divorce your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><sh class='event'>I have divorced my ${who['status']}, ${who['full_name']}.</sh>`)
+                    $("#events").append(`<br><p class='event'>I have divorced my ${who['status']}, ${who['full_name']}.</p>`)
                     who['relation']-=100;
                     who['happy']-=50;
                     if (who['happy']<0){who['happy']=0}
                     who['status']='ex';
                     if (you['money']>who['money']){
                         payThem = Math.floor(you['money']*0.1);
-                        $("#events").append(`<br><sh class='event'>I had to pay them <span style='color:red;'>$${comify(pay)}</span></sh>`)
+                        $("#events").append(`<br><p class='event'>I had to pay them <span style='color:red;'>$${comify(pay)}</span></p>`)
                         you['money']-=payThem
                     }else{
                         payMe = Math.floor(who['money']*0.1);
-                        $("#events").append(`<br><sh class='event'>They had to pay me <span style='color:green;'>$${comify(payMe)}</span></sh>`)
+                        $("#events").append(`<br><p class='event'>They had to pay me <span style='color:green;'>$${comify(payMe)}</span></p>`)
                         you['money']+=payMe
                     }
                     leave();
@@ -6164,7 +6164,7 @@ $(function () {
           
               $(".elope").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I am now married to ${who['full_name']}.</sh>`)
+                  $("#events").append(`<br><p class='event'>I am now married to ${who['full_name']}.</p>`)
                   if (who['gender']=='Male'){who['status']='husband'};
                   if (who['gender']=='Female'){who['status']='wife'};
                   leave();
@@ -6176,7 +6176,7 @@ $(function () {
               $(".callOff").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
                   if (confirm(`Are you sure you want to call of your engagement with your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><sh class='event'>I called off the engagement with ${who['full_name']}.</sh>`)
+                    $("#events").append(`<br><p class='event'>I called off the engagement with ${who['full_name']}.</p>`)
                     who['relation']-=10;
                     if (who['gender']=='Male'){who['status']='boyfriend'};
                     if (who['status']=='Female'){who['status']='girlfriend'};
@@ -6189,7 +6189,7 @@ $(function () {
           
               $(".propose").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I proposed to my ${who['status']}, ${who['full_name']}.</sh>`)
+                  $("#events").append(`<br><p class='event'>I proposed to my ${who['status']}, ${who['full_name']}.</p>`)
                   if (who['relation']>randrange(40)+50){
                       if (randrange(3)==1){
                           who['status']='fiance';
@@ -6197,14 +6197,14 @@ $(function () {
                           you['happy']+=randrange(20);
                           if (you['happy']>100){you['happy']=100};
                           if (who['relation']>100){who['relation']=100};
-                          $("#events").append(`<br><sh class='event'>${who['full_name']} is now my ${who['status']}</sh>`);
+                          $("#events").append(`<br><p class='event'>${who['full_name']} is now my ${who['status']}</p>`);
                       }else{
-                          $("#events").append(`<br><sh class='event'>They said they didn't feel ready!</sh>`)
+                          $("#events").append(`<br><p class='event'>They said they didn't feel ready!</p>`)
                           who['relation']-=5;
                       }
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>They said that you aren't close enough!</sh>`)
+                      $("#events").append(`<br><p class='event'>They said that you aren't close enough!</p>`)
                       who['relation']-=5;
                   }
                   leave();
@@ -6215,7 +6215,7 @@ $(function () {
           
               $('.askOut').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I asked out my ${who['status']}, ${who['full_name']}.</sh>`)
+                  $("#events").append(`<br><p class='event'>I asked out my ${who['status']}, ${who['full_name']}.</p>`)
                   topMax = 10-(who['relation']/10)
                   if (topMax < 2){
                       topMax = 2
@@ -6230,7 +6230,7 @@ $(function () {
                       if (single){
                           if (you['age']>12){
                               if (true){
-                                  $("#events").append(`<br><sh class='event'>They said yes, we are now dating</sh>`)
+                                  $("#events").append(`<br><p class='event'>They said yes, we are now dating</p>`)
                                   lovers++;
                                   if (who['gender']=='Male'){
                                       who['status']='boyfriend';
@@ -6240,17 +6240,17 @@ $(function () {
                                   who['relation']+=10
                               }
                               else{
-                                  $("#events").append(`<br><sh class='event'>I suddenly realized that they are too old for me.</sh>`)
+                                  $("#events").append(`<br><p class='event'>I suddenly realized that they are too old for me.</p>`)
                               }
                           }
                           else{
-                              $("#events").append(`<br><sh class='event'>Then realized I'm too young to date.</sh>`)
+                              $("#events").append(`<br><p class='event'>Then realized I'm too young to date.</p>`)
                           }
                       }else{
-                          $("#events").append(`<br><sh class='event'>I suddenly realized I'm already in a relationship</sh>`);
+                          $("#events").append(`<br><p class='event'>I suddenly realized I'm already in a relationship</p>`);
                       }
                   }else{
-                      $("#events").append(`<br><sh class='event'>They rejected me!</sh>`)
+                      $("#events").append(`<br><p class='event'>They rejected me!</p>`)
                       who['relation']-=5;
                   }
                   if (who['relation']>100){
@@ -6264,7 +6264,7 @@ $(function () {
           
               $('.goOnDate').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I went on a date with my ${who['status']}, ${who['full_name']}.</sh>`)
+                  $("#events").append(`<br><p class='event'>I went on a date with my ${who['status']}, ${who['full_name']}.</p>`)
                   who['relation']+=5;
                   if (who['relation']>100){
                       who['relation']=100;
@@ -6278,7 +6278,7 @@ $(function () {
               $('.disregard').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
                   if (confirm(`Are you sure you want to disregard your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><sh class='event'>I cut out connections with my ${who['status']}, ${who['full_name']}.</sh>`)
+                    $("#events").append(`<br><p class='event'>I cut out connections with my ${who['status']}, ${who['full_name']}.</p>`)
                     you['relationships'].splice(Number($(this).attr('id')),1);
                     if (who['status']=='son'||who['status']=='daughter'){
                         for(x in you['relationships']){
@@ -6298,20 +6298,20 @@ $(function () {
               $('.fight').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
                   if (confirm(`Are you sure you want to fight your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><sh class='event'>I fought my ${who['status']}, ${who['full_name']}.</sh>`)
+                    $("#events").append(`<br><p class='event'>I fought my ${who['status']}, ${who['full_name']}.</p>`)
                     who['relation']-=randrange(20);
                     for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><sh class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</sh>`)
+                        $("#events").append(`<br><p class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</p>`)
                     }
                     for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><sh class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</sh>`)
+                        $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
                     }
                     if (randrange(3)==1){
-                        $("#events").append(`<br><sh class='event'>I won the fight!</sh>`)
+                        $("#events").append(`<br><p class='event'>I won the fight!</p>`)
                         who['health']-=randrange(20);
                         if (who['health']<0){who['health']=0}; 
                     }else{
-                        $("#events").append(`<br><sh class='event'>They won the fight!</sh>`)
+                        $("#events").append(`<br><p class='event'>They won the fight!</p>`)
                         you['health']-=randrange(20);
                         if (you['health']<0){you['health']=0}; 
                     }
@@ -6325,7 +6325,7 @@ $(function () {
           
               $('.compliment').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I complimented my ${who['status']}, ${who['full_name']}. I told them they are ${choice(compliments)}</sh>`)
+                  $("#events").append(`<br><p class='event'>I complimented my ${who['status']}, ${who['full_name']}. I told them they are ${choice(compliments)}</p>`)
                   who['relation']+=randrange(4);
                   who['happy']+=randrange(4);
                   if (who['relation']>100){who['relation']=100}
@@ -6338,7 +6338,7 @@ $(function () {
           
               $('.argue').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I argued with my ${who['status']}, ${who['full_name']}. We argued about ${choice(argueAbout)}</sh>`)
+                  $("#events").append(`<br><p class='event'>I argued with my ${who['status']}, ${who['full_name']}. We argued about ${choice(argueAbout)}</p>`)
                   who['relation']-=5;
                   leave();
                   var objDiv = document.getElementById("events");
@@ -6347,7 +6347,7 @@ $(function () {
           
               $(".breakUp").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $('#events').append(`<br><sh class='event'>I broke up with ${who['full_name']}</sh>`);
+                  $('#events').append(`<br><p class='event'>I broke up with ${who['full_name']}</p>`);
                   you['happy']-=5;
                   leave();
                   who['status']='ex';
@@ -6356,7 +6356,7 @@ $(function () {
           
               $(".moneyAsk").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I asked my ${who['status']}, ${who['full_name']}, for money.</sh>`)
+                  $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']}, for money.</p>`)
                   who['relation']--;
                   if (who['relation'] > randrange(100)){
                       if (who['money'] > 0){
@@ -6364,17 +6364,17 @@ $(function () {
                               amount = randrange(Math.floor(who['money']/50))
                           you['money']+=amount;
                           who['money']-=amount;
-                          $("#events").append(`<br><sh class='event'>They said yes and gave me <span style='color: green; font-weight: bolder;'>$${amount}</span></sh>`)
+                          $("#events").append(`<br><p class='event'>They said yes and gave me <span style='color: green; font-weight: bolder;'>$${amount}</span></p>`)
                           }else{
-                              $("#events").append(`<br><sh class='event'>They said I was too young.</sh>`)
+                              $("#events").append(`<br><p class='event'>They said I was too young.</p>`)
                               who['relation']--;
                           }
                       }
                       else{
-                          $("#events").append(`<br><sh class='event'>They told me they are broke.</sh>`)
+                          $("#events").append(`<br><p class='event'>They told me they are broke.</p>`)
                       }
                   }else{
-                      $("#events").append(`<br><sh class='event'>They said we aren't close enough.</sh>`)
+                      $("#events").append(`<br><p class='event'>They said we aren't close enough.</p>`)
                       who['relation']--;
                   }
                   leave();
@@ -6385,7 +6385,7 @@ $(function () {
           
               $('.hangOut').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><sh class='event'>I hung out with my ${who['status']}, ${who['full_name']}. We ${choice(hungOutDo)}.</sh>`)
+                  $("#events").append(`<br><p class='event'>I hung out with my ${who['status']}, ${who['full_name']}. We ${choice(hungOutDo)}.</p>`)
                   who['relation']+=randrange(10);
                   if (who['relation']>100){
                       who['relation']=100;
@@ -6521,9 +6521,9 @@ $(function () {
           $("#buttonsRn").append(`<button class='hang schoolbox' id='friendThem'>Befriend Them</button><br>`)
       }
         $("#friendThem").on('click',function(){
-            $("#events").append(`<br><sh class='event'>I asked my fellow inmate, ${inmate['full_name']}, if they want to keep in contact after our sentences.</sh>`);
+            $("#events").append(`<br><p class='event'>I asked my fellow inmate, ${inmate['full_name']}, if they want to keep in contact after our sentences.</p>`);
             if (randrange(11-(inmate['relation']/10))==1){
-                $("#events").append(`<br><sh class='event'>They told me they would love to.</sh>`);
+                $("#events").append(`<br><p class='event'>They told me they would love to.</p>`);
                 you['happy']-=randrange(5);
                 inmate['relation']+=randrange(10);
                 inmate.job = 'none';
@@ -6531,7 +6531,7 @@ $(function () {
                 you['relationships'].push(inmate);
             }
             else{
-                $("#events").append(`<br><sh class='event'>They told me they would rather not.</sh>`);
+                $("#events").append(`<br><p class='event'>They told me they would rather not.</p>`);
                 inmate['relation']-=randrange(10);
             }
             if (inmate['relation'] < 0){inmate['relation']=0}
@@ -6540,36 +6540,36 @@ $(function () {
             update();
         })
         $("#murderThem").on('click',function(){
-            $("#events").append(`<br><sh class='event'>I attempted to murder my fellow inmate, ${inmate['full_name']}.</sh>`);
+            $("#events").append(`<br><p class='event'>I attempted to murder my fellow inmate, ${inmate['full_name']}.</p>`);
             inmate['relation'] -= randrange(20);
             if (inmate['relation'] < 0){inmate['relation']=0}
             if (randrange(2)==1){
-              $("#events").append(`<br><sh class='event'>I began to attack them and they attacked me first! They ${choice(attacks)} my ${choice(bodyParts)}</sh>`);
+              $("#events").append(`<br><p class='event'>I began to attack them and they attacked me first! They ${choice(attacks)} my ${choice(bodyParts)}</p>`);
               you['health']-=randrange(20);
             }
             else{
-                $("#events").append(`<br><sh class='event'>I successfully killed them!</sh>`);
+                $("#events").append(`<br><p class='event'>I successfully killed them!</p>`);
                 murders++;
                 prisonInmates.splice(thing, 1)
             }
             if (randrange(3)==1){
               more = randrange(25);
               sentence += more;
-              $("#events").append(`<br><sh class='event'>The guards found out this went down! My sentence has been extended ${more} year/s.</sh>`);
+              $("#events").append(`<br><p class='event'>The guards found out this went down! My sentence has been extended ${more} year/s.</p>`);
             }
             prisonLeave();
             update();
           })
         $("#workForEm").on('click',function(){
             tasks = ['clean their feet','wash their sheets','clean their toilet']
-            $("#events").append(`<br><sh class='event'>I helped my fellow inmate, ${inmate['full_name']}, I helped them ${choice(tasks)}</sh>`);
+            $("#events").append(`<br><p class='event'>I helped my fellow inmate, ${inmate['full_name']}, I helped them ${choice(tasks)}</p>`);
             inmate['relation'] += randrange(10);
             if (randrange(4)==1){
-                $("#events").append(`<br><sh class='event'>They told me I'm now their bitch.</sh>`);
+                $("#events").append(`<br><p class='event'>They told me I'm now their bitch.</p>`);
                 you['happy']-=randrange(5);
             }
             if (randrange(6)==1 && inmate['relation'] < 10){
-                $("#events").append(`<br><sh class='event'>They told me that I am awful at everything and should die.</sh>`);
+                $("#events").append(`<br><p class='event'>They told me that I am awful at everything and should die.</p>`);
                 inmate['relation']-=randrange(20);
             }
             if (inmate['relation'] < 0){inmate['relation']=0}
@@ -6579,17 +6579,17 @@ $(function () {
         })
 
       $("#attack").on('click',function(){
-        $("#events").append(`<br><sh class='event'>I attacked my inmate, ${inmate['full_name']}, I ${choice(attacks)} their ${choice(bodyParts)}</sh>`);
+        $("#events").append(`<br><p class='event'>I attacked my inmate, ${inmate['full_name']}, I ${choice(attacks)} their ${choice(bodyParts)}</p>`);
         inmate['relation'] -= randrange(20);
         if (inmate['relation'] < 0){inmate['relation']=0}
         if (randrange(2)==1){
-          $("#events").append(`<br><sh class='event'>They attacked me! They ${choice(attacks)} my ${choice(bodyParts)}</sh>`);
+          $("#events").append(`<br><p class='event'>They attacked me! They ${choice(attacks)} my ${choice(bodyParts)}</p>`);
           you['health']-=randrange(10);
         }
         if (randrange(3)==1){
           more = randrange(5);
           sentence += more;
-          $("#events").append(`<br><sh class='event'>The guards found out! My prison sentence has been extended ${more} years.</sh>`);
+          $("#events").append(`<br><p class='event'>The guards found out! My prison sentence has been extended ${more} years.</p>`);
         }
         prisonLeave();
         update();
@@ -6597,10 +6597,10 @@ $(function () {
 
       $("#talkWith").on('click',function(){
         if (inmate['relation'] < randrange(50)){
-          $("#events").append(`<br><sh class='event'>My inmate, ${inmate['full_name']}, laughed at me for talking to them!</sh>`);
+          $("#events").append(`<br><p class='event'>My inmate, ${inmate['full_name']}, laughed at me for talking to them!</p>`);
         }
         else{
-          $("#events").append(`<br><sh class='event'>Me and a fellow inmate, ${inmate['full_name']}, talked for a while.</sh>`);
+          $("#events").append(`<br><p class='event'>Me and a fellow inmate, ${inmate['full_name']}, talked for a while.</p>`);
           inmate['relation'] += randrange(10);
           if (inmate['realtion'] > 100){inmate['relation']= 100};
         }
@@ -6636,13 +6636,13 @@ $(function () {
       </center>
     `)
     $("#haircut").on('click',function(){
-        $("#events").append(`<br><sh class='event'>I got a haircut from my fellow inmate named ${choice(prisonInmates)['full_name']}.</sh>`)
+        $("#events").append(`<br><p class='event'>I got a haircut from my fellow inmate named ${choice(prisonInmates)['full_name']}.</p>`)
         if (randrange(3)==1){
-            $("#events").append(`<br><sh class='event'>The haircut was awful and they accidentally cut part of my head.</sh>`)
+            $("#events").append(`<br><p class='event'>The haircut was awful and they accidentally cut part of my head.</p>`)
             you['looks']-=randrange(3)
         }
         else{
-            $("#events").append(`<br><sh class='event'>The haircut was a good cut.</sh>`)
+            $("#events").append(`<br><p class='event'>The haircut was a good cut.</p>`)
             you['looks']+=randrange(3)
         }
         if (you['looks']>100){you['looks']=100}
@@ -6651,11 +6651,11 @@ $(function () {
         update();
       })
     $("#escape").on('click',function(){
-      $("#events").append(`<br><sh class='event'>I attempted to escape prison!</sh>`)
+      $("#events").append(`<br><p class='event'>I attempted to escape prison!</p>`)
       if (randrange(50)==1){
         if (prisEsc == false){
           you['inPrison']=false;
-          $("#events").append(`<br><sh class='event'>I escaped prison!</sh>`);
+          $("#events").append(`<br><p class='event'>I escaped prison!</p>`);
           $("#buttons").show();
           $("#prisonButtons").hide();
           $("#prisonLeave").hide();
@@ -6664,7 +6664,7 @@ $(function () {
         }
       }
       else{
-        $("#events").append(`<br><sh class='event'>I failed to escape</sh>`)
+        $("#events").append(`<br><p class='event'>I failed to escape</p>`)
         prisEsc = true;
         you['happy']-=randrange(5);
         prisonLeave();
@@ -6672,22 +6672,22 @@ $(function () {
       update();
     })
     $("#visit").on('click',function(){
-      $("#events").append(`<br><sh class='event'>I requested for someone I know to visit me in prison!</sh>`)
+      $("#events").append(`<br><p class='event'>I requested for someone I know to visit me in prison!</p>`)
       if (randrange(2)==1){
         if (you['relationships'].length > 0){
           person = choice(you['relationships']);
-          $("#events").append(`<br><sh class='event'>My ${person['status']}, ${person['full_name']}, came to visit me.</sh>`)
+          $("#events").append(`<br><p class='event'>My ${person['status']}, ${person['full_name']}, came to visit me.</p>`)
           person['relation'] += randrange(5);
           if (person['relation'] > 100){person['relation']=100}
           you['happy']+=randrange(5);
         }
         else{
-          $("#events").append(`<br><sh class='event'>Nobody came to visit me.</sh>`)
+          $("#events").append(`<br><p class='event'>Nobody came to visit me.</p>`)
           you['happy']-=randrange(5);
         }
       }
       else{
-        $("#events").append(`<br><sh class='event'>Nobody came to visit me</sh>`)
+        $("#events").append(`<br><p class='event'>Nobody came to visit me</p>`)
         you['happy']-=randrange(5);
       }
       prisonLeave();
@@ -6695,21 +6695,21 @@ $(function () {
     })
     $("#workout").on('click',function(){
       if (you['age'] > 10){
-        $("#events").append(`<br><sh class='event'>I worked out in prison.</sh>`)
+        $("#events").append(`<br><p class='event'>I worked out in prison.</p>`)
         if (prisWork == false){
           you['health']+=randrange(10)
           prisWork = true;
         }
       }
       else{
-        $("#events").append(`<br><sh class='event'>I tried to workout, but I couldn't even pick up the weight seeing as it wasn't intended for ${you['age']} year olds.</sh>`)
+        $("#events").append(`<br><p class='event'>I tried to workout, but I couldn't even pick up the weight seeing as it wasn't intended for ${you['age']} year olds.</p>`)
       }
       prisonLeave()
       update();
     })
     $("#readBook").on('click',function(){
         books = ['Of Mice In Men','The Hunger Games','Flowers For Algernon','Misery']
-        $("#events").append(`<br><sh class='event'>I read a book titled ${choice(books)}.</sh>`)
+        $("#events").append(`<br><p class='event'>I read a book titled ${choice(books)}.</p>`)
         if (prisRead == false){
             you['smarts']+=randrange(5);
             you['happy']+=randrange(5);
@@ -6719,14 +6719,14 @@ $(function () {
         update();
       })
     $("#cry").on('click',function(){
-      $("#events").append(`<br><sh class='event'>I cried in my prison cell.</sh>`)
+      $("#events").append(`<br><p class='event'>I cried in my prison cell.</p>`)
       if (prisCry == false){
         you['happy']+=randrange(5);
         prisCry = true;
       }
       if (randrange(5)==1){
-        $("#events").append(`<br><sh class='event'>Another prisoner caught me!</sh>`)
-        $("#events").append(`<br><sh class='event'>The prisoner attacked me! They ${choice(attacks)} my ${choice(bodyParts)}</sh>`)
+        $("#events").append(`<br><p class='event'>Another prisoner caught me!</p>`)
+        $("#events").append(`<br><p class='event'>The prisoner attacked me! They ${choice(attacks)} my ${choice(bodyParts)}</p>`)
         you['health']-=randrange(10);
       }
       prisonLeave();
@@ -6768,13 +6768,13 @@ $(function () {
           if (you['relationships'][x]['status']=='friend'){
               if (you['relationships'][x]['relation']<20){
                   you['relationships'][x]['status']='acquaintance';
-                  $("#events").append(`<br><sh class='event'>${you['relationships'][x]['full_name']} is no longer my friend!</sh>`)
+                  $("#events").append(`<br><p class='event'>${you['relationships'][x]['full_name']} is no longer my friend!</p>`)
               }
           }
           if (you['relationships'][x]['status']=='acquaintance'){
               if (you['relationships'][x]['relation']>20){
                   you['relationships'][x]['status']='friend';
-                  $("#events").append(`<br><sh class='event'>${you['relationships'][x]['full_name']} is now my friend!</sh>`)
+                  $("#events").append(`<br><p class='event'>${you['relationships'][x]['full_name']} is now my friend!</p>`)
               }
           }
           if (you['inPrison']){
@@ -6785,7 +6785,7 @@ $(function () {
               if(you['relationships'][x]['relation'] < randrange(50)){
                   if (randrange(5)==1){
                       person = you['relationships'][x];
-                      $("#events").append(`<br><sh class='event'>My ${you['relationships'][x]['status']}, ${you['relationships'][x]['full_name']}, broke up with me</sh>`)
+                      $("#events").append(`<br><p class='event'>My ${you['relationships'][x]['status']}, ${you['relationships'][x]['full_name']}, broke up with me</p>`)
                       listOfEvents.push(['Heartbreak',`My ${person['status']}, ${person['full_name']} broke up with me!`,'linear-gradient(blue, darkblue)'])
                       you['relationships'][x]['status']='ex';
                       you['relationships'][x]['relation']-=20;
@@ -6795,18 +6795,18 @@ $(function () {
           }
           you['relationships'][x]['age']++;
           if (you['relationships'][x]['age'] > randrange(40) + 80){
-              $("#events").append(`<br><sh class='event'>My ${you['relationships'][x]['status']} died of old age</sh>`)
+              $("#events").append(`<br><p class='event'>My ${you['relationships'][x]['status']} died of old age</p>`)
               person = you['relationships'][x];
               if (person['status'] == 'mother' || person['status']=='father'|| person['status']=='wife'|| person['status']=='husband'){
                   if (person['relation'] > randrange(80)){
                       if (person['money'] > 0){
                           inherit = randrange(person['money'])
-                          $("#events").append(`<br><sh class='event'>I inherited <span style='color:green'>$${comify(inherit)}</span></sh>`);
+                          $("#events").append(`<br><p class='event'>I inherited <span style='color:green'>$${comify(inherit)}</span></p>`);
                           you['money']+=inherit;
                       }
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>I did not inherit any of the money</sh>`);
+                      $("#events").append(`<br><p class='event'>I did not inherit any of the money</p>`);
                   }
               }
               listOfEvents.push(['Death',`My ${person['status']}, ${person['full_name']} died!`,'linear-gradient(black, gray)'])
@@ -6822,7 +6822,7 @@ $(function () {
       console.log(eventList2);
       $("#events").append(`
           <br><br>
-          <sh class='ageSpot'>Age: <span class='age'>${you['age']}</span></sh>
+          <p class='ageSpot'>Age: <span class='age'>${you['age']}</span></p>
       `)
       if (you['inPrison']==false){
           if (randrange(10)==1){
@@ -6831,7 +6831,7 @@ $(function () {
       }
       for(let x = 0; x<randrange(4); x++){
           eventNow = choice(eventList);
-          $("#events").append(`<br><sh class='event'>${eventNow['text']}</sh>`)
+          $("#events").append(`<br><p class='event'>${eventNow['text']}</p>`)
           you['events'].push({event: {age: you['age'], happened: eventNow}});
           you['health']+=eventNow['health'];
           you['happy']+=eventNow['happy'];
@@ -6850,7 +6850,7 @@ $(function () {
           ++you['prisonYears']
           if (sentence <= 0){
               you['inPrison']=false;
-              $("#events").append(`<br><sh class='event'>I was released from prison</sh>`);
+              $("#events").append(`<br><p class='event'>I was released from prison</p>`);
               listOfEvents.push(['Freedom',`You were released from prison!`,'linear-gradient(#DE745C, #E67D2C)'])
               $("#buttons").show();
               $("#prisonButtons").hide();
@@ -6889,7 +6889,7 @@ $(function () {
           if (randrange(10)==1){
               if (you['inPrison']==false){
                   if (person['relation']<15){
-                      $("#events").append(`<br><sh class='event'>My ${person['status']}, ${person['full_name']}, told me they hate me.</sh>`);
+                      $("#events").append(`<br><p class='event'>My ${person['status']}, ${person['full_name']}, told me they hate me.</p>`);
                       person['relation']-=randrange(5)
                       you['happy']-=1;
                   }
@@ -6899,23 +6899,23 @@ $(function () {
               if (you['inPrison']==false){
                   if (person['relation']<15){
                       you['fights']++;
-                      $("#events").append(`<br><sh class='event'>My ${person['status']}, ${person['full_name']}, fought me.</sh>`);
+                      $("#events").append(`<br><p class='event'>My ${person['status']}, ${person['full_name']}, fought me.</p>`);
                       person['relation']-=randrange(20)
                       if (person['relation']<0){person['relation']=0}
                       for(let x = 0; x<=randrange(3); x++){
-                          $("#events").append(`<br><sh class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</sh>`)
+                          $("#events").append(`<br><p class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</p>`)
                       }
                       for(let x = 0; x<=randrange(3); x++){
-                          $("#events").append(`<br><sh class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</sh>`)
+                          $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
                       }
                       damage = 0
                       if (randrange(3)==1){
-                          $("#events").append(`<br><sh class='event'>I won the fight!</sh>`)
+                          $("#events").append(`<br><p class='event'>I won the fight!</p>`)
                           person['health']-=randrange(20);
                           damage = randrange(5);
                           you['health']-=damage
                       }else{
-                          $("#events").append(`<br><sh class='event'>They won the fight!</sh>`)
+                          $("#events").append(`<br><p class='event'>They won the fight!</p>`)
                           damage = randrange(20)
                           you['health']-=damage;
                           person['health']-=randrange(5);
@@ -6937,7 +6937,7 @@ $(function () {
           if (randrange(10)==1){
               if (you['inPrison']==false){
                   if (person['relation']>20){
-                      $("#events").append(`<br><sh class='event'>My ${person['status']}, ${person['full_name']}, hung out with me.</sh>`);
+                      $("#events").append(`<br><p class='event'>My ${person['status']}, ${person['full_name']}, hung out with me.</p>`);
                       person['relation']+=randrange(5);
                       if (person['relation']>100){
                           person['relation']=100;
@@ -6947,19 +6947,19 @@ $(function () {
               }
           }
           if (randrange(150)==1){
-              $("#events").append(`<br><sh class='event'>My ${person['status']}, ${person['full_name']}, died of ${choice(deaths)}.</sh>`);
+              $("#events").append(`<br><p class='event'>My ${person['status']}, ${person['full_name']}, died of ${choice(deaths)}.</p>`);
               listOfEvents.push(['Death',`My ${person['status']}, ${person['full_name']} died!`,'linear-gradient(black, gray)'])
               you['happy']-=randrange(20);
               if (person['status'] == 'mother' || person['status']=='father'|| person['status']=='wife'|| person['status']=='husband'){
                   if (person['relation'] > randrange(80)){
                       if (person['money'] > 0){
                           inherit = randrange(person['money'])
-                          $("#events").append(`<br><sh class='event'>I inherited <span style='color:green'>$${comify(inherit)}</span></sh>`);
+                          $("#events").append(`<br><p class='event'>I inherited <span style='color:green'>$${comify(inherit)}</span></p>`);
                           you['money']+=inherit;
                       }
                   }
                   else{
-                      $("#events").append(`<br><sh class='event'>I did not inherit any of the money</sh>`);
+                      $("#events").append(`<br><p class='event'>I did not inherit any of the money</p>`);
                   }
               }
               for(i in you['school']['classmates']){
@@ -6972,19 +6972,19 @@ $(function () {
           }else{
               if (person['happy']<=0 || person['health']<=0){
                   if (randrange(3)==1){
-                      $("#events").append(`<br><sh class='event'>My ${person['status']}, ${person['full_name']}, died of health related causes</sh>`);
+                      $("#events").append(`<br><p class='event'>My ${person['status']}, ${person['full_name']}, died of health related causes</p>`);
                       listOfEvents.push(['Death',`My ${person['status']}, ${person['full_name']} died!`,'linear-gradient(black, gray)'])
                       person = you['relationships'][x];
                       if (person['status'] == 'mother' || person['status']=='father'|| person['status']=='wife'|| person['status']=='husband'){
                           if (person['relation'] > randrange(80)){
                               if (person['money'] > 0){
                                   inherit = randrange(person['money'])
-                                  $("#events").append(`<br><sh class='event'>I inherited <span style='color:green'>$${comify(inherit)}</span></sh>`);
+                                  $("#events").append(`<br><p class='event'>I inherited <span style='color:green'>$${comify(inherit)}</span></p>`);
                                   you['money']+=inherit;
                               }
                           }
                           else{
-                              $("#events").append(`<br><sh class='event'>I did not inherit any of the money</sh>`);
+                              $("#events").append(`<br><p class='event'>I did not inherit any of the money</p>`);
                           }
                       }
                       you['relationships'].splice(x, 1);
@@ -7006,7 +7006,7 @@ $(function () {
           if (you['smarts']>100){you['smarts']=100};
           if (you['term']==0){
               you['career']='none';
-              $("#events").append(`<br><sh class='event'>I finished college</sh>`);
+              $("#events").append(`<br><p class='event'>I finished college</p>`);
               listOfEvents.push(['Freedom',`You just got out of college!`,'linear-gradient(#027CD0, #5CA9DE)'])
               you['collegePoints']+=you['pointsCollege'];
           }
@@ -7029,7 +7029,7 @@ $(function () {
               earned = randrange(you['books'][x]['maxMoney'])
               you['money']+=earned;
               you['books'][x]['totalEarned']+=earned;
-              $("#events").append(`<br><sh class='event'>My book "${you['books'][x]['title']}" earned me <span style='color:green'>$${comify(earned)}</span></sh>`);
+              $("#events").append(`<br><p class='event'>My book "${you['books'][x]['title']}" earned me <span style='color:green'>$${comify(earned)}</span></p>`);
           }
       }
   
@@ -7039,7 +7039,7 @@ $(function () {
               earned = randrange(currentSong['maxMoney']);
               currentSong['totalEarned']+=earned;
               you['money']+=earned;
-              $("#events").append(`<br><sh class='event'>My song "${currentSong['title']}" earned me <span style='color:green'>$${comify(earned)}</span></sh>`);
+              $("#events").append(`<br><p class='event'>My song "${currentSong['title']}" earned me <span style='color:green'>$${comify(earned)}</span></p>`);
           }
       }
       if (you['health']<0){you['health']=0};
@@ -7064,7 +7064,7 @@ $(function () {
       if (randrange(100)==1){
           let disease = choice(diseases);
           you['diseases'].push(disease);
-          $("#events").append(`<br><sh class='event'>I just got the ${disease['name']} disease!</sh>`);
+          $("#events").append(`<br><p class='event'>I just got the ${disease['name']} disease!</p>`);
           listOfEvents.push(['Disease!',`You just got the ${disease['name']} disease!`,'linear-gradient(#ff4500, #8b0000)'])
       }
   
@@ -7077,7 +7077,7 @@ $(function () {
                   }
               }
               if (randrange(200)==1){
-                  $("#events").append(`<br><sh class='event'>My ${currentClassmate['status']}, ${currentClassmate['full_name']} died of ${choice(deaths)}!</sh>`);
+                  $("#events").append(`<br><p class='event'>My ${currentClassmate['status']}, ${currentClassmate['full_name']} died of ${choice(deaths)}!</p>`);
                   for(i in you['relationships']){
                       currentRel = you['relationships'][i]
                           if (currentRel['full_name']==currentClassmate['full_name'] && currentRel['age'] == currentClassmate['age'] && currentRel['health'] == currentClassmate['health']){
@@ -7093,7 +7093,7 @@ $(function () {
       for(x in you['diseases']){
           currentDisease = you['diseases'][x];
           if (randrange(currentDisease['chanceAway'])==1){
-              $("#events").append(`<br><sh class='event'>Its a miracle! I was cured from ${currentDisease['name']}</sh>`);
+              $("#events").append(`<br><p class='event'>Its a miracle! I was cured from ${currentDisease['name']}</p>`);
               listOfEvents.push(['Cured!',`You no longer have ${currentDisease['name']}!`,'linear-gradient(#42C0FB, #4AC948)'])
               you['diseases'].splice(x, 1);
           }
@@ -7101,7 +7101,7 @@ $(function () {
   
       for(x in you['diseases']){
           you['health']-=randrange(you['diseases'][x]['healthDown']);
-          $("#events").append(`<br><sh class='event'>I continue to suffer from ${you['diseases'][x]['name']}!</sh>`);
+          $("#events").append(`<br><p class='event'>I continue to suffer from ${you['diseases'][x]['name']}!</p>`);
       }
   
       you['money']+=Math.floor(you['salary'] - (you['salary'] * taxPay));
@@ -7111,7 +7111,7 @@ $(function () {
           you['happy']+=itemNow['happy'];
           you['money']-=you['items'][x]['yearly'];
           if (you['money']<0){
-              $("#events").append(`<br><sh class='event'>I had to sell my house, ${you['items'][x]['name']}</sh>`);
+              $("#events").append(`<br><p class='event'>I had to sell my house, ${you['items'][x]['name']}</p>`);
               you['money']+=Math.floor(you['items'][x]['cost']*0.8);
               for(i in houses){
                   if (houses[i]['name']==you['items'][x]['name']){
@@ -7168,13 +7168,13 @@ $(function () {
                   classmateRn = you['school']['classmates'][x];
                   if (randrange(15)==1){
                       if (classmateRn['relation']>randrange(20)+40){
-                          $("#events").append(`<br><sh class='event'>My classmate ${classmateRn['full_name']} told me they think I'm ${choice(compliments)}!</sh>`);
+                          $("#events").append(`<br><p class='event'>My classmate ${classmateRn['full_name']} told me they think I'm ${choice(compliments)}!</p>`);
                           you['happy']+=randrange(5);
                           classmateRn['relation']+=randrange(10);
                           if (classmateRn['relation']>100){classmateRn['relation']=100}
                       }
                       else if (classmateRn['relation']<randrange(20)){
-                          $("#events").append(`<br><sh class='event'>My classmate ${classmateRn['full_name']} told me they think I'm ${choice(meanWords)}!</sh>`);
+                          $("#events").append(`<br><p class='event'>My classmate ${classmateRn['full_name']} told me they think I'm ${choice(meanWords)}!</p>`);
                           you['happy']-=randrange(5);
                           classmateRn['relation']-=randrange(10);
                           if (classmateRn['relation']<0){classmateRn['relation']=0}
@@ -7189,7 +7189,7 @@ $(function () {
               if (onRn['age'] >= 18){
                   loss=randrange(1000);
                   if ((onRn['money'] - loss) < 0 && onRn['money'] > 0){
-                      $("#events").append(`<br><sh class='event'>My ${onRn['status']}, ${onRn['full_name']}, is in debt</sh>`);
+                      $("#events").append(`<br><p class='event'>My ${onRn['status']}, ${onRn['full_name']}, is in debt</p>`);
                   }
                   onRn['money']-=loss
               }
@@ -7211,20 +7211,20 @@ $(function () {
               if (you['age']==6){
                   thingNow = 'Elementary School'
                   listOfEvents.push(['Elementary School',`You just started elementary school!`,'linear-gradient(#66CD00, #397D02)'])
-                  $("#events").append(`<br><sh class='event'>I now am attending elementary school</sh>`);
+                  $("#events").append(`<br><p class='event'>I now am attending elementary school</p>`);
               }
               if (you['age']==12){
                   thingNow = 'Middle School'
                   listOfEvents.push(['Middle School',`You just started middle school!`,'linear-gradient(#66CD00, #397D02)'])
-                  $("#events").append(`<br><sh class='event'>I now am attending middle school</sh>`);
+                  $("#events").append(`<br><p class='event'>I now am attending middle school</p>`);
               }
               if (you['age']==14){
                   thingNow = 'High School'
                   listOfEvents.push(['High School',`You just started high school!`,'linear-gradient(#66CD00, #397D02)'])
-                  $("#events").append(`<br><sh class='event'>I now am attending high school</sh>`);
+                  $("#events").append(`<br><p class='event'>I now am attending high school</p>`);
               }
               if (you['age']==18){
-                  $("#events").append(`<br><sh class='event'>I finished high school.</sh>`);
+                  $("#events").append(`<br><p class='event'>I finished high school.</p>`);
                   listOfEvents.push(['Freedom!',`You are done with school!!`,'linear-gradient(#027CD0, #5CA9DE)'])
               }
               newSchoolPeople(3,30,thingNow)
@@ -7234,7 +7234,7 @@ $(function () {
           if (you['job']['healthReq'] > you['health']+10 || you['job']['smartsReq'] > you['smarts']+5 || you['job']['looksReq'] > you['looks']+5){
               if (randrange(3)==1){
                   listOfEvents.push(['Fired!',`You just got fired from your job!`,'linear-gradient(#8B4513, #A0522D)'])
-                  $("#events").append(`<br><sh class='event'>I was fired from being a ${you['career']}.</sh>`);
+                  $("#events").append(`<br><p class='event'>I was fired from being a ${you['career']}.</p>`);
                   you['salary']-=you['jobSal']
                   you['career']='none';
                   you['job']={}
@@ -7255,7 +7255,7 @@ $(function () {
       }
       for(x in you['oldAddictions']){
           if (randrange(you['oldAddictions'][x]['relapseChance']) == 1){
-              $("#events").append(`<br><sh class='event'>I fell back into my old habits and am addicted to ${you['oldAddictions'][x]['name']} again.</sh>`);
+              $("#events").append(`<br><p class='event'>I fell back into my old habits and am addicted to ${you['oldAddictions'][x]['name']} again.</p>`);
               listOfEvents.push(['Relapse!',`You are addicted to ${you['oldAddictions'][x]['name']} again.`,'linear-gradient(#8B4513, #A0522D)'])
               you['addictions'].push(you['oldAddictions'][x]);
               you['oldAddictions'].splice(x, 1)
@@ -7267,7 +7267,7 @@ $(function () {
           if (currentRn['career']=='none' && currentRn['age'] >= 18){
               if (randrange(10)==1){
                   currentRn['career']=choice(careers)
-                  $("#events").append(`<br><sh class='event'>My ${currentRn['status']}, ${currentRn['full_name']}, is now a ${currentRn['career']['title']}</sh>`);
+                  $("#events").append(`<br><p class='event'>My ${currentRn['status']}, ${currentRn['full_name']}, is now a ${currentRn['career']['title']}</p>`);
               }
           }
       }
@@ -7276,7 +7276,7 @@ $(function () {
           currentRn = you['relationships'][x];
           if (currentRn['career']!='none'){
               if (randrange(70)==1){
-                  $("#events").append(`<br><sh class='event'>My ${currentRn['status']}, ${currentRn['full_name']}, was fired from being a ${currentRn['career']['title']}</sh>`);
+                  $("#events").append(`<br><p class='event'>My ${currentRn['status']}, ${currentRn['full_name']}, was fired from being a ${currentRn['career']['title']}</p>`);
                   currentRn['career']='none'
               }
           }
@@ -7291,18 +7291,18 @@ $(function () {
               you['smarts']-=randrange(5);
               you['looks']-=randrange(5);
               you['stoned']+=randrange(10)
-              $("#events").append(`<br><sh class='event'>I spent <span style='color:red'>$${costed}</span> on ${addiction['name']} this year.</sh>`);
+              $("#events").append(`<br><p class='event'>I spent <span style='color:red'>$${costed}</span> on ${addiction['name']} this year.</p>`);
           }
           else{
               you['happy']-=randrange(10);
               you['health']-=randrange(3);
               if (you['inPrison'] == true){
-                  $("#events").append(`<br><sh class='event'>I could not get ${addiction['name']} this year because I'm in prison.</sh>`);
+                  $("#events").append(`<br><p class='event'>I could not get ${addiction['name']} this year because I'm in prison.</p>`);
               }
               else{
-                  $("#events").append(`<br><sh class='event'>I could not afford to buy ${addiction['name']} this year.</sh>`);
+                  $("#events").append(`<br><p class='event'>I could not afford to buy ${addiction['name']} this year.</p>`);
               }
-              $("#events").append(`<br><sh class='event'>It is driving me insane.</sh>`);
+              $("#events").append(`<br><p class='event'>It is driving me insane.</p>`);
           }
       }
       for(x in you['payingOff']){
@@ -7310,12 +7310,12 @@ $(function () {
           you['money']-=Math.floor(currentOne['cost']/10);
           currentOne['years']--;
           if (currentOne['years'] == 0){
-              $("#events").append(`<br><sh class='event'>I finished paying off my ${currentOne['name']}</sh>`);
+              $("#events").append(`<br><p class='event'>I finished paying off my ${currentOne['name']}</p>`);
               you['items'].push(currentOne);
               you['payingOff'].splice(x, 1)
           }
           if (you['money'] < 0){
-              $("#events").append(`<br><sh class='event'>I had to take out a bank loan for my ${currentOne['name']}</sh>`);
+              $("#events").append(`<br><p class='event'>I had to take out a bank loan for my ${currentOne['name']}</p>`);
           }
       }
       for (x in you['gems']){
@@ -7346,7 +7346,7 @@ $(function () {
       }
       /*if (you['health'] <= 0 || you['age'] > (randrange(40) + 80)){
         if (randrange(5)==1){
-            $("#events").append(`<br><sh class='event'>I died.</sh>`);
+            $("#events").append(`<br><p class='event'>I died.</p>`);
             die();
         }
         }*/
