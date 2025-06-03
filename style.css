@@ -309,12 +309,13 @@ body {
     padding: 20px;
     border-radius: 10px;
     z-index: 10;
+    transition: opacity 0.3s ease-in-out;
 }
 
-#popup .event-on-dark {
-  color: white;
+#popup h1, #popup p {
+    text-align: center;
 }
 
-#events .event-on-dark {
-  color: black;
+.event-on-dark {
+    color: white !important;
 }
