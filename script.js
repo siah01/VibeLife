@@ -1930,7 +1930,7 @@ $(function () {
                       <center>
                       <div id='${x}popup' class='poper'>
                       <h1 id='head'>${head}</h1>
-                      <p id='text'>${text}</p>
+                      <p id='text' class='event-on-dark'>${text}</p>
                       <br><br>
                       <button class='button option big leaveOk'>Ok</button>
                       <br><br><br><br><br><br><br><br><br><br><br>
