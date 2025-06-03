@@ -311,10 +311,10 @@ body {
     z-index: 10;
 }
 
-.event {
-    color: black; /* default for light backgrounds */
+#popup .event-on-dark {
+  color: white;
 }
 
-.event-on-dark {
-    color: white;
+#events .event-on-dark {
+  color: black;
 }
