@@ -213,8 +213,6 @@ body {
     overflow-y: auto;
   }
 }  
-  }
-}
 
 @media (min-width: 768px) {
   #events {
@@ -250,21 +248,44 @@ body {
         
 }
 
+.stat-container {
+  display: flex;
+  align-items: center;
+  margin: 6px 0;
+  font-size: 0.85rem;
+}
+
+.stat-label {
+  width: 90px;
+  text-align: left;
+}
+
+.stat-bar {
+  flex-grow: 1;
+  background: #444;
+  border-radius: 5px;
+  margin: 0 10px;
+  height: 12px;
+  position: relative;
+}
+
+.stat-fill {
+  height: 100%;
+  background: limegreen;
+  border-radius: 5px;
+  transition: width 0.3s ease-in-out;
+}
+
+.stat-percent {
+  width: 40px;
+  text-align: right;
+}
+
+
 .inf {
     font-size: 0.9rem;
     margin: 0.3rem 0 0.2rem;
     text-align: center;
-}
-
-.healthBar {
-    width: 100%;
-    max-width: 250px;
-    height: 14px;
-    background-color: #ccc; /* light background for the empty part of the bar */
-    border-radius: 10px;
-    margin-bottom: 6px;
-    overflow: hidden;
-    margin: 6px auto;
 }
 
 .healthMiddle {
@@ -344,3 +365,31 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #111;
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.nav-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75rem;
+  color: #00e5ff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-button img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
