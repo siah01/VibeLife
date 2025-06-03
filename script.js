@@ -5539,7 +5539,7 @@ $(function () {
                   <small class='inf'>${person['status']}</small>
                   <p class='inf'>Relation</p>
                       <div class='healthBar'>
-                          <div class='healthMiddle' style='width:${person['relation']}px'>
+                          <div class='healthMiddle' style='width:${person['relation']}%'>
                           </div>
                       </div>
                   </div>
