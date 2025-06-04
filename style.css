@@ -110,6 +110,8 @@ body {
     width: 100%;
     max-width: 600px;
     margin-bottom: 20px;
+    min-height: 85vh; /* 👈 Ensures visual fill */
+    box-sizing: border-box;
 }
 
 .top {
