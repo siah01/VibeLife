@@ -212,15 +212,9 @@ body {
     font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
-  #events {
-    overflow-y: auto;
-  }
-}  
 
 @media (min-width: 768px) {
   #events {
-  height: 50%; /* ✅ You may keep this for mobile */
   }
 
   .buttons {
@@ -415,6 +409,7 @@ body {
 }
 
 #game-screen {
+    height: 100vh;
     padding: 30px 10px;
     display: flex;
     flex-direction: column;
