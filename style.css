@@ -423,4 +423,16 @@ body {
     transition: 0.2s ease all;
 }
 
+.nav-button {
+  background: white;
+  border: 2px solid #555;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: #00e5ff;
+}
 
