@@ -110,7 +110,9 @@ body {
     width: 100%;
     max-width: 600px;
     margin-bottom: 20px;
-    min-height: 85vh; /* 👈 Ensures visual fill */
+    min-height: 75vh;   /* Extend to most of the screen */
+    max-height: 90vh;   /* Prevent it from going too far */
+    overflow-y: auto;   /* Enables scroll if content overflows */
     box-sizing: border-box;
 }
 
