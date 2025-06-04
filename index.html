@@ -60,10 +60,19 @@
             <button id="ageUp" class="button big ageButton">Age</button>
         </div>
 
+        <div class="bottom-options">
+            <button id='activitiesButton' class='button option'>Activities</button>
+            <button id='financeButton' class='button option'>Finance</button>
+            <button id='relationshipsButton' class='button option'>Relationships</button>
+            <button id='careerButton' class='button option'>Career</button>
+        </div>
+        
     <div class="stats" id="stats">
-            <p class='inf'>Health: </p>
-            <div class="healthBar">
-                <div class="healthMiddle" id='health'></div>
+            <div class="stat-container">
+                <span class="stat-label">Health:</span>
+                <div class="healthBar">
+            <div class="healthMiddle" id="health"></div>
+            </div>
             </div>
             <p class='inf'>Happiness: </p>
             <div class="healthBar">
@@ -87,12 +96,7 @@
             </div>
         </div>
 
-        <div class="bottom-options">
-            <button id='activitiesButton' class='button option'>Activities</button>
-            <button id='financeButton' class='button option'>Finance</button>
-            <button id='relationshipsButton' class='button option'>Relationships</button>
-            <button id='careerButton' class='button option'>Career</button>
-        </div>
+
         
         <div id="playAgain">
             <button id='replay' onclick='location.reload();' class='button option'>Play Again</button>
