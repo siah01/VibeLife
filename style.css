@@ -409,7 +409,7 @@ body {
 }
 
 #game-screen {
-    height: 100vh;
+    height: 90vh;
     padding: 30px 10px;
     display: flex;
     flex-direction: column;
