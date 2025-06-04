@@ -214,16 +214,13 @@ body {
 
 @media (max-width: 768px) {
   #events {
-    height: auto;
-    min-height: 150px;
-    max-height: 50vh;
     overflow-y: auto;
   }
 }  
 
 @media (min-width: 768px) {
   #events {
-    height: 200px;
+  height: 50%; /* ✅ You may keep this for mobile */
   }
 
   .buttons {
