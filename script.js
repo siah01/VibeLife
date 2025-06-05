@@ -526,7 +526,7 @@ $(function () {
       }
   ]
   
-  let activities = 
+/*  let activities = 
   [
       {
           "title":'Go for a run',
@@ -785,7 +785,8 @@ $(function () {
           'comedy':0
       }
   ]
-  
+  */
+    
   for(x in activities){
       activities[x]['done']=false
   }
