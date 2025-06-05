@@ -6461,12 +6461,7 @@ $(function () {
               cars[x]['cost'] += Math.floor(cars[x]['cost'] * 0.05)
           }
       }
-      /*if (you['health'] <= 0 || you['age'] > (randrange(40) + 80)){
-        if (randrange(5)==1){
-            $("#events").append(`<br><p class='event'>I died.</p>`);
-            die();
-        }
-        }*/
+  
       if (randrange(5)==1){
           for(let x = 0; x < randrange(5)+2; x++){
               using = choice(houseTypes);
