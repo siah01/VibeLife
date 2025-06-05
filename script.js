@@ -509,7 +509,7 @@ $(function () {
       ]
   }
   
-  choice = listName => listName[Math.floor(Math.random()*listName.length)];
+ // choice = listName => listName[Math.floor(Math.random()*listName.length)];
   randrange = max => Math.floor(Math.random()*max);
   function comify(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
