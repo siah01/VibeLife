@@ -58,7 +58,7 @@ $(function () {
     try {
         const stored = localStorage.getItem('pastLives');
         pastLives = stored ? JSON.parse(stored) : { lives: [] };
-        console.log(stored ? 'was defined' : 'wasnt defined');
+        console.log(stored ? 'was defined' : 'No save data');
     } catch (e) {
         console.error("Error reading from localStorage. Resetting pastLives.", e);
         pastLives = { lives: [] };
