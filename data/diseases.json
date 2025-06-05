@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Cancer",
+    "healthDown": 30,
+    "cureChance": 10,
+    "cost": 500,
+    "chanceAway": 200
+  },
+  {
+    "name": "Ebola",
+    "healthDown": 16,
+    "cureChance": 10,
+    "cost": 100,
+    "chanceAway": 200
+  },
+  {
+    "name": "Flu",
+    "healthDown": 2,
+    "cureChance": 2,
+    "cost": 30,
+    "chanceAway": 3
+  },
+  {
+    "name": "Corona Virus",
+    "healthDown": 6,
+    "cureChance": 4,
+    "cost": 60,
+    "chanceAway": 5
+  },
+  {
+    "name": "Chicken Pox",
+    "healthDown": 3,
+    "cureChance": 3,
+    "cost": 60,
+    "chanceAway": 4
+  },
+  {
+    "name": "Black Death",
+    "healthDown": 20,
+    "cureChance": 60,
+    "cost": 300,
+    "chanceAway": 500
+  },
+  {
+    "name": "Measles",
+    "healthDown": 2,
+    "cureChance": 3,
+    "cost": 50,
+    "chanceAway": 5
+  }
+]

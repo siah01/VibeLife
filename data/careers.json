@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Janitor",
+    "salary": 20000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 0,
+    "looksReq": 0,
+    "prisonYears": 20,
+    "schoolReq": 0
+  },
+  {
+    "title": "Plumber",
+    "salary": 26000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 20,
+    "looksReq": 0,
+    "prisonYears": 20,
+    "schoolReq": 0
+  },
+  {
+    "title": "Fast Food Worker",
+    "salary": 26000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 0,
+    "looksReq": 0,
+    "prisonYears": 10,
+    "schoolReq": 0
+  },
+  {
+    "title": "Dog Trainer",
+    "salary": 30000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 30,
+    "looksReq": 0,
+    "prisonYears": 2,
+    "schoolReq": 0
+  },
+  {
+    "title": "Painter",
+    "salary": 22000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 10,
+    "looksReq": 0,
+    "prisonYears": 20,
+    "schoolReq": 0
+  },
+  {
+    "title": "Model",
+    "salary": 64000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 0,
+    "looksReq": 85,
+    "prisonYears": 50,
+    "schoolReq": 0
+  },
+  {
+    "title": "Librarian",
+    "salary": 19000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 40,
+    "looksReq": 0,
+    "prisonYears": 10,
+    "schoolReq": 0
+  },
+  {
+    "title": "Security Guard",
+    "salary": 32000,
+    "healthReq": 60,
+    "happyReq": 0,
+    "smartsReq": 0,
+    "looksReq": 0,
+    "prisonYears": 0,
+    "schoolReq": 0
+  },
+  {
+    "title": "Doctor",
+    "salary": 240000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 70,
+    "looksReq": 0,
+    "prisonYears": 0,
+    "schoolReq": 1
+  },
+  {
+    "title": "Programmer",
+    "salary": 82000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 50,
+    "looksReq": 0,
+    "prisonYears": 10,
+    "schoolReq": 2
+  },
+  {
+    "title": "PA",
+    "salary": 130000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 40,
+    "looksReq": 0,
+    "prisonYears": 0,
+    "schoolReq": 1
+  },
+  {
+    "title": "Chef",
+    "salary": 65000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 40,
+    "looksReq": 0,
+    "prisonYears": 0,
+    "schoolReq": 3
+  },
+  {
+    "title": "Dentist",
+    "salary": 125000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 60,
+    "looksReq": 0,
+    "prisonYears": 0,
+    "schoolReq": 4
+  },
+  {
+    "title": "Teacher",
+    "salary": 26000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 60,
+    "looksReq": 0,
+    "prisonYears": 0,
+    "schoolReq": 5
+  },
+  {
+    "title": "Gym Instructor",
+    "salary": 32000,
+    "healthReq": 70,
+    "happyReq": 0,
+    "smartsReq": 40,
+    "looksReq": 0,
+    "prisonYears": 0,
+    "schoolReq": 0
+  }
+]

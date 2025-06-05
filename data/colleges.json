@@ -1,0 +1,37 @@
+[
+  {
+    "title": "Medical School",
+    "yearly": 52000,
+    "smartsReq": 70,
+    "points": 1,
+    "years": 9
+  },
+  {
+    "title": "Programming School",
+    "yearly": 6500,
+    "smartsReq": 40,
+    "points": 2,
+    "years": 4
+  },
+  {
+    "title": "Culinary School",
+    "yearly": 18750,
+    "smartsReq": 20,
+    "points": 3,
+    "years": 2
+  },
+  {
+    "title": "Dental School",
+    "yearly": 37000,
+    "smartsReq": 60,
+    "points": 4,
+    "years": 4
+  },
+  {
+    "title": "General College",
+    "yearly": 12000,
+    "smartsReq": 40,
+    "points": 5,
+    "years": 4
+  }
+]
