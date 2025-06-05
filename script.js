@@ -1801,7 +1801,7 @@ $(function () {
             })
       }
   })
-  
+  /*
   $("#financeButton").on('click',function(){
       $("#buttons").hide();
       $("#leaveButton").show();
@@ -1815,7 +1815,33 @@ $(function () {
       $("#finance").append(`<br><button class='button sectionHighlight gray blueCard' id='housesShow'><h1>Houses</h1></button>`)
       $("#finance").append(`<br><button class='button sectionHighlight gray blueCard' id='carShow'><h1>Cars</h1></button>`)
       $("#finance").append(`<br><button class='button sectionHighlight gray blueCard' id='gemShow'><h1>Gems</h1></button>`)
-  
+*/ 
+$("#financeButton").on('click', function () {
+    $("#buttons").hide();
+    $("#leave").show();
+    $("#finance").show().html('');
+    $("#events").hide();
+
+    $("#finance").append(`
+      <div class="finance-section your-assets">
+        <h2>🏠 Your Properties</h2>
+        <button class='button sectionHighlight gray' id='youHouse'><h3>Your Houses</h3></button>
+        <button class='button sectionHighlight gray' id='youCar'><h3>Your Cars</h3></button>
+        <button class='button sectionHighlight gray' id='youGem'><h3>Your Gems</h3></button>
+      </div>
+
+      <div class="finance-section shop-assets">
+        <h2>🛍️ Buy New Assets</h2>
+        <button class='button sectionHighlight gray blueCard' id='housesShow'><h3>Houses</h3></button>
+        <button class='button sectionHighlight gray blueCard' id='carShow'><h3>Cars</h3></button>
+        <button class='button sectionHighlight gray blueCard' id='gemShow'><h3>Gems</h3></button>
+      </div>
+    `);
+});
+
+    
+
+      
       $("#gemShow").on('click',function(){
           $("#finance").html('')
           if (gems.length <= 0){
