@@ -1,0 +1,390 @@
+{
+  "baby": [
+    {
+      "text": "My parents forced me to eat broccoli",
+      "health": 1,
+      "happy": -1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I spilled milk all over the floor when eating.",
+      "health": 0,
+      "happy": 0,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I want to buy a toy very badly.",
+      "health": 0,
+      "happy": 1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "My parents got mad at me for throwing a fit.",
+      "health": 0,
+      "happy": -1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I drew a picture of a turtle.",
+      "health": 0,
+      "happy": 0,
+      "smarts": 2,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I sneezed and milk came out of my nose.",
+      "health": 0,
+      "happy": -1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I went to the park.",
+      "health": 0,
+      "happy": 2,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "Someone told me a funny joke.",
+      "health": 0,
+      "happy": 0,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 1
+    }
+  ],
+  "child": [
+    {
+      "text": "I stubbed my toe while walking.",
+      "health": 0,
+      "happy": -1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "The kids my age are really into Fortnite",
+      "health": 0,
+      "happy": 0,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I fell off the lunch table when standing on it and everyone laughed at me.",
+      "health": -1,
+      "happy": -2,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "Someone told me a funny joke.",
+      "health": 0,
+      "happy": 0,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 1
+    },
+    {
+      "text": "A hobo humiliated me in front of my peers.",
+      "health": 0,
+      "happy": -3,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I spent the day drawing on the walls.",
+      "health": 1,
+      "happy": 2,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    }
+  ],
+  "teen": [
+    {
+      "text": "I found a dollar on the ground",
+      "health": 0,
+      "happy": 1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 1,
+      "comedy": 0
+    },
+    {
+      "text": "I had an acne outbreak when I woke up",
+      "health": 0,
+      "happy": -1,
+      "smarts": 0,
+      "looks": -2,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "My teacher is moving my grade down because they hate me.",
+      "health": 0,
+      "happy": -2,
+      "smarts": -2,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "A kid got kicked out of my class because they were vaping in class.",
+      "health": 0,
+      "happy": 0,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "Someone said they think I look cute.",
+      "health": 0,
+      "happy": 2,
+      "smarts": 0,
+      "looks": 1,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "Someone told me a funny joke.",
+      "health": 0,
+      "happy": 0,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 1
+    }
+  ],
+  "adult": [
+    {
+      "text": "I found a dollar on the ground",
+      "health": 0,
+      "happy": 1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 1,
+      "comedy": 0
+    },
+    {
+      "text": "A homeless man began yelling at me.",
+      "health": 0,
+      "happy": -1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "My friend spammed me with 9000 emails and glitched out my phone.",
+      "health": 0,
+      "happy": -1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I can now see lines on my forehead",
+      "health": 0,
+      "happy": 0,
+      "smarts": 0,
+      "looks": -3,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I spilled water all over my pants and a crowd of people laughed at me.",
+      "health": 0,
+      "happy": -1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I tripped over a rock and fell",
+      "health": -5,
+      "happy": 0,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I saw a celebrity in town.",
+      "health": 2,
+      "happy": 2,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I stepped in a odd green liquid.",
+      "health": 0,
+      "happy": -1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I can see the smile wrinkles on my face.",
+      "health": 0,
+      "happy": 0,
+      "smarts": 0,
+      "looks": -1,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "A random kid spit in my face.",
+      "health": 0,
+      "happy": -3,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "A karen started yelling at me.",
+      "health": 0,
+      "happy": -1,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "I found a 20 dollar bill on the ground.",
+      "health": 0,
+      "happy": 3,
+      "smarts": 0,
+      "looks": 0,
+      "money": 20,
+      "comedy": 0
+    },
+    {
+      "text": "I inhaled some toxic gas on accident.",
+      "health": -3,
+      "happy": 0,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "A car ran into me!",
+      "health": -7,
+      "happy": 0,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "Someone told me a funny joke.",
+      "health": 0,
+      "happy": 0,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 1
+    }
+  ],
+  "prison": [
+    {
+      "text": "A prisoner ripped some of my hair out.",
+      "health": -1,
+      "happy": -3,
+      "smarts": 0,
+      "looks": -2,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "A prisoner beat me up",
+      "health": -4,
+      "happy": -2,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "The guards continually checked my cell today.",
+      "health": 0,
+      "happy": -2,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "One prisoner keeps stealing my food.",
+      "health": -2,
+      "happy": -2,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "A prisoner shanked me!",
+      "health": -10,
+      "happy": -2,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "My cellmate died of a cocaine overdose!",
+      "health": 0,
+      "happy": -2,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    },
+    {
+      "text": "Nobody came to visit me",
+      "health": 0,
+      "happy": -2,
+      "smarts": 0,
+      "looks": 0,
+      "money": 0,
+      "comedy": 0
+    }
+  ]
+}
