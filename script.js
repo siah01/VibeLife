@@ -7388,3 +7388,4 @@ $(function () {
       var objDiv = document.getElementById("events");
       objDiv.scrollTop = objDiv.scrollHeight;
   })
+}
