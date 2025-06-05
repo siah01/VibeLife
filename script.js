@@ -1395,7 +1395,7 @@ $(function () {
         chanceAway: 300
     },
   ]
-  let diseases = 
+/*  let diseases = 
   [
       {
           name: "Cancer",
@@ -1447,7 +1447,7 @@ $(function () {
         chanceAway: 5
       }
   ]
-  
+  */
   let you = 
   {
       age: 0,
