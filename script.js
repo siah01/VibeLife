@@ -1,5 +1,30 @@
 console.log("Script.js is loaded and running");
 
+// --- Button functionality ---
+    const startScreen = document.getElementById('start-screen');
+    const gameScreen = document.getElementById('game-screen');
+    const startButton = document.getElementById('start-button');
+    const loadButton = document.getElementById('load-button');
+    const aboutButton = document.getElementById('about-button');
+
+    startScreen.classList.add('active');
+    gameScreen.classList.remove('active');
+
+    startButton.addEventListener('click', () => {
+        startScreen.classList.remove('active');
+        gameScreen.classList.add('active');
+        console.log('New game started');
+    });
+
+    loadButton.addEventListener('click', () => {
+        alert('Load game feature is under development.');
+    });
+
+    aboutButton.addEventListener('click', () => {
+        alert('VibeLife is a life simulation game created by Vibe Coding.\nMake choices, live with the consequences, and shape your destiny!');
+    });
+// End button functionality
+
 //Start Game  
 function startGame() {
 
@@ -33,30 +58,6 @@ $(function () {
   let genders = ['Male','Female'];
   let pastPeople = [];
 
-// --- Button functionality ---
-    const startScreen = document.getElementById('start-screen');
-    const gameScreen = document.getElementById('game-screen');
-    const startButton = document.getElementById('start-button');
-    const loadButton = document.getElementById('load-button');
-    const aboutButton = document.getElementById('about-button');
-
-    startScreen.classList.add('active');
-    gameScreen.classList.remove('active');
-
-    startButton.addEventListener('click', () => {
-        startScreen.classList.remove('active');
-        gameScreen.classList.add('active');
-        console.log('New game started');
-    });
-
-    loadButton.addEventListener('click', () => {
-        alert('Load game feature is under development.');
-    });
-
-    aboutButton.addEventListener('click', () => {
-        alert('VibeLife is a life simulation game created by Vibe Coding.\nMake choices, live with the consequences, and shape your destiny!');
-    });
-  
   choice = max => { max[Math.floor(Math.random()*max.name)]}
 
   function prisShuf(){
