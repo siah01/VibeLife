@@ -1,5 +1,8 @@
 console.log("Script.js is loaded and running");
 
+//Start Game  
+function startGame() {
+
 $(function () {
     let pastLives;
 
@@ -7384,4 +7387,5 @@ $(function () {
       console.log(you);
       var objDiv = document.getElementById("events");
       objDiv.scrollTop = objDiv.scrollHeight;
+  }
   })
