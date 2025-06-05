@@ -114,23 +114,7 @@ body {
     overflow-y: auto;   /* Enables scroll if content overflows */
     box-sizing: border-box;
 }
-/*
-.top {
-    height: 40px;
-    background: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    font-weight: bold;
-    border-radius: 10px; /* Applies all corners evenly */
-    margin-bottom: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-*/
+
 .top p {
     margin: 0;
     font-size: 1rem;
@@ -244,8 +228,7 @@ body {
     align-items: center;
     width: 100%;
     margin-top: auto;
-    margin-bottom: 20px; /* optional: spacing from bottom edge */
-        
+    margin-bottom: 20px; /* optional: spacing from bottom edge */ 
 }
 
 .stat-container {
@@ -445,6 +428,7 @@ body {
   max-width: 600px; /* Match .events and .game max-width */
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   font-weight: bold;
+  padding: 10px;
 }
 
 #top-bar p {
