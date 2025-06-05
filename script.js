@@ -1020,7 +1020,7 @@ $(function () {
       },
   ]
   
-  let colleges =
+/*  let colleges =
   [
       {
           "title":"Medical School",
@@ -1058,7 +1058,7 @@ $(function () {
           "years":4
       }
   ]
-  
+  */
   let choiceEvents = 
   {
       "baby":[
