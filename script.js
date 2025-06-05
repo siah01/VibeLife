@@ -703,7 +703,7 @@ $(function () {
   }
   $("#activities").hide();
   $("#relationships").hide();
-  $('#leave').hide();
+  $("#leaveButton").hide();
   $("#prisonButtons").hide();
   $("#playAgain").hide();
   $("#careers").hide();
@@ -1539,7 +1539,7 @@ $(function () {
           leave();
           $("#youInfo").show();
           $("#buttons").hide();
-          $("#leave").show();
+          $("#leaveButton").show();
           $("#youInfo").html('');
           $("#events").hide();
           $("#youInfo").append(`
@@ -1804,7 +1804,7 @@ $(function () {
   
   $("#financeButton").on('click',function(){
       $("#buttons").hide();
-      $("#leave").show();
+      $("#leaveButton").show();
       $("#finance").show();
       $("#finance").html('');
       $("#events").hide();
@@ -2147,7 +2147,7 @@ $(function () {
   
   $("#careerButton").on('click',function(){
       $("#buttons").hide();
-      $("#leave").show();
+      $("#leaveButton").show();
       $("#careers").show();
       $("#careers").html('');
       $('#events').hide();
@@ -3104,7 +3104,7 @@ $(function () {
   
   $("#activitiesButton").on('click',function(){
       $("#buttons").hide();
-      $("#leave").show();
+      $("#leaveButton").show();
       $("#activities").show();
       $("#activities").html('');
       $("#events").hide();
@@ -3551,7 +3551,7 @@ $(function () {
                   $("#buttons").hide();
                   $("#activities").hide();
                   $("#events").show();
-                  $("#leave").hide();
+                  $("#leaveButton").hide();
               }
               else{
                   leave()
@@ -3803,7 +3803,7 @@ $(function () {
                       $("#buttons").hide();
                       $("#activities").hide();
                       $("#events").show();
-                      $("#leave").hide();
+                      $("#leaveButton").hide();
                   }
                   else{
                       leave()
@@ -3895,7 +3895,7 @@ $(function () {
                       $("#buttons").hide();
                       $("#activities").hide();
                       $("#events").show();
-                      $("#leave").hide();
+                      $("#leaveButton").hide();
                   }
                   else{
                       leave()
@@ -3988,7 +3988,7 @@ $(function () {
                       $("#buttons").hide();
                       $("#activities").hide();
                       $("#events").show();
-                      $("#leave").hide();
+                      $("#leaveButton").hide();
                   }
                   else{
                       leave()
@@ -4078,7 +4078,7 @@ $(function () {
                       $("#buttons").hide();
                       $("#activities").hide();
                       $("#events").show();
-                      $("#leave").hide();
+                      $("#leaveButton").hide();
                   }
                   else{
                       leave()
@@ -4168,7 +4168,7 @@ $(function () {
                       $("#buttons").hide();
                       $("#activities").hide();
                       $("#events").show();
-                      $("#leave").hide();
+                      $("#leaveButton").hide();
                   }
                   else{
                       leave()
@@ -4213,7 +4213,7 @@ $(function () {
                   $("#buttons").hide();
                   $("#activities").hide();
                   $("#events").show();
-                  $("#leave").hide();
+                  $("#leaveButton").hide();
               }
           }
           else{
@@ -4254,7 +4254,7 @@ $(function () {
                   $("#buttons").hide();
                   $("#activities").hide();
                   $("#events").show();
-                  $("#leave").hide();
+                  $("#leaveButton").hide();
               }
           }
           else{
@@ -4288,7 +4288,7 @@ $(function () {
                   $("#buttons").hide();
                   $("#activities").hide();
                   $("#events").show();
-                  $("#leave").hide();
+                  $("#leaveButton").hide();
               }
           }
           else{
@@ -4322,7 +4322,7 @@ $(function () {
                   $("#buttons").hide();
                   $("#activities").hide();
                   $("#events").show();
-                  $("#leave").hide();
+                  $("#leaveButton").hide();
               }
           }
           else{
@@ -4420,7 +4420,7 @@ $(function () {
                   $("#buttons").hide();
                   $("#activities").hide();
                   $("#events").show();
-                  $("#leave").hide();
+                  $("#leaveButton").hide();
               }
           }
           else{
@@ -4456,7 +4456,7 @@ $(function () {
                   $("#buttons").hide();
                   $("#activities").hide();
                   $("#events").show();
-                  $("#leave").hide();
+                  $("#leaveButton").hide();
               }
           }
           else{
@@ -4493,7 +4493,7 @@ $(function () {
                   $("#buttons").hide();
                   $("#activities").hide();
                   $("#events").show();
-                  $("#leave").hide();
+                  $("#leaveButton").hide();
               }
           }
           else{
@@ -4625,7 +4625,7 @@ $(function () {
   
   $("#relationshipsButton").on('click',function(){
       $("#buttons").hide();
-      $("#leave").show();
+      $("#leaveButton").show();
       $("#relationships").show();
       $("#relationships").html('');
       $("#events").hide();
@@ -4911,7 +4911,7 @@ $(function () {
                                     $("#activities").hide();
                                     $("#relationships").hide();
                                     $("#events").show();
-                                    $("#leave").hide();
+                                    $("#leaveButton").hide();
                                 }   
                                 }
                                 else{
@@ -5030,7 +5030,7 @@ $(function () {
                           $("#buttons").hide();
                           $("#relationships").hide();
                           $("#events").show();
-                          $("#leave").hide();
+                          $("#leaveButton").hide();
                       }
                       else{
                           leave();
@@ -5064,7 +5064,7 @@ $(function () {
                           $("#buttons").hide();
                           $("#relationships").hide();
                           $("#events").show();
-                          $("#leave").hide();
+                          $("#leaveButton").hide();
                       }
                       else{
                           leave();
@@ -5526,7 +5526,7 @@ $(function () {
       $("#buttons").show();
       $("#events").show();
       $("#relationships").hide();
-      $("#leave").hide();
+      $("#leaveButton").hide();
       $("#activities").hide();
       $("#popup").hide();
       $("#careers").hide();
@@ -5540,7 +5540,7 @@ $(function () {
       $("#buttons").hide();
       $("#events").show();
       $("#relationships").hide();
-      $("#leave").hide();
+      $("#leaveButton").hide();
       $("#activities").hide();
       $("#popup").hide();
       $("#careers").hide();
@@ -5552,7 +5552,7 @@ $(function () {
   }
   function dieLeave(){
       $("#relationships").hide();
-      $("#leave").hide();
+      $("#leaveButton").hide();
       $("#activities").hide();
       $("#popup").hide();
       $("#popup2").hide();
