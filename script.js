@@ -3108,7 +3108,7 @@ $(function () {
       $("#activities").show();
       $("#activities").html('');
       $("#events").hide();
-      $("#activities").append(`
+    /*  $("#activities").append(`
           <center>
           <h2>Love</h2>
           <div id='love'>
@@ -3142,8 +3142,46 @@ $(function () {
           <div id='forFun'>
           
           </div>
-          </center>
-      `)
+          </center> 
+      `)*/ 
+        $("#activities").append(`
+  <div class="activity-section love">
+    <h2>❤️ Love</h2>
+    <div id='love'></div>
+  </div>
+  <div class="activity-section assets">
+    <h2>💼 For Assets</h2>
+    <div id='assets'></div>
+  </div>
+  <div class="activity-section social">
+    <h2>👥 Social</h2>
+    <div id='social'></div>
+  </div>
+  <div class="activity-section fame">
+    <h2>🎭 Fame</h2>
+    <div id='fame'></div>
+  </div>
+  <div class="activity-section health">
+    <h2>🧠 Health and Mind</h2>
+    <div id='healthAndMind'></div>
+  </div>
+  <div class="activity-section risk">
+    <h2>💸 No Risk No Reward</h2>
+    <div id='riskMoney'></div>
+  </div>
+  <div class="activity-section crime">
+    <h2>🚔 Crimes</h2>
+    <div id='crime'></div>
+  </div>
+  <div class="activity-section fun">
+    <h2>🎮 For Fun</h2>
+    <div id='forFun'></div>
+  </div>
+`);
+
+
+
+      
       $("#riskMoney").append(`
           <button class='button gamble exp' id='lottery'>Play the lottery<br>Cost: $5</button>
           <br><br>
