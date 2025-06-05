@@ -114,7 +114,7 @@ body {
     overflow-y: auto;   /* Enables scroll if content overflows */
     box-sizing: border-box;
 }
-
+/*
 .top {
     height: 40px;
     background: white;
@@ -130,7 +130,7 @@ body {
     top: 0;
     z-index: 10;
 }
-
+*/
 .top p {
     margin: 0;
     font-size: 1rem;
@@ -438,17 +438,24 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 10px auto;
   padding: 10px;
+  margin: 0 auto 15px auto;
   border-radius: 10px;
   background: white;
-  max-width: 300px;
+  max-width: 90%;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+#top p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
 #leaveButton {
-  margin-top: 8px;
-  font-size: 14px;
+  margin-top: 10px;
   display: none;
+  font-size: 14px;
+  padding: 6px 12px;
+}
 }
 
