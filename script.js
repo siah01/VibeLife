@@ -25,6 +25,32 @@ console.log("Script.js is loaded and running");
     });
 // End button functionality
 
+//Load json data
+Promise.all([
+  fetch('data/activities.json').then(r => r.json()),
+  fetch('data/events.json').then(r => r.json()),
+  fetch('data/careers.json').then(r => r.json()),
+  fetch('data/colleges.json').then(r => r.json()),
+  fetch('data/diseases.json').then(r => r.json()),
+  fetch('data/mNames.json').then(r => r.json()),
+  fetch('data/fNames.json').then(r => r.json()),
+  fetch('data/lNames.json').then(r => r.json())
+]).then(([activitiesData, eventsData, careersData, collegesData, diseasesData, mNamesData, fNamesData, lNamesData]) => {
+  activities = activitiesData.sort(() => Math.random() - 0.5);
+  events = eventsData;
+  careers = careersData.sort(() => Math.random() - 0.5);
+  colleges = collegesData.sort(() => Math.random() - 0.5);
+  diseases = diseasesData;
+  mNames = mNamesData;
+  fNames = fNamesData;
+  lNames = lNamesData;
+  startGame(); // 
+}).catch(err => {
+  console.error("Failed to load one or more data files:", err);
+});//end json data
+
+
+
 //Start Game  
 function startGame() {
 
