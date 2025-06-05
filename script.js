@@ -112,7 +112,7 @@ $(function () {
   }
   
   
-  let events = 
+/*  let events = 
   {
       "baby":
       [
@@ -508,7 +508,8 @@ $(function () {
           }
       ]
   }
-  
+  */
+    
  // choice = listName => listName[Math.floor(Math.random()*listName.length)];
   randrange = max => Math.floor(Math.random()*max);
   function comify(x) {
