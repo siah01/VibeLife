@@ -790,7 +790,7 @@ $(function () {
       activities[x]['done']=false
   }
   
-  let careers = 
+/*  let careers = 
   [
       {
           "title":"Janitor",
@@ -943,7 +943,7 @@ $(function () {
           "schoolReq":0
       },
   ]
-  
+  */
   let houses =
   [
       {
