@@ -487,3 +487,37 @@ body {
   color: green;
 }
 
+.finance-section {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(2px);
+  text-align: center;
+}
+
+.finance-section h2 {
+  font-size: 1.3rem;
+  margin-bottom: 14px;
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  padding-bottom: 5px;
+}
+
+.finance-section h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.finance-section .button {
+  display: block;
+  width: 90%;
+  margin: 10px auto;
+  padding: 12px;
+  font-size: 0.95rem;
+  border-radius: 30px;
+  transition: all 0.2s ease;
+}
+
