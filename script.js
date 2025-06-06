@@ -1818,7 +1818,7 @@ $(function () {
 */ 
 $("#financeButton").on('click', function () {
     $("#buttons").hide();
-    $("#leave").show();
+    $("#leavebutton").show();
     $("#finance").show().html('');
     $("#events").hide();
 
