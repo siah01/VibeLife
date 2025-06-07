@@ -5533,7 +5533,7 @@ $("#financeButton").on('click', function () {
   })
   
   function leave(){
-      $("#bottom-options").show();
+      $(".bottom-options").show();
       $("#events").show();
       $("#relationships").hide();
       $("#leaveButton").hide();
