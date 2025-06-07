@@ -1559,7 +1559,7 @@ $(function () {
                   <p>Lovers: <span style='color:purple;font-weight:bolder;'>${lovers}</span></p>
                   <p>Murders: <span style='color:red;font-weight:bolder;'>${murders}</span></p>
                   <p>Fame: <span style='color:green;font-weight:bolder;'>${you['fame']}</span></p>
-                  <button class='actionButton' id='theme'>Change Theme</button>
+                  <button class='button actionButton' id='theme'>Change Theme</button>
               </div></center>
           `)
   
@@ -1596,7 +1596,7 @@ $(function () {
                   $("#yourInfoAndSuch").append(`
                       <div class='addiction'>
                           <h3>${addictionRn['name']}</h3>
-                          <button class='actionButton rehabDrugs' id='${x}'>Rehab<br><small>Cost: $1,000</small></button>
+                          <button class='button actionButton rehabDrugs' id='${x}'>Rehab<br><small>Cost: $1,000</small></button>
                       </div>
                   `)
               }
@@ -1867,7 +1867,7 @@ $("#finance").on('click', "#gemShow", function() {
                         </div>
                     </div>
                     <br>
-                    <button class='actionButton buyGem' id='${x}'>Buy Gem</button>
+                    <button class='button actionButton buyGem' id='${x}'>Buy Gem</button>
                 </div></center>
                 <br>
             `);
@@ -2717,7 +2717,7 @@ $("#finance").on('click', ".sellCar", function() {
                                   </div>
                               </div>
                               <br>
-                              <button class='actionButton' id='begThem'>Beg them to raise your grade</button>
+                              <button class='button actionButton' id='begThem'>Beg them to raise your grade</button>
                           </center>
                       `)
   
@@ -2816,7 +2816,7 @@ $("#finance").on('click', ".sellCar", function() {
                                   </div>
                               </div>
                               <br>
-                              <button class='actionButton' id='begThem'>Beg them to raise your grade</button>
+                              <button class='button actionButton' id='begThem'>Beg them to raise your grade</button>
                           </center>
                       `)
   
@@ -2892,13 +2892,13 @@ $("#finance").on('click', ".sellCar", function() {
                               </div>
                               <br>
                               <div id='buttonsForFriend'>
-                              <button class='actionButton' id='hangOutWithThem'>Hang Out With Them</button>
+                              <button class='button actionButton' id='hangOutWithThem'>Hang Out With Them</button>
                               <br>
-                              <button class='actionButton' id='copyTheirWork'>Copy off of Them</button>
+                              <button class='button actionButton' id='copyTheirWork'>Copy off of Them</button>
                               <br>
-                              <button class='actionButton' id='complimentThem'>Compliment Them</button>
+                              <button class='button actionButton' id='complimentThem'>Compliment Them</button>
                               <br>
-                              <button class='actionButton' id='fightClassmate'>Fight Them</button>
+                              <button class='button actionButton' id='fightClassmate'>Fight Them</button>
                               </div>
                           </center>
                       `)
@@ -2906,7 +2906,7 @@ $("#finance").on('click', ".sellCar", function() {
                       if (kidRn['status']!='friend'){
                           $('#buttonsForFriend').append(`
                               <br>
-                              <button class='actionButton' id='friendThem'>Befriend Them</button>
+                              <button class='button actionButton' id='friendThem'>Befriend Them</button>
                           `)
                       }
   
@@ -3268,9 +3268,9 @@ $("#finance").on('click', ".sellCar", function() {
               $("#activities").html(`
                 <center><small class='italic'>Video Games</small>
                 <br>
-                <button id='fortnite' class='actionButton'>Play Fortnite</button>
+                <button id='fortnite' class='button actionButton'>Play Fortnite</button>
                 <br>
-                <button id='gta5' class='actionButton'>Play GTA5</button></center>
+                <button id='gta5' class='button actionButton'>Play GTA5</button></center>
               `)
           }
 
@@ -5680,19 +5680,19 @@ $("#finance").on('click', ".sellCar", function() {
     </div>
     <br>
     <div id='buttonsRn'>
-        <button class='actionButton' id='talkWith'>Talk to them</button>
+        <button class='button actionButton' id='talkWith'>Talk to them</button>
         <br>
-        <button class='actionButton' id='attack'>Attack Them</button>
+        <button class='button actionButton' id='attack'>Attack Them</button>
         <br>
-        <button class='actionButton' id='workForEm'>Help Them</button>
+        <button class='button actionButton' id='workForEm'>Help Them</button>
         <br>
-        <button class='actionButton' id='murderThem'>Murder Them</button>
+        <button class='button actionButton' id='murderThem'>Murder Them</button>
         <br>
     </div>
   </center>
       `)
       if (inmate['status'] != 'friend'){
-          $("#buttonsRn").append(`<button class='actionButton' id='friendThem'>Befriend Them</button><br>`)
+          $("#buttonsRn").append(`<button class='button actionButton' id='friendThem'>Befriend Them</button><br>`)
       }
         $("#friendThem").on('click',function(){
             $("#events").append(`<br><p class='event'>I asked my fellow inmate, ${inmate['full_name']}, if they want to keep in contact after our sentences.</p>`);
