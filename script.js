@@ -2223,7 +2223,7 @@ $("#finance").on('click', ".sellCar", function() {
             `);
         }
     }
-}
+
 
           else{
                   $("#careers").append(`
