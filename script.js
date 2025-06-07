@@ -14,10 +14,11 @@ console.log("Script.js is loaded and running");
         startScreen.classList.remove('active');
         gameScreen.classList.add('active');
         console.log('New game started');
+        clearGame();
     });
 
     loadButton.addEventListener('click', () => {
-        alert('Load game feature is under development.');
+        loadGame();
     });
 
     aboutButton.addEventListener('click', () => {
@@ -52,24 +53,21 @@ Promise.all([
 //Start Game  
 function startGame() {
 
-$(function () {
-    let pastLives;
+function saveGame() {
+    localStorage.setItem('vibelifeSave', JSON.stringify(you));
+}
 
-    try {
-        const stored = localStorage.getItem('pastLives');
-        pastLives = stored ? JSON.parse(stored) : { lives: [] };
-        console.log(stored ? 'was defined' : 'No save data');
-    } catch (e) {
-        console.error("Error reading from localStorage. Resetting pastLives.", e);
-        pastLives = { lives: [] };
+function loadGame() {
+    const data = localStorage.getItem('vibelifeSave');
+    if (data) {
+        you = JSON.parse(data);
+        update(); // This redraws the UI with loaded data
     }
+}
 
-    function save(obj) {
-        pastLives.lives.push(obj);
-        localStorage.setItem('pastLives', JSON.stringify(pastLives));
-        console.log('live was saved');
-    }
-    }) 
+function clearGame() {
+    localStorage.removeItem('vibelifeSave');
+}
     // ✅ Keep game-state counters here too
     let lovers = 0;
     let murders = 0;
@@ -6996,5 +6994,7 @@ $("#careers").on('click', '#homework', function() {
       console.log(you);
       var objDiv = document.getElementById("events");
       objDiv.scrollTop = objDiv.scrollHeight;
+
+      saveGame();
   })
 }
