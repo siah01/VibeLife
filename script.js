@@ -1051,6 +1051,10 @@ $(function () {
                   $("#popup").show();
                   $("#buttons").hide();
                   $("#buttons2").show();
+                  $(".age-button-container").hide();
+                  $(".bottom-options").hide();
+                  $("#stats").hide();
+
                   let head = listName[x][0]
                   let text = listName[x][1]
                   let color = listName[x][2]
@@ -1071,21 +1075,17 @@ $(function () {
     </div>
   </center>
 `);
-           /*     $("#popup").append(`
-                  <center>
-                    <div id='${x}popup' class='poper'>
-                      <h1 id='head' class='${headClass}'>${head}</h1>
-                      <p id='text' class='${textClass}'>${text}</p>
-                      <button class='button option big leaveOk'>Ok</button>
-                    </div>
-                  </center>
-                `); */
+
               }
               else{
                   $("#events").hide();
                   $("#popup").show();
                   $("#buttons").hide();
                   $("#buttons2").show();
+                  $(".age-button-container").hide();
+                  $(".bottom-options").hide();
+                  $("#stats").hide();
+
                   itemNow = listName[x];
                   head = itemNow[0];
                   text = itemNow[1];
