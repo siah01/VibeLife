@@ -190,6 +190,7 @@ body {
 #events {
     height: 40vh;              /* adjust as needed */
     max-width: 90vw;           /* prevent overflow on small screens */
+    min-height: 150px;
     height: 50%;
     overflow-y: auto;
     background-color: rgba(255, 255, 255, 0.85);
