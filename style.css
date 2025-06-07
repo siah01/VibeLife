@@ -550,3 +550,7 @@ body {
   transition: all 0.2s ease;
 }
 
+#careers {
+  background: transparent;
+}
+
