@@ -2147,7 +2147,7 @@ $("#finance").on('click', "#youCar", function() {
     } else {
         $("#finance").append(`<center><small class='italic'>Your Cars</small></center>`);
     }
-    for (let x in you['cars']) {
+  /*  for (let x in you['cars']) {
         let itemObj = you['cars'][x];
         $("#finance").append(`
             <br>
@@ -2157,7 +2157,19 @@ $("#finance").on('click', "#youCar", function() {
                 <button class='hang schoolbox sellCar' id='${x}'>Sell Item</button>
             </div></center>
         `);
-    }
+    } */
+    for (let x in you['cars']) {
+    let itemObj = you['cars'][x];
+    $("#finance").append(`
+        <center>
+            <div class='item car-card'>
+                <h3>${itemObj['name']}</h3>
+                <p>Value: <span>$${comify(itemObj['cost'])}</span></p>
+                <button class='button actionButton sellCar' id='${x}'>Sell Item</button>
+            </div>
+        </center>
+    `);
+}
     document.getElementById('finance').scrollTop = 0;
 });
 
