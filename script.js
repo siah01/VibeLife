@@ -2508,7 +2508,7 @@ $(function () {
       })
   })
 
-
+*/
 // Main FINANCE BUTTON: shows the finance dashboard/cards
 $("#financeButton").on('click', function() {
     $("#buttons").hide();
@@ -2528,7 +2528,7 @@ $("#financeButton").on('click', function() {
     $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='housesShow'><h1>Houses</h1></div>`);
     $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='carShow'><h1>Cars</h1></div>`);
     $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='gemShow'><h1>Gems</h1></div>`);
-}); */
+}); 
 
 // --------- DELEGATED EVENTS: Attach once, always work ---------
 
