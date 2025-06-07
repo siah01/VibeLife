@@ -1827,7 +1827,7 @@ $("#financeButton").on('click', function () {
       $("#gemShow").on('click',function(){
           $("#finance").html('')
 if (gems.length <= 0) {
-    $("#finance").append('<center><h1>No Gems Currently For Sale</h1></center>');
+    $("#finance").append(`<center><h1>No Gems Currently For Sale</h1></center>`);
 } else {
     $("#finance").append(`<center><small class='italic'>Gems</small></center>`);
 }
