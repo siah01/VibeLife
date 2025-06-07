@@ -1071,7 +1071,7 @@ $(function () {
     </div>
   </center>
 `);
-                $("#popup").append(`
+           /*     $("#popup").append(`
                   <center>
                     <div id='${x}popup' class='poper'>
                       <h1 id='head' class='${headClass}'>${head}</h1>
@@ -1079,7 +1079,7 @@ $(function () {
                       <button class='button option big leaveOk'>Ok</button>
                     </div>
                   </center>
-                `);
+                `); */
               }
               else{
                   $("#events").hide();
