@@ -2154,7 +2154,7 @@ $("#financeButton").on('click', function () {
               objDiv.scrollTop = objDiv.scrollHeight;
           })
       })
-  })
+//  })
   
   $("#careerButton").on('click',function(){
       $("#buttons").hide();
