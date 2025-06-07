@@ -2164,7 +2164,10 @@ $(function () {
 
  $("#financeButton").on('click',function(){
       $("#buttons").hide();
-      $("#leave").show();
+      $(".bottom-options").hide();
+      $(".age-button-container").hide();
+      $("#stats").hide();
+      $("#leaveButton").show();
       $("#finance").show();
       $("#finance").html('');
       $("#events").hide();
