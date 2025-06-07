@@ -2223,6 +2223,23 @@ $("#finance").on('click', ".sellCar", function() {
             `);
         }
     }
+    // For college options
+$("#careers").on('click', '.collegeOption', function() {
+    let idx = $(this).attr('id').replace('college-', '');
+    // TODO: Add your logic to handle choosing this college.
+    // Example:
+    // enrollInCollege(colleges[idx]);
+    console.log('Chose college:', colleges[idx]);
+});
+
+// For career options
+$("#careers").on('click', '.careerOption', function() {
+    let idx = $(this).attr('id').replace('career-', '');
+    // TODO: Add your logic to handle choosing this career.
+    // Example:
+    // startCareer(careers[idx]);
+    console.log('Chose career:', careers[idx]);
+});
 
 
           else{
