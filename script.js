@@ -2147,17 +2147,7 @@ $("#finance").on('click', "#youCar", function() {
     } else {
         $("#finance").append(`<center><small class='italic'>Your Cars</small></center>`);
     }
-  /*  for (let x in you['cars']) {
-        let itemObj = you['cars'][x];
-        $("#finance").append(`
-            <br>
-            <center><div class='item'>
-                <h3>${itemObj['name']}</h3>
-                <p>Value: <span style='color:green;font-weight:bolder;'>$${comify(itemObj['cost'])}</span></p>
-                <button class='hang schoolbox sellCar' id='${x}'>Sell Item</button>
-            </div></center>
-        `);
-    } */
+
     for (let x in you['cars']) {
     let itemObj = you['cars'][x];
     $("#finance").append(`
