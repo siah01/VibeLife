@@ -111,10 +111,6 @@ $(function () {
   choice = listName => listName[Math.floor(Math.random()*listName.length)];
   randrange = max => Math.floor(Math.random()*max);
   
-/*function comify(x) {
-      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  }
-*/
     function comify(x) {
   if (typeof x !== "number" || isNaN(x)) return "0";
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -1088,7 +1084,6 @@ $(function () {
                   $(".age-button-container").hide();
                   $(".bottom-options").hide();
                   $("#stats").hide();
-
                   itemNow = listName[x];
                   head = itemNow[0];
                   text = itemNow[1];
@@ -1102,7 +1097,7 @@ $(function () {
                   effectsObject2 = {"function":itemNow[8]}
                   $("#popup").css('background', listName[0][2])
                   $("#popup").append(`
-                      <div id='${x}popup' class='poper'>
+                      <div id='${x}popup' class='poper' style='background:${color}'>
                       <center>
                       <h1 id='head'>${head}</h1>
                       <p id='text'>${text}</p>
@@ -1134,7 +1129,7 @@ $(function () {
           $(`#${on}popup`).remove();
           on++;
           if (on < listName.length){
-              $("#popup").css('background',listName[on][2])
+               $("#popup").css('background',listName[on][2])
           }
       })
       $(".buttonClicked").on('click',function(){
@@ -1166,7 +1161,7 @@ $(function () {
           $(`#${on}popup`).remove();
           on++
           if (on < listName.length){
-              $("#popup").css('background',listName[on][2])
+             // $("#popup").css('background',listName[on][2])
           }
   
       })
