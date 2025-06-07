@@ -2185,7 +2185,7 @@ $("#finance").on('click', ".sellCar", function() {
       $("#careers").show();
       $("#careers").html('');
       $('#events').hide();
-      if (you['career']=='none'){
+    /*  if (you['career']=='none'){
           if (you['age']>=18){
               $("#careers").append(`<center><h3>Colleges</h3></center>`)
               for(x in colleges){
@@ -2201,7 +2201,30 @@ $("#finance").on('click', ".sellCar", function() {
                       <center><button class='button hang career' id='${x}'>${careers[x]['title']}<br><small>Pay: ${comify(careers[x]['salary'])}</small></button></center>
                   `)
               }
-          }
+          } */
+      if (you['career'] == 'none') {
+    if (you['age'] >= 18) {
+        $("#careers").append(`<center><h3>Colleges</h3></center>`);
+        for (x in colleges) {
+            $("#careers").append(`
+                <div class="optionCard collegeOption" id="college-${x}" tabindex="0">
+                    <div class="optionTitle">${colleges[x]['title']}</div>
+                    <div class="optionSub">Cost Yearly: <span class="optionMoney">$${comify(colleges[x]['yearly'])}</span></div>
+                </div>
+            `);
+        }
+        $("#careers").append(`<center><h3>Careers</h3></center>`);
+        for (x in careers) {
+            $("#careers").append(`
+                <div class="optionCard careerOption" id="career-${x}" tabindex="0">
+                    <div class="optionTitle">${careers[x]['title']}</div>
+                    <div class="optionSub">Pay: <span class="optionMoney">$${comify(careers[x]['salary'])}</span></div>
+                </div>
+            `);
+        }
+    }
+}
+
           else{
                   $("#careers").append(`
                   <center id='schoolAndStuff'>
