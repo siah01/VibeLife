@@ -2176,7 +2176,7 @@ $("#finance").on('click', ".sellCar", function() {
     document.getElementById("events").scrollTop = document.getElementById("events").scrollHeight;
 });
     
-  $("#careerButton").on('click',function(){
+ /* $("#careerButton").on('click',function(){
       $("#buttons").hide();
       $(".bottom-options").hide();
       $(".age-button-container").hide();
@@ -3156,7 +3156,7 @@ $("#finance").on('click', ".sellCar", function() {
           update();
           var objDiv = document.getElementById("events");
           objDiv.scrollTop = objDiv.scrollHeight;
-      }) */
+      }) 
       // For college options
 $("#careers").on('click', '.collegeOption', function(){
     let idx = $(this).attr('id').replace('college-', '');
@@ -3257,7 +3257,182 @@ $("#careers").on('click', '.careerOption', function(){
 });
 
   })
-  
+  */
+
+$("#careerButton").on('click', function() {
+    $("#buttons").hide();
+    $(".bottom-options").hide();
+    $(".age-button-container").hide();
+    $("#stats").hide();
+    $("#leaveButton").show();
+    $("#careers").show().html('');
+    $("#events").hide();
+
+    if (you['career'] == 'none') {
+        if (you['age'] >= 18) {
+            // Colleges
+            $("#careers").append(`<center><h3>Colleges</h3></center>`);
+            for (let x in colleges) {
+                $("#careers").append(`
+                    <div class="optionCard collegeOption" id="college-${x}" tabindex="0">
+                        <div class="optionTitle">${colleges[x]['title']}</div>
+                        <div class="optionSub">Cost Yearly: <span class="optionMoney">$${comify(colleges[x]['yearly'])}</span></div>
+                    </div>
+                `);
+            }
+            // Careers
+            $("#careers").append(`<center><h3>Careers</h3></center>`);
+            for (let x in careers) {
+                $("#careers").append(`
+                    <div class="optionCard careerOption" id="career-${x}" tabindex="0">
+                        <div class="optionTitle">${careers[x]['title']}</div>
+                        <div class="optionSub">Pay: <span class="optionMoney">$${comify(careers[x]['salary'])}</span></div>
+                    </div>
+                `);
+            }
+        } else {
+            // SCHOOL-AGE UI (fill in as you wish)
+            $("#careers").append(`<center id="schoolAndStuff"></center>`);
+            if (you['age'] <= 5) {
+                $("#schoolAndStuff").append(`<h1>You are too young for a job</h1>`);
+            } else {
+                // SCHOOLING TYPE
+                let schooling = '';
+                if (you['age'] > 5 && you['age'] < 12) schooling = 'elementary school';
+                else if (you['age'] >= 12 && you['age'] < 14) schooling = 'middle school';
+                else if (you['age'] >= 14) schooling = 'high school';
+
+                // POPULARITY AVERAGE
+                let popos = you['school']['classmates'].map(cm => cm['relation']);
+                let avg = popos.length ? Math.floor(popos.reduce((a,b) => a + b, 0) / popos.length) : 0;
+                you['school']['popularity'] = avg;
+
+                // SCHOOL OVERVIEW
+                $("#schoolAndStuff").append(`
+                    <h2 class='school'>School: ${you['school']['name']}</h2>
+                    <div>
+                        Your Popularity
+                        <div class='healthBar'><div class='healthMiddle' style='width: ${you['school']['popularity']}px'></div></div>
+                    </div>
+                    <br>
+                    <div>
+                        Your Grades
+                        <div class='healthBar'><div class='healthMiddle' style='width: ${you['school']['grade']}px'></div></div>
+                    </div>
+                    <br>
+                    <button class='button actionButton' id='tryHard'>Try Harder</button>
+                    <br>
+                    <button class='button actionButton' id='homework'>Do Homework</button>
+                    <br>
+                    <h2>Your Teachers</h2>
+                    <div id='yourTeachers'></div>
+                    <h2>Your Classmates</h2>
+                    <div id='yourClassmates'></div>
+                    <h2>Cliques</h2>
+                    <div id='schoolCliques'></div>
+                `);
+
+                // Teachers
+                for (let x in you['school']['teachers']) {
+                    let teacher = you['school']['teachers'][x];
+                    $("#yourTeachers").append(`
+                        <div class='teacher' id='${x}'>
+                            <h4 class='teachName'>${teacher['full_name']}</h4>
+                            <small>${teacher['status']}</small>
+                            <div>
+                                Relation
+                                <div class='healthBar'><div class='healthMiddle' style='width: ${teacher['relation']}px'></div></div>
+                            </div>
+                        </div>
+                    `);
+                }
+
+                // Classmates
+                for (let x in you['school']['classmates']) {
+                    let kid = you['school']['classmates'][x];
+                    $("#yourClassmates").append(`
+                        <div class='student' id='${x}'>
+                            <h4 class='teachName'>${kid['full_name']}</h4>
+                            <small>${kid['status']}</small>
+                            <div>
+                                Relation
+                                <div class='healthBar'><div class='healthMiddle' style='width: ${kid['relation']}px'></div></div>
+                            </div>
+                        </div>
+                    `);
+                }
+
+                // Cliques
+                for (let x in cliques) {
+                    let clique = cliques[x];
+                    if (clique['members'].length > 0) {
+                        $("#schoolCliques").append(`
+                            <div class='clique' id='${x}'>
+                                <h4 class='teachName'>${clique['name']}</h4>
+                                <small>Members: <span style='font-weight:bolder;color:red'>${clique['members'].length}</span></small>
+                                <div>
+                                    Popularity
+                                    <div class='healthBar'><div class='healthMiddle' style='width:${clique['popularityReq']}px'></div></div>
+                                </div>
+                            </div>
+                        `);
+                    }
+                }
+            }
+        }
+    } else {
+        // Already have a career
+        $("#careers").append(`
+            <center>
+                <h1>You are a ${you['career']}!</h1>
+                <br>
+                <button class='button actionButton quit' id='jobQuit'>Quit being a ${you['career']}</button>
+                <div id='interActive'></div>
+            </center>
+        `);
+        if (you['career'] == 'college student') {
+            // College-specific classmates/teachers
+            $("#interActive").append(`
+                <h2>Your Professors</h2>
+                <div id='teachers'></div>
+                <h2>Your Co-Students</h2>
+                <div id='classmates'></div>
+            `);
+
+            // Professors
+            for (let x in you['school']['teachers']) {
+                let teacher = you['school']['teachers'][x];
+                $("#teachers").append(`
+                    <div class='teacher' id='${x}'>
+                        <h3 class='teachName'>${teacher['full_name']}</h3>
+                        <small>${teacher['status']}</small>
+                        <div>
+                            Relation
+                            <div class='healthBar'><div class='healthMiddle' style='width:${teacher['relation']}px'></div></div>
+                        </div>
+                    </div>
+                `);
+            }
+            // College classmates
+            for (let x in you['school']['classmates']) {
+                let student = you['school']['classmates'][x];
+                $("#classmates").append(`
+                    <div class='student' id='${x}'>
+                        <h3 class='teachName'>${student['full_name']}</h3>
+                        <small>${student['status']}</small>
+                        <div>
+                            Relation
+                            <div class='healthBar'><div class='healthMiddle' style='width:${student['relation']}px'></div></div>
+                        </div>
+                    </div>
+                `);
+            }
+        }
+    }
+});
+
+
+    
   $("#activitiesButton").on('click',function(){
       $("#buttons").hide();
       $(".bottom-options").hide();
