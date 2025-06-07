@@ -1095,7 +1095,7 @@ $(function () {
                   console.log(itemNow[7])
                   effectsObject = {"function":itemNow[7]};
                   effectsObject2 = {"function":itemNow[8]}
-                  $("#popup").css('background', listName[0][2])
+                  $("#popup").css('background', 'rgba(0,0,0,0)') //listName[0][2])
                   $("#popup").append(`
                       <div id='${x}popup' class='poper' style='background:${color}'>
                       <center>
@@ -1129,7 +1129,7 @@ $(function () {
           $(`#${on}popup`).remove();
           on++;
           if (on < listName.length){
-               $("#popup").css('background',listName[on][2])
+               $("#popup").css('background', 'rgba(0,0,0,0)') //listName[on][2])
           }
       })
       $(".buttonClicked").on('click',function(){
