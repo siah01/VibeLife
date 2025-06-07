@@ -1502,6 +1502,7 @@ $(function () {
           $("#fameThing2").hide();
       }
       $(".money").html('$'+comify(you['money']));
+      $(".age").text(you['age']); // Update age in top bar
       if (you['health']<=0){
           you['health']=0
           if (randrange(3)==1){
