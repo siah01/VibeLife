@@ -1062,7 +1062,15 @@ $(function () {
                 let textClass = isDark ? 'event-on-dark' : '';
                 let headClass = isDark ? 'event-on-dark' : '';
 
-                $("#popup").css('background', color);
+                $("#popup").html(`
+  <center>
+    <div id='${x}popup' class='poper' style='background:${color}'>
+      <h1 id='head' class='${headClass}'>${head}</h1>
+      <p id='text' class='${textClass}'>${text}</p>
+      <button class='button option big leaveOk'>Ok</button>
+    </div>
+  </center>
+`);
                 $("#popup").append(`
                   <center>
                     <div id='${x}popup' class='poper'>
