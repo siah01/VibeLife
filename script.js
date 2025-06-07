@@ -1804,10 +1804,9 @@ $(function () {
 
 $("#financeButton").on('click', function () {
     $("#buttons").hide();
-    $("#leaveButton").show();
+    $("#leavebutton").show();
     $("#finance").show().html('');
     $("#events").hide();
-    $(".bottom-options").hide();
 
     $("#finance").append(`
       <div class="finance-section your-assets">
@@ -1823,7 +1822,9 @@ $("#financeButton").on('click', function () {
         <button class='button sectionHighlight gray blueCard' id='carShow'><h3>Cars</h3></button>
         <button class='button sectionHighlight gray blueCard' id='gemShow'><h3>Gems</h3></button>
       </div>
- -
+  //  `);
+// });
+
       $("#gemShow").on('click',function(){
           $("#finance").html('')
  if (gems.length <= 0){
