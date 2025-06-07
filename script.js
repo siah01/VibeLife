@@ -1935,7 +1935,8 @@ $("#financeButton").on('click', function () {
           })
       })
   
-      $("#housesShow").on('click',function(){
+   //   $("#housesShow").on('click',function(){
+        $("#finance").on('click', '#housesShow', function () {
           $("#finance").html('')
           if (houses.length <= 0){
               $("#finance").append('<center><h1>No Houses Currently For Sale</h1></center>')
