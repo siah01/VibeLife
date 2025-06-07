@@ -1824,7 +1824,7 @@ $("#financeButton").on('click', function () {
         <button class='button sectionHighlight gray blueCard' id='carShow'><h3>Cars</h3></button>
         <button class='button sectionHighlight gray blueCard' id='gemShow'><h3>Gems</h3></button>
       </div>
-  //  `);
+    `);
 // });
 
       $("#gemShow").on('click',function(){
