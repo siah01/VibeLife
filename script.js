@@ -1502,7 +1502,7 @@ $(function () {
           $("#fameThing2").hide();
       }
       $(".money").html('$'+comify(you['money']));
-      $("#topbar-age").text(you['age']); // Update age in top bar
+      $("#topbar-age").text(you['age']);
       if (you['health']<=0){
           you['health']=0
           if (randrange(3)==1){
