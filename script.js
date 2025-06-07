@@ -1817,6 +1817,7 @@ $("#financeButton").on('click', function() {
     $("#finance").html('');
     $("#events").hide();
 
+/*     
     // Main cards for assets and shopping
     $("#finance").append(`<center><small class='italic'>Click on a finance card to view/buy assets</small></center>`);
     $("#finance").append(`<br><div class='sectionHighlight gray' id='youHouse'><h1>Your Houses</h1></div>`);
@@ -1826,7 +1827,23 @@ $("#financeButton").on('click', function() {
     $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='carShow'><h1>Cars</h1></div>`);
     $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='gemShow'><h1>Gems</h1></div>`);
 }); 
-
+*/
+        $("#finance").append(`
+      <div class="finance-section your-assets">
+        <h2>🏠 Your Properties</h2>
+        <button class='button sectionHighlight gray' id='youHouse'><h3>Your Houses</h3></button>
+        <button class='button sectionHighlight gray' id='youCar'><h3>Your Cars</h3></button>
+        <button class='button sectionHighlight gray' id='youGem'><h3>Your Gems</h3></button>
+      </div>
+      <div class="finance-section shop-assets">
+        <h2>🛍️ Buy New Assets</h2>
+        <button class='button sectionHighlight gray blueCard' id='housesShow'><h3>Houses</h3></button>
+        <button class='button sectionHighlight gray blueCard' id='carShow'><h3>Cars</h3></button>
+        <button class='button sectionHighlight gray blueCard' id='gemShow'><h3>Gems</h3></button>
+      </div>
+    `);
+});
+    
 // --------- DELEGATED EVENTS: Attach once, always work ---------
 
 // View and buy new gems
