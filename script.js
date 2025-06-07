@@ -1807,6 +1807,7 @@ $("#financeButton").on('click', function () {
     $("#leaveButton").show();
     $("#finance").show().html('');
     $("#events").hide();
+    $(".bottom-options").hide();
 
     $("#finance").append(`
       <div class="finance-section your-assets">
@@ -2154,6 +2155,7 @@ $("#financeButton").on('click', function () {
   
   $("#careerButton").on('click',function(){
       $("#buttons").hide();
+      $(".bottom-options").hide();
       $("#leaveButton").show();
       $("#careers").show();
       $("#careers").html('');
@@ -3111,6 +3113,7 @@ $("#financeButton").on('click', function () {
   
   $("#activitiesButton").on('click',function(){
       $("#buttons").hide();
+      $(".bottom-options").hide();
       $("#leaveButton").show();
       $("#activities").show();
       $("#activities").html('');
@@ -4630,7 +4633,7 @@ $("#financeButton").on('click', function () {
   })
   
   $("#relationshipsButton").on('click',function(){
-      $("#buttons").hide();
+      $("#buttons-options").hide();
       $("#leaveButton").show();
       $("#relationships").show();
       $("#relationships").html('');
