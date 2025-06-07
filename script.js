@@ -1803,7 +1803,7 @@ $(function () {
   })
 
 $("#financeButton").on('click', function () {
-    $("#buttons").hide();
+    $("#buttons-options").hide();
     $("#leavebutton").show();
     $("#finance").show().html('');
     $("#events").hide();
