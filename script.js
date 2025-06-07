@@ -1816,8 +1816,8 @@ $("#financeButton").on('click', function () {
     $("#finance").append(`
       <div class="finance-section your-assets">
         <h2>🏠 Your Properties</h2>
-        <button class='button sectionHighlight gray' id='youHouse'><h3>Your Houses</h3></button>
-        <button class='button sectionHighlight gray' id='youCar'><h3>Your Cars</h3></button>
+        <button class='button sectionHighlight gray' id='youHouse'>Your Houses</button>
+        <button class='button sectionHighlight gray' id='youCar'>Your Cars</button>
         <button class='button sectionHighlight gray' id='youGem'><h3>Your Gems</h3></button>
       </div>
 
