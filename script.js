@@ -1017,7 +1017,7 @@ $(function () {
       $("#popup2").show();
       $("#buttons").hide();
       $("#buttons2").show();
-      $("#popup2").css('background',color)
+    //  $("#popup2").css('background',color)
       $("#popup2").html(`
           <center>
           <div class='poper'>
