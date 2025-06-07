@@ -1803,7 +1803,7 @@ $(function () {
   })
 
 $("#financeButton").on('click', function () {
-    $("#buttons-options").hide();
+    $("#bottom-options").hide();
     $("#leaveButton").show();
     $("#finance").show().html('');
     $("#events").hide();
@@ -4634,7 +4634,7 @@ $("#financeButton").on('click', function () {
   })
   
   $("#relationshipsButton").on('click',function(){
-      $("#buttons-options").hide();
+      $("#bottons-options").hide();
       $("#leaveButton").show();
       $("#relationships").show();
       $("#relationships").html('');
