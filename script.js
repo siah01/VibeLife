@@ -2765,7 +2765,7 @@ $("#finance").on('click', ".sellCar", function() {
                   <center>
                       <h1>You are a ${you['career']}!</h1>
                       <br>
-                      <button class='button actionButton' id='jobQuit'>Quit being a ${you['career']}</button>
+                      <button class='hang quit button actionButton' id='jobQuit'>Quit being a ${you['career']}</button>
                       <div id='interActive'>
                       </div>
                   </center>
