@@ -1805,6 +1805,7 @@ $(function () {
 $("#financeButton").on('click', function () {
     $(".bottom-options").hide();
     $(".age-button-container").hide();
+    $(".stat-container").hide();
     $("#leaveButton").show();
     $("#finance").show().html('');
     $("#events").hide();
@@ -2159,6 +2160,7 @@ $("#financeButton").on('click', function () {
       $("#buttons").hide();
       $(".bottom-options").hide();
       $(".age-button-container").hide();
+      $(".stat-container").hide();
       $("#leaveButton").show();
       $("#careers").show();
       $("#careers").html('');
@@ -3118,6 +3120,7 @@ $("#financeButton").on('click', function () {
       $("#buttons").hide();
       $(".bottom-options").hide();
       $(".age-button-container").hide();
+      $(".stat-container").hide();
       $("#leaveButton").show();
       $("#activities").show();
       $("#activities").html('');
