@@ -1805,7 +1805,7 @@ $(function () {
       }
   })
 
-$("#financeButton").on('click', function () {
+/* $("#financeButton").on('click', function () {
     $(".bottom-options").hide();
     $(".age-button-container").hide();
     $("#stats").hide();
@@ -2160,7 +2160,350 @@ $("#financeButton").on('click', function () {
               objDiv.scrollTop = objDiv.scrollHeight;
           })
       })
-//  })
+//  }) */
+
+ $("#financeButton").on('click',function(){
+      $("#buttons").hide();
+      $("#leave").show();
+      $("#finance").show();
+      $("#finance").html('');
+      $("#events").hide();
+      $("#finance").append(`<center><small class='italic'>Click on a finance card to view/buy assets</small></center>`)
+      $("#finance").append(`<br><div class='sectionHighlight gray' id='youHouse'><h1>Your Houses</h1></div>`)
+      $("#finance").append(`<br><div class='sectionHighlight gray' id='youCar'><h1>Your Cars</h1></div>`)
+      $("#finance").append(`<br><div class='sectionHighlight gray' id='youGem'><h1>Your Gems</h1></div>`)
+      $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='housesShow'><h1>Houses</h1></div>`)
+      $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='carShow'><h1>Cars</h1></div>`)
+      $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='gemShow'><h1>Gems</h1></div>`)
+  
+      $("#gemShow").on('click',function(){
+          $("#finance").html('')
+          if (gems.length <= 0){
+              $("#finance").append('<center><h1>No Gems Currently For Sale</h1></center>')
+          }
+          else{
+              $("#finance").append(`<center><small class='italic'>Gems</small></center>`)
+          }
+          for(x in gems){
+              if (gems[x]['own']==false){
+                  $("#finance").append(`
+                  <center><div class='house'>
+                      <h3>Gem: <span style='color:green;font-weight:bolder;'>${gems[x]['name']}</span></h3>
+                      <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(gems[x]['cost'])}</span></p>
+                      <div>
+                          Beauty
+                          <div class='healthBar'>
+                              <div class='healthMiddle' style='width:${gems[x]['hapEff'] * 100/9}px'>
+                              </div>
+                          </div>
+                      </div>
+                      <br>
+                      <button class='hang schoolbox buyGem' id='${x}'>Buy Gem</button>
+                  </div></center>
+                  <br>
+              `)
+              }
+          }
+          document.getElementById('finance').scrollTop = 0;
+          $(".buyGem").on('click',function(){
+              let gemOn = gems[Number($(this).attr('id'))];
+              if (you['money']>=gemOn['cost']){
+                  you['money']-=gemOn['cost'];
+                  gemOn['own']=true;
+                  gemOn['shined']=false
+                  you['happy'] += gemOn['hapEff']
+                  you['gems'].push(gemOn);
+                  $('#events').append(`<br><sh class='event'>I bought a gem, ${gemOn['name']}!</sh>`);
+              }
+              else{
+                  $('#events').append(`<br><sh class='event'>I could not afford a ${gemOn['name']}!</sh>`);
+              }
+              leave();
+              update();
+          })
+      })
+  
+      $("#youGem").on('click',function(){
+          $("#finance").html('')
+          if (you['gems'].length <= 0){
+              $("#finance").append('<center><h1>You have no gems</h1></center>')
+          }
+          else{
+              $("#finance").append(`<center><small class='italic'>Your Gems</small></center>`)
+          }
+          for(x in you['gems']){
+              let itemObj = you['gems'][x];
+              $("#finance").append(`
+                  <br>
+                  <center><div class='item'>
+                      <h3>${itemObj['name']}</h3>
+                      <p>Value: <span style='color:green;font-weight:bolder;'>$${comify(itemObj['cost'])}</span></p>
+                      <div>
+                          Beauty
+                          <div class='healthBar'>
+                              <div class='healthMiddle' style='width:${itemObj['hapEff'] * 100/9}px'>
+                              </div>
+                          </div>
+                      </div>
+                      <br>
+                      <button class='hang schoolbox sellGem' id='${x}'>Sell Item</button>
+                      <br>
+                      <button class='hang schoolbox shineGem' id='${x}'>Shine your ${itemObj['name']}</button>
+                  </div></center>
+              `)
+          }
+          document.getElementById('finance').scrollTop = 0;
+          $(".sellGem").on('click',function(){
+              let carThis = you['gems'][Number($(this).attr('id'))];
+              $("#events").append(`<br><sh class='event'>I sold my gem, ${carThis['name']}</sh>`);
+              lessBig('Goodbye My Gem!',`You sold your ${carThis['name']}`,'linear-gradient(#659D32, #488214)')
+              you['money']+=Math.floor(carThis['cost']*0.8);
+              carThis['own']=false;
+              you['gems'].splice(Number($(this).attr('id')),1);
+              update();
+              var objDiv = document.getElementById("events");
+              objDiv.scrollTop = objDiv.scrollHeight;
+          })
+          $(".shineGem").on('click',function(){
+              let carThis = you['gems'][Number($(this).attr('id'))];
+              $("#events").append(`<br><sh class='event'>I shined my gem, ${carThis['name']}</sh>`);
+              if (carThis['shined'] == false){
+                  carThis['cost']+=Math.floor(carThis['cost']*0.05);
+                  carThis['shined']=true;
+              }
+              leave()
+              update();
+              var objDiv = document.getElementById("events");
+              objDiv.scrollTop = objDiv.scrollHeight;
+          })
+      })
+  
+      $("#housesShow").on('click',function(){
+          $("#finance").html('')
+          if (houses.length <= 0){
+              $("#finance").append('<center><h1>No Houses Currently For Sale</h1></center>')
+          }
+          else{
+              $("#finance").append(`<center><small class='italic'>Houses</small></center>`)
+          }
+          for(x in houses){
+              if (houses[x]['own']==false){
+                  $("#finance").append(`
+                  <center><div class='house'>
+                      <h3>House: <span style='color:green;font-weight:bolder;'>${houses[x]['name']}</span></h3>
+                      <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['cost'])}</span></p>
+                      <p>Yearly: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['yearly'])}</span></p>
+                      <button class='hang schoolbox buy' id='${x}'>Buy House</button>
+                      <br>
+                      <button class='hang schoolbox payOverTime' id='${x}'>Pay over time</button>
+                  </div></center>
+                  <br>
+              `)
+              }
+          }
+          document.getElementById('finance').scrollTop = 0;
+      
+          $(".buy").on('click',function(){
+              let houseOn = houses[Number($(this).attr('id'))];
+              if (you['money']>=houseOn['cost']){
+                  you['money']-=houseOn['cost'];
+                  houseOn['own']=true;
+                  houseOn['fixedUp']=false;
+                  you['items'].push(houseOn);
+                  houses.splice(Number($(this).attr('id')), 1)
+                  $('#events').append(`<br><sh class='event'>I bought a house, ${houseOn['name']}!</sh>`);
+              }
+              else{
+                  $('#events').append(`<br><sh class='event'>I cannot afford that house!</sh>`);
+              }
+              leave();
+              update();
+              var objDiv = document.getElementById("events");
+              objDiv.scrollTop = objDiv.scrollHeight;
+          })
+          $(".payOverTime").on('click',function(){
+              let currentHouse = houses[Number($(this).attr('id'))];
+              if (you['salary'] > (currentHouse['cost']/10) || you['money'] > (currentHouse['cost']/2)){
+                  $("#events").append(`<br><sh class='event'>I am now paying off a house throughout the course of ten years.</sh>`);
+                  currentHouse['years']=10;
+                  currentHouse['fixedUp']=false;
+                  you['payingOff'].push(currentHouse);
+                  houses.splice(Number($(this).attr('id')), 1)
+                  leave();
+              }
+              else{
+                  $("#events").append(`<br><sh class='event'>I couldn't afford to buy a certain house in the course of 10 years with my current salary.</sh>`);
+                  leave()
+              }
+              update();
+          })
+      })
+  
+      $("#carShow").on('click',function(){
+          $("#finance").html('')
+          if (cars.length <= 0){
+              $("#finance").append('<center><h1>No Cars Currently For Sale</h1></center>')
+          }
+          else{
+              $("#finance").append(`<center><small class='italic'>Cars</small></center>`)
+          }
+          for(x in cars){
+              if (cars[x]['own']==false){
+                  $("#finance").append(`
+                  <center><div class='house blueCar'>
+                      <h3>Car: <span style='color:green;font-weight:bolder;'>${cars[x]['name']}</span></h3>
+                      <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(cars[x]['cost'])}</span></p>
+                      <p>Gas Cost Yearly: <span style='color:green;font-weight:bolder;'>$${comify(3000)}</span></p>
+                      <button class='hang schoolbox buyCar' id='${x}'>Buy Car</button>
+                  </div></center>
+                  <br>
+              `)
+              }
+          }
+          document.getElementById('finance').scrollTop = 0;
+          $(".buyCar").on('click',function(){
+              if (you['driversLicense'] == true){
+                  let carOn = cars[Number($(this).attr('id'))];
+                  if (you['money']>=carOn['cost']){
+                      you['money']-=carOn['cost'];
+                      carOn['own']=true;
+                      carOn['fixedUp']=false;
+                      you['cars'].push(carOn);
+                      you['happy'] += carOn['hapEff'];
+                      cars.splice(Number($(this).attr('id')), 1)
+                      $('#events').append(`<br><sh class='event'>I bought a car, ${carOn['name']}!</sh>`);
+                  }
+                  else{
+                      $('#events').append(`<br><sh class='event'>I cannot afford that car!</sh>`);
+                  }
+              }
+              else{
+                  $('#events').append(`<br><sh class='event'>I was gonna buy a car but I need a drivers license!</sh>`);
+              }
+              leave();
+              update();
+              var objDiv = document.getElementById("events");
+              objDiv.scrollTop = objDiv.scrollHeight;
+          })
+      })
+  
+      $("#youCar").on('click',function(){
+          $("#finance").html('')
+          if (you['cars'].length <= 0){
+              $("#finance").append('<center><h1>You have no cars</h1></center>')
+          }
+          else{
+              $("#finance").append(`<center><small class='italic'>Your Cars</small></center>`)
+          }
+          for(x in you['cars']){
+              let itemObj = you['cars'][x];
+              $("#finance").append(`
+                  <br>
+                  <center><div class='item'>
+                      <h3>${itemObj['name']}</h3>
+                      <p>Value: <span style='color:green;font-weight:bolder;'>$${comify(itemObj['cost'])}</span></p>
+                      <button class='hang schoolbox sellCar' id='${x}'>Sell Item</button>
+                  </div></center>
+              `)
+          }
+          $(".sellCar").on('click',function(){
+              let carThis = you['cars'][Number($(this).attr('id'))];
+              $("#events").append(`<br><sh class='event'>I sold my car, ${carThis['name']}</sh>`);
+              lessBig('Goodbye My Car!',`You sold your car`,'linear-gradient(#659D32, #488214)')
+              you['money']+=Math.floor(carThis['cost']*0.8);
+              carThis['own']=false;
+              carThis['fixedUp']=false;
+              you['cars'].splice(Number($(this).attr('id')),1);
+              update();
+              var objDiv = document.getElementById("events");
+              objDiv.scrollTop = objDiv.scrollHeight;
+          })
+      })
+  
+      $("#youHouse").on('click',function(){
+          $("#finance").html('');
+          if (you['items'].length <= 0){
+              $("#finance").append('<center><h1>You have no houses</h1></center>')
+          }
+          else{
+              $("#finance").append(`<center><small class='italic'>Your Houses</small></center>`)
+          }
+          for(x in you['items']){
+              let itemObj = you['items'][x];
+              $("#finance").append(`
+                  <br>
+                  <center><div class='item'>
+                      <h3>${itemObj['name']}</h3>
+                      <p>Value: <span style='color:green;font-weight:bolder;'>$${comify(itemObj['cost'])}</span></p>
+                      <button class='hang schoolbox sell' id='${x}'>Sell Item</button>
+                      <br>
+                      <button class='hang schoolbox fixUp' id='${x}'>Fix Up Item</button>
+                      <br>
+                      <button class='hang schoolbox partyHouse' id='${x}'>Throw a Party</button>
+                  </div></center>
+              `)
+          }
+          document.getElementById('finance').scrollTop = 0;
+          $(".sell").on('click',function(){
+              let houseThis = you['items'][Number($(this).attr('id'))];
+              $("#events").append(`<br><sh class='event'>I sold my house, ${houseThis['name']}</sh>`);
+              lessBig('Goodbye My House!',`You sold your house`,'linear-gradient(#659D32, #488214)')
+              you['money']+=Math.floor(houseThis['cost']*0.8);
+              houseThis['own']=false;
+              houseThis['fixedUp']=false;
+              you['items'].splice(Number($(this).attr('id')),1);
+              update();
+              var objDiv = document.getElementById("events");
+              objDiv.scrollTop = objDiv.scrollHeight;
+          })
+
+          $(".partyHouse").on('click',function(){
+            let houseThis = you['items'][Number($(this).attr('id'))];
+            $("#events").append(`<br><sh class='event'>I arranged a party at my <span style='color: green'>$${comify(houseThis['cost'])}</span> dollar ${houseThis['name']}.</sh>`);
+            if (you['relationships'].length > 0){
+                let ppl = [];
+                for(x in you['relationships']){
+                    newP = you['relationships'][x];
+                    if (randrange(2)==1){
+                        ppl.push(newP);
+                    }
+                }
+                sentRn = ''
+                for(x in ppl){
+                    sentRn += `My ${ppl[x]['status']}, ${ppl[x]['full_name']}, came to the party. `
+                }
+                $("#events").append(`<br><sh class='event'>${sentRn}</sh>`);
+                you['stoned']+=randrange(3);
+                you['happy']+=randrange(3);
+                for(x in ppl){
+                    ppl[x]['relation']+=randrange(5);
+                    if (ppl[x]['relation']>100){ppl[x]['relation']=100}
+                }
+            }
+            else{
+                $("#events").append(`<br><sh class='event'>Sadly I had to cancel plans because I did not know anyone to invite.</sh>`);
+            }
+            leave();
+            update();
+            var objDiv = document.getElementById("events");
+            objDiv.scrollTop = objDiv.scrollHeight;
+        })
+      
+          $(".fixUp").on('click',function(){
+              let houseThis = you['items'][Number($(this).attr('id'))];
+              $("#events").append(`<br><sh class='event'>I fixed up my house, ${houseThis['name']}</sh>`);
+              if (houseThis['fixedUp'] == false){
+                  houseThis['cost']+=Math.floor(houseThis['cost']*0.1)
+                  houseThis['fixedUp']=true
+              }
+              you['happy']-=randrange(3)
+              leave();
+              update();
+              var objDiv = document.getElementById("events");
+              objDiv.scrollTop = objDiv.scrollHeight;
+          })
+      })
+  })
   
   $("#careerButton").on('click',function(){
       $("#buttons").hide();
