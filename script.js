@@ -1831,6 +1831,66 @@ $("#financeButton").on('click', function () {
         <button class='button sectionHighlight gray blueCard' id='gemShow'><h3>Gems</h3></button>
       </div>  
     `);
+    $("#housesShow").on('click',function(){
+          $("#finance").html('')
+          if (houses.length <= 0){
+              $("#finance").append('<center><h1>No Houses Currently For Sale</h1></center>')
+          }
+          else{
+              $("#finance").append(`<center><small class='italic'>Houses</small></center>`)
+          }
+          for(x in houses){
+              if (houses[x]['own']==false){
+                  $("#finance").append(`
+                  <center><div class='house'>
+                      <h3>House: <span style='color:green;font-weight:bolder;'>${houses[x]['name']}</span></h3>
+                      <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['cost'])}</span></p>
+                      <p>Yearly: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['yearly'])}</span></p>
+                      <button class='button hang schoolbox buy' id='${x}'>Buy House</button>
+                      <br>
+                      <button class='button hang schoolbox payOverTime' id='${x}'>Pay over time</button>
+                  </div></center>
+                  <br>
+              `)
+              }
+          }
+          document.getElementById('finance').scrollTop = 0;
+      
+          $(".buy").on('click',function(){
+              let houseOn = houses[Number($(this).attr('id'))];
+              if (you['money']>=houseOn['cost']){
+                  you['money']-=houseOn['cost'];
+                  houseOn['own']=true;
+                  houseOn['fixedUp']=false;
+                  you['items'].push(houseOn);
+                  houses.splice(Number($(this).attr('id')), 1)
+                  $('#events').append(`<br><p class='event'>I bought a house, ${houseOn['name']}!</p>`);
+              }
+              else{
+                  $('#events').append(`<br><p class='event'>I cannot afford that house!</p>`);
+              }
+              leave();
+              update();
+              var objDiv = document.getElementById("events");
+              objDiv.scrollTop = objDiv.scrollHeight;
+          })
+          $(".payOverTime").on('click',function(){
+              let currentHouse = houses[Number($(this).attr('id'))];
+              if (you['salary'] > (currentHouse['cost']/10) || you['money'] > (currentHouse['cost']/2)){
+                  $("#events").append(`<br><p class='event'>I am now paying off a house throughout the course of ten years.</p>`);
+                  currentHouse['years']=10;
+                  currentHouse['fixedUp']=false;
+                  you['payingOff'].push(currentHouse);
+                  houses.splice(Number($(this).attr('id')), 1)
+                  leave();
+              }
+              else{
+                  $("#events").append(`<br><p class='event'>I couldn't afford to buy a certain house in the course of 10 years with my current salary.</p>`);
+                  leave()
+              }
+              update();
+          })
+      })
  });
 
       $("#gemShow").on('click',function(){
@@ -1935,67 +1995,7 @@ $("#financeButton").on('click', function () {
           })
       })
   
-   //   $("#housesShow").on('click',function(){
-        $("#finance").on('click', '#housesShow', function () {
-          $("#finance").html('')
-          if (houses.length <= 0){
-              $("#finance").append('<center><h1>No Houses Currently For Sale</h1></center>')
-          }
-          else{
-              $("#finance").append(`<center><small class='italic'>Houses</small></center>`)
-          }
-          for(x in houses){
-              if (houses[x]['own']==false){
-                  $("#finance").append(`
-                  <center><div class='house'>
-                      <h3>House: <span style='color:green;font-weight:bolder;'>${houses[x]['name']}</span></h3>
-                      <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['cost'])}</span></p>
-                      <p>Yearly: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['yearly'])}</span></p>
-                      <button class='button hang schoolbox buy' id='${x}'>Buy House</button>
-                      <br>
-                      <button class='button hang schoolbox payOverTime' id='${x}'>Pay over time</button>
-                  </div></center>
-                  <br>
-              `)
-              }
-          }
-          document.getElementById('finance').scrollTop = 0;
-      
-          $(".buy").on('click',function(){
-              let houseOn = houses[Number($(this).attr('id'))];
-              if (you['money']>=houseOn['cost']){
-                  you['money']-=houseOn['cost'];
-                  houseOn['own']=true;
-                  houseOn['fixedUp']=false;
-                  you['items'].push(houseOn);
-                  houses.splice(Number($(this).attr('id')), 1)
-                  $('#events').append(`<br><p class='event'>I bought a house, ${houseOn['name']}!</p>`);
-              }
-              else{
-                  $('#events').append(`<br><p class='event'>I cannot afford that house!</p>`);
-              }
-              leave();
-              update();
-              var objDiv = document.getElementById("events");
-              objDiv.scrollTop = objDiv.scrollHeight;
-          })
-          $(".payOverTime").on('click',function(){
-              let currentHouse = houses[Number($(this).attr('id'))];
-              if (you['salary'] > (currentHouse['cost']/10) || you['money'] > (currentHouse['cost']/2)){
-                  $("#events").append(`<br><p class='event'>I am now paying off a house throughout the course of ten years.</p>`);
-                  currentHouse['years']=10;
-                  currentHouse['fixedUp']=false;
-                  you['payingOff'].push(currentHouse);
-                  houses.splice(Number($(this).attr('id')), 1)
-                  leave();
-              }
-              else{
-                  $("#events").append(`<br><p class='event'>I couldn't afford to buy a certain house in the course of 10 years with my current salary.</p>`);
-                  leave()
-              }
-              update();
-          })
-      })
+          
   
       $("#carShow").on('click',function(){
           $("#finance").html('')
