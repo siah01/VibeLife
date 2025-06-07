@@ -3061,7 +3061,7 @@ $("#finance").on('click', ".sellCar", function() {
               objDiv.scrollTop = objDiv.scrollHeight;
           })
       }
-      $(".college").on('click',function(){
+      $(".college").on('click','.collegeOption', function(){
           let collegeNow = colleges[Number($(this).attr('id'))];
           if (you['collegePoints'] == 0){
               if (you['smarts']>collegeNow['smartsReq']){
@@ -3085,7 +3085,7 @@ $("#finance").on('click', ".sellCar", function() {
           objDiv.scrollTop = objDiv.scrollHeight;
       })
   
-      $(".career").on('click',function(){
+      $(".career").on('click', '.careerOption', function(){
           let careerNow = careers[Number($(this).attr('id'))];
           if (you['age'] >= 18){
               if (you['career']=='none'){
