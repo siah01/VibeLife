@@ -1017,6 +1017,9 @@ $(function () {
       $("#popup2").show();
       $("#buttons").hide();
       $("#buttons2").show();
+      $(".age-button-container").hide();
+      $(".bottom-options").hide();
+      $("#stats").hide();
     //  $("#popup2").css('background',color)
       $("#popup2").html(`
           <center>
