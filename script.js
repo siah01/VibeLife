@@ -1559,7 +1559,7 @@ $(function () {
                   <p>Lovers: <span style='color:purple;font-weight:bolder;'>${lovers}</span></p>
                   <p>Murders: <span style='color:red;font-weight:bolder;'>${murders}</span></p>
                   <p>Fame: <span style='color:green;font-weight:bolder;'>${you['fame']}</span></p>
-                  <button class='hang schoolbox' id='theme'>Change Theme</button>
+                  <button class='actionButton' id='theme'>Change Theme</button>
               </div></center>
           `)
   
@@ -1596,7 +1596,7 @@ $(function () {
                   $("#yourInfoAndSuch").append(`
                       <div class='addiction'>
                           <h3>${addictionRn['name']}</h3>
-                          <button class='hang schoolbox rehabDrugs' id='${x}'>Rehab<br><small>Cost: $1,000</small></button>
+                          <button class='actionButton rehabDrugs' id='${x}'>Rehab<br><small>Cost: $1,000</small></button>
                       </div>
                   `)
               }
@@ -1867,7 +1867,7 @@ $("#finance").on('click', "#gemShow", function() {
                         </div>
                     </div>
                     <br>
-                    <button class='hang schoolbox buyGem' id='${x}'>Buy Gem</button>
+                    <button class='actionButton buyGem' id='${x}'>Buy Gem</button>
                 </div></center>
                 <br>
             `);
@@ -1915,9 +1915,9 @@ $("#finance").on('click', "#youGem", function() {
                     </div>
                 </div>
                 <br>
-                <button class='hang schoolbox sellGem' id='${x}'>Sell Item</button>
+                <button class=''button actionButton sellGem' id='${x}'>Sell Item</button>
                 <br>
-                <button class='hang schoolbox shineGem' id='${x}'>Shine your ${itemObj['name']}</button>
+                <button class=''button actionButton shineGem' id='${x}'>Shine your ${itemObj['name']}</button>
             </div></center>
         `);
     }
@@ -1964,9 +1964,9 @@ $("#finance").on('click', "#housesShow", function() {
                     <h3>House: <span style='color:green;font-weight:bolder;'>${houses[x]['name']}</span></h3>
                     <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['cost'])}</span></p>
                     <p>Yearly: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['yearly'])}</span></p>
-                    <button class='hang schoolbox buy' id='${x}'>Buy House</button>
+                    <button class=''button actionButton buy' id='${x}'>Buy House</button>
                     <br>
-                    <button class='hang schoolbox payOverTime' id='${x}'>Pay over time</button>
+                    <button class=''button actionButton payOverTime' id='${x}'>Pay over time</button>
                 </div></center>
                 <br>
             `);
@@ -2107,7 +2107,7 @@ $("#finance").on('click', "#carShow", function() {
                     <h3>Car: <span style='color:green;font-weight:bolder;'>${cars[x]['name']}</span></h3>
                     <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(cars[x]['cost'])}</span></p>
                     <p>Gas Cost Yearly: <span style='color:green;font-weight:bolder;'>$${comify(3000)}</span></p>
-                    <button class='button hang schoolbox buyCar' id='${x}'>Buy Car</button>
+                    <button class=''button actionButton buyCar' id='${x}'>Buy Car</button>
                 </div></center>
                 <br>
             `);
@@ -2175,11 +2175,6 @@ $("#finance").on('click', ".sellCar", function() {
     update();
     document.getElementById("events").scrollTop = document.getElementById("events").scrollHeight;
 });
-
-
-
-
-
     
   $("#careerButton").on('click',function(){
       $("#buttons").hide();
@@ -2256,9 +2251,9 @@ $("#finance").on('click', ".sellCar", function() {
                       </div>
                   </div>
                   <br>
-                  <button class='button hang schoolbox' id='tryHard'>Try Harder</button>
+                  <button class=''button actionButton' id='tryHard'>Try Harder</button>
                   <br>
-                  <button class='button hang schoolbox' id='homework'>Do Homework</button>
+                  <button class=''button actionButton' id='homework'>Do Homework</button>
                   <br>
                   <h2>Your Teachers</h2>
                   <div id='yourTeachers'></div>
@@ -2312,7 +2307,7 @@ $("#finance").on('click', ".sellCar", function() {
                               </div>
                               <br><br>
                               <div id='options'>
-                              <button class='hang schoolbox' id='joinClique'>Join Clique</button>
+                              <button class=''button actionButton' id='joinClique'>Join Clique</button>
                               </div>
                           </center>
                       `)
@@ -2326,7 +2321,7 @@ $("#finance").on('click', ".sellCar", function() {
                       if (whichClique['name'] == you['school']['clique']){
                           $("#options").append(`
                           <br><br>
-                          <button class='hang schoolbox' id='leaveClique'>Leave ${you['school']['clique']} Clique</button>
+                          <button class=''button actionButton' id='leaveClique'>Leave ${you['school']['clique']} Clique</button>
                       `)
                       }
   
@@ -2423,19 +2418,19 @@ $("#finance").on('click', ".sellCar", function() {
                               </div>
                               <br>
                               <div id='buttonsForFriend'>
-                              <button class='button hang schoolbox' id='hangOutWithThem'>Hang Out With Them</button>
+                              <button class='button actionButton' id='hangOutWithThem'>Hang Out With Them</button>
                               <br>
-                              <button class='button hang schoolbox' id='complimentThem'>Compliment Them</button>
+                              <button class='button actionButton' id='complimentThem'>Compliment Them</button>
                               <br>
-                              <button class='button hang schoolbox' id='helpSchool'>Help them with school</button>
+                              <button class='button actionButton' id='helpSchool'>Help them with school</button>
                               <br>
-                              <button class='button hang schoolbox' id='copyTheirWork'>Copy off of Them</button>
+                              <button class='button actionButton' id='copyTheirWork'>Copy off of Them</button>
                               <br>
-                              <button class='button hang schoolbox' id='fightClassmate'>Fight Them</button>
+                              <button class='button actionButton' id='fightClassmate'>Fight Them</button>
                               <br>
-                              <button class='button hang schoolbox' id='spreadRumor'>Spread a rumor about them</button>
+                              <button class='button actionButton' id='spreadRumor'>Spread a rumor about them</button>
                               <br>
-                              <button class='button hang schoolbox' id='bullyClassmate'>Bully Them</button>
+                              <button class='button actionButton' id='bullyClassmate'>Bully Them</button>
                               </div>
                           </center>
                       `)
@@ -2443,14 +2438,14 @@ $("#finance").on('click', ".sellCar", function() {
                       if (kidRn['status']!='friend'){
                           $('#buttonsForFriend').append(`
                               <br>
-                              <button class='button hang schoolbox' id='friendThem'>Befriend Them</button>
+                              <button class='button actionButton' id='friendThem'>Befriend Them</button>
                           `)
                       }
   
                       if (kidRn['gender']!=you['gender']){
                           $('#buttonsForFriend').append(`
                               <br>
-                              <button class='button hang schoolbox' id='kissThem'>Kiss them</button>
+                              <button class='button actionButton' id='kissThem'>Kiss them</button>
                           `)
                       }
 
@@ -2722,7 +2717,7 @@ $("#finance").on('click', ".sellCar", function() {
                                   </div>
                               </div>
                               <br>
-                              <button class='hang schoolbox' id='begThem'>Beg them to raise your grade</button>
+                              <button class='actionButton' id='begThem'>Beg them to raise your grade</button>
                           </center>
                       `)
   
@@ -2821,7 +2816,7 @@ $("#finance").on('click', ".sellCar", function() {
                                   </div>
                               </div>
                               <br>
-                              <button class='hang schoolbox' id='begThem'>Beg them to raise your grade</button>
+                              <button class='actionButton' id='begThem'>Beg them to raise your grade</button>
                           </center>
                       `)
   
@@ -2897,13 +2892,13 @@ $("#finance").on('click', ".sellCar", function() {
                               </div>
                               <br>
                               <div id='buttonsForFriend'>
-                              <button class='hang schoolbox' id='hangOutWithThem'>Hang Out With Them</button>
+                              <button class='actionButton' id='hangOutWithThem'>Hang Out With Them</button>
                               <br>
-                              <button class='hang schoolbox' id='copyTheirWork'>Copy off of Them</button>
+                              <button class='actionButton' id='copyTheirWork'>Copy off of Them</button>
                               <br>
-                              <button class='hang schoolbox' id='complimentThem'>Compliment Them</button>
+                              <button class='actionButton' id='complimentThem'>Compliment Them</button>
                               <br>
-                              <button class='hang schoolbox' id='fightClassmate'>Fight Them</button>
+                              <button class='actionButton' id='fightClassmate'>Fight Them</button>
                               </div>
                           </center>
                       `)
@@ -2911,7 +2906,7 @@ $("#finance").on('click', ".sellCar", function() {
                       if (kidRn['status']!='friend'){
                           $('#buttonsForFriend').append(`
                               <br>
-                              <button class='hang schoolbox' id='friendThem'>Befriend Them</button>
+                              <button class='actionButton' id='friendThem'>Befriend Them</button>
                           `)
                       }
   
@@ -3200,7 +3195,7 @@ $("#finance").on('click', ".sellCar", function() {
           <br>
       `)
       $("#forFun").append(`
-          <button class='button hang schoolbox' id='videogame'>Play A Video Game</button>
+          <button class='button actionButton' id='videogame'>Play A Video Game</button>
           <br>
       `)
       $("#love").append(`
@@ -3273,9 +3268,9 @@ $("#finance").on('click', ".sellCar", function() {
               $("#activities").html(`
                 <center><small class='italic'>Video Games</small>
                 <br>
-                <button id='fortnite' class='hang schoolbox'>Play Fortnite</button>
+                <button id='fortnite' class='actionButton'>Play Fortnite</button>
                 <br>
-                <button id='gta5' class='hang schoolbox'>Play GTA5</button></center>
+                <button id='gta5' class='actionButton'>Play GTA5</button></center>
               `)
           }
 
@@ -4863,13 +4858,13 @@ $("#finance").on('click', ".sellCar", function() {
                   <center>
                     <small class='italic'>What would you like to do with your ${who['status']}, ${who['full_name']}</small>
                     <br>
-                    <button class='button hang schoolbox' id='pingPong'>Play Ping Pong</button>
+                    <button class='button actionButton' id='pingPong'>Play Ping Pong</button>
                     <br>
-                    <button class='button hang schoolbox' id='chess'>Play Chess</button>
+                    <button class='button actionButton' id='chess'>Play Chess</button>
                     <br>
-                    <button class='button hang schoolbox' id='robSomeone'>Rob Someone With them</button>
+                    <button class='button actionButton' id='robSomeone'>Rob Someone With them</button>
                     <br>
-                    <button class='button hang schoolbox' id='smokeWithThem'>Smoke pot with them</button>
+                    <button class='button actionButton' id='smokeWithThem'>Smoke pot with them</button>
                   </center
                   `)
 
@@ -5685,19 +5680,19 @@ $("#finance").on('click', ".sellCar", function() {
     </div>
     <br>
     <div id='buttonsRn'>
-        <button class='hang schoolbox' id='talkWith'>Talk to them</button>
+        <button class='actionButton' id='talkWith'>Talk to them</button>
         <br>
-        <button class='hang schoolbox' id='attack'>Attack Them</button>
+        <button class='actionButton' id='attack'>Attack Them</button>
         <br>
-        <button class='hang schoolbox' id='workForEm'>Help Them</button>
+        <button class='actionButton' id='workForEm'>Help Them</button>
         <br>
-        <button class='hang schoolbox' id='murderThem'>Murder Them</button>
+        <button class='actionButton' id='murderThem'>Murder Them</button>
         <br>
     </div>
   </center>
       `)
       if (inmate['status'] != 'friend'){
-          $("#buttonsRn").append(`<button class='hang schoolbox' id='friendThem'>Befriend Them</button><br>`)
+          $("#buttonsRn").append(`<button class='actionButton' id='friendThem'>Befriend Them</button><br>`)
       }
         $("#friendThem").on('click',function(){
             $("#events").append(`<br><p class='event'>I asked my fellow inmate, ${inmate['full_name']}, if they want to keep in contact after our sentences.</p>`);
