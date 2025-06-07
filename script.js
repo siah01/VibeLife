@@ -1064,16 +1064,14 @@ $(function () {
 
                 $("#popup").css('background', color);
                 $("#popup").append(`
-                    <center>
+                  <center>
                     <div id='${x}popup' class='poper'>
-                        <h1 id='head' class='${headClass}'>${head}</h1>
-                        <p id='text' class='${textClass}'>${text}</p>
-                        <br><br>
-                        <button class='button option big leaveOk'>Ok</button>
-                        <br><br><br><br><br><br><br><br><br><br><br>
-                    </center>
+                      <h1 id='head' class='${headClass}'>${head}</h1>
+                      <p id='text' class='${textClass}'>${text}</p>
+                      <button class='button option big leaveOk'>Ok</button>
                     </div>
-                  `);
+                  </center>
+                `);
               }
               else{
                   $("#events").hide();
