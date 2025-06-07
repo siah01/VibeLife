@@ -4634,7 +4634,7 @@ $("#financeButton").on('click', function () {
   })
   
   $("#relationshipsButton").on('click',function(){
-      $("#bottons-options").hide();
+      $(".bottom-options").hide();
       $("#leaveButton").show();
       $("#relationships").show();
       $("#relationships").html('');
