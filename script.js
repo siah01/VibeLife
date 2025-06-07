@@ -3222,13 +3222,24 @@ $("#financeButton").on('click', function () {
           <button class='button drug exp' id='pcp'>Take PCP<br>Cost: $200</button>
           </div>
       `)
-      for(x in activities){
+  /*    for(x in activities){
           $("#healthAndMind").append(`
           <button id='${x}' class='button activity exp'>${activities[x]['title']}<br><small style='color:green'>Cost: $${comify(activities[x]['moneyReq'])}</small></button>
           <br><br>
           `)
       }
+*/
+      for (x in activities[0]) {
+          let activity = activities[0][x];
+              if (activity && activity.title) {
+                $("#healthAndMind").append(`
+              <button id='${x}' class='button activity exp'>${activity.title}<br><small style='color:green'>Cost: $${comify(activity.moneyReq || 0)}</small></button><br><br>
+    `);
+  }
+}
 
+
+      
       $("#videogame").on('click',function(){
           if (you['age'] < 3){
             $("#activities").html('<h1>You are too young to play video games</h1>')
