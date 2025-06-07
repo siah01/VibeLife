@@ -1816,11 +1816,7 @@ $("#financeButton").on('click', function () {
     $("#finance").append(`
       <div class="finance-section your-assets">
         <h2>🏠 Your Properties</h2>
-         /*
-              $("#finance").append(`<br><div class='sectionHighlight gray' id='youHouse'><h1>Your Houses</h1></div>`)
-              $("#finance").append(`<br><div class='sectionHighlight gray' id='youCar'><h1>Your Cars</h1></div>`)
-              $("#finance").append(`<br><div class='sectionHighlight gray' id='youGem'><h1>Your Gems</h1></div>`)
-         */
+
    
         <button class='button sectionHighlight gray' id='youHouse'><h3>Your Houses</h3></button>
         <button class='button sectionHighlight gray' id='youCar'><h3>Your Cars</h3></button>
@@ -1829,10 +1825,7 @@ $("#financeButton").on('click', function () {
    
       <div class="finance-section shop-assets">
         <h2>🛍️ Buy New Assets</h2>
-    /*          $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='housesShow'><h1>Houses</h1></div>`)
-              $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='carShow'><h1>Cars</h1></div>`)
-              $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='gemShow'><h1>Gems</h1></div>`) 
-    */
+
         <button class='button sectionHighlight gray blueCard' id='housesShow'><h3>Houses</h3></button>
         <button class='button sectionHighlight gray blueCard' id='carShow'><h3>Cars</h3></button>
         <button class='button sectionHighlight gray blueCard' id='gemShow'><h3>Gems</h3></button>
