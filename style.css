@@ -340,7 +340,7 @@ body {
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -349,6 +349,10 @@ body {
   max-height: 60vh;
   overflow-y: auto;
   background: inherit; /* use the background set via .css('background', ...) */
+}
+
+.poper button {
+  margin-top: 20px;
 }
 
 .relationship-card {
