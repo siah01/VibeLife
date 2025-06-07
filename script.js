@@ -1804,7 +1804,7 @@ $(function () {
 
 $("#financeButton").on('click', function () {
     $("#buttons-options").hide();
-    $("#leavebutton").show();
+    $("#leaveButton").show();
     $("#finance").show().html('');
     $("#events").hide();
 
