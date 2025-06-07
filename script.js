@@ -5553,6 +5553,8 @@ $("#financeButton").on('click', function () {
   
   function leave(){
       $(".bottom-options").show();
+      $(".age-button-container").show();
+      $("#stats").show();
       $("#events").show();
       $("#relationships").hide();
       $("#leaveButton").hide();
