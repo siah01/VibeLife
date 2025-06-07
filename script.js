@@ -1831,7 +1831,8 @@ $("#financeButton").on('click', function () {
         <h2>🛍️ Buy New Assets</h2>
     /*          $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='housesShow'><h1>Houses</h1></div>`)
               $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='carShow'><h1>Cars</h1></div>`)
-              $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='gemShow'><h1>Gems</h1></div>`) */
+              $("#finance").append(`<br><div class='sectionHighlight gray blueCard' id='gemShow'><h1>Gems</h1></div>`) 
+    */
         <button class='button sectionHighlight gray blueCard' id='housesShow'><h3>Houses</h3></button>
         <button class='button sectionHighlight gray blueCard' id='carShow'><h3>Cars</h3></button>
         <button class='button sectionHighlight gray blueCard' id='gemShow'><h3>Gems</h3></button>
