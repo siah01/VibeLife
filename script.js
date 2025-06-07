@@ -1801,21 +1801,7 @@ $(function () {
             })
       }
   })
-  /*
-  $("#financeButton").on('click',function(){
-      $("#buttons").hide();
-      $("#leaveButton").show();
-      $("#finance").show();
-      $("#finance").html('');
-      $("#events").hide();
-      $("#finance").append(`<center><small class='italic'>Click on a finance card to view/buy assets</small></center>`)
-      $("#finance").append(`<br><button class='button sectionHighlight gray' id='youHouse'><h1>Your Houses</h1></button>`)
-      $("#finance").append(`<br><button class='button sectionHighlight gray' id='youCar'><h1>Your Cars</h1></button>`)
-      $("#finance").append(`<br><button class='button sectionHighlight gray' id='youGem'><h1>Your Gems</h1></button>`)
-      $("#finance").append(`<br><button class='button sectionHighlight gray blueCard' id='housesShow'><h1>Houses</h1></button>`)
-      $("#finance").append(`<br><button class='button sectionHighlight gray blueCard' id='carShow'><h1>Cars</h1></button>`)
-      $("#finance").append(`<br><button class='button sectionHighlight gray blueCard' id='gemShow'><h1>Gems</h1></button>`)
-*/ 
+
 $("#financeButton").on('click', function () {
     $("#buttons").hide();
     $("#leaveButton").show();
@@ -1836,8 +1822,7 @@ $("#financeButton").on('click', function () {
         <button class='button sectionHighlight gray blueCard' id='carShow'><h3>Cars</h3></button>
         <button class='button sectionHighlight gray blueCard' id='gemShow'><h3>Gems</h3></button>
       </div>
-
-      
+ 
       $("#gemShow").on('click',function(){
           $("#finance").html('')
           if (gems.length <= 0){
@@ -3130,42 +3115,6 @@ $("#financeButton").on('click', function () {
       $("#activities").show();
       $("#activities").html('');
       $("#events").hide();
-    /*  $("#activities").append(`
-          <center>
-          <h2>Love</h2>
-          <div id='love'>
-  
-          </div>
-          <h2>For Assets</h2>
-          <div id='assets'>
-  
-          </div>
-          <h2>Social</h2>
-          <div id='social'>
-  
-          </div>
-          <h2>Fame</h2>
-          <div id='fame'>
-  
-          </div>
-          <h2>Health and Mind</h2>
-          <div id='healthAndMind'>
-          
-          </div>
-          <h2>No Risk No Reward</h2>
-          <div id='riskMoney'>
-          
-          </div>
-          <h2>Crimes</h2>
-          <div id='crime'>
-  
-          </div>
-          <h2>For Fun</h2>
-          <div id='forFun'>
-          
-          </div>
-          </center> 
-      `)*/ 
         $("#activities").append(`
   <div class="activity-section love">
     <h2>❤️ Love</h2>
@@ -3201,9 +3150,6 @@ $("#financeButton").on('click', function () {
   </div>
 `);
 
-
-
-      
       $("#riskMoney").append(`
           <button class='button gamble exp' id='lottery'>Play the lottery<br>Cost: $5</button>
           <br><br>
