@@ -1107,7 +1107,6 @@ $(function () {
                       <button class='button option giant buttonClicked' data-did='7' id='${x}' data-effects='${effectsObject}' data-response='${response1}'>${button1}</button>
                       <br><br>
                       <button class='button option giant buttonClicked' data-did='8' id='${x}' data-effects='${effectsObject2}' data-response='${response2}'>${button2}</button>
-                      <br><br><br><br><br><br><br><br><br>
                       </center>
                       </div>
               `);
