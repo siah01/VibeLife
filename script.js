@@ -1915,9 +1915,9 @@ $("#finance").on('click', "#youGem", function() {
                     </div>
                 </div>
                 <br>
-                <button class=''button actionButton sellGem' id='${x}'>Sell Item</button>
+                <button class='button actionButton sellGem' id='${x}'>Sell Item</button>
                 <br>
-                <button class=''button actionButton shineGem' id='${x}'>Shine your ${itemObj['name']}</button>
+                <button class='button actionButton shineGem' id='${x}'>Shine your ${itemObj['name']}</button>
             </div></center>
         `);
     }
@@ -1964,9 +1964,9 @@ $("#finance").on('click', "#housesShow", function() {
                     <h3>House: <span style='color:green;font-weight:bolder;'>${houses[x]['name']}</span></h3>
                     <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['cost'])}</span></p>
                     <p>Yearly: <span style='color:green;font-weight:bolder;'>$${comify(houses[x]['yearly'])}</span></p>
-                    <button class=''button actionButton buy' id='${x}'>Buy House</button>
+                    <button class='button actionButton buy' id='${x}'>Buy House</button>
                     <br>
-                    <button class=''button actionButton payOverTime' id='${x}'>Pay over time</button>
+                    <button class='button actionButton payOverTime' id='${x}'>Pay over time</button>
                 </div></center>
                 <br>
             `);
@@ -2107,7 +2107,7 @@ $("#finance").on('click', "#carShow", function() {
                     <h3>Car: <span style='color:green;font-weight:bolder;'>${cars[x]['name']}</span></h3>
                     <p>Cost: <span style='color:green;font-weight:bolder;'>$${comify(cars[x]['cost'])}</span></p>
                     <p>Gas Cost Yearly: <span style='color:green;font-weight:bolder;'>$${comify(3000)}</span></p>
-                    <button class=''button actionButton buyCar' id='${x}'>Buy Car</button>
+                    <button class='button actionButton buyCar' id='${x}'>Buy Car</button>
                 </div></center>
                 <br>
             `);
@@ -2251,9 +2251,9 @@ $("#finance").on('click', ".sellCar", function() {
                       </div>
                   </div>
                   <br>
-                  <button class=''button actionButton' id='tryHard'>Try Harder</button>
+                  <button class='button actionButton' id='tryHard'>Try Harder</button>
                   <br>
-                  <button class=''button actionButton' id='homework'>Do Homework</button>
+                  <button class='button actionButton' id='homework'>Do Homework</button>
                   <br>
                   <h2>Your Teachers</h2>
                   <div id='yourTeachers'></div>
@@ -2307,7 +2307,7 @@ $("#finance").on('click', ".sellCar", function() {
                               </div>
                               <br><br>
                               <div id='options'>
-                              <button class=''button actionButton' id='joinClique'>Join Clique</button>
+                              <button class='button actionButton' id='joinClique'>Join Clique</button>
                               </div>
                           </center>
                       `)
@@ -2321,7 +2321,7 @@ $("#finance").on('click', ".sellCar", function() {
                       if (whichClique['name'] == you['school']['clique']){
                           $("#options").append(`
                           <br><br>
-                          <button class=''button actionButton' id='leaveClique'>Leave ${you['school']['clique']} Clique</button>
+                          <button class='button actionButton' id='leaveClique'>Leave ${you['school']['clique']} Clique</button>
                       `)
                       }
   
