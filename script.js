@@ -1849,8 +1849,9 @@ $("#financeButton").on('click', function () {
                       <button class='button hang schoolbox buyGem' id='${x}'>Buy Gem</button>
                   </div></center>
                   <br>
-              `)
+              `);
               }
+          }
           }
           document.getElementById('finance').scrollTop = 0;
           $(".buyGem").on('click',function(){
