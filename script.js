@@ -1853,7 +1853,6 @@ $("#financeButton").on('click', function () {
               `);
               }
           }
-          }
           document.getElementById('finance').scrollTop = 0;
           $(".buyGem").on('click',function(){
               let gemOn = gems[Number($(this).attr('id'))];
