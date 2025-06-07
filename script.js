@@ -3431,6 +3431,151 @@ $("#careerButton").on('click', function() {
     }
 });
 
+// Handler: Choose a college
+$("#careers").on('click', '.collegeOption', function() {
+    let idx = $(this).attr('id').replace('college-', '');
+    let collegeNow = colleges[idx];
+    if (you['collegePoints'] == 0) {
+        if (you['smarts'] > collegeNow['smartsReq']) {
+            you['career'] = 'college student';
+            you['term'] = collegeNow['years'];
+            you['payYear'] = collegeNow['yearly'];
+            you['pointsCollege'] = collegeNow['points'];
+            lessBig('College!', `You were accepted to college`, 'linear-gradient(#f8d568, #FF9900)');
+            $('#events').append(`<br><p class='event'>I am now going to college.</p>`);
+            newSchoolPeople(6, 30, 'College');
+        } else {
+            $('#events').append(`<br><p class='event'>I am not smart enough to go to this college.</p>`);
+            leave();
+        }
+    } else {
+        $('#events').append(`<br><p class='event'>I have already been to college</p>`);
+        leave();
+    }
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+// Handler: Choose a career
+$("#careers").on('click', '.careerOption', function() {
+    let idx = $(this).attr('id').replace('career-', '');
+    let careerNow = careers[idx];
+    if (you['age'] >= 18) {
+        if (you['career'] == 'none') {
+            if (you['health'] >= careerNow['healthReq']) {
+                if (you['happy'] >= careerNow['happyReq']) {
+                    if (you['looks'] >= careerNow['looksReq']) {
+                        if (you['smarts'] >= careerNow['smartsReq']) {
+                            if (you['prisonYears'] <= careerNow['prisonYears']) {
+                                if (careerNow['schoolReq'] == 0) {
+                                    $('#events').append(`<br><p class='event'>I am now a ${careerNow['title']}!</p>`);
+                                    lessBig('Job!', `You are now a ${careerNow['title']}`, 'linear-gradient(#f8d568, #FF9900)');
+                                    you['salary'] += careerNow['salary'];
+                                    you['career'] = careerNow['title'];
+                                    you['jobSal'] = careerNow['salary'];
+                                    you['job'] = careerNow;
+                                    you['spot'] = Number(idx);
+                                } else if (you['collegePoints'] == careerNow['schoolReq']) {
+                                    $('#events').append(`<br><p class='event'>I am now a ${careerNow['title']}!</p>`);
+                                    lessBig('Job!', `You are now a ${careerNow['title']}`, 'linear-gradient(#f8d568, #FF9900)');
+                                    you['salary'] += careerNow['salary'];
+                                    you['career'] = careerNow['title'];
+                                    you['jobSal'] = careerNow['salary'];
+                                    you['job'] = careerNow;
+                                    you['spot'] = Number(idx);
+                                } else {
+                                    $('#events').append(`<br><p class='event'>I need to go to college to be a ${careerNow['title']}!</p>`);
+                                    leave();
+                                }
+                            } else {
+                                $('#events').append(`<br><p class='event'>I have been to prison too much to be a ${careerNow['title']}!</p>`);
+                                leave();
+                            }
+                        } else {
+                            $('#events').append(`<br><p class='event'>I am not smart enough to be a ${careerNow['title']}!</p>`);
+                            leave();
+                        }
+                    } else {
+                        $('#events').append(`<br><p class='event'>I am too ugly to be a ${careerNow['title']}!</p>`);
+                        leave();
+                    }
+                } else {
+                    $('#events').append(`<br><p class='event'>I am not happy enough to be a ${careerNow['title']}!</p>`);
+                    leave();
+                }
+            } else {
+                $('#events').append(`<br><p class='event'>I am not healthy enough to be a ${careerNow['title']}!</p>`);
+                leave();
+            }
+        } else {
+            $('#events').append(`<br><p class='event'>I already have a job.</p>`);
+            leave();
+        }
+    } else {
+        $('#events').append(`<br><p class='event'>I am not old enough to be a ${careerNow['title']}!</p>`);
+        leave();
+    }
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+// Handler: Quit job/college
+$("#careers").on('click', '#jobQuit', function() {
+    if (you['career'] != 'college student') {
+        let jobQuitting = careers[you['spot']];
+        you['salary'] -= jobQuitting['salary'];
+        $('#events').append(`<br><p class='event'>I am no longer a ${jobQuitting['title']}!</p>`);
+    } else {
+        $('#events').append(`<br><p class='event'>I am no longer in college!</p>`);
+    }
+    you['career'] = 'none';
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+// Handler: Click a classmate
+$("#careers").on('click', '.student', function() {
+    // Your detailed student modal logic here!
+    // Example: openStudentModal(you['school']['classmates'][Number($(this).attr('id'))]);
+    // You can also directly inject content into #careers as you did before.
+    // Add your code here.
+});
+
+// Handler: Click a teacher
+$("#careers").on('click', '.teacher', function() {
+    // Your detailed teacher modal logic here!
+    // Example: openTeacherModal(you['school']['teachers'][Number($(this).attr('id'))]);
+    // Add your code here.
+});
+
+// Handler: Click a clique
+$("#careers").on('click', '.clique', function() {
+    // Your clique details logic here!
+    // Example: openCliqueModal(cliques[Number($(this).attr('id'))]);
+    // Add your code here.
+});
+
+// Handler: Try Harder (school)
+$("#careers").on('click', '#tryHard', function() {
+    $('#events').append(`<br><p class='event'>I studied harder at ${you['school']['name']}!</p>`);
+    you['smarts'] += randrange(4);
+    you['school']['grade'] += randrange(5);
+    leave();
+    update();
+});
+
+// Handler: Do Homework (school)
+$("#careers").on('click', '#homework', function() {
+    $('#events').append(`<br><p class='event'>I did some homework!</p>`);
+    you['smarts'] += randrange(3);
+    you['school']['grade'] += randrange(7);
+    leave();
+    update();
+});
 
     
   $("#activitiesButton").on('click',function(){
