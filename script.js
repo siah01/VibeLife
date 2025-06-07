@@ -2201,7 +2201,7 @@ $("#finance").on('click', ".sellCar", function() {
                       <center><button class='button hang career' id='${x}'>${careers[x]['title']}<br><small>Pay: ${comify(careers[x]['salary'])}</small></button></center>
                   `)
               }
-          } */
+          } 
       if (you['career'] == 'none') {
     if (you['age'] >= 18) {
         $("#careers").append(`<center><h3>Colleges</h3></center>`);
@@ -3062,7 +3062,7 @@ $("#finance").on('click', ".sellCar", function() {
           })
       }
 
-      /*
+      
       $(".college").on('click','.collegeOption', function(){
           let collegeNow = colleges[Number($(this).attr('id'))];
           if (you['collegePoints'] == 0){
