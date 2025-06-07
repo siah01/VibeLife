@@ -1020,7 +1020,7 @@ $(function () {
     //  $("#popup2").css('background',color)
       $("#popup2").html(`
           <center>
-          <div class='poper'>
+          <div class='poper' style="background: ${color}">
           <h1 id='head'>${head}</h1>
           <p id='text'>${text}</p>
           <br><br>
