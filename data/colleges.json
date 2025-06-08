@@ -7,13 +7,6 @@
     "years": 9
   },
   {
-    "title": "Law School",
-    "yearly": 48000,
-    "smartsReq": 70,
-    "points": 1,
-    "years": 8
-  },
-  {
     "title": "Programming School",
     "yearly": 6500,
     "smartsReq": 40,
@@ -40,5 +33,12 @@
     "smartsReq": 40,
     "points": 5,
     "years": 4
+  },
+    {
+    "title": "Law School",
+    "yearly": 48000,
+    "smartsReq": 70,
+    "points": 1,
+    "years": 8
   }
 ]
