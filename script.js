@@ -171,6 +171,7 @@ randrange = max => Math.floor(Math.random()*max);
 let eventLog = [];
 let choiceEvents = {};
 let houses = [];
+let cliques = [];
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -758,7 +759,7 @@ function startGame() {
   let attacks = `lacerated,crippled,broke,slapped,punched,bit,busted,crushed,spanked,headbutted,smashed,kicked,touched,popped,cut,shot,shanked,cracked,destroyed,drop-kicked`;attacks=attacks.split(',');
   let rumors = `are gay,have no friends,are a virgin,have herpes,have mental problems,are not mentally stable,are a murderer,have a tattoo of a dog crap`;rumors=rumors.split(',');
   
-  let cliques =
+  cliques =
   [
       {
           name: "Popular Kids",
