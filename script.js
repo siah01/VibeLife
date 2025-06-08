@@ -336,7 +336,6 @@ function leave(){
 
 //Start Game  
 function startGame() {
-    update()
     let lovers = 0;
     let murders = 0;
     let totalStoned = 0;
@@ -5981,7 +5980,7 @@ $("#careers").on('click', '#homework', function() {
      // console.log(you);
       var objDiv = document.getElementById("events");
       objDiv.scrollTop = objDiv.scrollHeight;
-
+      update()
       saveGame();
   })
 }
