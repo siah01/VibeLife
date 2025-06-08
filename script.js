@@ -1178,7 +1178,7 @@ function lessBig(head, text, color) {
                   button2 = itemNow[4];
                   response1 = itemNow[5];
                   response2 = itemNow[6];
-                  console.log(itemNow[7])
+              //    console.log(itemNow[7])
                   effectsObject = {"function":itemNow[7]};
                   effectsObject2 = {"function":itemNow[8]}
                   $("#popup").css('background', 'rgba(0,0,0,0)') //listName[0][2])
@@ -1320,7 +1320,7 @@ function lessBig(head, text, color) {
           }else{
               studentObj['first_name']=choice(fNames);
           }
-          console.log(cliques);
+       //   console.log(cliques);
           studentObj['last_name']=choice(lNames);
           studentObj['full_name']=studentObj['first_name']+' '+studentObj['last_name']
           you['school']['classmates'].push(studentObj);
@@ -5402,7 +5402,7 @@ $("#careers").on('click', '#homework', function() {
       if(you['age']>=13 && you['age']<18){eventList=events['teen'];eventList2 = choiceEvents['teen']}
       if(you['age']>=18){eventList=events['adult'];eventList2 = choiceEvents['adult']}
       if (you['inPrison']){eventList=events['prison'];eventList2 = choiceEvents['prison']}
-      console.log(eventList2);
+  //    console.log(eventList2);
       $("#events").append(`
           <br><br>
           <p class='ageSpot'>Age: <span class='age'>${you['age']}</span></p>
@@ -5785,7 +5785,7 @@ $("#careers").on('click', '#homework', function() {
               if (randrange(3)==1){
                   relationshipOn['money']-=randrange(7000)
               }
-              console.log(careers);
+       //       console.log(careers);
           }
       }
       if (you['inPrison']==false){
