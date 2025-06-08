@@ -26,6 +26,11 @@ console.log("Script.js is loaded and running");
     });
 // End button functionality
 
+function comify(x) {
+  if (typeof x !== "number" || isNaN(x)) return "0";
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
  function update() {
     // Defensive checks for nested properties
     if (you['school']) {
@@ -179,10 +184,7 @@ function startGame() {
   choice = listName => listName[Math.floor(Math.random()*listName.length)];
   randrange = max => Math.floor(Math.random()*max);
   
-    function comify(x) {
-  if (typeof x !== "number" || isNaN(x)) return "0";
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
+
   
   let traits = 
   [
