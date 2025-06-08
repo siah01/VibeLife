@@ -4909,66 +4909,87 @@ $('.askOut').on('click', function() {
 });
 
           
-              $('.goOnDate').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I went on a date with my ${who['status']}, ${who['full_name']}.</p>`)
-                  who['relation']+=5;
-                  if (who['relation']>100){
-                      who['relation']=100;
-                  }
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $('.disregard').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (confirm(`Are you sure you want to disregard your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I cut out connections with my ${who['status']}, ${who['full_name']}.</p>`)
-                    you['relationships'].splice(Number($(this).attr('id')),1);
-                    if (who['status']=='son'||who['status']=='daughter'){
-                        for(x in you['relationships']){
-                            person = you['relationships'][x];
-                            if (person['status']=='wife'||person['status']=='husband'||person['status']=='girlfriend'||person['status']=='boyfriend'||person['status']=='fiance'){
-                                person['relation']-=randrange(50);
-                            }
-                        }
-                    }
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
-          
-              $('.fight').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (confirm(`Are you sure you want to fight your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I fought my ${who['status']}, ${who['full_name']}.</p>`)
-                    who['relation']-=randrange(20);
-                    for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><p class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</p>`)
-                    }
-                    for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
-                    }
-                    if (randrange(3)==1){
-                        $("#events").append(`<br><p class='event'>I won the fight!</p>`)
-                        who['health']-=randrange(20);
-                        if (who['health']<0){who['health']=0}; 
-                    }else{
-                        $("#events").append(`<br><p class='event'>They won the fight!</p>`)
-                        you['health']-=randrange(20);
-                        if (you['health']<0){you['health']=0}; 
-                    }
-                    you['fights']++;
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
+           $('.goOnDate').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I went on a date with my ${who['status']}, ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    who['relation'] += 5;
+    if (who['relation'] > 100) {
+        who['relation'] = 100;
+    }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$('.disregard').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to disregard your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I cut out connections with my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        you['relationships'].splice(Number($(this).attr('id')), 1);
+        if (who['status'] == 'son' || who['status'] == 'daughter') {
+            for (x in you['relationships']) {
+                person = you['relationships'][x];
+                if (person['status'] == 'wife' || person['status'] == 'husband' ||
+                    person['status'] == 'girlfriend' || person['status'] == 'boyfriend' ||
+                    person['status'] == 'fiance') {
+                    person['relation'] -= randrange(50);
+                }
+            }
+        }
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
+$('.fight').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to fight your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I fought my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] -= randrange(20);
+
+        // Fight sequence
+        for (let x = 0; x <= randrange(3); x++) {
+            let fightEvent = `I ${choice(attacks)} their ${choice(bodyParts)}!`;
+            $("#events").append(`<br><p class='event'>${fightEvent}</p>`);
+            eventLog.push(fightEvent);
+        }
+        for (let x = 0; x <= randrange(3); x++) {
+            let fightEvent = `They ${choice(attacks)} my ${choice(bodyParts)}!`;
+            $("#events").append(`<br><p class='event'>${fightEvent}</p>`);
+            eventLog.push(fightEvent);
+        }
+
+        if (randrange(3) == 1) {
+            let winEvent = "I won the fight!";
+            $("#events").append(`<br><p class='event'>${winEvent}</p>`);
+            eventLog.push(winEvent);
+            who['health'] -= randrange(20);
+            if (who['health'] < 0) { who['health'] = 0; }
+        } else {
+            let loseEvent = "They won the fight!";
+            $("#events").append(`<br><p class='event'>${loseEvent}</p>`);
+            eventLog.push(loseEvent);
+            you['health'] -= randrange(20);
+            if (you['health'] < 0) { you['health'] = 0; }
+        }
+        you['fights']++;
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
           
               $('.compliment').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
