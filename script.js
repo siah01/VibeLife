@@ -336,6 +336,7 @@ function leave(){
 
 //Start Game  
 function startGame() {
+    update()
     let lovers = 0;
     let murders = 0;
     let totalStoned = 0;
