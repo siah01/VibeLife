@@ -132,8 +132,8 @@ function loadGame() {
     update(); // This redraws the UI with loaded data
 
     // Show the main game screen, hide the start screen
-    $('#start-screen').hide();
-    $('#game-screen').show();
+    $('.screen').removeClass('active');
+    $('#game-screen').addClass('active');
 }
 
 function clearGame() {
