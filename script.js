@@ -118,7 +118,7 @@ if (typeof you['health'] === "number" && you['health'] <= 0 && !you['dead']) {
     // REMOVE THE RANDOMNESS FOR TESTING
     $("#events").append(`<br><p class='event'>I died from health problems</p>`);
     if (typeof die === "function") die();
-    console.log("Calling die()...")
+    //console.log("Calling die()...")
     return; // Prevent any further actions
 }
 
@@ -1538,24 +1538,31 @@ $(".rehabDrugs").on('click', function () {
     update();
 });
 
-  
           $(".saveLife").on('click',function(){
               let thisDisease = you['diseases'][Number($(this).attr('id'))];
               if (you['money'] >= thisDisease['cost']){
                   you['money']-=thisDisease['cost'];
+                  let eventText = `I got treatment for my ${thisDisease['name']} disease.`;
                   $("#events").append(`<br><p class='event'>I got treatment for my ${thisDisease['name']} disease.</p>`);
+                  eventLog.push(eventText);
                   if (randrange(thisDisease['cureChance'])==1){
+                      eventText = `I was cured for ${thisDisease['name']}!`;
                       $("#events").append(`<br><p class='event'>I was cured for ${thisDisease['name']}!</p>`);
+                      eventLog.push(eventText);
                       lessBig('Cured!',`You were cured for ${thisDisease['name']}`,'linear-gradient(#42C0FB, #4AC948)')
                       you['diseases'].splice(Number($(this).attr('id')),1);
                   }
                   else{
+                      eventText = `I continue to suffer from ${thisDisease['name']}!`;
                       $("#events").append(`<br><p class='event'>I continue to suffer from ${thisDisease['name']}!</p>`);
+                      eventLog.push(eventText);
                       leave()
                   }
               }
               else{
+                  let eventText = `I can't afford treatment for ${thisDisease['name']}!`;
                   $("#events").append(`<br><p class='event'>I can't afford treatment for ${thisDisease['name']}!</p>`);
+                  eventLog.push(eventText);
                   leave()
               }
               update();
@@ -1597,10 +1604,14 @@ $(".rehabDrugs").on('click', function () {
                       }
                       you['money']-=100;
                       bookOn['totalSpent']+=100;
+                      let eventText = `I advertised my book, "${bookOn['title']}"`;
                       $("#events").append(`<br><p class='event'>I advertised my book, "${bookOn['title']}"</p>`);
+                      eventLog.push(eventText);
                   }
                   else{
+                      let eventText = `I did not have the money to advertise my book, "${bookOn['title']}"`;
                       $("#events").append(`<br><p class='event'>I did not have the money to advertise my book, "${bookOn['title']}"</p>`);
+                      eventLog.push(eventText);
                   }
                   leave();
                   update();
@@ -1645,10 +1656,14 @@ $(".rehabDrugs").on('click', function () {
                       }
                       you['money']-=50;
                       songOn['totalSpent']+=50;
+                      let eventText = `I advertised my song, "${songOn['title']}"`;
                       $("#events").append(`<br><p class='event'>I advertised my song, "${songOn['title']}"</p>`);
+                      eventLog.push(eventText);
                   }
                   else{
+                      let eventText = `I did not have the money to advertise my song, "${songOn['title']}"`;
                       $("#events").append(`<br><p class='event'>I did not have the money to advertise my song, "${songOn['title']}"</p>`);
+                      eventLog.push(eventText);
                   }
                   leave();
                   update();
@@ -1830,7 +1845,9 @@ $("#finance").on('click', "#youGem", function() {
 // Sell a gem
 $("#finance").on('click', ".sellGem", function() {
     let gemThis = you['gems'][Number($(this).attr('id'))];
+    let eventText = `I sold my gem, ${gemThis['name']}`;
     $("#events").append(`<br><sh class='event'>I sold my gem, ${gemThis['name']}</sh>`);
+    eventLog.push(eventText);
     lessBig('Goodbye My Gem!', `You sold your ${gemThis['name']}`, 'linear-gradient(#659D32, #488214)');
     you['money'] += Math.floor(gemThis['cost'] * 0.8);
     gemThis['own'] = false;
@@ -1842,7 +1859,9 @@ $("#finance").on('click', ".sellGem", function() {
 // Shine a gem
 $("#finance").on('click', ".shineGem", function() {
     let gemThis = you['gems'][Number($(this).attr('id'))];
+    let eventText = `I shined my gem, ${gemThis['name']}`;
     $("#events").append(`<br><sh class='event'>I shined my gem, ${gemThis['name']}</sh>`);
+    eventLog.push(eventText);
     if (gemThis['shined'] == false) {
         gemThis['cost'] += Math.floor(gemThis['cost'] * 0.05);
         gemThis['shined'] = true;
@@ -1899,15 +1918,20 @@ $("#finance").on('click', ".buy", function() {
 // Pay for house over time
 $("#finance").on('click', ".payOverTime", function() {
     let currentHouse = houses[Number($(this).attr('id'))];
+    let eventText = "";
     if (you['salary'] > (currentHouse['cost'] / 10) || you['money'] > (currentHouse['cost'] / 2)) {
+        eventText = "I am now paying off a house throughout the course of ten years.";
         $("#events").append(`<br><sh class='event'>I am now paying off a house throughout the course of ten years.</sh>`);
+        eventLog.push(eventText);
         currentHouse['years'] = 10;
         currentHouse['fixedUp'] = false;
         you['payingOff'].push(currentHouse);
         houses.splice(Number($(this).attr('id')), 1);
         leave();
     } else {
+        eventText = "I couldn't afford to buy a certain house in the course of 10 years with my current salary.";
         $("#events").append(`<br><sh class='event'>I couldn't afford to buy a certain house in the course of 10 years with my current salary.</sh>`);
+        eventLog.push(eventText);
         leave();
     }
     update();
@@ -1940,7 +1964,10 @@ $("#finance").on('click', "#youHouse", function() {
 // Sell a house
 $("#finance").on('click', ".sell", function() {
     let houseThis = you['items'][Number($(this).attr('id'))];
-    $("#events").append(`<br><sh class='event'>I sold my house, ${houseThis['name']}</sh>`);
+    let eventText = `I sold my house, ${houseThis['name']}`;
+    $("#events").append(`<br><sh class='event'>${eventText}</sh>`);
+    eventLog.push(eventText);
+
     lessBig('Goodbye My House!', `You sold your house`, 'linear-gradient(#659D32, #488214)');
     you['money'] += Math.floor(houseThis['cost'] * 0.8);
     houseThis['own'] = false;
@@ -1950,10 +1977,14 @@ $("#finance").on('click', ".sell", function() {
     document.getElementById("events").scrollTop = document.getElementById("events").scrollHeight;
 });
 
+
 // Fix up house
 $("#finance").on('click', ".fixUp", function() {
     let houseThis = you['items'][Number($(this).attr('id'))];
-    $("#events").append(`<br><sh class='event'>I fixed up my house, ${houseThis['name']}</sh>`);
+    let eventText = `I fixed up my house, ${houseThis['name']}`;
+    $("#events").append(`<br><sh class='event'>${eventText}</sh>`);
+    eventLog.push(eventText);
+
     if (houseThis['fixedUp'] == false) {
         houseThis['cost'] += Math.floor(houseThis['cost'] * 0.1);
         houseThis['fixedUp'] = true;
@@ -1964,10 +1995,14 @@ $("#finance").on('click', ".fixUp", function() {
     document.getElementById("events").scrollTop = document.getElementById("events").scrollHeight;
 });
 
+
 // Throw a party in your house
 $("#finance").on('click', ".partyHouse", function() {
     let houseThis = you['items'][Number($(this).attr('id'))];
-    $("#events").append(`<br><sh class='event'>I arranged a party at my <span style='color: green'>$${comify(houseThis['cost'])}</span> dollar ${houseThis['name']}.</sh>`);
+    let eventText = `I arranged a party at my $${comify(houseThis['cost'])} dollar ${houseThis['name']}.`;
+    $("#events").append(`<br><sh class='event'>${eventText}</sh>`);
+    eventLog.push(eventText);
+
     if (you['relationships'].length > 0) {
         let ppl = [];
         for (let x in you['relationships']) {
@@ -1980,7 +2015,11 @@ $("#finance").on('click', ".partyHouse", function() {
         for (let x in ppl) {
             sentRn += `My ${ppl[x]['status']}, ${ppl[x]['full_name']}, came to the party. `;
         }
-        $("#events").append(`<br><sh class='event'>${sentRn}</sh>`);
+        if (sentRn.length > 0) {
+            eventText = sentRn;
+            $("#events").append(`<br><sh class='event'>${eventText}</sh>`);
+            eventLog.push(eventText);
+        }
         you['stoned'] += randrange(3);
         you['happy'] += randrange(3);
         for (let x in ppl) {
@@ -1988,11 +2027,10 @@ $("#finance").on('click', ".partyHouse", function() {
             if (ppl[x]['relation'] > 100) { ppl[x]['relation'] = 100 }
         }
     } else {
-        $("#events").append(`<br><sh class='event'>Sadly I had to cancel plans because I did not know anyone to invite.</sh>`);
+        let eventText = "Sadly I had to cancel plans because I did not know anyone to invite.";
+        $("#events").append(`<br><sh class='event'>${eventText}</sh>`);
+        eventLog.push(eventText);
     }
-    leave();
-    update();
-    document.getElementById("events").scrollTop = document.getElementById("events").scrollHeight;
 });
 
 // View and buy cars
