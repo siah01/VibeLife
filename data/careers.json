@@ -20,6 +20,16 @@
     "schoolReq": 0
   },
   {
+    "title": "Lawyer",
+    "salary": 200000,
+    "healthReq": 0,
+    "happyReq": 0,
+    "smartsReq": 70,
+    "looksReq": 0,
+    "prisonYears": 20,
+    "schoolReq": 0
+  },
+  {
     "title": "Fast Food Worker",
     "salary": 26000,
     "healthReq": 0,
