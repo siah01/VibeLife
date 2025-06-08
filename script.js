@@ -26,6 +26,22 @@ console.log("Script.js is loaded and running");
     });
 // End button functionality
 
+function saveGame() {
+    localStorage.setItem('vibelifeSave', JSON.stringify(you));
+}
+
+function loadGame() {
+    const data = localStorage.getItem('vibelifeSave');
+    if (data) {
+        you = JSON.parse(data);
+        update(); // This redraws the UI with loaded data
+    }
+}
+
+function clearGame() {
+    localStorage.removeItem('vibelifeSave');
+}
+
 //Load json data
 Promise.all([
   fetch('data/activities.json').then(r => r.json()),
@@ -52,22 +68,6 @@ Promise.all([
 
 //Start Game  
 function startGame() {
-
-function saveGame() {
-    localStorage.setItem('vibelifeSave', JSON.stringify(you));
-}
-
-function loadGame() {
-    const data = localStorage.getItem('vibelifeSave');
-    if (data) {
-        you = JSON.parse(data);
-        update(); // This redraws the UI with loaded data
-    }
-}
-
-function clearGame() {
-    localStorage.removeItem('vibelifeSave');
-}
     // ✅ Keep game-state counters here too
     let lovers = 0;
     let murders = 0;
