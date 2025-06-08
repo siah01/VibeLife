@@ -179,6 +179,132 @@ function die() {
     importantNew(listOfEvents); // triggers lessBig() for the death popup
 }
 
+function importantNew(listName){
+      $("#popup").html('');
+      for(x in listName){
+          if (listName[x] != undefined){
+              if (listName[x].length < 4){
+                  $("#events").hide();
+                  $("#popup").show();
+                  $("#buttons").hide();
+                  $("#buttons2").show();
+                  $(".age-button-container").hide();
+                  $(".bottom-options").hide();
+                  $("#stats").hide();
+
+                  let head = listName[x][0]
+                  let text = listName[x][1]
+                  let color = listName[x][2]
+
+                // Determine if the background is dark
+                let isDark = color.includes('black') || color.includes('#000') || color.includes('gray');
+
+                // Choose class names based on background
+                let textClass = isDark ? 'event-on-dark' : '';
+                let headClass = isDark ? 'event-on-dark' : '';
+
+                $("#popup").html(`
+  <center>
+    <div id='${x}popup' class='poper' style='background:${color}'>
+      <h1 id='head' class='${headClass}'>${head}</h1>
+      <p id='text' class='${textClass}'>${text}</p>
+      <button class='button option big leaveOk'>Ok</button>
+    </div>
+  </center>
+`);
+
+              }
+              else{
+                  $("#events").hide();
+                  $("#popup").show();
+                  $("#buttons").hide();
+                  $("#buttons2").show();
+                  $(".age-button-container").hide();
+                  $(".bottom-options").hide();
+                  $("#stats").hide();
+                  itemNow = listName[x];
+                  head = itemNow[0];
+                  text = itemNow[1];
+                  color = itemNow[2];
+                  button1 = itemNow[3];
+                  button2 = itemNow[4];
+                  response1 = itemNow[5];
+                  response2 = itemNow[6];
+              //    console.log(itemNow[7])
+                  effectsObject = {"function":itemNow[7]};
+                  effectsObject2 = {"function":itemNow[8]}
+                  $("#popup").css('background', 'rgba(0,0,0,0)') //listName[0][2])
+                  $("#popup").append(`
+                      <div id='${x}popup' class='poper' style='background:${color}'>
+                      <center>
+                      <h1 id='head'>${head}</h1>
+                      <p id='text'>${text}</p>
+                      <br><br>
+                      <button class='button option giant buttonClicked' data-did='7' id='${x}' data-effects='${effectsObject}' data-response='${response1}'>${button1}</button>
+                      <br><br>
+                      <button class='button option giant buttonClicked' data-did='8' id='${x}' data-effects='${effectsObject2}' data-response='${response2}'>${button2}</button>
+                      </center>
+                      </div>
+              `);
+              }
+          }
+      }
+      on=0;
+      $('.leaveOk').on('click',function(){
+          if (on == listName.length-1){
+              if (you['dead']==false){
+                  leave();
+                  var objDiv = document.getElementById("events");
+                  objDiv.scrollTop = objDiv.scrollHeight;
+              }
+              else{
+                  dieLeave();
+                  $("#summary").show();
+                  $("#playAgain").show();
+                  $(".ageButton").hide();
+              }
+          }
+          $(`#${on}popup`).remove();
+          on++;
+          if (on < listName.length){
+               $("#popup").css('background', 'rgba(0,0,0,0)') //listName[on][2])
+          }
+      })
+      $(".buttonClicked").on('click',function(){
+          $("#events").append(`<br><p class='event'>${$(this).attr('data-response')}</p>`);
+          effects = $(this).attr('data-effects');
+  
+          eventCurrent = listName[Number($(this).attr('id'))]
+          
+          eventCurrent[Number($(this).attr('data-did'))]();
+  
+          if (you['happy']>100){you['happy']=100}
+          if (you['health']>100){you['health']=100}
+          if (you['happy']<0){you['happy']=0}
+          if (you['health']<0){you['health']=0}
+  
+          if (on == listName.length-1){
+              if (you['dead']==false){
+                  leave();
+                  var objDiv = document.getElementById("events");
+                  objDiv.scrollTop = objDiv.scrollHeight;
+              }
+              else{
+                  dieLeave();
+                  $("#summary").show();
+                  $("#playAgain").show();
+                  $(".ageButton").hide();
+              }
+          }
+          $(`#${on}popup`).remove();
+          on++
+          if (on < listName.length){
+             // $("#popup").css('background',listName[on][2])
+          }
+  
+      })
+  }
+
 //Start Game  
 function startGame() {
     let lovers = 0;
@@ -1134,131 +1260,7 @@ function lessBig(head, text, color) {
 }
 
   
-  function importantNew(listName){
-      $("#popup").html('');
-      for(x in listName){
-          if (listName[x] != undefined){
-              if (listName[x].length < 4){
-                  $("#events").hide();
-                  $("#popup").show();
-                  $("#buttons").hide();
-                  $("#buttons2").show();
-                  $(".age-button-container").hide();
-                  $(".bottom-options").hide();
-                  $("#stats").hide();
-
-                  let head = listName[x][0]
-                  let text = listName[x][1]
-                  let color = listName[x][2]
-
-                // Determine if the background is dark
-                let isDark = color.includes('black') || color.includes('#000') || color.includes('gray');
-
-                // Choose class names based on background
-                let textClass = isDark ? 'event-on-dark' : '';
-                let headClass = isDark ? 'event-on-dark' : '';
-
-                $("#popup").html(`
-  <center>
-    <div id='${x}popup' class='poper' style='background:${color}'>
-      <h1 id='head' class='${headClass}'>${head}</h1>
-      <p id='text' class='${textClass}'>${text}</p>
-      <button class='button option big leaveOk'>Ok</button>
-    </div>
-  </center>
-`);
-
-              }
-              else{
-                  $("#events").hide();
-                  $("#popup").show();
-                  $("#buttons").hide();
-                  $("#buttons2").show();
-                  $(".age-button-container").hide();
-                  $(".bottom-options").hide();
-                  $("#stats").hide();
-                  itemNow = listName[x];
-                  head = itemNow[0];
-                  text = itemNow[1];
-                  color = itemNow[2];
-                  button1 = itemNow[3];
-                  button2 = itemNow[4];
-                  response1 = itemNow[5];
-                  response2 = itemNow[6];
-              //    console.log(itemNow[7])
-                  effectsObject = {"function":itemNow[7]};
-                  effectsObject2 = {"function":itemNow[8]}
-                  $("#popup").css('background', 'rgba(0,0,0,0)') //listName[0][2])
-                  $("#popup").append(`
-                      <div id='${x}popup' class='poper' style='background:${color}'>
-                      <center>
-                      <h1 id='head'>${head}</h1>
-                      <p id='text'>${text}</p>
-                      <br><br>
-                      <button class='button option giant buttonClicked' data-did='7' id='${x}' data-effects='${effectsObject}' data-response='${response1}'>${button1}</button>
-                      <br><br>
-                      <button class='button option giant buttonClicked' data-did='8' id='${x}' data-effects='${effectsObject2}' data-response='${response2}'>${button2}</button>
-                      </center>
-                      </div>
-              `);
-              }
-          }
-      }
-      on=0;
-      $('.leaveOk').on('click',function(){
-          if (on == listName.length-1){
-              if (you['dead']==false){
-                  leave();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              }
-              else{
-                  dieLeave();
-                  $("#summary").show();
-                  $("#playAgain").show();
-                  $(".ageButton").hide();
-              }
-          }
-          $(`#${on}popup`).remove();
-          on++;
-          if (on < listName.length){
-               $("#popup").css('background', 'rgba(0,0,0,0)') //listName[on][2])
-          }
-      })
-      $(".buttonClicked").on('click',function(){
-          $("#events").append(`<br><p class='event'>${$(this).attr('data-response')}</p>`);
-          effects = $(this).attr('data-effects');
   
-          eventCurrent = listName[Number($(this).attr('id'))]
-          
-          eventCurrent[Number($(this).attr('data-did'))]();
-  
-          if (you['happy']>100){you['happy']=100}
-          if (you['health']>100){you['health']=100}
-          if (you['happy']<0){you['happy']=0}
-          if (you['health']<0){you['health']=0}
-  
-          if (on == listName.length-1){
-              if (you['dead']==false){
-                  leave();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              }
-              else{
-                  dieLeave();
-                  $("#summary").show();
-                  $("#playAgain").show();
-                  $(".ageButton").hide();
-              }
-          }
-          $(`#${on}popup`).remove();
-          on++
-          if (on < listName.length){
-             // $("#popup").css('background',listName[on][2])
-          }
-  
-      })
-  }
   
   function isSingle(list){
     for(x in list){
