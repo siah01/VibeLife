@@ -128,7 +128,11 @@ if (typeof you['health'] === "number" && you['health'] <= 0 && !you['dead']) {
 }
 
 function saveGame() {
-    localStorage.setItem('vibelifeSave', JSON.stringify(you));
+    const saveData = {
+        you: you,
+        events: events  // or whatever your event array is called
+    };
+    localStorage.setItem('vibelifeSave', JSON.stringify(saveData));
 }
 
 function loadGame() {
@@ -137,8 +141,14 @@ function loadGame() {
         alert("No saved game found. Start a new game to begin!");
         return;
     }
-    you = JSON.parse(data);
+    const saveData = JSON.parse(data);
+    you = saveData.you;
+    eventLog = saveData.eventLog || [];
+
     update(); // This redraws the UI with loaded data
+
+    // Restore event history to the event box
+    $("#events").html(eventLog.map(e => `<div>${e}</div>`).join(''));
 
     // Show the main game screen, hide the start screen
     $('.screen').removeClass('active');
