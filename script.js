@@ -4608,58 +4608,63 @@ $(".hookWith").on('click', function() {
     update();
 });
 
-  
-              $(".payThem").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  let amountGive = prompt(`How Much do you want to pay your ${who['status']}?`,randrange(you['money']))
-                  if (amountGive == ''){
-                      amountGive = 0;
-                  }
-                  if (amountGive.includes('/')){
-                    amountGive=0;
-                  }
-                  if (Number(amountGive) == NaN){
-                      amountGive = 0;
-                  }
-                  if (Number(amountGive)==null){
-                      amountGive = 0;
-                  }
-                  if (Number(amountGive) > you['money']){
-                      amountGive = you['money'];
-                  }
-                  if (Number(amountGive) < 0){
-                      amountGive = 0;
-                  }
-                  who['money']+=Number(amountGive);
-                  you['money']-=Number(amountGive);
-                  who['relation']+=randrange(amountGive/randrange(50));
-                  if (who['relation']>100){who['relation']=100}
-                  $("#events").append(`<br><p class='event'>I gave my ${who['status']}, ${who['full_name']}, <span style='color:green;'>$${comify(amountGive)}</span> dollars.</p>`)
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-  
-              $('.loveMake').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I made love to my ${who['status']}, ${who['full_name']}.</p>`)
-                  if (randrange(2)==1){
-                      $("#events").append(`<br><p class='event'>They did not enjoy it!</p>`)
-                      who['relation']-=2;
-                      if (who['relation']<0){who['relation']=0};
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>They enjoyed it!</p>`)
-                      who['relation']+=2;
-                      if (who['relation']>100){who['relation']=100};
-                      who['relation']+=randrange(10);
-                      if (who['relation']>100){who['relation']=100};
-                  }
-                  leave();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
+  $(".payThem").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let amountGive = prompt(`How Much do you want to pay your ${who['status']}?`, randrange(you['money']));
+    if (amountGive == '' || amountGive == null) amountGive = 0;
+    if (typeof amountGive === 'string' && amountGive.includes('/')) amountGive = 0;
+    if (isNaN(Number(amountGive))) amountGive = 0;
+    amountGive = Number(amountGive);
+    if (amountGive > you['money']) amountGive = you['money'];
+    if (amountGive < 0) amountGive = 0;
+
+    who['money'] += amountGive;
+    you['money'] -= amountGive;
+
+    // Calculate relation effect safely
+    let relEffect = 0;
+    if (amountGive > 0) relEffect = randrange(Math.max(1, amountGive / Math.max(1, randrange(50))));
+    who['relation'] += relEffect;
+    if (who['relation'] > 100) who['relation'] = 100;
+
+    let eventText = `I gave my ${who['status']}, ${who['full_name']}, $${comify(amountGive)} dollars.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(`I gave my ${who['status']}, ${who['full_name']}, $${amountGive} dollars.`); // Just plain for event log
+
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$('.loveMake').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I made love to my ${who['status']}, ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    if (randrange(2) == 1) {
+        eventText = `They did not enjoy it!`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] -= 2;
+        if (who['relation'] < 0) who['relation'] = 0;
+    } else {
+        eventText = `They enjoyed it!`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] += 2;
+        if (who['relation'] > 100) who['relation'] = 100;
+        who['relation'] += randrange(10);
+        if (who['relation'] > 100) who['relation'] = 100;
+    }
+
+    leave();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+    update();
+});
+
           
               $('.giveAd').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
