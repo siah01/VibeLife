@@ -1283,49 +1283,49 @@ you =
   carTypes = [
       {
           "name":"Ford Ranger",
-          "years":rangeIt(1964, 2021),
+          "years":rangeIt(1964, 2025),
           "costs":rangeIt(25000, 30000),
           "hapEff":6
       },
       {
           "name":"Dodge Challenger",
-          "years":rangeIt(1970, 2021),
+          "years":rangeIt(1970, 2025),
           "costs":rangeIt(26000, 36000),
           "hapEff":6
       },
       {
           "name":"Ford Mustang",
-          "years":rangeIt(1970, 2021),
+          "years":rangeIt(1970, 2025),
           "costs":rangeIt(27000, 50000),
           "hapEff":10
       },
       {
           "name":"Subaru Outback",
-          "years":rangeIt(1994, 2021),
+          "years":rangeIt(1994, 2025),
           "costs":rangeIt(20000, 45000),
           "hapEff":6
       },
       {
           "name":"Fiat 500",
-          "years":rangeIt(1957, 2021),
+          "years":rangeIt(1957, 2025),
           "costs":rangeIt(10000, 20000),
           "hapEff":4
       },
       {
           "name":"Honda Pilot",
-          "years":rangeIt(2003, 2021),
+          "years":rangeIt(2003, 2025),
           "costs":rangeIt(30000, 40000),
           "hapEff":7
       },
       {
           "name":"Kia Rio",
-          "years":rangeIt(1999, 2021),
+          "years":rangeIt(1999, 2025),
           "costs":rangeIt(10000, 20000),
           "hapEff":7
       },
       {
           "name":"Lamborghini Aventador SVJ",
-          "years":rangeIt(2020, 2021),
+          "years":rangeIt(2020, 2025),
           "costs":rangeIt(300000, 500000),
           "hapEff":10
       }
