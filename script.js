@@ -4181,708 +4181,912 @@ $("#careers").on('click', '#homework', function() {
                   </center
                   `)
 
-                  $("#smokeWithThem").on('click',function(){
-                      if (you['age'] > 13){
-                          if (who['age']>13){
-                            $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']} if they would like to smoke pot with me.</p>`)
-                            if (who['relation']>40){
-                                if (who['drugs']==1){
-                                    if (who['money'] >= 20){
-                                        $("#events").append(`<br><p class='event'>They said yes. We smoked pot together.</p>`)
-                                        who['money']-=20
-                                        who['relation'] += randrange(10);
-                                        you['happy']+=randrange(5);
-                                        who['happy']+=randrange(5);
-                                        amou = randrange(3);
-                                        you['stoned']+=amou
-                                        totalStoned+=amou;
-                                        if (who['happy']>100){who['happy']=100}
-                                        if (who['relation']>100){who['relation']=100}
-                                        leave();
-                                    }
-                                    else{
-                                        if (you['money']>=20){
-                                            $("#events").append(`<br><p class='event'>They said yes. They told me they did not have enough money. So I pitched in <span style='color:green'>$20</span> to buy the weed.</p>`)
-                                            who['relation'] += randrange(10);
-                                            you['money']-=20;
-                                            you['happy']+=randrange(5);
-                                            who['happy']+=randrange(5);
-                                            amou = randrange(3)
-                                            you['stoned']+=randrange(amou)
-                                            totalStoned += amou
-                                            if (who['happy']>100){who['happy']=100}
-                                            if (who['relation']>100){who['relation']=100}
-                                            leave();
-                                        }
-                                        else{
-                                            $("#events").append(`<br><p class='event'>They wanted to smoke weed with me, but neither of us had the money to do so.</p>`)
-                                        }
-                                    }
-                                }
-                                else{
-                                    $("#events").append(`<br><p class='event'>They said no. They told me that smoking pot was an unhealthy and bad habit.</p>`)
-                                    who['relation']-=randrange(10)
-                                }
-                            }
-                            else{
-                                $("#events").append(`<br><p class='event'>They said no. They told me they don't feel comfortable enough with me.</p>`)
-                            }
-                          }
-                          else{
-                            $("#events").append(`<br><p class='event'>${who['status']}, ${who['full_name']} is too young to smoke pot.</p>`)
-                          }
-                      }
-                      else{
-                        $("#events").append(`<br><p class='event'>I am too young to smoke weed with my ${who['status']}, ${who['full_name']}.</p>`)
-                      }
-                      if (who['relation']>100){who['relation']=100}
-                      if (who['relation']<0){who['relation']=0}
-                      leave();
-                      update();
-                  })
+                 $("#smokeWithThem").on('click', function () {
+    let eventText = "";
+    if (you['age'] > 13) {
+        if (who['age'] > 13) {
+            eventText = `I asked my ${who['status']}, ${who['full_name']} if they would like to smoke pot with me.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
 
-                  $("#robSomeone").on('click',function(){
-                      if (you['age'] > 6){
-                          if (who['age']>6){
-                            $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']} if they would help me rob someone.</p>`)
-                        if (who['relation'] > randrange(50)){
-                            if (who['bad']==1){
-                                amount = randrange(500);
-                                if (randrange(10)!=1){
-                                    $("#events").append(`<br><p class='event'>They said yes. They watched to make sure nobody saw us and we robbed a person for <span style='color:green'>$${amount}</span>. We split the money 50/50</p>`)
-                                    who['relation'] += randrange(15);
-                                    you['money']+=Math.floor(amount/2)
-                                    who['money']+=Math.floor(amount/2)
-                                    you['happy']+=randrange(5);
-                                    if (who['relation']>100){who['relation']=100}
-                                    leave();
-                                }
-                                else{
-                                    $("#events").append(`<br><p class='event'>They said yes. But sadly we were caught by the police while in the act of robbing the person!</p>`)
-                                    sentence = randrange(10);
-                                    $('#events').append(`<br><p class='event'>I am going to prison for ${sentence} year/s!</p>`);
-                                    you['inPrison']=true;
-                                    prisShuf();
-                                    prisonInmates.push(who);
-                                    if (you['career']!='none'){
-                                        you['salary']-=you['jobSal']
-                                    }
-                                    you['career']='none';
-                                    $("#prisonButtons").show();
-                                    $("#buttons").hide();
-                                    $("#activities").hide();
-                                    $("#relationships").hide();
-                                    $("#events").show();
-                                    $("#leaveButton").hide();
-                                }   
-                                }
-                                else{
-                                    $("#events").append(`<br><p class='event'>They said that robbery is against their morals.</p>`)
-                                    who['relation']-=randrange(10)
-                                    leave();
-                                }
-                            }
-                            else{
-                                $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']} did not want to rob someone with me.</p>`)
-                                leave();
-                            }
-                          }
-                          else{
-                            $("#events").append(`<br><p class='event'>${who['status']}, ${who['full_name']} is too young to rob someone with me.</p>`)
-                            leave();
-                          }
-                      }
-                      else{
-                        $("#events").append(`<br><p class='event'>I wanted to rob someone with my ${who['status']}, ${who['full_name']}, but I was too young.</p>`)
+            if (who['relation'] > 40) {
+                if (who['drugs'] == 1) {
+                    if (who['money'] >= 20) {
+                        eventText = "They said yes. We smoked pot together.";
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+
+                        who['money'] -= 20;
+                        who['relation'] += randrange(10);
+                        you['happy'] += randrange(5);
+                        who['happy'] += randrange(5);
+                        amou = randrange(3);
+                        you['stoned'] += amou;
+                        totalStoned += amou;
+                        if (who['happy'] > 100) { who['happy'] = 100 }
+                        if (who['relation'] > 100) { who['relation'] = 100 }
                         leave();
-                      }
-                      if (who['relation']>100){who['relation']=100}
-                      if (who['relation']<0){who['relation']=0}
-                      update();
-                })
+                    } else if (you['money'] >= 20) {
+                        eventText = "They said yes. They told me they did not have enough money. So I pitched in <span style='color:green'>$20</span> to buy the weed.";
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
 
-                  $("#pingPong").on('click',function(){
-                      if (who['relation'] > randrange(50)){
-                        $("#events").append(`<br><p class='event'>I played ping pong with my ${who['status']}, ${who['full_name']}.</p>`)
-                        who['relation'] += randrange(5);
-                        you['happy']+=randrange(5);
-                        if (who['relation']>100){who['relation']=100}
-                      }
-                      else{
-                        $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']} said they would rather not play ping pong with me.</p>`)
-                      }
-                      leave();
-                      update();
-                  })
-                  $("#chess").on('click',function(){
-                    if (who['relation'] > randrange(50)){
-                      $("#events").append(`<br><p class='event'>I played chess with my ${who['status']}, ${who['full_name']}.</p>`)
-                      who['relation'] += randrange(5);
-                      you['smarts']+=randrange(5);
-                      if (who['relation']>100){who['relation']=100}
+                        who['relation'] += randrange(10);
+                        you['money'] -= 20;
+                        you['happy'] += randrange(5);
+                        who['happy'] += randrange(5);
+                        amou = randrange(3);
+                        you['stoned'] += randrange(amou);
+                        totalStoned += amou;
+                        if (who['happy'] > 100) { who['happy'] = 100 }
+                        if (who['relation'] > 100) { who['relation'] = 100 }
+                        leave();
+                    } else {
+                        eventText = "They wanted to smoke weed with me, but neither of us had the money to do so.";
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
                     }
-                    else{
-                      $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']} said they would rather not play chess with me.</p>`)
-                    }
-                    leave();
-                    update();
-                })
-              })
-  
-              $(".spreadRumor").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (confirm(`Are you sure you want to spread a rumor about your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I spread a rumor about my ${who['status']}, ${who['full_name']}. I told everyone that they ${choice(rumors)}</p>`)
-                    who['relation']-=randrange(20);
-                    if (randrange(5)==1){
-                      $("#events").append(`<br><p class='event'>They fought me!</p>`)
-                      for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
-                        you['health']-=randrange(10)
-                      }
-                    }
-                    if (who['relation']<0){who['relation']=0}
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
-  
-              $(".insult").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];;
-                  if (confirm(`Are you sure you want to insult your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I told my ${who['status']}, ${who['full_name']}, that they are ${choice(meanWords)}</p>`)
-                    who['relation']-=randrange(10);
-                    if (randrange(7)==1){
-                      $("#events").append(`<br><p class='event'>They fought me!</p>`)
-                      for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
-                        you['health']-=randrange(10)
-                      }
-                    }
-                    if (who['relation']<0){who['relation']=0}
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
-  
-              $('.murderThem').on('click',function(){
-                who = you['relationships'][Number($(this).attr('id'))];
-                if (confirm(`Are you sure you want to kill your, ${who['status']}, ${who['full_name']}?`)){
-                  $("#events").append(`<br><p class='event'>I attempted to murder my ${who['age']} year old ${who['status']}, ${who['full_name']}!</p>`)
-                  if (who['health']>randrange(60) && randrange(3)==1){
-                      $("#events").append(`<br><p class='event'>They started to beat me up!</p>`)
-                      you['health']-=randrange(50);
-                      if (you['health']<0){you['health']=0};
-                      if (randrange(2)==1){
-                          $("#events").append(`<br><p class='event'>They called the cops!</p>`)
-                          let sentenceTime = randrange(30)+5
-                          $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s for attempted murder!</p>`);
-                          sentence = sentenceTime;
-                          if (you['career']!='none'){
-                              you['salary']-=you['jobSal']
-                          }
-                          prisShuf();
-                          you['inPrison']=true;
-                          you['career']='none';
-                          $("#prisonButtons").show();
-                          $("#buttons").hide();
-                          $("#relationships").hide();
-                          $("#events").show();
-                          $("#leaveButton").hide();
-                      }
-                      else{
-                          leave();
-                      }
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>I killed my ${who['status']}, ${who['full_name']}!</p>`)
-                      murders++;
-                      if (you['age'] < 18 && you['age'] >= 5){
-                        for(z in you['school']['classmates']){
-                          y = you['school']['classmates'][z]
-                          if (y == who){
-                            you['school']['classmates'].splice(z, 1);
-                          }
-                        }
-                      }
-                      you['happy']-=randrange(10);
-                      if (you['happy']<0){you['happy']=0}
-                      you['relationships'].splice(Number($(this).attr('id')),1);
-                      if (randrange(2)==1){
-                          $("#events").append(`<br><p class='event'>The cops found out it was me!</p>`)
-                          let sentenceTime = randrange(10)+40
-                          $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s for murder!</p>`);
-                          sentence = sentenceTime;
-                          if (you['career']!='none'){
-                              you['salary']-=you['jobSal']
-                          }
-                          you['inPrison']=true;
-                          you['career']='none';
-                          $("#prisonButtons").show();
-                          $("#buttons").hide();
-                          $("#relationships").hide();
-                          $("#events").show();
-                          $("#leaveButton").hide();
-                      }
-                      else{
-                          leave();
-                      }
-                  }
-                  update();
+                } else {
+                    eventText = "They said no. They told me that smoking pot was an unhealthy and bad habit.";
+                    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                    eventLog.push(eventText);
+
+                    who['relation'] -= randrange(10);
                 }
-              })
-  
-              $('.doctorsThem').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (you['money']>=100){
-                      $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']}, to come to the doctors with me.</p>`)
-                      you['money']-=100
-                      if (who['relation']>randrange(60) || who['status']=='son' || who['status'] == 'daughter'){
-                          $("#events").append(`<br><p class='event'>They let me take them to the doctors! <span style='color: red;'>-$100</span></p>`)
-                          who['health']+=randrange(10);
-                          if (who['health']>100){who['health']=100};
-                          who['relation']+=randrange(10);
-                          if (who['relation']>100){who['relation']=100}
-                      }
-                      else{
-                          $("#events").append(`<br><p class='event'>They were insulted!</p>`)
-                          who['relation']-=randrange(10);
-                          if (who['relation']<0){who['relation']=0};
-                      }
-                  }else{
-                      $("#events").append(`<br><p class='event'>I don't have the money to take ${who['full_name']} to the doctors.</p>`)
-                  }
-                  leave();
-                  update();
-              })
-  
-              $(".hookWith").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (who['relation']>randrange(80)){
-                      if (randrange(3)==1){
-                          $("#events").append(`<br><p class='event'>I hooked up with my ${who['status']}, ${who['full_name']}.</p>`)
-                          lovers++;
-                          who['relation']+=randrange(5);
-                          you['happy']+=randrange(5);
-                          if (randrange(5)==1){
-                              let stdGiven = choice(stds);
-                              $("#events").append(`<br><p class='event'>I contracted ${stdGiven['name']}!</p>`)
-                              who['relation']-=randrange(20);
-                              you['happy']-=randrange(10)
-                              you['diseases'].push(stdGiven);
-                          }
-                          if (randrange(4)==1){
-                              for(x in you['relationships']){
-                                  whoNow = you['relationships'][x];
-                                  if (whoNow['status']=='girlfriend'||whoNow['status']=='boyfriend'||whoNow['status']=='fiance'||whoNow['status']=='wife'||whoNow['status']=='husband'){
-                                      $("#events").append(`<br><p class='event'>My ${whoNow['status']} found out!</p>`)
-                                      whoNow['relation']-=randrange(30);
-                                      you['happy']-=randrange(10);
-                                  }
-                              }
-                          }
-                      }
-                      else{
-                          $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']}, did not want to hookup with me.</p>`)
-                          who['relation']-=randrange(10);
-                      }
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']}, did not want to hookup with me.</p>`)
-                      who['relation']-=randrange(10);
-                  }
-                  leave();
-                  update();
-              })
-          
-              $(".payThem").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  let amountGive = prompt(`How Much do you want to pay your ${who['status']}?`,randrange(you['money']))
-                  if (amountGive == ''){
-                      amountGive = 0;
-                  }
-                  if (amountGive.includes('/')){
-                    amountGive=0;
-                  }
-                  if (Number(amountGive) == NaN){
-                      amountGive = 0;
-                  }
-                  if (Number(amountGive)==null){
-                      amountGive = 0;
-                  }
-                  if (Number(amountGive) > you['money']){
-                      amountGive = you['money'];
-                  }
-                  if (Number(amountGive) < 0){
-                      amountGive = 0;
-                  }
-                  who['money']+=Number(amountGive);
-                  you['money']-=Number(amountGive);
-                  who['relation']+=randrange(amountGive/randrange(50));
-                  if (who['relation']>100){who['relation']=100}
-                  $("#events").append(`<br><p class='event'>I gave my ${who['status']}, ${who['full_name']}, <span style='color:green;'>$${comify(amountGive)}</span> dollars.</p>`)
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-  
-              $('.loveMake').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I made love to my ${who['status']}, ${who['full_name']}.</p>`)
-                  if (randrange(2)==1){
-                      $("#events").append(`<br><p class='event'>They did not enjoy it!</p>`)
-                      who['relation']-=2;
-                      if (who['relation']<0){who['relation']=0};
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>They enjoyed it!</p>`)
-                      who['relation']+=2;
-                      if (who['relation']>100){who['relation']=100};
-                      who['relation']+=randrange(10);
-                      if (who['relation']>100){who['relation']=100};
-                  }
-                  leave();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $('.giveAd').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I gave advice to my ${who['status']}, ${who['full_name']}.</p>`)
-                  if (randrange(3)==1){
-                      $("#events").append(`<br><p class='event'>They did not like my advice!</p>`)
-                      who['smarts']-=2;
-                      if (who['smarts']<0){who['smarts']=0};
-                      who['relation']-=randrange(10);
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>They appreciated the advice!</p>`)
-                      who['smarts']+=2;
-                      if (who['smarts']>100){who['smarts']=100};
-                      who['relation']+=randrange(10);
-                      if (who['relation']>100){who['relation']=100};
-                  }
-                  leave();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $(".haveChild").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']}, to have a child with me</p>`)
-                  if (who['relation'] > randrange(100)){
-                      if (randrange(3)==1){
-                          $("#events").append(`<br><p class='event'>They said yes!</p>`)
-                          childGender = choice(genders);
-                          if (childGender=='Male'){babyList = mNames;}
-                          else{babyList=fNames};
-                          childName = prompt(`Child Name, your child is a ${childGender}`,choice(babyList))
-                          if (childName == ''){
-                              childName=choice(babyList);
-                              $("#events").append(`<br><p class='event'>Your ${who['status']} named the child ${childName}</p>`)
-                          }
-                          else{
-                              $("#events").append(`<br><p class='event'>You named the child ${childName}</p>`);
-                          }
-                          childName.split(' ').join('');childName+=' ';
-                          let childObj = {
-                              age: 0,
-                              relation: 50,
-                              first_name: childName,
-                              last_name: you['last_name'],
-                              full_name: childName + " " + you['last_name'],
-                              gender: childGender,
-                              blood: true,
-                              money: 0,
-                              happy: randrange(100),
-                              health: randrange(100),
-                              looks: randrange(100),
-                              smarts: randrange(100),
-                          }
-                          if (childObj['gender']=='Male'){childObj['status']='son'}
-                          if (childObj['gender']=='Female'){childObj['status']='daughter'}
-                          you['relationships'].push(childObj);
-          
-                      }else{
-                          $("#events").append(`<br><p class='event'>They said they aren't sure if its the right time</p>`)
-                          who['relation']-=1;
-                      }
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>They said you aren't close enough</p>`)
-                      who['relation']-=5;
-                  }
-                  leave()
-                  update()
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $(".divorce").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (confirm(`Are you sure you want to divorce your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I have divorced my ${who['status']}, ${who['full_name']}.</p>`)
-                    who['relation']-=100;
-                    who['happy']-=50;
-                    if (who['happy']<0){who['happy']=0}
-                    who['status']='ex';
-                    if (you['money']>who['money']){
-                        payThem = Math.floor(you['money']*0.1);
-                        $("#events").append(`<br><p class='event'>I had to pay them <span style='color:red;'>$${comify(pay)}</span></p>`)
-                        you['money']-=payThem
-                    }else{
-                        payMe = Math.floor(who['money']*0.1);
-                        $("#events").append(`<br><p class='event'>They had to pay me <span style='color:green;'>$${comify(payMe)}</span></p>`)
-                        you['money']+=payMe
-                    }
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
-          
-              $(".elope").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I am now married to ${who['full_name']}.</p>`)
-                  if (who['gender']=='Male'){who['status']='husband'};
-                  if (who['gender']=='Female'){who['status']='wife'};
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $(".callOff").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (confirm(`Are you sure you want to call of your engagement with your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I called off the engagement with ${who['full_name']}.</p>`)
-                    who['relation']-=10;
-                    if (who['gender']=='Male'){who['status']='boyfriend'};
-                    if (who['status']=='Female'){who['status']='girlfriend'};
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
-          
-              $(".propose").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I proposed to my ${who['status']}, ${who['full_name']}.</p>`)
-                  if (who['relation']>randrange(40)+50){
-                      if (randrange(3)==1){
-                          who['status']='fiance';
-                          who['relation']+=20
-                          you['happy']+=randrange(20);
-                          if (you['happy']>100){you['happy']=100};
-                          if (who['relation']>100){who['relation']=100};
-                          $("#events").append(`<br><p class='event'>${who['full_name']} is now my ${who['status']}</p>`);
-                      }else{
-                          $("#events").append(`<br><p class='event'>They said they didn't feel ready!</p>`)
-                          who['relation']-=5;
-                      }
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>They said that you aren't close enough!</p>`)
-                      who['relation']-=5;
-                  }
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $('.askOut').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I asked out my ${who['status']}, ${who['full_name']}.</p>`)
-                  topMax = 10-(who['relation']/10)
-                  if (topMax < 2){
-                      topMax = 2
-                  }
-                  if (randrange(topMax)==1){
-                      single = true;
-                      for (x in you['relationships']){
-                          if (you['relationships'][x]['status']=='girlfriend'||you['relationships'][x]['status']=='boyfriend'){
-                              single=false;
-                          }
-                      }
-                      if (single){
-                          if (you['age']>12){
-                              if (true){
-                                  $("#events").append(`<br><p class='event'>They said yes, we are now dating</p>`)
-                                  lovers++;
-                                  if (who['gender']=='Male'){
-                                      who['status']='boyfriend';
-                                  }else{
-                                      who['status']='girlfriend'
-                                  }
-                                  who['relation']+=10
-                              }
-                              else{
-                                  $("#events").append(`<br><p class='event'>I suddenly realized that they are too old for me.</p>`)
-                              }
-                          }
-                          else{
-                              $("#events").append(`<br><p class='event'>Then realized I'm too young to date.</p>`)
-                          }
-                      }else{
-                          $("#events").append(`<br><p class='event'>I suddenly realized I'm already in a relationship</p>`);
-                      }
-                  }else{
-                      $("#events").append(`<br><p class='event'>They rejected me!</p>`)
-                      who['relation']-=5;
-                  }
-                  if (who['relation']>100){
-                      who['relation']=100;
-                  }
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $('.goOnDate').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I went on a date with my ${who['status']}, ${who['full_name']}.</p>`)
-                  who['relation']+=5;
-                  if (who['relation']>100){
-                      who['relation']=100;
-                  }
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $('.disregard').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (confirm(`Are you sure you want to disregard your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I cut out connections with my ${who['status']}, ${who['full_name']}.</p>`)
-                    you['relationships'].splice(Number($(this).attr('id')),1);
-                    if (who['status']=='son'||who['status']=='daughter'){
-                        for(x in you['relationships']){
-                            person = you['relationships'][x];
-                            if (person['status']=='wife'||person['status']=='husband'||person['status']=='girlfriend'||person['status']=='boyfriend'||person['status']=='fiance'){
-                                person['relation']-=randrange(50);
-                            }
+            } else {
+                eventText = "They said no. They told me they don't feel comfortable enough with me.";
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+            }
+        } else {
+            eventText = `${who['status']}, ${who['full_name']} is too young to smoke pot.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+        }
+    } else {
+        eventText = `I am too young to smoke weed with my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+    }
+    if (who['relation'] > 100) { who['relation'] = 100 }
+    if (who['relation'] < 0) { who['relation'] = 0 }
+    leave();
+    update();
+});
+
+
+                 $("#robSomeone").on('click', function () {
+    let eventText = "";
+    if (you['age'] > 6) {
+        if (who['age'] > 6) {
+            eventText = `I asked my ${who['status']}, ${who['full_name']} if they would help me rob someone.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            if (who['relation'] > randrange(50)) {
+                if (who['bad'] == 1) {
+                    amount = randrange(500);
+                    if (randrange(10) != 1) {
+                        eventText = `They said yes. They watched to make sure nobody saw us and we robbed a person for $${amount}. We split the money 50/50.`;
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+
+                        who['relation'] += randrange(15);
+                        you['money'] += Math.floor(amount / 2);
+                        who['money'] += Math.floor(amount / 2);
+                        you['happy'] += randrange(5);
+                        if (who['relation'] > 100) { who['relation'] = 100 }
+                        leave();
+                    } else {
+                        eventText = "They said yes. But sadly we were caught by the police while in the act of robbing the person!";
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+
+                        sentence = randrange(10);
+                        eventText = `I am going to prison for ${sentence} year/s!`;
+                        $('#events').append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+
+                        you['inPrison'] = true;
+                        prisShuf();
+                        prisonInmates.push(who);
+                        if (you['career'] != 'none') {
+                            you['salary'] -= you['jobSal'];
                         }
+                        you['career'] = 'none';
+                        $("#prisonButtons").show();
+                        $("#buttons").hide();
+                        $("#activities").hide();
+                        $("#relationships").hide();
+                        $("#events").show();
+                        $("#leaveButton").hide();
                     }
+                } else {
+                    eventText = "They said that robbery is against their morals.";
+                    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                    eventLog.push(eventText);
+
+                    who['relation'] -= randrange(10);
                     leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
-          
-              $('.fight').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (confirm(`Are you sure you want to fight your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I fought my ${who['status']}, ${who['full_name']}.</p>`)
-                    who['relation']-=randrange(20);
-                    for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><p class='event'>I ${choice(attacks)} their ${choice(bodyParts)}!</p>`)
-                    }
-                    for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
-                    }
-                    if (randrange(3)==1){
-                        $("#events").append(`<br><p class='event'>I won the fight!</p>`)
-                        who['health']-=randrange(20);
-                        if (who['health']<0){who['health']=0}; 
-                    }else{
-                        $("#events").append(`<br><p class='event'>They won the fight!</p>`)
-                        you['health']-=randrange(20);
-                        if (you['health']<0){you['health']=0}; 
-                    }
-                    you['fights']++;
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
-          
-              $('.compliment').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I complimented my ${who['status']}, ${who['full_name']}. I told them they are ${choice(compliments)}</p>`)
-                  who['relation']+=randrange(4);
-                  who['happy']+=randrange(4);
-                  if (who['relation']>100){who['relation']=100}
-                  if (who['happy']>100){who['happy']=100};
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $('.argue').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I argued with my ${who['status']}, ${who['full_name']}. We argued about ${choice(argueAbout)}</p>`)
-                  who['relation']-=5;
-                  leave();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $(".breakUp").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $('#events').append(`<br><p class='event'>I broke up with ${who['full_name']}</p>`);
-                  you['happy']-=5;
-                  leave();
-                  who['status']='ex';
-                  who['relation']-=20;
-              })
-          
-              $(".moneyAsk").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']}, for money.</p>`)
-                  who['relation']--;
-                  if (who['relation'] > randrange(100)){
-                      if (who['money'] > 0){
-                          if (you['age']>13){
-                              amount = randrange(Math.floor(who['money']/50))
-                          you['money']+=amount;
-                          who['money']-=amount;
-                          $("#events").append(`<br><p class='event'>They said yes and gave me <span style='color: green; font-weight: bolder;'>$${amount}</span></p>`)
-                          }else{
-                              $("#events").append(`<br><p class='event'>They said I was too young.</p>`)
-                              who['relation']--;
-                          }
-                      }
-                      else{
-                          $("#events").append(`<br><p class='event'>They told me they are broke.</p>`)
-                      }
-                  }else{
-                      $("#events").append(`<br><p class='event'>They said we aren't close enough.</p>`)
-                      who['relation']--;
-                  }
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $('.hangOut').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I hung out with my ${who['status']}, ${who['full_name']}. We ${choice(hungOutDo)}.</p>`)
-                  who['relation']+=randrange(10);
-                  if (who['relation']>100){
-                      who['relation']=100;
-                  }
-                  leave();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          })
-      }
+                }
+            } else {
+                eventText = `My ${who['status']}, ${who['full_name']} did not want to rob someone with me.`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                leave();
+            }
+        } else {
+            eventText = `${who['status']}, ${who['full_name']} is too young to rob someone with me.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            leave();
+        }
+    } else {
+        eventText = `I wanted to rob someone with my ${who['status']}, ${who['full_name']}, but I was too young.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        leave();
+    }
+    if (who['relation'] > 100) { who['relation'] = 100 }
+    if (who['relation'] < 0) { who['relation'] = 0 }
+    update();
+});
+
+
+                 $("#pingPong").on('click', function () {
+    let eventText = "";
+    if (who['relation'] > randrange(50)) {
+        eventText = `I played ping pong with my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] += randrange(5);
+        you['happy'] += randrange(5);
+        if (who['relation'] > 100) { who['relation'] = 100 }
+    } else {
+        eventText = `My ${who['status']}, ${who['full_name']} said they would rather not play ping pong with me.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+    }
+    leave();
+    update();
+});
+
+                  $("#chess").on('click', function () {
+    let eventText = "";
+    if (who['relation'] > randrange(50)) {
+        eventText = `I played chess with my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] += randrange(5);
+        you['smarts'] += randrange(5);
+        if (who['relation'] > 100) { who['relation'] = 100 }
+    } else {
+        eventText = `My ${who['status']}, ${who['full_name']} said they would rather not play chess with me.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+    }
+    leave();
+    update();
+});
+
   
-  })
+$(".spreadRumor").on('click', function () {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to spread a rumor about your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I spread a rumor about my ${who['status']}, ${who['full_name']}. I told everyone that they ${choice(rumors)}`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] -= randrange(20);
+        if (randrange(5) == 1) {
+            eventText = "They fought me!";
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            for (let x = 0; x <= randrange(3); x++) {
+                eventText = `They ${choice(attacks)} my ${choice(bodyParts)}!`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                you['health'] -= randrange(10);
+            }
+        }
+        if (who['relation'] < 0) { who['relation'] = 0 }
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
+  
+            $(".insult").on('click', function () {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to insult your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I told my ${who['status']}, ${who['full_name']}, that they are ${choice(meanWords)}`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] -= randrange(10);
+        if (randrange(7) == 1) {
+            eventText = "They fought me!";
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            for (let x = 0; x <= randrange(3); x++) {
+                eventText = `They ${choice(attacks)} my ${choice(bodyParts)}!`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                you['health'] -= randrange(10);
+            }
+        }
+        if (who['relation'] < 0) { who['relation'] = 0 }
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
+  
+             $('.murderThem').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to kill your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I attempted to murder my ${who['age']} year old ${who['status']}, ${who['full_name']}!`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        if (who['health'] > randrange(60) && randrange(3) == 1) {
+            eventText = "They started to beat me up!";
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            you['health'] -= randrange(50);
+            if (you['health'] < 0) { you['health'] = 0; }
+            if (randrange(2) == 1) {
+                eventText = "They called the cops!";
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                let sentenceTime = randrange(30) + 5;
+                eventText = `I am going to prison for ${sentenceTime} year/s for attempted murder!`;
+                $('#events').append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                sentence = sentenceTime;
+                if (you['career'] != 'none') {
+                    you['salary'] -= you['jobSal'];
+                }
+                prisShuf();
+                you['inPrison'] = true;
+                you['career'] = 'none';
+                $("#prisonButtons").show();
+                $("#buttons").hide();
+                $("#relationships").hide();
+                $("#events").show();
+                $("#leaveButton").hide();
+            } else {
+                leave();
+            }
+        } else {
+            eventText = `I killed my ${who['status']}, ${who['full_name']}!`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            murders++;
+            if (you['age'] < 18 && you['age'] >= 5) {
+                for (z in you['school']['classmates']) {
+                    y = you['school']['classmates'][z];
+                    if (y == who) {
+                        you['school']['classmates'].splice(z, 1);
+                    }
+                }
+            }
+            you['happy'] -= randrange(10);
+            if (you['happy'] < 0) { you['happy'] = 0 }
+            you['relationships'].splice(Number($(this).attr('id')), 1);
+            if (randrange(2) == 1) {
+                eventText = "The cops found out it was me!";
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                let sentenceTime = randrange(10) + 40;
+                eventText = `I am going to prison for ${sentenceTime} year/s for murder!`;
+                $('#events').append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                sentence = sentenceTime;
+                if (you['career'] != 'none') {
+                    you['salary'] -= you['jobSal'];
+                }
+                you['inPrison'] = true;
+                you['career'] = 'none';
+                $("#prisonButtons").show();
+                $("#buttons").hide();
+                $("#relationships").hide();
+                $("#events").show();
+                $("#leaveButton").hide();
+            } else {
+                leave();
+            }
+        }
+        update();
+    }
+});
+
+$('.doctorsThem').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = "";
+    if (you['money'] >= 100) {
+        eventText = `I asked my ${who['status']}, ${who['full_name']}, to come to the doctors with me.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        you['money'] -= 100;
+        if (who['relation'] > randrange(60) || who['status'] == 'son' || who['status'] == 'daughter') {
+            eventText = `They let me take them to the doctors! <span style='color: red;'>-$100</span>`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(`They let me take them to the doctors! -$100`);
+            who['health'] += randrange(10);
+            if (who['health'] > 100) { who['health'] = 100 }
+            who['relation'] += randrange(10);
+            if (who['relation'] > 100) { who['relation'] = 100 }
+        } else {
+            eventText = `They were insulted!`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+            who['relation'] -= randrange(10);
+            if (who['relation'] < 0) { who['relation'] = 0 }
+        }
+    } else {
+        eventText = `I don't have the money to take ${who['full_name']} to the doctors.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+    }
+    leave();
+    update();
+});
+
+$(".hookWith").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = "";
+    if (who['relation'] > randrange(80)) {
+        if (randrange(3) == 1) {
+            eventText = `I hooked up with my ${who['status']}, ${who['full_name']}.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            lovers++;
+            who['relation'] += randrange(5);
+            you['happy'] += randrange(5);
+
+            if (randrange(5) == 1) {
+                let stdGiven = choice(stds);
+                eventText = `I contracted ${stdGiven['name']}!`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+                who['relation'] -= randrange(20);
+                you['happy'] -= randrange(10);
+                you['diseases'].push(stdGiven);
+            }
+
+            if (randrange(4) == 1) {
+                for (x in you['relationships']) {
+                    whoNow = you['relationships'][x];
+                    if (
+                        whoNow['status'] == 'girlfriend' ||
+                        whoNow['status'] == 'boyfriend' ||
+                        whoNow['status'] == 'fiance' ||
+                        whoNow['status'] == 'wife' ||
+                        whoNow['status'] == 'husband'
+                    ) {
+                        eventText = `My ${whoNow['status']} found out!`;
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+                        whoNow['relation'] -= randrange(30);
+                        you['happy'] -= randrange(10);
+                    }
+                }
+            }
+        } else {
+            eventText = `My ${who['status']}, ${who['full_name']}, did not want to hookup with me.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+            who['relation'] -= randrange(10);
+        }
+    } else {
+        eventText = `My ${who['status']}, ${who['full_name']}, did not want to hookup with me.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] -= randrange(10);
+    }
+    leave();
+    update();
+});
+
+          
+            $(".payThem").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let amountGive = prompt(`How Much do you want to pay your ${who['status']}?`, randrange(you['money']));
+    if (amountGive == '' || amountGive == null) amountGive = 0;
+    if (typeof amountGive === 'string' && amountGive.includes('/')) amountGive = 0;
+    if (isNaN(Number(amountGive))) amountGive = 0;
+    amountGive = Number(amountGive);
+    if (amountGive > you['money']) amountGive = you['money'];
+    if (amountGive < 0) amountGive = 0;
+
+    who['money'] += amountGive;
+    you['money'] -= amountGive;
+
+    // Calculate relation effect safely
+    let relEffect = 0;
+    if (amountGive > 0) relEffect = randrange(Math.max(1, amountGive / Math.max(1, randrange(50))));
+    who['relation'] += relEffect;
+    if (who['relation'] > 100) who['relation'] = 100;
+
+    let eventText = `I gave my ${who['status']}, ${who['full_name']}, $${comify(amountGive)} dollars.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(`I gave my ${who['status']}, ${who['full_name']}, $${amountGive} dollars.`); // Just plain for event log
+
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$('.loveMake').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I made love to my ${who['status']}, ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    if (randrange(2) == 1) {
+        eventText = `They did not enjoy it!`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] -= 2;
+        if (who['relation'] < 0) who['relation'] = 0;
+    } else {
+        eventText = `They enjoyed it!`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] += 2;
+        if (who['relation'] > 100) who['relation'] = 100;
+        who['relation'] += randrange(10);
+        if (who['relation'] > 100) who['relation'] = 100;
+    }
+
+    leave();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+    update();
+});
+
+          
+            $('.giveAd').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I gave advice to my ${who['status']}, ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    if (randrange(3) == 1) {
+        eventText = `They did not like my advice!`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['smarts'] -= 2;
+        if (who['smarts'] < 0) { who['smarts'] = 0; }
+        who['relation'] -= randrange(10);
+    } else {
+        eventText = `They appreciated the advice!`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['smarts'] += 2;
+        if (who['smarts'] > 100) { who['smarts'] = 100; }
+        who['relation'] += randrange(10);
+        if (who['relation'] > 100) { who['relation'] = 100; }
+    }
+    leave();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$(".haveChild").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I asked my ${who['status']}, ${who['full_name']}, to have a child with me.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    if (who['relation'] > randrange(100)) {
+        if (randrange(3) == 1) {
+            eventText = `They said yes!`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            childGender = choice(genders);
+            let babyList = (childGender == 'Male') ? mNames : fNames;
+            let childName = prompt(`Child Name, your child is a ${childGender}`, choice(babyList));
+            if (childName == '') {
+                childName = choice(babyList);
+                eventText = `Your ${who['status']} named the child ${childName}`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+            } else {
+                eventText = `You named the child ${childName}`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+            }
+            childName.split(' ').join('');
+            childName += ' ';
+            let childObj = {
+                age: 0,
+                relation: 50,
+                first_name: childName,
+                last_name: you['last_name'],
+                full_name: childName + " " + you['last_name'],
+                gender: childGender,
+                blood: true,
+                money: 0,
+                happy: randrange(100),
+                health: randrange(100),
+                looks: randrange(100),
+                smarts: randrange(100),
+            }
+            if (childObj['gender'] == 'Male') { childObj['status'] = 'son'; }
+            if (childObj['gender'] == 'Female') { childObj['status'] = 'daughter'; }
+            you['relationships'].push(childObj);
+
+        } else {
+            eventText = `They said they aren't sure if it's the right time`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+            who['relation'] -= 1;
+        }
+    } else {
+        eventText = `They said you aren't close enough`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] -= 5;
+    }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+          
+            $(".divorce").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to divorce your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I have divorced my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] -= 100;
+        who['happy'] -= 50;
+        if (who['happy'] < 0) { who['happy'] = 0; }
+        who['status'] = 'ex';
+
+        if (you['money'] > who['money']) {
+            let payThem = Math.floor(you['money'] * 0.1);
+            eventText = `I had to pay them $${comify(payThem)}`;
+            $("#events").append(`<br><p class='event'>I had to pay them <span style='color:red;'>$${comify(payThem)}</span></p>`);
+            eventLog.push(eventText);
+            you['money'] -= payThem;
+        } else {
+            let payMe = Math.floor(who['money'] * 0.1);
+            eventText = `They had to pay me $${comify(payMe)}`;
+            $("#events").append(`<br><p class='event'>They had to pay me <span style='color:green;'>$${comify(payMe)}</span></p>`);
+            eventLog.push(eventText);
+            you['money'] += payMe;
+        }
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
+$(".elope").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I am now married to ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    if (who['gender'] == 'Male') { who['status'] = 'husband'; }
+    if (who['gender'] == 'Female') { who['status'] = 'wife'; }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$(".callOff").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to call off your engagement with your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I called off the engagement with ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] -= 10;
+        if (who['gender'] == 'Male') { who['status'] = 'boyfriend'; }
+        if (who['gender'] == 'Female') { who['status'] = 'girlfriend'; }
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
+          
+            $(".propose").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I proposed to my ${who['status']}, ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    if (who['relation'] > randrange(40) + 50) {
+        if (randrange(3) == 1) {
+            who['status'] = 'fiance';
+            who['relation'] += 20;
+            you['happy'] += randrange(20);
+            if (you['happy'] > 100) { you['happy'] = 100; }
+            if (who['relation'] > 100) { who['relation'] = 100; }
+            eventText = `${who['full_name']} is now my ${who['status']}`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+        } else {
+            eventText = "They said they didn't feel ready!";
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+            who['relation'] -= 5;
+        }
+    } else {
+        eventText = "They said that you aren't close enough!";
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] -= 5;
+    }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$('.askOut').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I asked out my ${who['status']}, ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    let topMax = 10 - (who['relation'] / 10);
+    if (topMax < 2) {
+        topMax = 2;
+    }
+    if (randrange(topMax) == 1) {
+        let single = true;
+        for (x in you['relationships']) {
+            if (you['relationships'][x]['status'] == 'girlfriend' || you['relationships'][x]['status'] == 'boyfriend') {
+                single = false;
+            }
+        }
+        if (single) {
+            if (you['age'] > 12) {
+                // Age/gender logic for relationship status
+                eventText = "They said yes, we are now dating";
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+                lovers++;
+                if (who['gender'] == 'Male') {
+                    who['status'] = 'boyfriend';
+                } else {
+                    who['status'] = 'girlfriend';
+                }
+                who['relation'] += 10;
+            } else {
+                eventText = "Then realized I'm too young to date.";
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+            }
+        } else {
+            eventText = "I suddenly realized I'm already in a relationship";
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+        }
+    } else {
+        eventText = "They rejected me!";
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] -= 5;
+    }
+    if (who['relation'] > 100) {
+        who['relation'] = 100;
+    }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+          
+             $('.goOnDate').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I went on a date with my ${who['status']}, ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    who['relation'] += 5;
+    if (who['relation'] > 100) {
+        who['relation'] = 100;
+    }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$('.disregard').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to disregard your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I cut out connections with my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        you['relationships'].splice(Number($(this).attr('id')), 1);
+        if (who['status'] == 'son' || who['status'] == 'daughter') {
+            for (x in you['relationships']) {
+                person = you['relationships'][x];
+                if (person['status'] == 'wife' || person['status'] == 'husband' ||
+                    person['status'] == 'girlfriend' || person['status'] == 'boyfriend' ||
+                    person['status'] == 'fiance') {
+                    person['relation'] -= randrange(50);
+                }
+            }
+        }
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
+$('.fight').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to fight your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I fought my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] -= randrange(20);
+
+        // Fight sequence
+        for (let x = 0; x <= randrange(3); x++) {
+            let fightEvent = `I ${choice(attacks)} their ${choice(bodyParts)}!`;
+            $("#events").append(`<br><p class='event'>${fightEvent}</p>`);
+            eventLog.push(fightEvent);
+        }
+        for (let x = 0; x <= randrange(3); x++) {
+            let fightEvent = `They ${choice(attacks)} my ${choice(bodyParts)}!`;
+            $("#events").append(`<br><p class='event'>${fightEvent}</p>`);
+            eventLog.push(fightEvent);
+        }
+
+        if (randrange(3) == 1) {
+            let winEvent = "I won the fight!";
+            $("#events").append(`<br><p class='event'>${winEvent}</p>`);
+            eventLog.push(winEvent);
+            who['health'] -= randrange(20);
+            if (who['health'] < 0) { who['health'] = 0; }
+        } else {
+            let loseEvent = "They won the fight!";
+            $("#events").append(`<br><p class='event'>${loseEvent}</p>`);
+            eventLog.push(loseEvent);
+            you['health'] -= randrange(20);
+            if (you['health'] < 0) { you['health'] = 0; }
+        }
+        you['fights']++;
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
+          
+             $('.compliment').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I complimented my ${who['status']}, ${who['full_name']}. I told them they are ${choice(compliments)}`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    who['relation'] += randrange(4);
+    who['happy'] += randrange(4);
+    if (who['relation'] > 100) { who['relation'] = 100 }
+    if (who['happy'] > 100) { who['happy'] = 100 }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$('.argue').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I argued with my ${who['status']}, ${who['full_name']}. We argued about ${choice(argueAbout)}`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    who['relation'] -= 5;
+    leave();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$(".breakUp").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I broke up with ${who['full_name']}`;
+    $('#events').append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    you['happy'] -= 5;
+    leave();
+    who['status'] = 'ex';
+    who['relation'] -= 20;
+});
+
+          
+             $(".moneyAsk").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I asked my ${who['status']}, ${who['full_name']}, for money.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    who['relation']--;
+
+    if (who['relation'] > randrange(100)) {
+        if (who['money'] > 0) {
+            if (you['age'] > 13) {
+                let amount = randrange(Math.floor(who['money'] / 50));
+                you['money'] += amount;
+                who['money'] -= amount;
+                eventText = `They said yes and gave me $${amount}`;
+                $("#events").append(`<br><p class='event'>They said yes and gave me <span style='color: green; font-weight: bolder;'>$${amount}</span></p>`);
+                eventLog.push(eventText);
+            } else {
+                eventText = `They said I was too young.`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+                who['relation']--;
+            }
+        } else {
+            eventText = `They told me they are broke.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+        }
+    } else {
+        eventText = `They said we aren't close enough.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation']--;
+    }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$('.hangOut').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I hung out with my ${who['status']}, ${who['full_name']}. We ${choice(hungOutDo)}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    who['relation'] += randrange(10);
+    if (who['relation'] > 100) {
+        who['relation'] = 100;
+    }
+    leave();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
   
 
   function prisonLeave(){
