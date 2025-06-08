@@ -1627,6 +1627,7 @@ function lessBig(head, text, color) {
           <p class='event'>My ${you['relationships'][x]['status']} is ${you['relationships'][x]['full_name']}, a ${relationNowIs['career']['title']} (age ${relationNowIs['age']})</p>
           `) 
       }
+      update();
   }
   
   $(".name").on('click',function(){
