@@ -66,6 +66,8 @@ Promise.all([
   console.error("Failed to load one or more data files:", err);
 });//end json data
 
+var you = {};  // Global declaration
+
 //Start Game  
 function startGame() {
     // ✅ Keep game-state counters here too
