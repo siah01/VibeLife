@@ -98,7 +98,7 @@ function comify(x) {
     $(".money").html('$' + comify(you['money'] || 0));
 
     // Name
-    $(".name").text(you['name'] || '');
+  //  $(".name").text(you['name'] || '');
 
     // Age in top bar
     $(".topbar-age").text(you['age'] !== undefined ? you['age'] : '');
