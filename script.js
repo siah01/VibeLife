@@ -184,6 +184,12 @@ let movTitle1;
 let movTitle2;
 let bodyParts;
 let rumors;
+let lovers;
+let murders;
+let totalStoned;
+let buildings;
+let pastPeople;
+
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -482,12 +488,12 @@ function lessBig(head, text, color) {
 
 //Start Game  
 function startGame() {
-    let lovers = 0;
-    let murders = 0;
-    let totalStoned = 0;
-    let buildings = ['hotel','condo','hospital','apartment','grocery store']
+    lovers = 0;
+    murders = 0;
+    totalStoned = 0;
+    buildings = ['hotel','condo','hospital','apartment','grocery store']
     genders = ['Male','Female'];
-    let pastPeople = [];
+    pastPeople = [];
 
   if (!you['deathAge']) you['deathAge'] = randrange(40) + 80;
     
