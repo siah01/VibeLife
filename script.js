@@ -176,6 +176,9 @@ let schoolDistrict;
 let genders;
 let deaths;
 let compliments;
+let meanWords;
+let argueAbout;
+let hungOutDo;
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -752,9 +755,9 @@ function startGame() {
   $("#activities").hide();
   
   compliments = 'stellar,awesome,chill,funny,nice,lit,super,fun,cool';compliments=compliments.split(',');
-  let hungOutDo = 'went fishing,went exploring abandoned caves,went surfing,went skating,went swimming,ate at a fancy restaurant,watched a movie,went on a hike,walked on the beach,went for a walk,went to the park';hungOutDo=hungOutDo.split(',');
-  let argueAbout = 'who has more money,who is cooler,Lil Tecca,music types';argueAbout=argueAbout.split(',');
-  let meanWords = 'lame,stupid,ugly,annoying,moronic,idiotic,filthy,creepy';meanWords=meanWords.split(',');
+  hungOutDo = 'went fishing,went exploring abandoned caves,went surfing,went skating,went swimming,ate at a fancy restaurant,watched a movie,went on a hike,walked on the beach,went for a walk,went to the park';hungOutDo=hungOutDo.split(',');
+  argueAbout = 'who has more money,who is cooler,Lil Tecca,music types';argueAbout=argueAbout.split(',');
+  meanWords = 'lame,stupid,ugly,annoying,moronic,idiotic,filthy,creepy';meanWords=meanWords.split(',');
   deaths = 'a heart attack,a drug overdose,an ongoing health problem,a car accident';deaths=deaths.split(',');
   
   let movTitle1 = 'Journey,Recipe,Flight,Sanctuary,Home,Castle,Quick,Philosophy,Grasshopper,Day,Money,Dawn,Killer,Huskies,Leaves,Summer,Dark,Dance,Crying,Unmasking,The mask,Square,Kill the man';movTitle1=movTitle1.split(',');
