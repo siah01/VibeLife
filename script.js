@@ -170,6 +170,14 @@ $(document).on('click', '.leaveOk2', function() {
     }
 })
 
+function die() {
+    console.log("DIE FUNCTION CALLED");
+    you['dead'] = true;
+    listOfEvents = [];
+    listOfEvents.push(['Death!', 'You Died!', 'linear-gradient(#000000,#2e0909)']);
+    importantNew(listOfEvents); // triggers lessBig() for the death popup
+}
+
 //Start Game  
 function startGame() {
     let lovers = 0;
@@ -1336,13 +1344,7 @@ function lessBig(head, text, color) {
       }
   }
     
-function die() {
-    console.log("DIE FUNCTION CALLED");
-    you['dead'] = true;
-    listOfEvents = [];
-    listOfEvents.push(['Death!', 'You Died!', 'linear-gradient(#000000,#2e0909)']);
-    importantNew(listOfEvents); // triggers lessBig() for the death popup
-}
+
  /* function die(){
       listOfEvents=[];
       listOfEvents.push(['Death!','You Died!','linear-gradient(#000000,#2e0909)'])
