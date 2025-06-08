@@ -456,6 +456,30 @@ function leave(){
       }
   }
 
+
+function lessBig(head, text, color) {
+    leave();
+    $("#popup2").html('');
+    $('#events').hide();
+    $("#popup2").show();
+    $("#buttons").hide();
+    $("#buttons2").show();
+    $(".age-button-container").hide();
+    $(".bottom-options").hide();
+    $("#stats").hide();
+
+    $("#popup2").html(`
+        <center>
+        <div class='poper' style="background: ${color}">
+        <h1 id='head'>${head}</h1>
+        <p id='text'>${text}</p>
+        <br><br>
+        <button class='button option big leaveOk2'>Ok</button>
+        </center>
+        </div>
+    `);
+}
+
 //Start Game  
 function startGame() {
     let lovers = 0;
@@ -1390,29 +1414,6 @@ you =
       inmateObj['full_name']=inmateObj['first_name'] + ' ' + inmateObj['last_name'];
     prisonInmates.push(inmateObj);
   }
-  
-function lessBig(head, text, color) {
-    leave();
-    $("#popup2").html('');
-    $('#events').hide();
-    $("#popup2").show();
-    $("#buttons").hide();
-    $("#buttons2").show();
-    $(".age-button-container").hide();
-    $(".bottom-options").hide();
-    $("#stats").hide();
-
-    $("#popup2").html(`
-        <center>
-        <div class='poper' style="background: ${color}">
-        <h1 id='head'>${head}</h1>
-        <p id='text'>${text}</p>
-        <br><br>
-        <button class='button option big leaveOk2'>Ok</button>
-        </center>
-        </div>
-    `);
-}
 
   function isSingle(list){
     for(x in list){
