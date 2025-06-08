@@ -4100,7 +4100,7 @@ $("#careers").on('click', '#homework', function() {
                   <button id='${x}' class='button hang spendTime'>Spend Time With Them</button>
                   </div>
               `)
-  
+  });
               if (rnHuman['age']>15 && you['age'] >= 10){
                   $(`#${x}div2`).append(`
                       <button id='${x}' class='hang murderThem'>Murder Them</button>
@@ -4179,9 +4179,9 @@ $("#careers").on('click', '#homework', function() {
                     <br>
                     <button class='button actionButton' id='smokeWithThem'>Smoke pot with them</button>
                   </center
-                  `)
+                  `)})
 
-                 $("#smokeWithThem").on('click', function () {
+    $("#smokeWithThem").on('click', function () {
     let eventText = "";
     if (you['age'] > 13) {
         if (who['age'] > 13) {
@@ -4255,7 +4255,7 @@ $("#careers").on('click', '#homework', function() {
 });
 
 
-                 $("#robSomeone").on('click', function () {
+    $("#robSomeone").on('click', function () {
     let eventText = "";
     if (you['age'] > 6) {
         if (who['age'] > 6) {
