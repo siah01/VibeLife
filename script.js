@@ -2067,6 +2067,7 @@ $("#finance").on('click', "#carShow", function() {
 $("#finance").on('click', ".buyCar", function() {
     if (you['driversLicense'] == true) {
         let carOn = cars[Number($(this).attr('id'))];
+        let eventText = "";
         if (you['money'] >= carOn['cost']) {
             you['money'] -= carOn['cost'];
             carOn['own'] = true;
@@ -2074,12 +2075,18 @@ $("#finance").on('click', ".buyCar", function() {
             you['cars'].push(carOn);
             you['happy'] += carOn['hapEff'];
             cars.splice(Number($(this).attr('id')), 1);
-            $('#events').append(`<br><sh class='event'>I bought a car, ${carOn['name']}!</sh>`);
+            eventText = `I bought a car, ${carOn['name']}!`;
+            $('#events').append(`<br><sh class='event'>${eventText}</sh>`);
+            eventLog.push(eventText);
         } else {
-            $('#events').append(`<br><sh class='event'>I cannot afford that car!</sh>`);
+            eventText = "I cannot afford that car!";
+            $('#events').append(`<br><sh class='event'>${eventText}</sh>`);
+            eventLog.push(eventText);
         }
     } else {
-        $('#events').append(`<br><sh class='event'>I was gonna buy a car but I need a drivers license!</sh>`);
+        let eventText = "I was gonna buy a car but I need a drivers license!";
+        $('#events').append(`<br><sh class='event'>${eventText}</sh>`);
+        eventLog.push(eventText);
     }
     leave();
     update();
@@ -2113,7 +2120,10 @@ $("#finance").on('click', "#youCar", function() {
 // Sell your car
 $("#finance").on('click', ".sellCar", function() {
     let carThis = you['cars'][Number($(this).attr('id'))];
-    $("#events").append(`<br><sh class='event'>I sold my car, ${carThis['name']}</sh>`);
+    let eventText = `I sold my car, ${carThis['name']}`;
+    $("#events").append(`<br><sh class='event'>${eventText}</sh>`);
+    eventLog.push(eventText);
+
     lessBig('Goodbye My Car!', `You sold your car`, 'linear-gradient(#659D32, #488214)');
     you['money'] += Math.floor(carThis['cost'] * 0.8);
     carThis['own'] = false;
