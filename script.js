@@ -213,8 +213,6 @@ function startGame() {
   choice = listName => listName[Math.floor(Math.random()*listName.length)];
   randrange = max => Math.floor(Math.random()*max);
   
-
-  
   let traits = 
   [
       {
