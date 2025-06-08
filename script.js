@@ -5969,7 +5969,7 @@ $("#careers").on('click', '#homework', function() {
       for(x in you['items']){
           you['items'][x]['fixedUp']=false;
       }
-      update();
+    //  update();
       if (you['happy']<0){you['happy']=0};
       if (you['looks']<0){you['looks']=0};
       if (you['smarts']<0){you['smarts']=0};
