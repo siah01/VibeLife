@@ -131,6 +131,7 @@ function loadGame() {
 }
 
 function clearGame() {
+    console.log("remove save data");
     localStorage.removeItem('vibelifeSave');
 }
 
@@ -173,9 +174,8 @@ $(document).on('click', '.leaveOk2', function() {
 })
 
 function die() {
-    console.log("DIE FUNCTION CALLED");
     you['dead'] = true;
-    clearGame() 
+    clearGame(); 
     listOfEvents = [];
     listOfEvents.push(['Death!', 'You Died!', 'linear-gradient(#000000,#2e0909)']);
     importantNew(listOfEvents); // triggers lessBig() for the death popup
