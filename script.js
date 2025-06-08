@@ -133,6 +133,7 @@ function clearGame() {
 }
 
 var you = {};  // Global declaration
+randrange = max => Math.floor(Math.random()*max);
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -208,7 +209,7 @@ function startGame() {
   }
   
   choice = listName => listName[Math.floor(Math.random()*listName.length)];
-  randrange = max => Math.floor(Math.random()*max);
+  
   
   let traits = 
   [
