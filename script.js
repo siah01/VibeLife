@@ -5308,12 +5308,16 @@ $("#workForEm").on('click', function() {
 
       $("#talkWith").on('click',function(){
         if (inmate['relation'] < randrange(50)){
+          eventText = `My inmate, ${inmate['full_name']}, laughed at me for talking to them!`;
           $("#events").append(`<br><p class='event'>My inmate, ${inmate['full_name']}, laughed at me for talking to them!</p>`);
+            eventLog.push(eventText);
         }
         else{
+          eventText = `Me and a fellow inmate, ${inmate['full_name']}, talked for a while.`;  
           $("#events").append(`<br><p class='event'>Me and a fellow inmate, ${inmate['full_name']}, talked for a while.</p>`);
+            eventLog.push(eventText);
           inmate['relation'] += randrange(10);
-          if (inmate['realtion'] > 100){inmate['relation']= 100};
+          if (inmate['relation'] > 100){inmate['relation']= 100};
         }
         prisonLeave()
         update();
