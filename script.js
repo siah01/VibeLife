@@ -57,7 +57,7 @@ function comify(x) {
 }
 
  function update() {
-     console.log("update called", you)
+     console.trace("Update called");
     // Defensive checks for nested properties
     if (you['school']) {
         if (typeof you['school']['grade'] === "number") {
