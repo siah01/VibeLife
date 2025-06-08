@@ -169,6 +169,7 @@ function clearGame() {
 var you = {};  // Global declaration
 randrange = max => Math.floor(Math.random()*max);
 let eventLog = [];
+let choiceEvents = {};
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
