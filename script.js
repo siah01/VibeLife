@@ -175,6 +175,7 @@ let cliques = [];
 let schoolDistrict;
 let genders;
 let deaths;
+let compliments;
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -750,7 +751,7 @@ function startGame() {
   
   $("#activities").hide();
   
-  let compliments = 'stellar,awesome,chill,funny,nice,lit,super,fun,cool';compliments=compliments.split(',');
+  compliments = 'stellar,awesome,chill,funny,nice,lit,super,fun,cool';compliments=compliments.split(',');
   let hungOutDo = 'went fishing,went exploring abandoned caves,went surfing,went skating,went swimming,ate at a fancy restaurant,watched a movie,went on a hike,walked on the beach,went for a walk,went to the park';hungOutDo=hungOutDo.split(',');
   let argueAbout = 'who has more money,who is cooler,Lil Tecca,music types';argueAbout=argueAbout.split(',');
   let meanWords = 'lame,stupid,ugly,annoying,moronic,idiotic,filthy,creepy';meanWords=meanWords.split(',');
