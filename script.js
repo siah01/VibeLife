@@ -1492,29 +1492,37 @@ for (x in you['relationships']) {
               }
           }
   
-          $(".rehabDrugs").on('click',function(){
-              currentDrug = you['addictions'][Number($(this).attr('id'))];
-              if (you['money'] >= 1000){
-                  you['money']-=1000;
-                  $("#events").append(`<br><p class='event'>I went to rehab.</p>`);
-                  if (randrange(currentDrug['rehabChance']) == 1){
-                      you['oldAddictions'].push(currentDrug);
-                      you['addictions'].splice(Number(($(this).attr('id'))))
-                      you['stoned']-=randrange(Math.floor(you['stoned']/3))
-                      $("#events").append(`<br><p class='event'>I no longer am addicted to ${currentDrug['name']}.</p>`);
-                      lessBig('Success!',`You are no longer addicted to ${currentDrug['name']}`,'linear-gradient(#42C0FB, #4AC948)')
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>Rehab was a failure.</p>`);
-                      leave()
-                  }
-              }
-              else{
-                  $("#events").append(`<br><p class='event'>I can't afford to go to rehab.</p>`);
-                  leave();
-              }
-              update();
-          })
+$(".rehabDrugs").on('click', function () {
+    currentDrug = you['addictions'][Number($(this).attr('id'))];
+    if (you['money'] >= 1000) {
+        you['money'] -= 1000;
+        let eventText = "I went to rehab.";
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        if (randrange(currentDrug['rehabChance']) == 1) {
+            you['oldAddictions'].push(currentDrug);
+            you['addictions'].splice(Number($(this).attr('id')));
+            you['stoned'] -= randrange(Math.floor(you['stoned'] / 3));
+            eventText = `I no longer am addicted to ${currentDrug['name']}.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+            lessBig('Success!', `You are no longer addicted to ${currentDrug['name']}`, 'linear-gradient(#42C0FB, #4AC948)');
+        } else {
+            eventText = "Rehab was a failure.";
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+            leave();
+        }
+    } else {
+        let eventText = "I can't afford to go to rehab.";
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        leave();
+    }
+    update();
+});
+
   
           $(".saveLife").on('click',function(){
               let thisDisease = you['diseases'][Number($(this).attr('id'))];
