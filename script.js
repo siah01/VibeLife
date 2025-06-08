@@ -179,6 +179,18 @@ function die() {
     importantNew(listOfEvents); // triggers lessBig() for the death popup
 }
 
+ function dieLeave(){
+      $("#relationships").hide();
+      $("#leaveButton").hide();
+      $("#activities").hide();
+      $("#popup").hide();
+      $("#popup2").hide();
+      $("#careers").hide();
+      $("#finance").hide();
+      $("#buttons2").hide();
+      $("#youInfo").hide();
+  }
+
 function importantNew(listName){
       $("#popup").html('');
       for(x in listName){
