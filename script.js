@@ -172,6 +172,7 @@ let eventLog = [];
 let choiceEvents = {};
 let houses = [];
 let cliques = [];
+let schoolDistrict;
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -1350,7 +1351,7 @@ you =
   
   let taxPay = 0;
   let bookYear = false;
-  let schoolDistrict = choice(lNames);
+  schoolDistrict = choice(lNames);
   let vev = 0;
   let oked = true;
   
