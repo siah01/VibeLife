@@ -4518,69 +4518,97 @@ $("#relationshipsButton").on('click',function(){
 });
 
   
-              $('.doctorsThem').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (you['money']>=100){
-                      $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']}, to come to the doctors with me.</p>`)
-                      you['money']-=100
-                      if (who['relation']>randrange(60) || who['status']=='son' || who['status'] == 'daughter'){
-                          $("#events").append(`<br><p class='event'>They let me take them to the doctors! <span style='color: red;'>-$100</span></p>`)
-                          who['health']+=randrange(10);
-                          if (who['health']>100){who['health']=100};
-                          who['relation']+=randrange(10);
-                          if (who['relation']>100){who['relation']=100}
-                      }
-                      else{
-                          $("#events").append(`<br><p class='event'>They were insulted!</p>`)
-                          who['relation']-=randrange(10);
-                          if (who['relation']<0){who['relation']=0};
-                      }
-                  }else{
-                      $("#events").append(`<br><p class='event'>I don't have the money to take ${who['full_name']} to the doctors.</p>`)
-                  }
-                  leave();
-                  update();
-              })
+            $('.doctorsThem').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = "";
+    if (you['money'] >= 100) {
+        eventText = `I asked my ${who['status']}, ${who['full_name']}, to come to the doctors with me.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        you['money'] -= 100;
+        if (who['relation'] > randrange(60) || who['status'] == 'son' || who['status'] == 'daughter') {
+            eventText = `They let me take them to the doctors! <span style='color: red;'>-$100</span>`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(`They let me take them to the doctors! -$100`);
+            who['health'] += randrange(10);
+            if (who['health'] > 100) { who['health'] = 100 }
+            who['relation'] += randrange(10);
+            if (who['relation'] > 100) { who['relation'] = 100 }
+        } else {
+            eventText = `They were insulted!`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+            who['relation'] -= randrange(10);
+            if (who['relation'] < 0) { who['relation'] = 0 }
+        }
+    } else {
+        eventText = `I don't have the money to take ${who['full_name']} to the doctors.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+    }
+    leave();
+    update();
+});
+
+$(".hookWith").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = "";
+    if (who['relation'] > randrange(80)) {
+        if (randrange(3) == 1) {
+            eventText = `I hooked up with my ${who['status']}, ${who['full_name']}.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            lovers++;
+            who['relation'] += randrange(5);
+            you['happy'] += randrange(5);
+
+            if (randrange(5) == 1) {
+                let stdGiven = choice(stds);
+                eventText = `I contracted ${stdGiven['name']}!`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+                who['relation'] -= randrange(20);
+                you['happy'] -= randrange(10);
+                you['diseases'].push(stdGiven);
+            }
+
+            if (randrange(4) == 1) {
+                for (x in you['relationships']) {
+                    whoNow = you['relationships'][x];
+                    if (
+                        whoNow['status'] == 'girlfriend' ||
+                        whoNow['status'] == 'boyfriend' ||
+                        whoNow['status'] == 'fiance' ||
+                        whoNow['status'] == 'wife' ||
+                        whoNow['status'] == 'husband'
+                    ) {
+                        eventText = `My ${whoNow['status']} found out!`;
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+                        whoNow['relation'] -= randrange(30);
+                        you['happy'] -= randrange(10);
+                    }
+                }
+            }
+        } else {
+            eventText = `My ${who['status']}, ${who['full_name']}, did not want to hookup with me.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+            who['relation'] -= randrange(10);
+        }
+    } else {
+        eventText = `My ${who['status']}, ${who['full_name']}, did not want to hookup with me.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] -= randrange(10);
+    }
+    leave();
+    update();
+});
+
   
-              $(".hookWith").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (who['relation']>randrange(80)){
-                      if (randrange(3)==1){
-                          $("#events").append(`<br><p class='event'>I hooked up with my ${who['status']}, ${who['full_name']}.</p>`)
-                          lovers++;
-                          who['relation']+=randrange(5);
-                          you['happy']+=randrange(5);
-                          if (randrange(5)==1){
-                              let stdGiven = choice(stds);
-                              $("#events").append(`<br><p class='event'>I contracted ${stdGiven['name']}!</p>`)
-                              who['relation']-=randrange(20);
-                              you['happy']-=randrange(10)
-                              you['diseases'].push(stdGiven);
-                          }
-                          if (randrange(4)==1){
-                              for(x in you['relationships']){
-                                  whoNow = you['relationships'][x];
-                                  if (whoNow['status']=='girlfriend'||whoNow['status']=='boyfriend'||whoNow['status']=='fiance'||whoNow['status']=='wife'||whoNow['status']=='husband'){
-                                      $("#events").append(`<br><p class='event'>My ${whoNow['status']} found out!</p>`)
-                                      whoNow['relation']-=randrange(30);
-                                      you['happy']-=randrange(10);
-                                  }
-                              }
-                          }
-                      }
-                      else{
-                          $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']}, did not want to hookup with me.</p>`)
-                          who['relation']-=randrange(10);
-                      }
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']}, did not want to hookup with me.</p>`)
-                      who['relation']-=randrange(10);
-                  }
-                  leave();
-                  update();
-              })
-          
               $(".payThem").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
                   let amountGive = prompt(`How Much do you want to pay your ${who['status']}?`,randrange(you['money']))
