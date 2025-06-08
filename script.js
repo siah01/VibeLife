@@ -501,7 +501,7 @@ function startGame() {
       },
   ]  
 
-  let choiceEvents = 
+  choiceEvents = 
   {
       "baby":[
           ['Toys!','You found a toy on the ground? Will you take it?','linear-gradient(#ff8c00,#ff4500)','Take the toy','Ignore it','I took a toy that I found on the ground.','I ignored a cool toy I saw on the ground.',
