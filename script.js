@@ -5780,4 +5780,4 @@ $("#careers").on('click', '#homework', function() {
         update();
         saveGame();
 });
-}
+//}
