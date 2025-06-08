@@ -30,7 +30,7 @@ console.log("Script.js is loaded and running");
 $(document).ready(function() {
     // Check for a saved game
     if (!localStorage.getItem('vibelifeSave')) {
-        // $('#load-button').hide();
+        $('#load-button').hide();
     } else {
         $('#load-button').text('Continue Game');
     }
