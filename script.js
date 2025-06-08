@@ -170,6 +170,7 @@ var you = {};  // Global declaration
 randrange = max => Math.floor(Math.random()*max);
 let eventLog = [];
 let choiceEvents = {};
+let houses = [];
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -497,7 +498,7 @@ function startGame() {
       activities[x]['done']=false
   }
   
-  let houses =
+ houses =
   [
       {
           "name":"Shack on "+choice(lNames)+' street',
