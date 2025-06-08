@@ -5029,48 +5029,59 @@ $(".breakUp").on('click', function() {
 });
 
           
-              $(".moneyAsk").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']}, for money.</p>`)
-                  who['relation']--;
-                  if (who['relation'] > randrange(100)){
-                      if (who['money'] > 0){
-                          if (you['age']>13){
-                              amount = randrange(Math.floor(who['money']/50))
-                          you['money']+=amount;
-                          who['money']-=amount;
-                          $("#events").append(`<br><p class='event'>They said yes and gave me <span style='color: green; font-weight: bolder;'>$${amount}</span></p>`)
-                          }else{
-                              $("#events").append(`<br><p class='event'>They said I was too young.</p>`)
-                              who['relation']--;
-                          }
-                      }
-                      else{
-                          $("#events").append(`<br><p class='event'>They told me they are broke.</p>`)
-                      }
-                  }else{
-                      $("#events").append(`<br><p class='event'>They said we aren't close enough.</p>`)
-                      who['relation']--;
-                  }
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $('.hangOut').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I hung out with my ${who['status']}, ${who['full_name']}. We ${choice(hungOutDo)}.</p>`)
-                  who['relation']+=randrange(10);
-                  if (who['relation']>100){
-                      who['relation']=100;
-                  }
-                  leave();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          })
-      }
+         $(".moneyAsk").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I asked my ${who['status']}, ${who['full_name']}, for money.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    who['relation']--;
+
+    if (who['relation'] > randrange(100)) {
+        if (who['money'] > 0) {
+            if (you['age'] > 13) {
+                let amount = randrange(Math.floor(who['money'] / 50));
+                you['money'] += amount;
+                who['money'] -= amount;
+                eventText = `They said yes and gave me $${amount}`;
+                $("#events").append(`<br><p class='event'>They said yes and gave me <span style='color: green; font-weight: bolder;'>$${amount}</span></p>`);
+                eventLog.push(eventText);
+            } else {
+                eventText = `They said I was too young.`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+                who['relation']--;
+            }
+        } else {
+            eventText = `They told me they are broke.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+        }
+    } else {
+        eventText = `They said we aren't close enough.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation']--;
+    }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$('.hangOut').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I hung out with my ${who['status']}, ${who['full_name']}. We ${choice(hungOutDo)}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    who['relation'] += randrange(10);
+    if (who['relation'] > 100) {
+        who['relation'] = 100;
+    }
+    leave();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
   
   })
 
