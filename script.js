@@ -370,6 +370,78 @@ function leave(){
       $("#popup2").hide();
   }
 
+  function newSchoolPeople(teachers,students,other){
+      you['school']['teachers']=[]
+      you['school']['classmates']=[]
+      you['school']['clique']='none';
+      for(x in cliques){
+          cliques[x]['members']=[];
+      }
+      you['school']['name']=schoolDistrict+`'s `+other
+      for(let x = 0; x != teachers; x++){
+          teacherGender = choice(genders);
+          let teacherObj = 
+          {
+              age: randrange(40)+22,
+              gender: teacherGender,
+              money: randrange(10000),
+              happy: randrange(100),
+              health: randrange(100),
+              looks: randrange(100),
+              smarts: randrange(50)+50,
+              relation: randrange(100),
+              blood: false,
+              status: 'teacher'
+          }
+          if (teacherGender=='Male'){
+              teacherObj['first_name']=choice(mNames);
+          }else{
+              teacherObj['first_name']=choice(fNames);
+          }
+          teacherObj['last_name']=choice(lNames);
+          teacherObj['full_name']=teacherObj['first_name']+' '+teacherObj['last_name']
+          you['school']['teachers'].push(teacherObj);
+      }
+      for(let x = 0; x != students; x++){
+          studentGender = choice(genders);
+          let studentObj = 
+          {
+              age: you['age'],
+              gender: studentGender,
+              money: randrange(500),
+              happy: randrange(100),
+              health: randrange(100),
+              looks: randrange(100),
+              smarts: randrange(50)+50,
+              relation: randrange(100),
+              blood: false,
+              status: 'classmate',
+              popularity: randrange(100),
+              clique: 'none'
+          }
+          if (studentGender=='Male'){
+              studentObj['first_name']=choice(mNames);
+          }else{
+              studentObj['first_name']=choice(fNames);
+          }
+       //   console.log(cliques);
+          studentObj['last_name']=choice(lNames);
+          studentObj['full_name']=studentObj['first_name']+' '+studentObj['last_name']
+          you['school']['classmates'].push(studentObj);
+          for (i in cliques){
+              cliqueNow = cliques[i];
+              if (studentObj['clique']=='none'){
+                  if (studentObj['popularity'] > randrange(50)+cliqueNow['popularityReq']){
+                      if (randrange(2)==1){
+                          studentObj['clique']=cliqueNow['name'];
+                          cliqueNow['members'].push(studentObj)
+                      }
+                  }
+              }
+          }
+      }
+  }
+
 //Start Game  
 function startGame() {
     let lovers = 0;
@@ -1339,78 +1411,6 @@ function lessBig(head, text, color) {
         return false;
       }
     }
-  }
-
-  function newSchoolPeople(teachers,students,other){
-      you['school']['teachers']=[]
-      you['school']['classmates']=[]
-      you['school']['clique']='none';
-      for(x in cliques){
-          cliques[x]['members']=[];
-      }
-      you['school']['name']=schoolDistrict+`'s `+other
-      for(let x = 0; x != teachers; x++){
-          teacherGender = choice(genders);
-          let teacherObj = 
-          {
-              age: randrange(40)+22,
-              gender: teacherGender,
-              money: randrange(10000),
-              happy: randrange(100),
-              health: randrange(100),
-              looks: randrange(100),
-              smarts: randrange(50)+50,
-              relation: randrange(100),
-              blood: false,
-              status: 'teacher'
-          }
-          if (teacherGender=='Male'){
-              teacherObj['first_name']=choice(mNames);
-          }else{
-              teacherObj['first_name']=choice(fNames);
-          }
-          teacherObj['last_name']=choice(lNames);
-          teacherObj['full_name']=teacherObj['first_name']+' '+teacherObj['last_name']
-          you['school']['teachers'].push(teacherObj);
-      }
-      for(let x = 0; x != students; x++){
-          studentGender = choice(genders);
-          let studentObj = 
-          {
-              age: you['age'],
-              gender: studentGender,
-              money: randrange(500),
-              happy: randrange(100),
-              health: randrange(100),
-              looks: randrange(100),
-              smarts: randrange(50)+50,
-              relation: randrange(100),
-              blood: false,
-              status: 'classmate',
-              popularity: randrange(100),
-              clique: 'none'
-          }
-          if (studentGender=='Male'){
-              studentObj['first_name']=choice(mNames);
-          }else{
-              studentObj['first_name']=choice(fNames);
-          }
-       //   console.log(cliques);
-          studentObj['last_name']=choice(lNames);
-          studentObj['full_name']=studentObj['first_name']+' '+studentObj['last_name']
-          you['school']['classmates'].push(studentObj);
-          for (i in cliques){
-              cliqueNow = cliques[i];
-              if (studentObj['clique']=='none'){
-                  if (studentObj['popularity'] > randrange(50)+cliqueNow['popularityReq']){
-                      if (randrange(2)==1){
-                          studentObj['clique']=cliqueNow['name'];
-                          cliqueNow['members'].push(studentObj)
-                      }
-                  }
-              }
-          }
-      }
   }
   
 for (x in you['relationships']) {
