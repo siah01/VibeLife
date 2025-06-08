@@ -5284,17 +5284,23 @@ $("#workForEm").on('click', function() {
 
 
       $("#attack").on('click',function(){
+        let eventText = `I attacked my inmate, ${inmate['full_name']}, I ${choice(attacks)} their ${choice(bodyParts)}`;
         $("#events").append(`<br><p class='event'>I attacked my inmate, ${inmate['full_name']}, I ${choice(attacks)} their ${choice(bodyParts)}</p>`);
+        eventLog.push(eventText);
         inmate['relation'] -= randrange(20);
         if (inmate['relation'] < 0){inmate['relation']=0}
         if (randrange(2)==1){
+          eventText = `They attacked me! They ${choice(attacks)} my ${choice(bodyParts)}`;
           $("#events").append(`<br><p class='event'>They attacked me! They ${choice(attacks)} my ${choice(bodyParts)}</p>`);
+          eventLog.push(eventText);
           you['health']-=randrange(10);
         }
         if (randrange(3)==1){
           more = randrange(5);
           sentence += more;
+         eventText = `The guards found out! My prison sentence has been extended ${more} years.`;
           $("#events").append(`<br><p class='event'>The guards found out! My prison sentence has been extended ${more} years.</p>`);
+         eventLog.push(eventText);
         }
         prisonLeave();
         update();
