@@ -6092,4 +6092,4 @@ $("#workForEm").on('click', function() {
         update();
         saveGame();
 });
-//}
+}
