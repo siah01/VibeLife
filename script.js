@@ -305,6 +305,22 @@ function importantNew(listName){
       })
   }
 
+function leave(){
+      $(".bottom-options").show();
+      $(".age-button-container").show();
+      $("#stats").show();
+      $("#events").show();
+      $("#relationships").hide();
+      $("#leaveButton").hide();
+      $("#activities").hide();
+      $("#popup").hide();
+      $("#careers").hide();
+      $("#finance").hide();
+      $("#buttons2").hide();
+      $("#youInfo").hide();
+      $("#popup2").hide();
+  }
+
 //Start Game  
 function startGame() {
     let lovers = 0;
@@ -4980,21 +4996,7 @@ $("#careers").on('click', '#homework', function() {
   
   })
   
-  function leave(){
-      $(".bottom-options").show();
-      $(".age-button-container").show();
-      $("#stats").show();
-      $("#events").show();
-      $("#relationships").hide();
-      $("#leaveButton").hide();
-      $("#activities").hide();
-      $("#popup").hide();
-      $("#careers").hide();
-      $("#finance").hide();
-      $("#buttons2").hide();
-      $("#youInfo").hide();
-      $("#popup2").hide();
-  }
+
   function prisonLeave(){
       $("#prisonButtons").show();
       $("#buttons").hide();
