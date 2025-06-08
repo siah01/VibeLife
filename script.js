@@ -1536,9 +1536,14 @@ you =
             ${eventsHtml}
         </div></center>
       `)
-  }
-  
 
+      dieLeave();
+      $("#summary").show();
+      $("#playAgain").show();
+      $(".ageButton").hide();
+      $(".bottom-options").hide();
+      $("#stats").hide();
+  }
   
   for(x in you['relationships']){
       relationNowIs = you['relationships'][x];
@@ -6062,6 +6067,7 @@ $("#careers").on('click', '#homework', function() {
       $("#popup2").hide();
       $("#prisonLeave").hide()
   }
+    
   function dieLeave(){
       $("#relationships").hide();
       $("#leaveButton").hide();
@@ -6959,7 +6965,7 @@ $("#careers").on('click', '#homework', function() {
       for(x in activities){
           activities[x]['done']=false;
       }
-      console.log(listOfEvents)
+     // console.log(listOfEvents)
       if (you['dead']==false){
           if (you['inPrison'] == false){
             deadd = false
