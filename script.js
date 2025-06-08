@@ -179,6 +179,11 @@ let compliments;
 let meanWords;
 let argueAbout;
 let hungOutDo;
+let attacks;
+let movTitle1;
+let movTitle2;
+let bodyParts;
+let rumors;
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -760,11 +765,11 @@ function startGame() {
   meanWords = 'lame,stupid,ugly,annoying,moronic,idiotic,filthy,creepy';meanWords=meanWords.split(',');
   deaths = 'a heart attack,a drug overdose,an ongoing health problem,a car accident';deaths=deaths.split(',');
   
-  let movTitle1 = 'Journey,Recipe,Flight,Sanctuary,Home,Castle,Quick,Philosophy,Grasshopper,Day,Money,Dawn,Killer,Huskies,Leaves,Summer,Dark,Dance,Crying,Unmasking,The mask,Square,Kill the man';movTitle1=movTitle1.split(',');
-  let movTitle2 = 'of hell,in time,of the zombies,in the dark,disaster,moon,maker,farmer,at dawn,in the sunlight,crash,room,of the penguins,to go,monday,Squid,of power,for you';movTitle2=movTitle2.split(',');
-  let bodyParts = `kneecap,bellybutton,finger,chest,neck,leg,arm,fist,tongue,belly,eyes,back,face`;bodyParts=bodyParts.split(',');
-  let attacks = `lacerated,crippled,broke,slapped,punched,bit,busted,crushed,spanked,headbutted,smashed,kicked,touched,popped,cut,shot,shanked,cracked,destroyed,drop-kicked`;attacks=attacks.split(',');
-  let rumors = `are gay,have no friends,are a virgin,have herpes,have mental problems,are not mentally stable,are a murderer,have a tattoo of a dog crap`;rumors=rumors.split(',');
+  movTitle1 = 'Journey,Recipe,Flight,Sanctuary,Home,Castle,Quick,Philosophy,Grasshopper,Day,Money,Dawn,Killer,Huskies,Leaves,Summer,Dark,Dance,Crying,Unmasking,The mask,Square,Kill the man';movTitle1=movTitle1.split(',');
+  movTitle2 = 'of hell,in time,of the zombies,in the dark,disaster,moon,maker,farmer,at dawn,in the sunlight,crash,room,of the penguins,to go,monday,Squid,of power,for you';movTitle2=movTitle2.split(',');
+  bodyParts = `kneecap,bellybutton,finger,chest,neck,leg,arm,fist,tongue,belly,eyes,back,face`;bodyParts=bodyParts.split(',');
+  attacks = `lacerated,crippled,broke,slapped,punched,bit,busted,crushed,spanked,headbutted,smashed,kicked,touched,popped,cut,shot,shanked,cracked,destroyed,drop-kicked`;attacks=attacks.split(',');
+  rumors = `are gay,have no friends,are a virgin,have herpes,have mental problems,are not mentally stable,are a murderer,have a tattoo of a dog crap`;rumors=rumors.split(',');
   
   cliques =
   [
