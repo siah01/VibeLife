@@ -135,15 +135,33 @@ function saveGame() {
     localStorage.setItem('vibelifeSave', JSON.stringify(saveData));
 }
 
+function getGradeByAge(age) {
+    // This is a basic mapping, you can adjust as needed.
+    if (age < 6) return "Kindergarten";
+    return (age - 5) + "th";
+}
+
 function loadGame() {
     const data = localStorage.getItem('vibelifeSave');
     if (!data) {
         alert("No saved game found. Start a new game to begin!");
         return;
     }
+
     const saveData = JSON.parse(data);
     you = saveData.you;
     eventLog = saveData.eventLog || [];
+
+    // Now fix up you.school (AFTER loading)
+    if (!you.school) {
+        you.school = {
+            "name": "",
+            "teachers": [],
+            "classmates": [],
+            "grade": getGradeByAge(you.age),
+            "popularity": Math.floor(Math.random() * 100)
+        };
+    }
 
     update(); // This redraws the UI with loaded data
 
@@ -154,6 +172,7 @@ function loadGame() {
     $('.screen').removeClass('active');
     $('#game-screen').addClass('active');
 }
+
 
 function clearGame() {
     console.log("remove save data");
