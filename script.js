@@ -161,17 +161,6 @@ function loadGame() {
     $('#game-screen').addClass('active');
 }
 
-    update(); // This redraws the UI with loaded data
-
-    // Restore event history to the event box
-    $("#events").html(eventLog.map(e => `<div>${e}</div>`).join(''));
-
-    // Show the main game screen, hide the start screen
-    $('.screen').removeClass('active');
-    $('#game-screen').addClass('active');
-}
-
-
 function clearGame() {
     console.log("remove save data");
     localStorage.removeItem('vibelifeSave');
