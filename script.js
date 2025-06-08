@@ -140,6 +140,41 @@ function clearGame() {
 
 var you = {};  // Global declaration
 
+$(document).on('click', '.leaveOk2', function() {
+    if (you['dead'] == false) {
+        leave();
+        update();
+    } else {
+        // Death summary and end-game logic:
+        let eventsHtml = document.getElementById('events').innerHTML;
+        let summary = `You died, here is your life summary.`;
+        let talkAbout, talkAbout2;
+        if (you['gender'] == 'Male') {
+            talkAbout = 'He';
+            talkAbout2 = 'his';
+        } else {
+            talkAbout = 'She';
+            talkAbout2 = 'her';
+        }
+        // ... (all your summary/trophy logic here) ...
+
+        // Finalize and show
+        summary += `<br><h1>${trophy}</h1>`;
+        $("#summary").html(summary)
+        $("#summary").append(`
+            <center><div class='miniEvents'>
+                ${eventsHtml}
+            </div></center>
+        `);
+
+        $("#summary").show();
+        $("#playAgain").show();
+        $(".ageButton").hide();
+        $(".bottom-options").hide();
+        $("#stats").hide();
+    }
+});
+
 //Start Game  
 function startGame() {
     let lovers = 0;
@@ -1071,59 +1106,29 @@ you =
     prisonInmates.push(inmateObj);
   }
   
-  function lessBig(head,text,color){
-      leave();
-      $("#popup2").html('');
-      $('#events').hide()
-      $("#popup2").show();
-      $("#buttons").hide();
-      $("#buttons2").show();
-      $(".age-button-container").hide();
-      $(".bottom-options").hide();
-      $("#stats").hide();
-    //  $("#popup2").css('background',color)
-      $("#popup2").html(`
-          <center>
-          <div class='poper' style="background: ${color}">
-          <h1 id='head'>${head}</h1>
-          <p id='text'>${text}</p>
-          <br><br>
-          <button class='button option big leaveOk2'>Ok</button>
-          </center>
-          </div>
-      `);
-      $(".leaveOk2").on('click',function(){
-          if (you['dead']==false){
-              leave();
-              update();
-          }
-          else{
-               // Game over logic and life summary display after death
+function lessBig(head, text, color) {
+    leave();
+    $("#popup2").html('');
+    $('#events').hide();
+    $("#popup2").show();
+    $("#buttons").hide();
+    $("#buttons2").show();
+    $(".age-button-container").hide();
+    $(".bottom-options").hide();
+    $("#stats").hide();
 
-        // 1. Hide all gameplay UI
-                dieLeave();
+    $("#popup2").html(`
+        <center>
+        <div class='poper' style="background: ${color}">
+        <h1 id='head'>${head}</h1>
+        <p id='text'>${text}</p>
+        <br><br>
+        <button class='button option big leaveOk2'>Ok</button>
+        </center>
+        </div>
+    `);
+}
 
-        // 2. Build your summary (paste your summary/trophy building code here)
-                let summary = `You died, here is your life summary.`;
-        // ...all summary building logic (copy from your die() function)...
-        // Add the trophy logic, eventsHtml, etc.
-
-        // 3. Display the summary
-                $("#summary").html(summary);
-                $("#summary").append(`
-            <center><div class='miniEvents'>
-                ${eventsHtml}
-            </div></center>
-        `);
-
-        // 4. Show only summary and play again button
-            $("#summary").show();
-            $("#playAgain").show();
-            $(".ageButton").hide();
-            $(".bottom-options").hide();
-            $("#stats").hide();
-    }
-});
   
   function importantNew(listName){
       $("#popup").html('');
