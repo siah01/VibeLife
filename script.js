@@ -4991,36 +4991,43 @@ $('.fight').on('click', function() {
 });
 
           
-              $('.compliment').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I complimented my ${who['status']}, ${who['full_name']}. I told them they are ${choice(compliments)}</p>`)
-                  who['relation']+=randrange(4);
-                  who['happy']+=randrange(4);
-                  if (who['relation']>100){who['relation']=100}
-                  if (who['happy']>100){who['happy']=100};
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $('.argue').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I argued with my ${who['status']}, ${who['full_name']}. We argued about ${choice(argueAbout)}</p>`)
-                  who['relation']-=5;
-                  leave();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $(".breakUp").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $('#events').append(`<br><p class='event'>I broke up with ${who['full_name']}</p>`);
-                  you['happy']-=5;
-                  leave();
-                  who['status']='ex';
-                  who['relation']-=20;
-              })
+           $('.compliment').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I complimented my ${who['status']}, ${who['full_name']}. I told them they are ${choice(compliments)}`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    who['relation'] += randrange(4);
+    who['happy'] += randrange(4);
+    if (who['relation'] > 100) { who['relation'] = 100 }
+    if (who['happy'] > 100) { who['happy'] = 100 }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$('.argue').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I argued with my ${who['status']}, ${who['full_name']}. We argued about ${choice(argueAbout)}`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    who['relation'] -= 5;
+    leave();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$(".breakUp").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I broke up with ${who['full_name']}`;
+    $('#events').append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+    you['happy'] -= 5;
+    leave();
+    who['status'] = 'ex';
+    who['relation'] -= 20;
+});
+
           
               $(".moneyAsk").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
