@@ -4254,65 +4254,85 @@ $("#relationshipsButton").on('click',function(){
     update();
 });
 
-                  $("#robSomeone").on('click',function(){
-                      if (you['age'] > 6){
-                          if (who['age']>6){
-                            $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']} if they would help me rob someone.</p>`)
-                        if (who['relation'] > randrange(50)){
-                            if (who['bad']==1){
-                                amount = randrange(500);
-                                if (randrange(10)!=1){
-                                    $("#events").append(`<br><p class='event'>They said yes. They watched to make sure nobody saw us and we robbed a person for <span style='color:green'>$${amount}</span>. We split the money 50/50</p>`)
-                                    who['relation'] += randrange(15);
-                                    you['money']+=Math.floor(amount/2)
-                                    who['money']+=Math.floor(amount/2)
-                                    you['happy']+=randrange(5);
-                                    if (who['relation']>100){who['relation']=100}
-                                    leave();
-                                }
-                                else{
-                                    $("#events").append(`<br><p class='event'>They said yes. But sadly we were caught by the police while in the act of robbing the person!</p>`)
-                                    sentence = randrange(10);
-                                    $('#events').append(`<br><p class='event'>I am going to prison for ${sentence} year/s!</p>`);
-                                    you['inPrison']=true;
-                                    prisShuf();
-                                    prisonInmates.push(who);
-                                    if (you['career']!='none'){
-                                        you['salary']-=you['jobSal']
-                                    }
-                                    you['career']='none';
-                                    $("#prisonButtons").show();
-                                    $("#buttons").hide();
-                                    $("#activities").hide();
-                                    $("#relationships").hide();
-                                    $("#events").show();
-                                    $("#leaveButton").hide();
-                                }   
-                                }
-                                else{
-                                    $("#events").append(`<br><p class='event'>They said that robbery is against their morals.</p>`)
-                                    who['relation']-=randrange(10)
-                                    leave();
-                                }
-                            }
-                            else{
-                                $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']} did not want to rob someone with me.</p>`)
-                                leave();
-                            }
-                          }
-                          else{
-                            $("#events").append(`<br><p class='event'>${who['status']}, ${who['full_name']} is too young to rob someone with me.</p>`)
-                            leave();
-                          }
-                      }
-                      else{
-                        $("#events").append(`<br><p class='event'>I wanted to rob someone with my ${who['status']}, ${who['full_name']}, but I was too young.</p>`)
+                 $("#robSomeone").on('click', function () {
+    let eventText = "";
+    if (you['age'] > 6) {
+        if (who['age'] > 6) {
+            eventText = `I asked my ${who['status']}, ${who['full_name']} if they would help me rob someone.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            if (who['relation'] > randrange(50)) {
+                if (who['bad'] == 1) {
+                    amount = randrange(500);
+                    if (randrange(10) != 1) {
+                        eventText = `They said yes. They watched to make sure nobody saw us and we robbed a person for $${amount}. We split the money 50/50.`;
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+
+                        who['relation'] += randrange(15);
+                        you['money'] += Math.floor(amount / 2);
+                        who['money'] += Math.floor(amount / 2);
+                        you['happy'] += randrange(5);
+                        if (who['relation'] > 100) { who['relation'] = 100 }
                         leave();
-                      }
-                      if (who['relation']>100){who['relation']=100}
-                      if (who['relation']<0){who['relation']=0}
-                      update();
-                })
+                    } else {
+                        eventText = "They said yes. But sadly we were caught by the police while in the act of robbing the person!";
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+
+                        sentence = randrange(10);
+                        eventText = `I am going to prison for ${sentence} year/s!`;
+                        $('#events').append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+
+                        you['inPrison'] = true;
+                        prisShuf();
+                        prisonInmates.push(who);
+                        if (you['career'] != 'none') {
+                            you['salary'] -= you['jobSal'];
+                        }
+                        you['career'] = 'none';
+                        $("#prisonButtons").show();
+                        $("#buttons").hide();
+                        $("#activities").hide();
+                        $("#relationships").hide();
+                        $("#events").show();
+                        $("#leaveButton").hide();
+                    }
+                } else {
+                    eventText = "They said that robbery is against their morals.";
+                    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                    eventLog.push(eventText);
+
+                    who['relation'] -= randrange(10);
+                    leave();
+                }
+            } else {
+                eventText = `My ${who['status']}, ${who['full_name']} did not want to rob someone with me.`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                leave();
+            }
+        } else {
+            eventText = `${who['status']}, ${who['full_name']} is too young to rob someone with me.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            leave();
+        }
+    } else {
+        eventText = `I wanted to rob someone with my ${who['status']}, ${who['full_name']}, but I was too young.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        leave();
+    }
+    if (who['relation'] > 100) { who['relation'] = 100 }
+    if (who['relation'] < 0) { who['relation'] = 0 }
+    update();
+});
 
                   $("#pingPong").on('click',function(){
                       if (who['relation'] > randrange(50)){
