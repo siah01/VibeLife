@@ -1098,13 +1098,32 @@ you =
               update();
           }
           else{
-              dieLeave();
-              $("#summary").show();
-              $("#playAgain").show();
-              $(".ageButton").hide(); // Hide all Age buttons
-          }
-      })
-  }
+               // Game over logic and life summary display after death
+
+        // 1. Hide all gameplay UI
+                dieLeave();
+
+        // 2. Build your summary (paste your summary/trophy building code here)
+                let summary = `You died, here is your life summary.`;
+        // ...all summary building logic (copy from your die() function)...
+        // Add the trophy logic, eventsHtml, etc.
+
+        // 3. Display the summary
+                $("#summary").html(summary);
+                $("#summary").append(`
+            <center><div class='miniEvents'>
+                ${eventsHtml}
+            </div></center>
+        `);
+
+        // 4. Show only summary and play again button
+            $("#summary").show();
+            $("#playAgain").show();
+            $(".ageButton").hide();
+            $(".bottom-options").hide();
+            $("#stats").hide();
+    }
+});
   
   function importantNew(listName){
       $("#popup").html('');
@@ -1316,8 +1335,14 @@ you =
           }
       }
   }
-  
-  function die(){
+    
+function die() {
+    you['dead'] = true;
+    listOfEvents = [];
+    listOfEvents.push(['Death!', 'You Died!', 'linear-gradient(#000000,#2e0909)']);
+    importantNew(listOfEvents); // triggers lessBig() for the death popup
+}
+ /* function die(){
       listOfEvents=[];
       listOfEvents.push(['Death!','You Died!','linear-gradient(#000000,#2e0909)'])
       importantNew(listOfEvents);
@@ -1537,13 +1562,21 @@ you =
         </div></center>
       `)
 
+     you['dead'] = true;
+    // ...summary building...
+    $("#summary").html(summary);
+    $("#summary").append(`
+        <center><div class='miniEvents'>
+            ${eventsHtml}
+        </div></center>
+    `);
     dieLeave();
-      $("#summary").show();
-      $("#playAgain").show();
-      $(".ageButton").hide();
-      $(".bottom-options").hide();
-      $("#stats").hide();
-  }
+    $("#summary").show();
+    $("#playAgain").show();
+    $(".ageButton").hide();
+    $(".bottom-options").hide();
+    $("#stats").hide();
+  } */
   
   for(x in you['relationships']){
       relationNowIs = you['relationships'][x];
