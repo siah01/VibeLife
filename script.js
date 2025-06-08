@@ -4352,6 +4352,24 @@ $("#relationshipsButton").on('click',function(){
     leave();
     update();
 });
+$("#chess").on('click', function () {
+    let eventText = "";
+    if (who['relation'] > randrange(50)) {
+        eventText = `I played chess with my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] += randrange(5);
+        you['smarts'] += randrange(5);
+        if (who['relation'] > 100) { who['relation'] = 100 }
+    } else {
+        eventText = `My ${who['status']}, ${who['full_name']} said they would rather not play chess with me.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+    }
+    leave();
+    update();
+});
 
   
               $(".spreadRumor").on('click',function(){
