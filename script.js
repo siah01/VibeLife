@@ -5070,7 +5070,9 @@ $(".breakUp").on('click', function() {
 
            $('.hangOut').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
+                  let eventText = `I hung out with my ${who['status']}, ${who['full_name']}. We ${choice(hungOutDo)}.`;
                   $("#events").append(`<br><p class='event'>I hung out with my ${who['status']}, ${who['full_name']}. We ${choice(hungOutDo)}.</p>`)
+                  eventLog.push(eventText);
                   who['relation']+=randrange(10);
                   if (who['relation']>100){
                       who['relation']=100;
