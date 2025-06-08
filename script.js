@@ -26,6 +26,31 @@ console.log("Script.js is loaded and running");
     });
 // End button functionality
 
+//Load json data
+Promise.all([
+  fetch('data/activities.json').then(r => r.json()),
+  fetch('data/events.json').then(r => r.json()),
+  fetch('data/careers.json').then(r => r.json()),
+  fetch('data/colleges.json').then(r => r.json()),
+  fetch('data/diseases.json').then(r => r.json()),
+  fetch('data/mNames.json').then(r => r.json()),
+  fetch('data/fNames.json').then(r => r.json()),
+  fetch('data/lNames.json').then(r => r.json())
+]).then(([activitiesData, eventsData, careersData, collegesData, diseasesData, mNamesData, fNamesData, lNamesData]) => {
+  activities = activitiesData.sort(() => Math.random() - 0.5);
+  events = eventsData;
+  careers = careersData.sort(() => Math.random() - 0.5);
+  colleges = collegesData.sort(() => Math.random() - 0.5);
+  diseases = diseasesData;
+  mNames = mNamesData;
+  fNames = fNamesData;
+  lNames = lNamesData;
+  startGame(); // 
+}).catch(err => {
+  console.error("Failed to load one or more data files:", err);
+});//end json data
+
+
 function comify(x) {
   if (typeof x !== "number" || isNaN(x)) return "0";
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -97,9 +122,6 @@ function comify(x) {
     if (objDiv) objDiv.scrollTop = objDiv.scrollHeight;
 }
 
-  
-//  update();
-
 function saveGame() {
     localStorage.setItem('vibelifeSave', JSON.stringify(you));
 }
@@ -116,44 +138,16 @@ function clearGame() {
     localStorage.removeItem('vibelifeSave');
 }
 
-//Load json data
-Promise.all([
-  fetch('data/activities.json').then(r => r.json()),
-  fetch('data/events.json').then(r => r.json()),
-  fetch('data/careers.json').then(r => r.json()),
-  fetch('data/colleges.json').then(r => r.json()),
-  fetch('data/diseases.json').then(r => r.json()),
-  fetch('data/mNames.json').then(r => r.json()),
-  fetch('data/fNames.json').then(r => r.json()),
-  fetch('data/lNames.json').then(r => r.json())
-]).then(([activitiesData, eventsData, careersData, collegesData, diseasesData, mNamesData, fNamesData, lNamesData]) => {
-  activities = activitiesData.sort(() => Math.random() - 0.5);
-  events = eventsData;
-  careers = careersData.sort(() => Math.random() - 0.5);
-  colleges = collegesData.sort(() => Math.random() - 0.5);
-  diseases = diseasesData;
-  mNames = mNamesData;
-  fNames = fNamesData;
-  lNames = lNamesData;
-  startGame(); // 
-}).catch(err => {
-  console.error("Failed to load one or more data files:", err);
-});//end json data
-
 var you = {};  // Global declaration
 
 //Start Game  
 function startGame() {
-    // ✅ Keep game-state counters here too
     let lovers = 0;
     let murders = 0;
     let totalStoned = 0;
     let buildings = ['hotel','condo','hospital','apartment','grocery store']
-  
-  let genders = ['Male','Female'];
-  let pastPeople = [];
-
-  //choice = max => { max[Math.floor(Math.random()*max.name)]}
+    let genders = ['Male','Female'];
+    let pastPeople = [];
 
   function prisShuf(){
     prisonInmates = [];
