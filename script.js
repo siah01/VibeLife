@@ -5082,9 +5082,6 @@ $('.hangOut').on('click', function() {
     objDiv.scrollTop = objDiv.scrollHeight;
 });
 
-  
-  })
-
   function prisonLeave(){
       $("#prisonButtons").show();
       $("#buttons").hide();
