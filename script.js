@@ -4335,14 +4335,19 @@ $("#relationshipsButton").on('click',function(){
 });
 
  $("#pingPong").on('click',function(){
+                     let eventText = "";
                       if (who['relation'] > randrange(50)){
+                          eventText = `I played ping pong with my ${who['status']}, ${who['full_name']}.`;
                         $("#events").append(`<br><p class='event'>I played ping pong with my ${who['status']}, ${who['full_name']}.</p>`)
+                        eventLog.push(eventText);
                         who['relation'] += randrange(5);
                         you['happy']+=randrange(5);
                         if (who['relation']>100){who['relation']=100}
                       }
                       else{
+                       eventText = `My ${who['status']}, ${who['full_name']} said they would rather not play ping pong with me.`;
                         $("#events").append(`<br><p class='event'>My ${who['status']}, ${who['full_name']} said they would rather not play ping pong with me.</p>`)
+                          eventLog.push(eventText);
                       }
                       leave();
                       update();
