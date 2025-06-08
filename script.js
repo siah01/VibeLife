@@ -108,6 +108,7 @@ if (typeof you['health'] === "number" && you['health'] <= 0 && !you['dead']) {
     // REMOVE THE RANDOMNESS FOR TESTING
     $("#events").append(`<br><p class='event'>I died from health problems</p>`);
     if (typeof die === "function") die();
+    console.log("Calling die()...")
     return; // Prevent any further actions
 }
 
