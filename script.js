@@ -4819,80 +4819,95 @@ $(".callOff").on('click', function() {
 });
 
           
-              $(".propose").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I proposed to my ${who['status']}, ${who['full_name']}.</p>`)
-                  if (who['relation']>randrange(40)+50){
-                      if (randrange(3)==1){
-                          who['status']='fiance';
-                          who['relation']+=20
-                          you['happy']+=randrange(20);
-                          if (you['happy']>100){you['happy']=100};
-                          if (who['relation']>100){who['relation']=100};
-                          $("#events").append(`<br><p class='event'>${who['full_name']} is now my ${who['status']}</p>`);
-                      }else{
-                          $("#events").append(`<br><p class='event'>They said they didn't feel ready!</p>`)
-                          who['relation']-=5;
-                      }
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>They said that you aren't close enough!</p>`)
-                      who['relation']-=5;
-                  }
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $('.askOut').on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I asked out my ${who['status']}, ${who['full_name']}.</p>`)
-                  topMax = 10-(who['relation']/10)
-                  if (topMax < 2){
-                      topMax = 2
-                  }
-                  if (randrange(topMax)==1){
-                      single = true;
-                      for (x in you['relationships']){
-                          if (you['relationships'][x]['status']=='girlfriend'||you['relationships'][x]['status']=='boyfriend'){
-                              single=false;
-                          }
-                      }
-                      if (single){
-                          if (you['age']>12){
-                              if (true){
-                                  $("#events").append(`<br><p class='event'>They said yes, we are now dating</p>`)
-                                  lovers++;
-                                  if (who['gender']=='Male'){
-                                      who['status']='boyfriend';
-                                  }else{
-                                      who['status']='girlfriend'
-                                  }
-                                  who['relation']+=10
-                              }
-                              else{
-                                  $("#events").append(`<br><p class='event'>I suddenly realized that they are too old for me.</p>`)
-                              }
-                          }
-                          else{
-                              $("#events").append(`<br><p class='event'>Then realized I'm too young to date.</p>`)
-                          }
-                      }else{
-                          $("#events").append(`<br><p class='event'>I suddenly realized I'm already in a relationship</p>`);
-                      }
-                  }else{
-                      $("#events").append(`<br><p class='event'>They rejected me!</p>`)
-                      who['relation']-=5;
-                  }
-                  if (who['relation']>100){
-                      who['relation']=100;
-                  }
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
+           $(".propose").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I proposed to my ${who['status']}, ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    if (who['relation'] > randrange(40) + 50) {
+        if (randrange(3) == 1) {
+            who['status'] = 'fiance';
+            who['relation'] += 20;
+            you['happy'] += randrange(20);
+            if (you['happy'] > 100) { you['happy'] = 100; }
+            if (who['relation'] > 100) { who['relation'] = 100; }
+            eventText = `${who['full_name']} is now my ${who['status']}`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+        } else {
+            eventText = "They said they didn't feel ready!";
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+            who['relation'] -= 5;
+        }
+    } else {
+        eventText = "They said that you aren't close enough!";
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] -= 5;
+    }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$('.askOut').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I asked out my ${who['status']}, ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    let topMax = 10 - (who['relation'] / 10);
+    if (topMax < 2) {
+        topMax = 2;
+    }
+    if (randrange(topMax) == 1) {
+        let single = true;
+        for (x in you['relationships']) {
+            if (you['relationships'][x]['status'] == 'girlfriend' || you['relationships'][x]['status'] == 'boyfriend') {
+                single = false;
+            }
+        }
+        if (single) {
+            if (you['age'] > 12) {
+                // Age/gender logic for relationship status
+                eventText = "They said yes, we are now dating";
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+                lovers++;
+                if (who['gender'] == 'Male') {
+                    who['status'] = 'boyfriend';
+                } else {
+                    who['status'] = 'girlfriend';
+                }
+                who['relation'] += 10;
+            } else {
+                eventText = "Then realized I'm too young to date.";
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+            }
+        } else {
+            eventText = "I suddenly realized I'm already in a relationship";
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+        }
+    } else {
+        eventText = "They rejected me!";
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+        who['relation'] -= 5;
+    }
+    if (who['relation'] > 100) {
+        who['relation'] = 100;
+    }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
           
               $('.goOnDate').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
