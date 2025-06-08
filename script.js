@@ -4032,75 +4032,77 @@ $("#careers").on('click', '#homework', function() {
               </div>
               <br>
           `)
-          $(".human").on('click',function(){
-              $("#relationships").html('');
-              let rnHuman = you['relationships'][Number($(this).attr('id'))];
-              x=Number($(this).attr('id'))
-              jobDisp = 'none';
-              if (rnHuman['career'] != 'none'){
-                  jobDisp = rnHuman['career']['title'];
-              }
-              $("#relationships").append(`
-                  <center><h1>${rnHuman['full_name']}</h1>
-                  <p class='infoPerson'>Age: <span style='color: orange; font-weight: bolder;'>${rnHuman['age']}</span></p>
-                  <p class='infoPerson'>Gender: <span style='color: orange; font-weight: bolder;'>${rnHuman['gender']}</span></p>
-                  <p class='infoPerson'>Status: <span style='font-weight: bolder;'>${rnHuman['status']}</span></p>
-                  <p class='infoPerson'>Money: <span style='color: green; font-weight: bolder'>$${comify(rnHuman['money'])}</span></p>
-                  <p class='infoPerson'>Career: <span style='color: green; font-weight: bolder'>${jobDisp}</span></p>
-                  <br>
-                  <div>
-                      Relation
-                      <div class='healthBar'>
-                          <div class='healthMiddle' style='width:${rnHuman['relation']}px'>
-                          </div>
-                      </div>
-                  </div>
-                  <br>
-                  <div>
-                      Looks
-                      <div class='healthBar'>
-                          <div class='healthMiddle' style='width:${rnHuman['looks']}px'>
-                          </div>
-                      </div>
-                  </div>
-                  <br>
-                  <div>
-                      Smarts
-                      <div class='healthBar'>
-                          <div class='healthMiddle' style='width:${rnHuman['smarts']}px'>
-                          </div>
-                      </div>
-                  </div>
-                  <br>
-                  <div>
-                      Health
-                      <div class='healthBar'>
-                          <div class='healthMiddle' style='width:${rnHuman['health']}px'>
-                          </div>
-                      </div>
-                  </div>
-                  <br>
-                  <div>
-                      Happiness
-                      <div class='healthBar'>
-                          <div class='healthMiddle' style='width:${rnHuman['happy']}px'>
-                          </div>
-                      </div>
-                  </div>
-                  <br>
-                  <div id='${x}div2' class='buttonGrid'>
-                  <button id='${x}' class='button hang hangOut'>Hang Out With Them</button>
-                  <button id='${x}' class='button hang argue'>Argue With Them</button>
-                  <button id='${x}' class='button hang fight'>Fight them</button>
-                  <button id='${x}' class='button hang compliment'>Compliment Them</button>
-                  <button id='${x}' class='button hang payThem'>Give Them Money</button>
-                  <button id='${x}' class='button hang doctorsThem'>Take them to the doctors</button>
-                  <button id='${x}' class='button hang spreadRumor'>Spread a rumor about them</button>
-                  <button id='${x}' class='button hang insult'>Insult Them</button>
-                  <button id='${x}' class='button hang spendTime'>Spend Time With Them</button>
-                  </div>
-              `)
-  });
+$(".human").on('click', function() {
+    $("#relationships").html('');
+    let rnHuman = you['relationships'][Number($(this).attr('id'))];
+    let x = Number($(this).attr('id'));
+    let jobDisp = 'none';
+    if (rnHuman['career'] != 'none') {
+        jobDisp = rnHuman['career']['title'];
+    }
+    $("#relationships").append(`
+        <center><h1>${rnHuman['full_name']}</h1>
+        <p class='infoPerson'>Age: <span style='color: orange; font-weight: bolder;'>${rnHuman['age']}</span></p>
+        <p class='infoPerson'>Gender: <span style='color: orange; font-weight: bolder;'>${rnHuman['gender']}</span></p>
+        <p class='infoPerson'>Status: <span style='font-weight: bolder;'>${rnHuman['status']}</span></p>
+        <p class='infoPerson'>Money: <span style='color: green; font-weight: bolder'>$${comify(rnHuman['money'])}</span></p>
+        <p class='infoPerson'>Career: <span style='color: green; font-weight: bolder'>${jobDisp}</span></p>
+        <br>
+        <div>
+            Relation
+            <div class='healthBar'>
+                <div class='healthMiddle' style='width:${rnHuman['relation']}px'>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            Looks
+            <div class='healthBar'>
+                <div class='healthMiddle' style='width:${rnHuman['looks']}px'>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            Smarts
+            <div class='healthBar'>
+                <div class='healthMiddle' style='width:${rnHuman['smarts']}px'>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            Health
+            <div class='healthBar'>
+                <div class='healthMiddle' style='width:${rnHuman['health']}px'>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div>
+            Happiness
+            <div class='healthBar'>
+                <div class='healthMiddle' style='width:${rnHuman['happy']}px'>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div id='${x}div2' class='buttonGrid'>
+            <button id='${x}' class='button hang hangOut'>Hang Out With Them</button>
+            <button id='${x}' class='button hang argue'>Argue With Them</button>
+            <button id='${x}' class='button hang fight'>Fight them</button>
+            <button id='${x}' class='button hang compliment'>Compliment Them</button>
+            <button id='${x}' class='button hang payThem'>Give Them Money</button>
+            <button id='${x}' class='button hang doctorsThem'>Take them to the doctors</button>
+            <button id='${x}' class='button hang spreadRumor'>Spread a rumor about them</button>
+            <button id='${x}' class='button hang insult'>Insult Them</button>
+            <button id='${x}' class='button hang spendTime'>Spend Time With Them</button>
+        </div>
+    </center>
+    `);
+});
+
               if (rnHuman['age']>15 && you['age'] >= 10){
                   $(`#${x}div2`).append(`
                       <button id='${x}' class='hang murderThem'>Murder Them</button>
