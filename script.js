@@ -5983,7 +5983,12 @@ $("#careers").on('click', '#homework', function() {
      // console.log(you);
       var objDiv = document.getElementById("events");
       objDiv.scrollTop = objDiv.scrollHeight;
-      update()
-      saveGame();
-  })
+          if (shouldShowPopup) {
+        importantNew(listOfEvents);
+        // NO update() here!
+    } else {
+        update();
+    }
+    saveGame();
+});
 }
