@@ -27,6 +27,19 @@ console.log("Script.js is loaded and running");
     });
 // End button functionality
 
+$(document).ready(function() {
+    // Check for a saved game
+    if (!localStorage.getItem('vibelifeSave')) {
+        // Option 1: Disable the button
+        $('#load-button').prop('disabled', true).text('No Save Found');
+
+        // Option 2: Or hide it entirely
+        // $('#load-button').hide();
+    } else {
+        $('#load-button').text('Continue Game');
+    }
+});
+
 //Load json data
 Promise.all([
   fetch('data/activities.json').then(r => r.json()),
