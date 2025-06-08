@@ -130,7 +130,7 @@ if (typeof you['health'] === "number" && you['health'] <= 0 && !you['dead']) {
 function saveGame() {
     const saveData = {
         you: you,
-        events: events  // or whatever your event array is called
+        eventLog: eventLog // <-- This is the new persistent log!
     };
     localStorage.setItem('vibelifeSave', JSON.stringify(saveData));
 }
@@ -147,21 +147,19 @@ function loadGame() {
         alert("No saved game found. Start a new game to begin!");
         return;
     }
-
     const saveData = JSON.parse(data);
     you = saveData.you;
-    eventLog = saveData.eventLog || [];
+    eventLog = saveData.eventLog || []; // <-- restore or create new
 
-    // Now fix up you.school (AFTER loading)
-    if (!you.school) {
-        you.school = {
-            "name": "",
-            "teachers": [],
-            "classmates": [],
-            "grade": getGradeByAge(you.age),
-            "popularity": Math.floor(Math.random() * 100)
-        };
-    }
+    update(); // redraws UI
+
+    // Restore event history to the event box
+    $("#events").html(eventLog.map(e => `<div>${e}</div>`).join(''));
+
+    // Show the main game screen, hide the start screen
+    $('.screen').removeClass('active');
+    $('#game-screen').addClass('active');
+}
 
     update(); // This redraws the UI with loaded data
 
@@ -181,6 +179,7 @@ function clearGame() {
 
 var you = {};  // Global declaration
 randrange = max => Math.floor(Math.random()*max);
+let eventLog = [];
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -330,11 +329,12 @@ function importantNew(listName){
           }
       })
       $(".buttonClicked").on('click',function(){
+          let eventText = $(this).attr('data-response');
           $("#events").append(`<br><p class='event'>${$(this).attr('data-response')}</p>`);
+          eventLog.push(eventText);
           effects = $(this).attr('data-effects');
   
-          eventCurrent = listName[Number($(this).attr('id'))]
-          
+          eventCurrent = listName[Number($(this).attr('id'))] 
           eventCurrent[Number($(this).attr('data-did'))]();
   
           if (you['happy']>100){you['happy']=100}
@@ -519,9 +519,13 @@ function startGame() {
           {
               you['happy']+=2;
               if (randrange(3)==1){
+                  let eventText = "The kid who owned the toy screamed at me";
                   $("#events").append(`<br><p class='event'>The kid who owned the toy screamed at me</p>`);
+                  eventLog.push(eventText);
               }else{
+                  let eventText = "I could see the owner of the toy crying";
                   $("#events").append(`<br><p class='event'>I could see the owner of the toy crying</p>`);
+                  eventLog.push(eventText);
               }
           },
           function()
@@ -1419,20 +1423,17 @@ function lessBig(head, text, color) {
       }
   }
   
-  for(x in you['relationships']){
-      relationNowIs = you['relationships'][x];
-      if (relationNowIs['career']=='none'){
-          $("#events").append(`
-          <br>
-          <p class='event'>My ${you['relationships'][x]['status']} is ${you['relationships'][x]['full_name']} (age ${relationNowIs['age']})</p>
-          `)
-      }
-      else{
-          $("#events").append(`
-          <br>
-          <p class='event'>My ${you['relationships'][x]['status']} is ${you['relationships'][x]['full_name']}, a ${relationNowIs['career']['title']} (age ${relationNowIs['age']})</p>
-          `) 
-      }
+for (x in you['relationships']) {
+    let relationNowIs = you['relationships'][x];
+    let eventText = "";
+    if (relationNowIs['career'] == 'none') {
+        eventText = `My ${relationNowIs['status']} is ${relationNowIs['full_name']} (age ${relationNowIs['age']})`;
+    } else {
+        eventText = `My ${relationNowIs['status']} is ${relationNowIs['full_name']}, a ${relationNowIs['career']['title']} (age ${relationNowIs['age']})`;
+    }
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+}
       update();
   }
   
