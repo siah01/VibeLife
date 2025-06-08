@@ -124,10 +124,12 @@ function saveGame() {
 
 function loadGame() {
     const data = localStorage.getItem('vibelifeSave');
-    if (data) {
-        you = JSON.parse(data);
-        update(); // This redraws the UI with loaded data
+    if (!data) {
+        alert("No saved game found. Start a new game to begin!");
+        return;
     }
+    you = JSON.parse(data);
+    update(); // This redraws the UI with loaded data
 }
 
 function clearGame() {
