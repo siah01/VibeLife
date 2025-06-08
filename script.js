@@ -26,6 +26,55 @@ console.log("Script.js is loaded and running");
     });
 // End button functionality
 
+  function update(){
+      if (you['school']['grade']>100){you['school']['grade']=100}
+      if (you['school']['grade']<0){you['school']['grade']=0}
+      if (you['happy']<0){you['happy']=0};
+      if (you['looks']<0){you['looks']=0};
+      if (you['smarts']<0){you['smarts']=0};
+      if (you['health']>100){you['health']=100};
+      if (you['happy']>100){you['happy']=100};
+      if (you['looks']>100){you['looks']=100};
+      if (you['smarts']>100){you['smarts']=100};
+      if (you['comedy']>100){you['comedy']=100};
+      $("#looks").css('width',you['looks']+'px');
+      $("#happy").css('width',you['happy']+'px');
+      $("#smarts").css('width',you['smarts']+'px');
+      $("#health").css('width',you['health']+'px');
+      $("#comedy").css('width',you['comedy']+'px');
+      if (you['fame'] > 0){
+          $("#fameThing").show();
+          $("#fameThing2").show();
+          $("#fameBar").css('width',(you['fame']/200)+'px');
+          if (you['fame'] > 20000){
+              $("#fameBar").css('width',(100)+'px');
+          }
+      }
+      else{
+          $("#fameThing").hide();
+          $("#fameThing2").hide();
+      }
+      $(".money").html('$'+comify(you['money']));
+      $("#topbar-age").text(you['age']);
+      if (you['health']<=0){
+          you['health']=0
+          if (randrange(3)==1){
+              $("#events").append(`<br><p class='event'>I died from health problems</p>`);
+              die();
+          }
+      }
+      else if (you['age']>=randrange(40)+80){
+        if (randrange(3)==1){
+          $("#events").append(`<br><p class='event'>I died from old age.</p>`);
+            die();
+        }
+      }
+      var objDiv = document.getElementById("events");
+      objDiv.scrollTop = objDiv.scrollHeight;
+  }
+  
+  update();
+
 function saveGame() {
     localStorage.setItem('vibelifeSave', JSON.stringify(you));
 }
@@ -1473,54 +1522,7 @@ function startGame() {
       `)
   }
   
-  function update(){
-      if (you['school']['grade']>100){you['school']['grade']=100}
-      if (you['school']['grade']<0){you['school']['grade']=0}
-      if (you['happy']<0){you['happy']=0};
-      if (you['looks']<0){you['looks']=0};
-      if (you['smarts']<0){you['smarts']=0};
-      if (you['health']>100){you['health']=100};
-      if (you['happy']>100){you['happy']=100};
-      if (you['looks']>100){you['looks']=100};
-      if (you['smarts']>100){you['smarts']=100};
-      if (you['comedy']>100){you['comedy']=100};
-      $("#looks").css('width',you['looks']+'px');
-      $("#happy").css('width',you['happy']+'px');
-      $("#smarts").css('width',you['smarts']+'px');
-      $("#health").css('width',you['health']+'px');
-      $("#comedy").css('width',you['comedy']+'px');
-      if (you['fame'] > 0){
-          $("#fameThing").show();
-          $("#fameThing2").show();
-          $("#fameBar").css('width',(you['fame']/200)+'px');
-          if (you['fame'] > 20000){
-              $("#fameBar").css('width',(100)+'px');
-          }
-      }
-      else{
-          $("#fameThing").hide();
-          $("#fameThing2").hide();
-      }
-      $(".money").html('$'+comify(you['money']));
-      $("#topbar-age").text(you['age']);
-      if (you['health']<=0){
-          you['health']=0
-          if (randrange(3)==1){
-              $("#events").append(`<br><p class='event'>I died from health problems</p>`);
-              die();
-          }
-      }
-      else if (you['age']>=randrange(40)+80){
-        if (randrange(3)==1){
-          $("#events").append(`<br><p class='event'>I died from old age.</p>`);
-            die();
-        }
-      }
-      var objDiv = document.getElementById("events");
-      objDiv.scrollTop = objDiv.scrollHeight;
-  }
-  
-  update();
+
   
   for(x in you['relationships']){
       relationNowIs = you['relationships'][x];
