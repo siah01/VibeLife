@@ -174,6 +174,7 @@ let houses = [];
 let cliques = [];
 let schoolDistrict;
 let genders;
+let deaths;
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -753,7 +754,7 @@ function startGame() {
   let hungOutDo = 'went fishing,went exploring abandoned caves,went surfing,went skating,went swimming,ate at a fancy restaurant,watched a movie,went on a hike,walked on the beach,went for a walk,went to the park';hungOutDo=hungOutDo.split(',');
   let argueAbout = 'who has more money,who is cooler,Lil Tecca,music types';argueAbout=argueAbout.split(',');
   let meanWords = 'lame,stupid,ugly,annoying,moronic,idiotic,filthy,creepy';meanWords=meanWords.split(',');
-  let deaths = 'a heart attack,a drug overdose,an ongoing health problem,a car accident';deaths=deaths.split(',');
+  deaths = 'a heart attack,a drug overdose,an ongoing health problem,a car accident';deaths=deaths.split(',');
   
   let movTitle1 = 'Journey,Recipe,Flight,Sanctuary,Home,Castle,Quick,Philosophy,Grasshopper,Day,Money,Dawn,Killer,Huskies,Leaves,Summer,Dark,Dance,Crying,Unmasking,The mask,Square,Kill the man';movTitle1=movTitle1.split(',');
   let movTitle2 = 'of hell,in time,of the zombies,in the dark,disaster,moon,maker,farmer,at dawn,in the sunlight,crash,room,of the penguins,to go,monday,Squid,of power,for you';movTitle2=movTitle2.split(',');
