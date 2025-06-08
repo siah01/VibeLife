@@ -613,7 +613,7 @@ function startGame() {
     },
   ]
 
-  let you = 
+you = 
   {
       age: 0,
       relationships: [],
