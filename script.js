@@ -4373,45 +4373,35 @@ $("#relationshipsButton").on('click',function(){
                 })
               })
   
-              $(".spreadRumor").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (confirm(`Are you sure you want to spread a rumor about your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I spread a rumor about my ${who['status']}, ${who['full_name']}. I told everyone that they ${choice(rumors)}</p>`)
-                    who['relation']-=randrange(20);
-                    if (randrange(5)==1){
-                      $("#events").append(`<br><p class='event'>They fought me!</p>`)
-                      for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
-                        you['health']-=randrange(10)
-                      }
-                    }
-                    if (who['relation']<0){who['relation']=0}
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
-  
-              $(".insult").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];;
-                  if (confirm(`Are you sure you want to insult your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I told my ${who['status']}, ${who['full_name']}, that they are ${choice(meanWords)}</p>`)
-                    who['relation']-=randrange(10);
-                    if (randrange(7)==1){
-                      $("#events").append(`<br><p class='event'>They fought me!</p>`)
-                      for(let x = 0; x<=randrange(3); x++){
-                        $("#events").append(`<br><p class='event'>They ${choice(attacks)} my ${choice(bodyParts)}!</p>`)
-                        you['health']-=randrange(10)
-                      }
-                    }
-                    if (who['relation']<0){who['relation']=0}
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
+             $(".spreadRumor").on('click', function () {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to spread a rumor about your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I spread a rumor about my ${who['status']}, ${who['full_name']}. I told everyone that they ${choice(rumors)}`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] -= randrange(20);
+        if (randrange(5) == 1) {
+            eventText = "They fought me!";
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            for (let x = 0; x <= randrange(3); x++) {
+                eventText = `They ${choice(attacks)} my ${choice(bodyParts)}!`;
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                you['health'] -= randrange(10);
+            }
+        }
+        if (who['relation'] < 0) { who['relation'] = 0 }
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
   
               $('.murderThem').on('click',function(){
                 who = you['relationships'][Number($(this).attr('id'))];
