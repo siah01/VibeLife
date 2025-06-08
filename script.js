@@ -1339,6 +1339,7 @@ function lessBig(head, text, color) {
   }
     
 function die() {
+    console.log("DIE FUNCTION CALLED");
     you['dead'] = true;
     listOfEvents = [];
     listOfEvents.push(['Death!', 'You Died!', 'linear-gradient(#000000,#2e0909)']);
