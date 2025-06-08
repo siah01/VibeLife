@@ -174,6 +174,7 @@ $(document).on('click', '.leaveOk2', function() {
 })
 
 function die() {
+    console.log("die function here");
     you['dead'] = true;
     clearGame(); 
     listOfEvents = [];
