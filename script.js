@@ -4432,72 +4432,91 @@ $("#relationshipsButton").on('click',function(){
 });
 
   
-              $('.murderThem').on('click',function(){
-                who = you['relationships'][Number($(this).attr('id'))];
-                if (confirm(`Are you sure you want to kill your, ${who['status']}, ${who['full_name']}?`)){
-                  $("#events").append(`<br><p class='event'>I attempted to murder my ${who['age']} year old ${who['status']}, ${who['full_name']}!</p>`)
-                  if (who['health']>randrange(60) && randrange(3)==1){
-                      $("#events").append(`<br><p class='event'>They started to beat me up!</p>`)
-                      you['health']-=randrange(50);
-                      if (you['health']<0){you['health']=0};
-                      if (randrange(2)==1){
-                          $("#events").append(`<br><p class='event'>They called the cops!</p>`)
-                          let sentenceTime = randrange(30)+5
-                          $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s for attempted murder!</p>`);
-                          sentence = sentenceTime;
-                          if (you['career']!='none'){
-                              you['salary']-=you['jobSal']
-                          }
-                          prisShuf();
-                          you['inPrison']=true;
-                          you['career']='none';
-                          $("#prisonButtons").show();
-                          $("#buttons").hide();
-                          $("#relationships").hide();
-                          $("#events").show();
-                          $("#leaveButton").hide();
-                      }
-                      else{
-                          leave();
-                      }
-                  }
-                  else{
-                      $("#events").append(`<br><p class='event'>I killed my ${who['status']}, ${who['full_name']}!</p>`)
-                      murders++;
-                      if (you['age'] < 18 && you['age'] >= 5){
-                        for(z in you['school']['classmates']){
-                          y = you['school']['classmates'][z]
-                          if (y == who){
-                            you['school']['classmates'].splice(z, 1);
-                          }
-                        }
-                      }
-                      you['happy']-=randrange(10);
-                      if (you['happy']<0){you['happy']=0}
-                      you['relationships'].splice(Number($(this).attr('id')),1);
-                      if (randrange(2)==1){
-                          $("#events").append(`<br><p class='event'>The cops found out it was me!</p>`)
-                          let sentenceTime = randrange(10)+40
-                          $('#events').append(`<br><p class='event'>I am going to prison for ${sentenceTime} year/s for murder!</p>`);
-                          sentence = sentenceTime;
-                          if (you['career']!='none'){
-                              you['salary']-=you['jobSal']
-                          }
-                          you['inPrison']=true;
-                          you['career']='none';
-                          $("#prisonButtons").show();
-                          $("#buttons").hide();
-                          $("#relationships").hide();
-                          $("#events").show();
-                          $("#leaveButton").hide();
-                      }
-                      else{
-                          leave();
-                      }
-                  }
-                  update();
+           $('.murderThem').on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to kill your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I attempted to murder my ${who['age']} year old ${who['status']}, ${who['full_name']}!`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        if (who['health'] > randrange(60) && randrange(3) == 1) {
+            eventText = "They started to beat me up!";
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            you['health'] -= randrange(50);
+            if (you['health'] < 0) { you['health'] = 0; }
+            if (randrange(2) == 1) {
+                eventText = "They called the cops!";
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                let sentenceTime = randrange(30) + 5;
+                eventText = `I am going to prison for ${sentenceTime} year/s for attempted murder!`;
+                $('#events').append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                sentence = sentenceTime;
+                if (you['career'] != 'none') {
+                    you['salary'] -= you['jobSal'];
                 }
-              })
+                prisShuf();
+                you['inPrison'] = true;
+                you['career'] = 'none';
+                $("#prisonButtons").show();
+                $("#buttons").hide();
+                $("#relationships").hide();
+                $("#events").show();
+                $("#leaveButton").hide();
+            } else {
+                leave();
+            }
+        } else {
+            eventText = `I killed my ${who['status']}, ${who['full_name']}!`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            murders++;
+            if (you['age'] < 18 && you['age'] >= 5) {
+                for (z in you['school']['classmates']) {
+                    y = you['school']['classmates'][z];
+                    if (y == who) {
+                        you['school']['classmates'].splice(z, 1);
+                    }
+                }
+            }
+            you['happy'] -= randrange(10);
+            if (you['happy'] < 0) { you['happy'] = 0 }
+            you['relationships'].splice(Number($(this).attr('id')), 1);
+            if (randrange(2) == 1) {
+                eventText = "The cops found out it was me!";
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                let sentenceTime = randrange(10) + 40;
+                eventText = `I am going to prison for ${sentenceTime} year/s for murder!`;
+                $('#events').append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+
+                sentence = sentenceTime;
+                if (you['career'] != 'none') {
+                    you['salary'] -= you['jobSal'];
+                }
+                you['inPrison'] = true;
+                you['career'] = 'none';
+                $("#prisonButtons").show();
+                $("#buttons").hide();
+                $("#relationships").hide();
+                $("#events").show();
+                $("#leaveButton").hide();
+            } else {
+                leave();
+            }
+        }
+        update();
+    }
+});
+
   
               $('.doctorsThem').on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
