@@ -4181,65 +4181,78 @@ $("#relationshipsButton").on('click',function(){
                   </center
                   `)
 
-                  $("#smokeWithThem").on('click',function(){
-                      if (you['age'] > 13){
-                          if (who['age']>13){
-                            $("#events").append(`<br><p class='event'>I asked my ${who['status']}, ${who['full_name']} if they would like to smoke pot with me.</p>`)
-                            if (who['relation']>40){
-                                if (who['drugs']==1){
-                                    if (who['money'] >= 20){
-                                        $("#events").append(`<br><p class='event'>They said yes. We smoked pot together.</p>`)
-                                        who['money']-=20
-                                        who['relation'] += randrange(10);
-                                        you['happy']+=randrange(5);
-                                        who['happy']+=randrange(5);
-                                        amou = randrange(3);
-                                        you['stoned']+=amou
-                                        totalStoned+=amou;
-                                        if (who['happy']>100){who['happy']=100}
-                                        if (who['relation']>100){who['relation']=100}
-                                        leave();
-                                    }
-                                    else{
-                                        if (you['money']>=20){
-                                            $("#events").append(`<br><p class='event'>They said yes. They told me they did not have enough money. So I pitched in <span style='color:green'>$20</span> to buy the weed.</p>`)
-                                            who['relation'] += randrange(10);
-                                            you['money']-=20;
-                                            you['happy']+=randrange(5);
-                                            who['happy']+=randrange(5);
-                                            amou = randrange(3)
-                                            you['stoned']+=randrange(amou)
-                                            totalStoned += amou
-                                            if (who['happy']>100){who['happy']=100}
-                                            if (who['relation']>100){who['relation']=100}
-                                            leave();
-                                        }
-                                        else{
-                                            $("#events").append(`<br><p class='event'>They wanted to smoke weed with me, but neither of us had the money to do so.</p>`)
-                                        }
-                                    }
-                                }
-                                else{
-                                    $("#events").append(`<br><p class='event'>They said no. They told me that smoking pot was an unhealthy and bad habit.</p>`)
-                                    who['relation']-=randrange(10)
-                                }
-                            }
-                            else{
-                                $("#events").append(`<br><p class='event'>They said no. They told me they don't feel comfortable enough with me.</p>`)
-                            }
-                          }
-                          else{
-                            $("#events").append(`<br><p class='event'>${who['status']}, ${who['full_name']} is too young to smoke pot.</p>`)
-                          }
-                      }
-                      else{
-                        $("#events").append(`<br><p class='event'>I am too young to smoke weed with my ${who['status']}, ${who['full_name']}.</p>`)
-                      }
-                      if (who['relation']>100){who['relation']=100}
-                      if (who['relation']<0){who['relation']=0}
-                      leave();
-                      update();
-                  })
+                  $("#smokeWithThem").on('click', function () {
+    let eventText = "";
+    if (you['age'] > 13) {
+        if (who['age'] > 13) {
+            eventText = `I asked my ${who['status']}, ${who['full_name']} if they would like to smoke pot with me.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+
+            if (who['relation'] > 40) {
+                if (who['drugs'] == 1) {
+                    if (who['money'] >= 20) {
+                        eventText = "They said yes. We smoked pot together.";
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+
+                        who['money'] -= 20;
+                        who['relation'] += randrange(10);
+                        you['happy'] += randrange(5);
+                        who['happy'] += randrange(5);
+                        amou = randrange(3);
+                        you['stoned'] += amou;
+                        totalStoned += amou;
+                        if (who['happy'] > 100) { who['happy'] = 100 }
+                        if (who['relation'] > 100) { who['relation'] = 100 }
+                        leave();
+                    } else if (you['money'] >= 20) {
+                        eventText = "They said yes. They told me they did not have enough money. So I pitched in <span style='color:green'>$20</span> to buy the weed.";
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+
+                        who['relation'] += randrange(10);
+                        you['money'] -= 20;
+                        you['happy'] += randrange(5);
+                        who['happy'] += randrange(5);
+                        amou = randrange(3);
+                        you['stoned'] += randrange(amou);
+                        totalStoned += amou;
+                        if (who['happy'] > 100) { who['happy'] = 100 }
+                        if (who['relation'] > 100) { who['relation'] = 100 }
+                        leave();
+                    } else {
+                        eventText = "They wanted to smoke weed with me, but neither of us had the money to do so.";
+                        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                        eventLog.push(eventText);
+                    }
+                } else {
+                    eventText = "They said no. They told me that smoking pot was an unhealthy and bad habit.";
+                    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                    eventLog.push(eventText);
+
+                    who['relation'] -= randrange(10);
+                }
+            } else {
+                eventText = "They said no. They told me they don't feel comfortable enough with me.";
+                $("#events").append(`<br><p class='event'>${eventText}</p>`);
+                eventLog.push(eventText);
+            }
+        } else {
+            eventText = `${who['status']}, ${who['full_name']} is too young to smoke pot.`;
+            $("#events").append(`<br><p class='event'>${eventText}</p>`);
+            eventLog.push(eventText);
+        }
+    } else {
+        eventText = `I am too young to smoke weed with my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+    }
+    if (who['relation'] > 100) { who['relation'] = 100 }
+    if (who['relation'] < 0) { who['relation'] = 0 }
+    leave();
+    update();
+});
 
                   $("#robSomeone").on('click',function(){
                       if (you['age'] > 6){
