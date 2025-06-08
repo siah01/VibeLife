@@ -15,6 +15,7 @@ console.log("Script.js is loaded and running");
         gameScreen.classList.add('active');
         console.log('New game started');
         clearGame();
+        startGame();
     });
 
     loadButton.addEventListener('click', () => {
