@@ -103,18 +103,13 @@ function comify(x) {
     $(".topbar-age").text(you['age'] !== undefined ? you['age'] : '');
 
     // Handle "death" logic if needed
-    if (typeof you['health'] === "number" && you['health'] <= 0) {
-        you['health'] = 0;
-        if (typeof randrange === "function" && randrange(3) === 1) {
-            $("#events").append(`<br><p class='event'>I died from health problems</p>`);
-            if (typeof die === "function") die();
-        }
-    } else if (typeof you['age'] === "number" && typeof randrange === "function" && you['age'] >= randrange(40) + 80) {
-        if (randrange(3) === 1) {
-            $("#events").append(`<br><p class='event'>I died from old age.</p>`);
-            if (typeof die === "function") die();
-        }
-    }
+if (typeof you['health'] === "number" && you['health'] <= 0 && !you['dead']) {
+    you['health'] = 0;
+    // REMOVE THE RANDOMNESS FOR TESTING
+    $("#events").append(`<br><p class='event'>I died from health problems</p>`);
+    if (typeof die === "function") die();
+    return; // Prevent any further actions
+}
 
     // Scroll to bottom of events
     var objDiv = document.getElementById("events");
@@ -183,6 +178,8 @@ function startGame() {
     let genders = ['Male','Female'];
     let pastPeople = [];
 
+  if (!you['deathAge']) you['deathAge'] = randrange(40) + 80;
+    
   function prisShuf(){
     prisonInmates = [];
     for(let x = 0; x < 30; x++){
