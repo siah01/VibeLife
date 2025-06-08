@@ -50,7 +50,6 @@ Promise.all([
   console.error("Failed to load one or more data files:", err);
 });//end json data
 
-
 function comify(x) {
   if (typeof x !== "number" || isNaN(x)) return "0";
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -173,7 +172,7 @@ $(document).on('click', '.leaveOk2', function() {
         $(".bottom-options").hide();
         $("#stats").hide();
     }
-});
+})
 
 //Start Game  
 function startGame() {
