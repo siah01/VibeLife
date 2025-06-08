@@ -5087,8 +5087,6 @@ $('.hangOut').on('click', function() {
     objDiv.scrollTop = objDiv.scrollHeight;
 });
 
-  
-
   function prisonLeave(){
       $("#prisonButtons").show();
       $("#buttons").hide();
@@ -5198,63 +5196,93 @@ $('.hangOut').on('click', function() {
       if (inmate['status'] != 'friend'){
           $("#buttonsRn").append(`<button class='button actionButton' id='friendThem'>Befriend Them</button><br>`)
       }
-        $("#friendThem").on('click',function(){
-            $("#events").append(`<br><p class='event'>I asked my fellow inmate, ${inmate['full_name']}, if they want to keep in contact after our sentences.</p>`);
-            if (randrange(11-(inmate['relation']/10))==1){
-                $("#events").append(`<br><p class='event'>They told me they would love to.</p>`);
-                you['happy']-=randrange(5);
-                inmate['relation']+=randrange(10);
-                inmate.job = 'none';
-                inmate.status = 'friend';
-                you['relationships'].push(inmate);
-            }
-            else{
-                $("#events").append(`<br><p class='event'>They told me they would rather not.</p>`);
-                inmate['relation']-=randrange(10);
-            }
-            if (inmate['relation'] < 0){inmate['relation']=0}
-            if (inmate['relation'] > 100){inmate['relation']=100}
-            prisonLeave();
-            update();
-        })
-        $("#murderThem").on('click',function(){
-            $("#events").append(`<br><p class='event'>I attempted to murder my fellow inmate, ${inmate['full_name']}.</p>`);
-            inmate['relation'] -= randrange(20);
-            if (inmate['relation'] < 0){inmate['relation']=0}
-            if (randrange(2)==1){
-              $("#events").append(`<br><p class='event'>I began to attack them and they attacked me first! They ${choice(attacks)} my ${choice(bodyParts)}</p>`);
-              you['health']-=randrange(20);
-            }
-            else{
-                $("#events").append(`<br><p class='event'>I successfully killed them!</p>`);
-                murders++;
-                prisonInmates.splice(thing, 1)
-            }
-            if (randrange(3)==1){
-              more = randrange(25);
-              sentence += more;
-              $("#events").append(`<br><p class='event'>The guards found out this went down! My sentence has been extended ${more} year/s.</p>`);
-            }
-            prisonLeave();
-            update();
-          })
-        $("#workForEm").on('click',function(){
-            tasks = ['clean their feet','wash their sheets','clean their toilet']
-            $("#events").append(`<br><p class='event'>I helped my fellow inmate, ${inmate['full_name']}, I helped them ${choice(tasks)}</p>`);
-            inmate['relation'] += randrange(10);
-            if (randrange(4)==1){
-                $("#events").append(`<br><p class='event'>They told me I'm now their bitch.</p>`);
-                you['happy']-=randrange(5);
-            }
-            if (randrange(6)==1 && inmate['relation'] < 10){
-                $("#events").append(`<br><p class='event'>They told me that I am awful at everything and should die.</p>`);
-                inmate['relation']-=randrange(20);
-            }
-            if (inmate['relation'] < 0){inmate['relation']=0}
-            if (inmate['relation'] > 100){inmate['relation']=100}
-            prisonLeave();
-            update();
-        })
+       $("#friendThem").on('click', function() {
+    let eventText = `I asked my fellow inmate, ${inmate['full_name']}, if they want to keep in contact after our sentences.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    if (randrange(11 - (inmate['relation'] / 10)) == 1) {
+        eventText = `They told me they would love to.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        you['happy'] -= randrange(5);
+        inmate['relation'] += randrange(10);
+        inmate.job = 'none';
+        inmate.status = 'friend';
+        you['relationships'].push(inmate);
+    } else {
+        eventText = `They told me they would rather not.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        inmate['relation'] -= randrange(10);
+    }
+    if (inmate['relation'] < 0) { inmate['relation'] = 0 }
+    if (inmate['relation'] > 100) { inmate['relation'] = 100 }
+    prisonLeave();
+    update();
+});
+
+$("#murderThem").on('click', function() {
+    let eventText = `I attempted to murder my fellow inmate, ${inmate['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    inmate['relation'] -= randrange(20);
+    if (inmate['relation'] < 0) { inmate['relation'] = 0 }
+    if (randrange(2) == 1) {
+        eventText = `I began to attack them and they attacked me first! They ${choice(attacks)} my ${choice(bodyParts)}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        you['health'] -= randrange(20);
+    } else {
+        eventText = `I successfully killed them!`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        murders++;
+        prisonInmates.splice(thing, 1);
+    }
+    if (randrange(3) == 1) {
+        let more = randrange(25);
+        sentence += more;
+        eventText = `The guards found out this went down! My sentence has been extended ${more} year/s.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+    }
+    prisonLeave();
+    update();
+});
+
+$("#workForEm").on('click', function() {
+    let tasks = ['clean their feet', 'wash their sheets', 'clean their toilet'];
+    let eventText = `I helped my fellow inmate, ${inmate['full_name']}, I helped them ${choice(tasks)}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    inmate['relation'] += randrange(10);
+    if (randrange(4) == 1) {
+        eventText = `They told me I'm now their bitch.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        you['happy'] -= randrange(5);
+    }
+    if (randrange(6) == 1 && inmate['relation'] < 10) {
+        eventText = `They told me that I am awful at everything and should die.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        inmate['relation'] -= randrange(20);
+    }
+    if (inmate['relation'] < 0) { inmate['relation'] = 0 }
+    if (inmate['relation'] > 100) { inmate['relation'] = 100 }
+    prisonLeave();
+    update();
+});
+
 
       $("#attack").on('click',function(){
         $("#events").append(`<br><p class='event'>I attacked my inmate, ${inmate['full_name']}, I ${choice(attacks)} their ${choice(bodyParts)}</p>`);
