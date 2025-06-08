@@ -5959,7 +5959,7 @@ $("#careers").on('click', '#homework', function() {
       if (you['happy']>100){you['happy']=100};
       if (you['looks']>100){you['looks']=100};
       if (you['smarts']>100){you['smarts']=100};
-      console.log(you);
+     // console.log(you);
       var objDiv = document.getElementById("events");
       objDiv.scrollTop = objDiv.scrollHeight;
 
