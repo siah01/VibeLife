@@ -5352,13 +5352,18 @@ $("#workForEm").on('click', function() {
       </center>
     `)
     $("#haircut").on('click',function(){
+        eventText = `I got a haircut from my fellow inmate named ${choice(prisonInmates)['full_name']}.`;
         $("#events").append(`<br><p class='event'>I got a haircut from my fellow inmate named ${choice(prisonInmates)['full_name']}.</p>`)
+        eventLog.push(eventText);
         if (randrange(3)==1){
+            eventText = 'The haircut was awful and they accidentally cut part of my head.'
             $("#events").append(`<br><p class='event'>The haircut was awful and they accidentally cut part of my head.</p>`)
             you['looks']-=randrange(3)
         }
         else{
+            eventText = "The haircut was a good cut.";
             $("#events").append(`<br><p class='event'>The haircut was a good cut.</p>`)
+            eventLog.push(eventText);
             you['looks']+=randrange(3)
         }
         if (you['looks']>100){you['looks']=100}
@@ -5367,11 +5372,15 @@ $("#workForEm").on('click', function() {
         update();
       })
     $("#escape").on('click',function(){
-      $("#events").append(`<br><p class='event'>I attempted to escape prison!</p>`)
+        eventText = "I attempted to escape prison!";
+        $("#events").append(`<br><p class='event'>I attempted to escape prison!</p>`)
+        eventLog.push(eventText);
       if (randrange(50)==1){
         if (prisEsc == false){
           you['inPrison']=false;
+          eventText = "I escaped prison!";
           $("#events").append(`<br><p class='event'>I escaped prison!</p>`);
+          eventLog.push(eventText);
           $("#buttons").show();
           $("#prisonButtons").hide();
           $("#prisonLeave").hide();
@@ -5380,7 +5389,9 @@ $("#workForEm").on('click', function() {
         }
       }
       else{
+        eventText = "I failed to escape";
         $("#events").append(`<br><p class='event'>I failed to escape</p>`)
+        eventLog.push(eventText);
         prisEsc = true;
         you['happy']-=randrange(5);
         prisonLeave();
@@ -5388,7 +5399,9 @@ $("#workForEm").on('click', function() {
       update();
     })
     $("#visit").on('click',function(){
+        eventText = "I requested for someone I know to visit me in prison!";
       $("#events").append(`<br><p class='event'>I requested for someone I know to visit me in prison!</p>`)
+      eventLog.push(eventText);
       if (randrange(2)==1){
         if (you['relationships'].length > 0){
           person = choice(you['relationships']);
@@ -5398,12 +5411,16 @@ $("#workForEm").on('click', function() {
           you['happy']+=randrange(5);
         }
         else{
-          $("#events").append(`<br><p class='event'>Nobody came to visit me.</p>`)
+            eventText = "Nobody came to visit me.";
+            $("#events").append(`<br><p class='event'>Nobody came to visit me.</p>`)
+            eventLog.push(eventText);
           you['happy']-=randrange(5);
         }
       }
       else{
-        $("#events").append(`<br><p class='event'>Nobody came to visit me</p>`)
+          eventText = "Nobody came to visit me";
+          $("#events").append(`<br><p class='event'>Nobody came to visit me</p>`)
+          eventLog.push(eventText);
         you['happy']-=randrange(5);
       }
       prisonLeave();
@@ -5411,21 +5428,27 @@ $("#workForEm").on('click', function() {
     })
     $("#workout").on('click',function(){
       if (you['age'] > 10){
-        $("#events").append(`<br><p class='event'>I worked out in prison.</p>`)
+          eventText = "I worked out in prison."
+          $("#events").append(`<br><p class='event'>I worked out in prison.</p>`)
+          eventLog.push(eventText);
         if (prisWork == false){
           you['health']+=randrange(10)
           prisWork = true;
         }
       }
       else{
-        $("#events").append(`<br><p class='event'>I tried to workout, but I couldn't even pick up the weight seeing as it wasn't intended for ${you['age']} year olds.</p>`)
+          eventText = `I tried to workout, but I couldn't even pick up the weight seeing as it wasn't intended for ${you['age']} year olds.`;
+          $("#events").append(`<br><p class='event'>I tried to workout, but I couldn't even pick up the weight seeing as it wasn't intended for ${you['age']} year olds.</p>`)
+          eventLog.push(eventText);
       }
       prisonLeave()
       update();
     })
     $("#readBook").on('click',function(){
         books = ['Of Mice In Men','The Hunger Games','Flowers For Algernon','Misery']
+        eventText = `I read a book titled ${choice(books)}.`;
         $("#events").append(`<br><p class='event'>I read a book titled ${choice(books)}.</p>`)
+        eventLog.push(eventText);
         if (prisRead == false){
             you['smarts']+=randrange(5);
             you['happy']+=randrange(5);
@@ -5435,14 +5458,20 @@ $("#workForEm").on('click', function() {
         update();
       })
     $("#cry").on('click',function(){
-      $("#events").append(`<br><p class='event'>I cried in my prison cell.</p>`)
+        eventText = "I cried in my prison cell.";
+        $("#events").append(`<br><p class='event'>I cried in my prison cell.</p>`)
+        eventLog.push(eventText);
       if (prisCry == false){
         you['happy']+=randrange(5);
         prisCry = true;
       }
       if (randrange(5)==1){
-        $("#events").append(`<br><p class='event'>Another prisoner caught me!</p>`)
-        $("#events").append(`<br><p class='event'>The prisoner attacked me! They ${choice(attacks)} my ${choice(bodyParts)}</p>`)
+          eventText = "Another prisoner caught me!";
+          $("#events").append(`<br><p class='event'>Another prisoner caught me!</p>`)
+          eventLog.push(eventText);
+          eventText = `The prisoner attacked me! They ${choice(attacks)} my ${choice(bodyParts)}`;
+          $("#events").append(`<br><p class='event'>The prisoner attacked me! They ${choice(attacks)} my ${choice(bodyParts)}</p>`)
+          eventLog.push(eventText);
         you['health']-=randrange(10);
       }
       prisonLeave();
