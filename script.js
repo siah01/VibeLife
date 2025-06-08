@@ -4755,55 +4755,69 @@ $(".haveChild").on('click', function() {
     objDiv.scrollTop = objDiv.scrollHeight;
 });
 
-          
-              $(".divorce").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (confirm(`Are you sure you want to divorce your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I have divorced my ${who['status']}, ${who['full_name']}.</p>`)
-                    who['relation']-=100;
-                    who['happy']-=50;
-                    if (who['happy']<0){who['happy']=0}
-                    who['status']='ex';
-                    if (you['money']>who['money']){
-                        payThem = Math.floor(you['money']*0.1);
-                        $("#events").append(`<br><p class='event'>I had to pay them <span style='color:red;'>$${comify(pay)}</span></p>`)
-                        you['money']-=payThem
-                    }else{
-                        payMe = Math.floor(who['money']*0.1);
-                        $("#events").append(`<br><p class='event'>They had to pay me <span style='color:green;'>$${comify(payMe)}</span></p>`)
-                        you['money']+=payMe
-                    }
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
-          
-              $(".elope").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  $("#events").append(`<br><p class='event'>I am now married to ${who['full_name']}.</p>`)
-                  if (who['gender']=='Male'){who['status']='husband'};
-                  if (who['gender']=='Female'){who['status']='wife'};
-                  leave();
-                  update();
-                  var objDiv = document.getElementById("events");
-                  objDiv.scrollTop = objDiv.scrollHeight;
-              })
-          
-              $(".callOff").on('click',function(){
-                  who = you['relationships'][Number($(this).attr('id'))];
-                  if (confirm(`Are you sure you want to call of your engagement with your, ${who['status']}, ${who['full_name']}?`)){
-                    $("#events").append(`<br><p class='event'>I called off the engagement with ${who['full_name']}.</p>`)
-                    who['relation']-=10;
-                    if (who['gender']=='Male'){who['status']='boyfriend'};
-                    if (who['status']=='Female'){who['status']='girlfriend'};
-                    leave();
-                    update();
-                    var objDiv = document.getElementById("events");
-                    objDiv.scrollTop = objDiv.scrollHeight;
-                  }
-              })
+      $(".divorce").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to divorce your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I have divorced my ${who['status']}, ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] -= 100;
+        who['happy'] -= 50;
+        if (who['happy'] < 0) { who['happy'] = 0; }
+        who['status'] = 'ex';
+
+        if (you['money'] > who['money']) {
+            let payThem = Math.floor(you['money'] * 0.1);
+            eventText = `I had to pay them $${comify(payThem)}`;
+            $("#events").append(`<br><p class='event'>I had to pay them <span style='color:red;'>$${comify(payThem)}</span></p>`);
+            eventLog.push(eventText);
+            you['money'] -= payThem;
+        } else {
+            let payMe = Math.floor(who['money'] * 0.1);
+            eventText = `They had to pay me $${comify(payMe)}`;
+            $("#events").append(`<br><p class='event'>They had to pay me <span style='color:green;'>$${comify(payMe)}</span></p>`);
+            eventLog.push(eventText);
+            you['money'] += payMe;
+        }
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
+$(".elope").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    let eventText = `I am now married to ${who['full_name']}.`;
+    $("#events").append(`<br><p class='event'>${eventText}</p>`);
+    eventLog.push(eventText);
+
+    if (who['gender'] == 'Male') { who['status'] = 'husband'; }
+    if (who['gender'] == 'Female') { who['status'] = 'wife'; }
+    leave();
+    update();
+    var objDiv = document.getElementById("events");
+    objDiv.scrollTop = objDiv.scrollHeight;
+});
+
+$(".callOff").on('click', function() {
+    who = you['relationships'][Number($(this).attr('id'))];
+    if (confirm(`Are you sure you want to call off your engagement with your, ${who['status']}, ${who['full_name']}?`)) {
+        let eventText = `I called off the engagement with ${who['full_name']}.`;
+        $("#events").append(`<br><p class='event'>${eventText}</p>`);
+        eventLog.push(eventText);
+
+        who['relation'] -= 10;
+        if (who['gender'] == 'Male') { who['status'] = 'boyfriend'; }
+        if (who['gender'] == 'Female') { who['status'] = 'girlfriend'; }
+        leave();
+        update();
+        var objDiv = document.getElementById("events");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+});
+
           
               $(".propose").on('click',function(){
                   who = you['relationships'][Number($(this).attr('id'))];
