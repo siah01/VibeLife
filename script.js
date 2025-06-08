@@ -173,6 +173,7 @@ let choiceEvents = {};
 let houses = [];
 let cliques = [];
 let schoolDistrict;
+let genders;
 
 $(document).on('click', '.leaveOk2', function() {
     if (you['dead'] == false) {
@@ -451,7 +452,7 @@ function startGame() {
     let murders = 0;
     let totalStoned = 0;
     let buildings = ['hotel','condo','hospital','apartment','grocery store']
-    let genders = ['Male','Female'];
+    genders = ['Male','Female'];
     let pastPeople = [];
 
   if (!you['deathAge']) you['deathAge'] = randrange(40) + 80;
