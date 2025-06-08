@@ -5982,13 +5982,8 @@ $("#careers").on('click', '#homework', function() {
       if (you['smarts']>100){you['smarts']=100};
      // console.log(you);
       var objDiv = document.getElementById("events");
-      objDiv.scrollTop = objDiv.scrollHeight;
-          if (shouldShowPopup) {
-        importantNew(listOfEvents);
-        // NO update() here!
-    } else {
+      objDiv.scrollTop = objDiv.scrollHeight; 
         update();
-    }
-    saveGame();
+        saveGame();
 });
 }
